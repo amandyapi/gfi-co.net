@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\User;
+use App\Entity\Picture;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -14,37 +15,94 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class UserRepository extends ServiceEntityRepository
 {
+
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, User::class);
+        parent::__construct($registry, Picture::class);
     }
 
-    // /**
-    //  * @return User[] Returns an array of User objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function findUser($email, $pwd)
     {
-        return $this->createQueryBuilder('u')
-            ->andWhere('u.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('u.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+        $result = null;
+        $conn = $this->getEntityManager()->getConnection();
 
-    /*
-    public function findOneBySomeField($value): ?User
-    {
-        return $this->createQueryBuilder('u')
-            ->andWhere('u.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        $sql = 'SELECT *
+                FROM user u
+                WHERE u.email = :email
+                AND u.password = :pwd';
+
+        $stmt = $conn->prepare($sql);
+
+        $stmt->execute([
+            'email' => $email,
+            'pwd' => $pwd,
+        ]);
+
+        $result = $stmt->fetch();
+        return $result;
     }
-    */
+
+    public function findUsers()
+    {
+        $result = null;
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = 'SELECT *
+                FROM user u';
+
+        $stmt = $conn->prepare($sql);
+
+        $stmt->execute();
+
+        $result = $stmt->fetchAll();
+        return $result;
+    }
+
+    public function findUserById($id)
+    {
+        $result = null;
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = 'SELECT *
+                FROM user u
+                WHERE u.id = :id';
+
+        $stmt = $conn->prepare($sql);
+
+        $stmt->execute([
+            'id' => $id
+        ]);
+
+        $result = $stmt->fetch();
+        return $result;
+    }
+
+    public function checkEmailContactUnicity($email, $contact)
+    {
+        $result = null;$usersLength = 0;$isUnique = false;
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = 'SELECT COUNT(u.id) as nombre
+                FROM user u
+                WHERE u.contact = :contact
+                OR u.email = :email';
+
+        $stmt = $conn->prepare($sql);
+
+        $stmt->execute([
+            'contact' => $contact,
+            'email' => $email,
+        ]);
+
+        $result = $stmt->fetch();
+        $usersLength = (int) $result["nombre"];
+        if($usersLength > 0) {
+            $isUnique = false;
+        }
+        else if($usersLength == 0)
+        {
+            $isUnique = true;
+        }
+        return $isUnique;
+    }
 }

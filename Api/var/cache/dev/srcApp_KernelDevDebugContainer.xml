@@ -455,6 +455,15 @@
     <service id="kernel" class="App\Kernel" public="true" synthetic="true">
       <tag name="routing.route_loader"/>
     </service>
+    <service id="App\Controller\ArticleController" class="App\Controller\ArticleController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <argument type="service" id="doctrine.orm.default_entity_manager"/>
+      <argument type="service" id="mailer.mailer"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.1qxpWX0.App\Controller\ArticleController"/>
+      </call>
+    </service>
     <service id="App\Controller\AuthController" class="App\Controller\AuthController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -485,6 +494,10 @@
       <argument type="service" id="doctrine"/>
     </service>
     <service id="App\Repository\MailRepository" class="App\Repository\MailRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\PictureRepository" class="App\Repository\PictureRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
@@ -3429,7 +3442,7 @@
       <factory class="Doctrine\ORM\EntityManager" method="create"/>
     </service>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory">
-      <argument type="service" id=".service_locator.Ze3Fghr"/>
+      <argument type="service" id=".service_locator.lpf5Pbt"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -4805,6 +4818,9 @@
         <argument>doctrine:migrations:version</argument>
       </call>
     </service>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ArticleController" class="App\Controller\ArticleController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ArticleController" class="App\Controller\ArticleController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\ArticleController" class="App\Controller\ArticleController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AuthController" class="App\Controller\AuthController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AuthController" class="App\Controller\AuthController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\AuthController" class="App\Controller\AuthController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -4818,6 +4834,8 @@
     <service id=".abstract.instanceof.App\Repository\ArticleRepository" class="App\Repository\ArticleRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\MailRepository" class="App\Repository\MailRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\MailRepository" class="App\Repository\MailRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\PictureRepository" class="App\Repository\PictureRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\PictureRepository" class="App\Repository\PictureRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\UserRepository" class="App\Repository\UserRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\UserRepository" class="App\Repository\UserRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".service_locator.0GV1BZZ" class="Symfony\Component\DependencyInjection\ServiceLocator">
@@ -5221,11 +5239,12 @@
       <argument type="service" id="cache.doctrine.orm.default.result"/>
       <factory class="Doctrine\Common\Cache\Psr6\DoctrineProvider" method="wrap"/>
     </service>
-    <service id=".service_locator.Ze3Fghr" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.lpf5Pbt" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Repository\ArticleRepository" type="service_closure" id="App\Repository\ArticleRepository"/>
         <argument key="App\Repository\MailRepository" type="service_closure" id="App\Repository\MailRepository"/>
+        <argument key="App\Repository\PictureRepository" type="service_closure" id="App\Repository\PictureRepository"/>
         <argument key="App\Repository\UserRepository" type="service_closure" id="App\Repository\UserRepository"/>
       </argument>
     </service>
@@ -5245,6 +5264,12 @@
         <argument key="session" type="service_closure" id="session" on-invalid="ignore"/>
         <argument key="twig" type="service_closure" id="twig" on-invalid="ignore"/>
       </argument>
+    </service>
+    <service id=".service_locator.1qxpWX0.App\Controller\ArticleController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\ArticleController"/>
+      <argument>App\Controller\ArticleController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.1qxpWX0" method="withContext"/>
     </service>
     <service id=".service_locator.1qxpWX0.App\Controller\AuthController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\AuthController"/>

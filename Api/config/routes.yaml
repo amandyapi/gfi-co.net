@@ -1,127 +1,48 @@
-
-##User Login
-special_user_login:
+## USERS
+userLogin:
     path: /security/users/login
+    controller: App\Controller\UserController::login
     methods: ["POST"]
-    defaults:
-        _controller: App\Controller\UserController::login
-        _api_resource_class: App\Entity\User
-        _api_collection_operation_name: loginSpecial
 
-##User Register
-special_user_register:
-    path: /security/users/register
-    methods: ["POST"]
-    defaults:
-        _controller: App\Controller\UserController::register
-        _api_resource_class: App\Entity\User
-        _api_collection_operation_name: registerSpecial
+userGetAll:
+    path: /security/users
+    controller: App\Controller\UserController::getAll
+    methods: ["GET"]
 
-##User Activation
-special_user_activation:
-    path: /security/users/activation
-    methods: ["POST"]
-    defaults:
-        _controller: App\Controller\UserController::activation
-        _api_resource_class: App\Entity\User
-        _api_collection_operation_name: activationSpecial
-
-##User Re-Activation
-special_user_reactivation:
-    path: /security/users/reactivation
-    methods: ["POST"]
-    defaults:
-        _controller: App\Controller\UserController::reactivation
-        _api_resource_class: App\Entity\User
-        _api_collection_operation_name: reactivationSpecial
-
-##User ForgotPassword
-special_user_forgotpassword:
-    path: /security/users/forgotpassword
-    methods: ["POST"]
-    defaults:
-        _controller: App\Controller\UserController::forgotpassword
-        _api_resource_class: App\Entity\User
-        _api_collection_operation_name: forgotpasswordSpecial
-
-##User ResetPassword
-special_user_resetpassword:
-    path: /security/users/resetpassword
-    methods: ["POST"]
-    defaults:
-        _controller: App\Controller\UserController::resetpassword
-        _api_resource_class: App\Entity\User
-        _api_collection_operation_name: resetpasswordSpecial
-
-##IPN Notification
-ipn_notification_special:
-    path: /ipn/notif
-    methods: ["POST"]
-    defaults:
-        _controller: App\Controller\NotificationController::notification
-        _api_resource_class: App\Entity\IpnData
-        _api_collection_operation_name: notifSpecial
-
-##IPN Notification TEST
-ipn_notification_special_test:
-    path: /ipn/notif/test
-    methods: ["POST"]
-    defaults:
-        _controller: App\Controller\NotificationController::notificationTest
-        _api_resource_class: App\Entity\IpnData
-        _api_collection_operation_name: notifSpecialTest
-
-ipn_raw:
-    path: /transactions/{id}/callback
-    controller: App\Controller\NotificationController::notificationRawData
-
-
-##Transactions By Users
-user_transaction:
-    path: /users/{id}/transactions
-    controller: App\Controller\UserController::usertransactions
-
-
-##Picture
-hotel_picture:
-    path: /{entity}/{id}/image
-    controller: App\Controller\PictureController::hotelImage
-
-##BOOKING
-room_by_hotel:
-    path: /hotel/{id}/rooms
-    controller: App\Controller\HotelController::roomsByHotel
-
-free_rooms:
-    path: /booking/free
-    controller: App\Controller\HotelController::freeRooms
-
-booked_rooms:
-    path: /booking/booked
-    controller: App\Controller\HotelController::bookedRooms
-
-free_rooms_by_hotel:
-    path: /booking/{hotelId}/free
-    controller: App\Controller\HotelController::freeRoomsByHotel
+userGetOne:
+    path: /security/users/{id}
+    controller: App\Controller\UserController::getOne
+    methods: ["GET"]
     requirements:
-        hotelId: '\d+'
+        id: '\d+'
 
-room_booking:
-    path: /rooms/{id}/booking
-    methods: ["POST"]
-    controller: App\Controller\HotelController::roomsBooking
+## ARTICLES
 
-booking:
-    path: /booking
-    controller: App\Controller\HotelController::booking
+articleGetAll:
+    path: /edition/articles
+    controller: App\Controller\ArticleController::getAll
+    methods: ["GET"]
 
-bookingByUser:
-    path: /booking/{userId}
-    controller: App\Controller\HotelController::bookingByUser
+articleGetOne:
+    path: /edition/articles/{id}
+    controller: App\Controller\ArticleController::getOne
+    methods: ["GET"]
     requirements:
-        userId: '\d+'
+        id: '\d+'
 
-bookingCancel:
-    path: /booking/{id}/cancel
-    controller: App\Controller\HotelController::bookingCancel
+articleUpdateOne:
+    path: /edition/articles/{id}
+    controller: App\Controller\ArticleController::updateOne
     methods: ["PUT"]
+    requirements:
+        id: '\d+'
+
+articleGetByLang:
+    path: /edition/articles/{lang}
+    controller: App\Controller\ArticleController::getAllByLang
+    methods: ["GET"]
+
+articleNew:
+    path: /edition/articles
+    controller: App\Controller\ArticleController::save
+    methods: ["POST"]

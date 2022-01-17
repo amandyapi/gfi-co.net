@@ -10,7 +10,7 @@ if (in_array(PHP_SAPI, ['cli', 'phpdbg'], true)) {
 }
 
 require dirname(__DIR__, 3).''.\DIRECTORY_SEPARATOR.'vendor/autoload.php';
-require __DIR__.'/ContainerYouparl/srcApp_KernelDevDebugContainer.php';
+require __DIR__.'/ContainerLrExvYe/srcApp_KernelDevDebugContainer.php';
 
 $classes = [];
 $classes[] = 'Symfony\Bundle\FrameworkBundle\FrameworkBundle';
@@ -30,11 +30,13 @@ $classes[] = 'Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser';
 $classes[] = 'Symfony\Bundle\FrameworkBundle\EventListener\ResolveControllerNameSubscriber';
 $classes[] = 'Symfony\Component\HttpFoundation\RequestMatcher';
 $classes[] = 'Symfony\Component\DependencyInjection\ServiceLocator';
+$classes[] = 'App\Controller\ArticleController';
 $classes[] = 'App\Controller\AuthController';
 $classes[] = 'App\Controller\PictureController';
 $classes[] = 'App\Controller\UserController';
 $classes[] = 'App\Repository\ArticleRepository';
 $classes[] = 'App\Repository\MailRepository';
+$classes[] = 'App\Repository\PictureRepository';
 $classes[] = 'App\Repository\UserRepository';
 $classes[] = 'Doctrine\Bundle\DoctrineBundle\Dbal\ManagerRegistryAwareConnectionProvider';
 $classes[] = 'Doctrine\Bundle\DoctrineBundle\Registry';

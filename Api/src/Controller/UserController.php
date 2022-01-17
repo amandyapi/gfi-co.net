@@ -4,8 +4,6 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Entity\Role;
-use App\Entity\Transaction;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -31,92 +29,42 @@ class UserController extends AbstractController
         $this->mailer = $mailer;
     }
 
-    public function usertransactions($id,Request $request)
+    public function login(Request $request)
     {
-        try 
-        {
-            $params = [];$objects = [];
-            $page = (int) $request->query->get('page');
-            $moyenpaiement = (string) $request->query->get('moyenpaiement');
-            $statut = (string) $request->query->get('statut');
-            $dateFrom = $request->query->get('dateFrom');
-            $dateTo = $request->query->get('dateTo');
-            
-            $offset = 5;
-            $limit = ($page - 1) * $offset;
+        $data = json_decode($request->getContent(), true);
 
-            $params['user'] = $id;
-            $params['limit'] = $limit;
-            $params['offset'] = $offset;
-
-            if($moyenpaiement != "")
-            {
-                $params['moyenpaiement'] = $moyenpaiement;
-            }
-            if($statut != "")
-            {
-                $params['statut'] = $statut;
-            }
-            if($dateFrom != "")
-            {
-                $params['dateFrom'] = $dateFrom;
-            }
-            
-            if($dateTo != "")
-            {
-                $params['dateTo'] = $dateTo;
-            }
-            $totalItems = $this->getDoctrine()
-                            ->getRepository(User::class)
-                            ->countFindtransactionByUserFilter($params);
-            $result['totalPages'] = ceil($totalItems / $offset);
-            
-            $result['currentPage'] = $page;
-            
-            if(1 > $result['currentPage'])
-            {
-                $error = "page parameter must be other than 0";
-                return $this->json($error, 500);
-            }
-            else 
-            {
-                $objects = $this->getDoctrine()
-                            ->getRepository(User::class)
-                            ->findtransactionByUserFilter($params);
-                
-                $result['totalItems'] = $totalItems;
-                $result['offset'] = $offset;
-                
-                $result['objects'] = $objects;
-            }
-        } 
-        catch (\Throwable $th) 
-        {
-            return $this->json($th->getMessage(), 500);
-        }
+        $email = $data['email'];
+        $password = sha1($data['password']);
         
-                            
-        return $this->json($result, 200);
-    }
-
-    public function login($data)
-    {
-        //return $bookPublishingHandler->handle($data);
-        //var_dump($data);die();
-        $contact = $data->getContact();
-        //var_dump($contact);die();
-        
-        if($contact == "NULL" || $contact == "null") {
-            $responseText = "Le contact ne peut etre null";
+        if($email == "NULL" || $email == "null") {
+            $responseText = "L'email ne peut etre null";
             return $this->json($responseText, 400);
         }
 
-        $password = sha1($data->getPassword());
-
         $user = $this->getDoctrine()
                      ->getRepository(User::class)
-                     ->findUser($contact, $password);
-        //var_dump($user);die();
+                     ->findUser($email, $password);
+                     
+        return $this->json($user);
+    }
+
+    public function getAll()
+    {
+
+        $users = $this->getDoctrine()
+                      ->getRepository(User::class)
+                      ->findUsers();
+                     
+        return $this->json($users);
+    }
+
+    public function getOne($id)
+    {
+
+        $user = $this->getDoctrine()
+                      ->getRepository(User::class)
+                      ->findUserById($id);
+                     
         return $this->json($user);
     }
 

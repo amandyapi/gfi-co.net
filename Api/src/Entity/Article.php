@@ -7,7 +7,6 @@ use App\Repository\ArticleRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
  * @ORM\Entity(repositoryClass=ArticleRepository::class)
  */
 class Article
@@ -40,9 +39,15 @@ class Article
     private $content;
 
     /**
-     * @ORM\Column(type="string", length=25)
+     * @ORM\Column(name="createTime",type="string", length=25)
      */
     private $createTime;
+
+    public function __construct()
+    {
+        $now = new \DateTime('NOW');
+        $this->createTime = $now->format('Y-m-d\TH:i:s.u');
+    }
 
     public function getId(): ?int
     {
