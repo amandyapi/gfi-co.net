@@ -19,32 +19,43 @@ class PictureRepository extends ServiceEntityRepository
         parent::__construct($registry, Picture::class);
     }
 
-    // /**
-    //  * @return Picture[] Returns an array of Picture objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function findPicturesByEntity($entity, $ref)
     {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+        $result = null;
+        $conn = $this->getEntityManager()->getConnection();
 
-    /*
-    public function findOneBySomeField($value): ?Picture
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        $sql = 'SELECT *
+                FROM picture p
+                WHERE p.entity = :entity
+                AND p.ref = :ref';
+
+        $stmt = $conn->prepare($sql);
+
+        $stmt->execute([
+            'entity' => $entity,
+            'ref' => $ref,
+        ]);
+
+        $result = $stmt->fetchAll();
+        return $result;
     }
-    */
+
+    public function findPicture($id)
+    {
+        $result = null;
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = 'SELECT *
+                FROM picture p
+                WHERE p.id = :id';
+
+        $stmt = $conn->prepare($sql);
+
+        $stmt->execute([
+            'id' => $id
+        ]);
+
+        $result = $stmt->fetch();
+        return $result;
+    }
 }

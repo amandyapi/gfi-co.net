@@ -66,3 +66,21 @@ mailSendOne:
     path: /mails
     controller: App\Controller\MailController::sendOneMail
     methods: ["POST"]
+
+
+## PICTURES
+
+PictureGetAllByEntities:
+    path: /{entity}/pictures/{ref}
+    controller: App\Controller\PictureController::getAllByEntity
+    methods: ["GET"]
+
+PictureGetOne:
+    path: /pictures/{id}
+    controller: App\Controller\PictureController::getOne
+    methods: ["GET"]
+
+PictureAddOne:
+    path: /pictures
+    controller: App\Controller\PictureController::save
+    methods: ["POST"]
