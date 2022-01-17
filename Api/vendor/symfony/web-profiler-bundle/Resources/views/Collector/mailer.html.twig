@@ -67,7 +67,7 @@
 {% block menu %}
     {% set events = collector.events %}
 
-    <span class="label {{ events.messages|length ? '' : 'disabled' }}">
+    <span class="label {{ events.messages is empty ? 'disabled' }}">
         <span class="icon">{{ include('@WebProfiler/Icon/mailer.svg') }}</span>
 
         <strong>E-mails</strong>
@@ -94,7 +94,7 @@
         {% for transport in events.transports %}
             <div class="metric">
                 <span class="value">{{ events.messages(transport)|length }}</span>
-                <span class="label">{{ events.messages(transport)|length == 1 ? 'message' : 'messages' }}</label>
+                <span class="label">{{ events.messages(transport)|length == 1 ? 'message' : 'messages' }}</span>
             </div>
         {% endfor %}
     </div>

@@ -1,17 +1,19 @@
 <?php
+
 namespace Doctrine\Common\Proxy\Exception;
 
-use Doctrine\Common\Persistence\Proxy;
+use Doctrine\Persistence\Proxy;
 use InvalidArgumentException as BaseInvalidArgumentException;
+
+use function get_class;
+use function gettype;
+use function is_object;
+use function sprintf;
 
 /**
  * Proxy Invalid Argument Exception.
  *
  * @link   www.doctrine-project.org
- * @since  2.4
- * @author Marco Pivetta <ocramius@gmail.com>
- *
- * @deprecated The Doctrine\Common\Proxy component is deprecated, please use ocramius/proxy-manager instead.
  */
 class InvalidArgumentException extends BaseInvalidArgumentException implements ProxyException
 {
@@ -28,6 +30,8 @@ class InvalidArgumentException extends BaseInvalidArgumentException implements P
      * @param string $proxyNamespace
      *
      * @return self
+     *
+     * @psalm-param class-string $className
      */
     public static function notProxyClass($className, $proxyNamespace)
     {
@@ -53,8 +57,6 @@ class InvalidArgumentException extends BaseInvalidArgumentException implements P
     }
 
     /**
-     * @param Proxy $proxy
-     *
      * @return self
      */
     public static function unitializedProxyExpected(Proxy $proxy)
@@ -78,6 +80,8 @@ class InvalidArgumentException extends BaseInvalidArgumentException implements P
      * @param string $className
      *
      * @return self
+     *
+     * @psalm-param class-string $className
      */
     public static function classMustNotBeAbstract($className)
     {
@@ -88,6 +92,8 @@ class InvalidArgumentException extends BaseInvalidArgumentException implements P
      * @param string $className
      *
      * @return self
+     *
+     * @psalm-param class-string $className
      */
     public static function classMustNotBeFinal($className)
     {
@@ -96,10 +102,8 @@ class InvalidArgumentException extends BaseInvalidArgumentException implements P
 
     /**
      * @param mixed $value
-     *
-     * @return self
      */
-    public static function invalidAutoGenerateMode($value) : self
+    public static function invalidAutoGenerateMode($value): self
     {
         return new self(sprintf('Invalid auto generate mode "%s" given.', $value));
     }

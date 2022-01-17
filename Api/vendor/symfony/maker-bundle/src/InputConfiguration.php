@@ -18,10 +18,8 @@ final class InputConfiguration
     /**
      * Call in MakerInterface::configureCommand() to disable the automatic interactive
      * prompt for an argument.
-     *
-     * @param string $argumentName
      */
-    public function setArgumentAsNonInteractive(string $argumentName)
+    public function setArgumentAsNonInteractive(string $argumentName): void
     {
         $this->nonInteractiveArguments[] = $argumentName;
     }

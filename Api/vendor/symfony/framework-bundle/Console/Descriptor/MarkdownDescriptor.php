@@ -28,9 +28,6 @@ use Symfony\Component\Routing\RouteCollection;
  */
 class MarkdownDescriptor extends Descriptor
 {
-    /**
-     * {@inheritdoc}
-     */
     protected function describeRouteCollection(RouteCollection $routes, array $options = [])
     {
         $first = true;
@@ -45,9 +42,6 @@ class MarkdownDescriptor extends Descriptor
         $this->write("\n");
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function describeRoute(Route $route, array $options = [])
     {
         $output = '- Path: '.$route->getPath()
@@ -71,9 +65,6 @@ class MarkdownDescriptor extends Descriptor
         $this->write("\n");
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function describeContainerParameters(ParameterBag $parameters, array $options = [])
     {
         $this->write("Container parameters\n====================\n");
@@ -82,9 +73,6 @@ class MarkdownDescriptor extends Descriptor
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function describeContainerTags(ContainerBuilder $builder, array $options = [])
     {
         $showHidden = isset($options['show_hidden']) && $options['show_hidden'];
@@ -99,9 +87,6 @@ class MarkdownDescriptor extends Descriptor
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function describeContainerService($service, array $options = [], ContainerBuilder $builder = null)
     {
         if (!isset($options['id'])) {
@@ -119,9 +104,6 @@ class MarkdownDescriptor extends Descriptor
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function describeContainerServices(ContainerBuilder $builder, array $options = [])
     {
         $showHidden = isset($options['show_hidden']) && $options['show_hidden'];
@@ -183,9 +165,6 @@ class MarkdownDescriptor extends Descriptor
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function describeContainerDefinition(Definition $definition, array $options = [])
     {
         $output = '';
@@ -246,9 +225,6 @@ class MarkdownDescriptor extends Descriptor
         $this->write(isset($options['id']) ? sprintf("### %s\n\n%s\n", $options['id'], $output) : $output);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function describeContainerAlias(Alias $alias, array $options = [], ContainerBuilder $builder = null)
     {
         $output = '- Service: `'.$alias.'`'
@@ -270,28 +246,19 @@ class MarkdownDescriptor extends Descriptor
         $this->describeContainerDefinition($builder->getDefinition((string) $alias), array_merge($options, ['id' => (string) $alias]));
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function describeContainerParameter($parameter, array $options = [])
     {
         $this->write(isset($options['parameter']) ? sprintf("%s\n%s\n\n%s", $options['parameter'], str_repeat('=', \strlen($options['parameter'])), $this->formatParameter($parameter)) : $parameter);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function describeContainerEnvVars(array $envs, array $options = [])
     {
         throw new LogicException('Using the markdown format to debug environment variables is not supported.');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function describeEventDispatcherListeners(EventDispatcherInterface $eventDispatcher, array $options = [])
     {
-        $event = \array_key_exists('event', $options) ? $options['event'] : null;
+        $event = $options['event'] ?? null;
 
         $title = 'Registered listeners';
         if (null !== $event) {
@@ -322,9 +289,6 @@ class MarkdownDescriptor extends Descriptor
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function describeCallable($callable, array $options = [])
     {
         $string = '';
@@ -336,7 +300,7 @@ class MarkdownDescriptor extends Descriptor
                 $string .= "\n".sprintf('- Name: `%s`', $callable[1]);
                 $string .= "\n".sprintf('- Class: `%s`', \get_class($callable[0]));
             } else {
-                if (0 !== strpos($callable[1], 'parent::')) {
+                if (!str_starts_with($callable[1], 'parent::')) {
                     $string .= "\n".sprintf('- Name: `%s`', $callable[1]);
                     $string .= "\n".sprintf('- Class: `%s`', $callable[0]);
                     $string .= "\n- Static: yes";
@@ -354,7 +318,7 @@ class MarkdownDescriptor extends Descriptor
         if (\is_string($callable)) {
             $string .= "\n- Type: `function`";
 
-            if (false === strpos($callable, '::')) {
+            if (!str_contains($callable, '::')) {
                 $string .= "\n".sprintf('- Name: `%s`', $callable);
             } else {
                 $callableParts = explode('::', $callable);
@@ -371,7 +335,7 @@ class MarkdownDescriptor extends Descriptor
             $string .= "\n- Type: `closure`";
 
             $r = new \ReflectionFunction($callable);
-            if (false !== strpos($r->name, '{closure}')) {
+            if (str_contains($r->name, '{closure}')) {
                 return $this->write($string."\n");
             }
             $string .= "\n".sprintf('- Name: `%s`', $r->name);

@@ -69,7 +69,12 @@ class RememberMeFactory implements SecurityFactoryInterface
         }
 
         // remember-me options
-        $rememberMeServices->replaceArgument(3, array_intersect_key($config, $this->options));
+        $mergedOptions = array_intersect_key($config, $this->options);
+        if ('auto' === $mergedOptions['secure']) {
+            $mergedOptions['secure'] = null;
+        }
+
+        $rememberMeServices->replaceArgument(3, $mergedOptions);
 
         // attach to remember-me aware listeners
         $userProviders = [];
@@ -141,7 +146,7 @@ class RememberMeFactory implements SecurityFactoryInterface
                 ->end()
                 ->prototype('scalar')->end()
             ->end()
-            ->scalarNode('catch_exceptions')->defaultTrue()->end()
+            ->booleanNode('catch_exceptions')->defaultTrue()->end()
         ;
 
         foreach ($this->options as $name => $value) {
@@ -151,6 +156,8 @@ class RememberMeFactory implements SecurityFactoryInterface
                 $builder->enumNode($name)->values([null, Cookie::SAMESITE_LAX, Cookie::SAMESITE_STRICT, Cookie::SAMESITE_NONE])->defaultValue($value);
             } elseif (\is_bool($value)) {
                 $builder->booleanNode($name)->defaultValue($value);
+            } elseif (\is_int($value)) {
+                $builder->integerNode($name)->defaultValue($value);
             } else {
                 $builder->scalarNode($name)->defaultValue($value);
             }

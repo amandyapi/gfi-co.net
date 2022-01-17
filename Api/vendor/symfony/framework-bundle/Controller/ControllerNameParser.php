@@ -32,7 +32,7 @@ class ControllerNameParser
         $this->kernel = $kernel;
 
         if ($triggerDeprecation) {
-            @trigger_error(sprintf('The "%s" class is deprecated since Symfony 4.1.', __CLASS__), E_USER_DEPRECATED);
+            @trigger_error(sprintf('The "%s" class is deprecated since Symfony 4.1.', __CLASS__), \E_USER_DEPRECATED);
         }
     }
 
@@ -49,7 +49,7 @@ class ControllerNameParser
     public function parse($controller)
     {
         if (2 > \func_num_args() || func_get_arg(1)) {
-            @trigger_error(sprintf('The "%s" class is deprecated since Symfony 4.1.', __CLASS__), E_USER_DEPRECATED);
+            @trigger_error(sprintf('The "%s" class is deprecated since Symfony 4.1.', __CLASS__), \E_USER_DEPRECATED);
         }
 
         $parts = explode(':', $controller);
@@ -58,7 +58,7 @@ class ControllerNameParser
         }
 
         $originalController = $controller;
-        list($bundleName, $controller, $action) = $parts;
+        [$bundleName, $controller, $action] = $parts;
         $controller = str_replace('/', '\\', $controller);
 
         try {
@@ -97,7 +97,7 @@ class ControllerNameParser
      */
     public function build($controller)
     {
-        @trigger_error(sprintf('The %s class is deprecated since Symfony 4.1.', __CLASS__), E_USER_DEPRECATED);
+        @trigger_error(sprintf('The %s class is deprecated since Symfony 4.1.', __CLASS__), \E_USER_DEPRECATED);
 
         if (0 === preg_match('#^(.*?\\\\Controller\\\\(.+)Controller)::(.+)Action$#', $controller, $match)) {
             throw new \InvalidArgumentException(sprintf('The "%s" controller is not a valid "class::method" string.', $controller));
@@ -107,7 +107,7 @@ class ControllerNameParser
         $controllerName = $match[2];
         $actionName = $match[3];
         foreach ($this->kernel->getBundles() as $name => $bundle) {
-            if (0 !== strpos($className, $bundle->getNamespace())) {
+            if (!str_starts_with($className, $bundle->getNamespace())) {
                 continue;
             }
 
@@ -130,7 +130,7 @@ class ControllerNameParser
         $shortest = null;
         foreach ($bundleNames as $bundleName) {
             // if there's a partial match, return it immediately
-            if (false !== strpos($bundleName, $nonExistentBundleName)) {
+            if (str_contains($bundleName, $nonExistentBundleName)) {
                 return $bundleName;
             }
 

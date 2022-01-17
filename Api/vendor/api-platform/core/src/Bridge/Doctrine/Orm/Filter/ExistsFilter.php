@@ -17,10 +17,10 @@ use ApiPlatform\Core\Bridge\Doctrine\Common\Filter\ExistsFilterInterface;
 use ApiPlatform\Core\Bridge\Doctrine\Common\Filter\ExistsFilterTrait;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Util\QueryBuilderHelper;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Util\QueryNameGeneratorInterface;
-use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\Mapping\ClassMetadataInfo;
 use Doctrine\ORM\Query\Expr\Join;
 use Doctrine\ORM\QueryBuilder;
+use Doctrine\Persistence\ManagerRegistry;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -74,10 +74,10 @@ class ExistsFilter extends AbstractContextAwareFilter implements ExistsFilterInt
         if (\func_num_args() > 6) {
             $context = func_get_arg(6);
         } else {
-            if (__CLASS__ !== \get_class($this)) {
+            if (__CLASS__ !== static::class) {
                 $r = new \ReflectionMethod($this, __FUNCTION__);
                 if (__CLASS__ !== $r->getDeclaringClass()->getName()) {
-                    @trigger_error(sprintf('Method %s() will have a seventh `$context` argument in version API Platform 3.0. Not defining it is deprecated since API Platform 2.5.', __FUNCTION__), E_USER_DEPRECATED);
+                    @trigger_error(sprintf('Method %s() will have a seventh `$context` argument in version API Platform 3.0. Not defining it is deprecated since API Platform 2.5.', __FUNCTION__), \E_USER_DEPRECATED);
                 }
             }
             $context = [];
@@ -202,9 +202,9 @@ class ExistsFilter extends AbstractContextAwareFilter implements ExistsFilterInt
             return parent::extractProperties($request, $resourceClass);
         }
 
-        @trigger_error(sprintf('The use of "%s::extractProperties()" is deprecated since 2.2. Use the "filters" key of the context instead.', __CLASS__), E_USER_DEPRECATED);
+        @trigger_error(sprintf('The use of "%s::extractProperties()" is deprecated since 2.2. Use the "filters" key of the context instead.', __CLASS__), \E_USER_DEPRECATED);
 
-        $properties = $request->query->get($this->existsParameterName);
+        $properties = $request->query->all()[$this->existsParameterName];
 
         return \is_array($properties) ? $properties : [];
     }

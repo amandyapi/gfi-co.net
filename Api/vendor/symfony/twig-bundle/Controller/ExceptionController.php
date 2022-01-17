@@ -20,7 +20,7 @@ use Twig\Error\LoaderError;
 use Twig\Loader\ExistsLoaderInterface;
 use Twig\Loader\SourceContextLoaderInterface;
 
-@trigger_error(sprintf('The "%s" class is deprecated since Symfony 4.4, use "%s" instead.', ExceptionController::class, \Symfony\Component\HttpKernel\Controller\ErrorController::class), E_USER_DEPRECATED);
+@trigger_error(sprintf('The "%s" class is deprecated since Symfony 4.4, use "%s" instead.', ExceptionController::class, \Symfony\Component\HttpKernel\Controller\ErrorController::class), \E_USER_DEPRECATED);
 
 /**
  * ExceptionController renders error or exception pages for a given
@@ -67,7 +67,7 @@ class ExceptionController
             (string) $this->findTemplate($request, $request->getRequestFormat(), $code, $showException),
             [
                 'status_code' => $code,
-                'status_text' => isset(Response::$statusTexts[$code]) ? Response::$statusTexts[$code] : '',
+                'status_text' => Response::$statusTexts[$code] ?? '',
                 'exception' => $exception,
                 'logger' => $logger,
                 'currentContent' => $currentContent,

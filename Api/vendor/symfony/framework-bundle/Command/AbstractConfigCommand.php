@@ -62,7 +62,7 @@ abstract class AbstractConfigCommand extends ContainerDebugCommand
     protected function findExtension($name)
     {
         $bundles = $this->initializeBundles();
-        $minScore = INF;
+        $minScore = \INF;
 
         foreach ($bundles as $bundle) {
             if ($name === $bundle->getName()) {
@@ -96,7 +96,7 @@ abstract class AbstractConfigCommand extends ContainerDebugCommand
             }
         }
 
-        if ('Bundle' !== substr($name, -6)) {
+        if (!str_ends_with($name, 'Bundle')) {
             $message = sprintf('No extensions with configuration available for "%s".', $name);
         } else {
             $message = sprintf('No extension with alias "%s" is enabled.', $name);
@@ -112,11 +112,11 @@ abstract class AbstractConfigCommand extends ContainerDebugCommand
     public function validateConfiguration(ExtensionInterface $extension, $configuration)
     {
         if (!$configuration) {
-            throw new \LogicException(sprintf('The extension with alias "%s" does not have its getConfiguration() method setup', $extension->getAlias()));
+            throw new \LogicException(sprintf('The extension with alias "%s" does not have its getConfiguration() method setup.', $extension->getAlias()));
         }
 
         if (!$configuration instanceof ConfigurationInterface) {
-            throw new \LogicException(sprintf('Configuration class "%s" should implement ConfigurationInterface in order to be dumpable', \get_class($configuration)));
+            throw new \LogicException(sprintf('Configuration class "%s" should implement ConfigurationInterface in order to be dumpable.', \get_class($configuration)));
         }
     }
 

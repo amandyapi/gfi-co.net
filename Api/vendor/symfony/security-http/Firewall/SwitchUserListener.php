@@ -43,7 +43,7 @@ class SwitchUserListener extends AbstractListener implements ListenerInterface
 {
     use LegacyListenerTrait;
 
-    const EXIT_VALUE = '_exit';
+    public const EXIT_VALUE = '_exit';
 
     private $tokenStorage;
     private $provider;
@@ -154,7 +154,8 @@ class SwitchUserListener extends AbstractListener implements ListenerInterface
                 return $token;
             }
 
-            throw new \LogicException(sprintf('You are already switched to "%s" user.', $token->getUsername()));
+            // User already switched, exit before seamlessly switching to another user
+            $token = $this->attemptExitUser($request);
         }
 
         $currentUsername = $token->getUsername();
@@ -167,7 +168,7 @@ class SwitchUserListener extends AbstractListener implements ListenerInterface
 
             try {
                 $this->provider->loadUserByUsername($nonExistentUsername);
-            } catch (AuthenticationException $e) {
+            } catch (\Exception $e) {
             }
         } catch (AuthenticationException $e) {
             $this->provider->loadUserByUsername($currentUsername);
@@ -189,7 +190,7 @@ class SwitchUserListener extends AbstractListener implements ListenerInterface
         $this->userChecker->checkPostAuth($user);
 
         $roles = $user->getRoles();
-        $roles[] = new SwitchUserRole('ROLE_PREVIOUS_ADMIN', $this->tokenStorage->getToken(), false);
+        $roles[] = new SwitchUserRole('ROLE_PREVIOUS_ADMIN', $token, false);
 
         $token = new SwitchUserToken($user, $user->getPassword(), $this->providerKey, $roles, $token);
 
@@ -216,6 +217,7 @@ class SwitchUserListener extends AbstractListener implements ListenerInterface
 
         if (null !== $this->dispatcher && $original->getUser() instanceof UserInterface) {
             $user = $this->provider->refreshUser($original->getUser());
+            $original->setUser($user);
             $switchEvent = new SwitchUserEvent($request, $user, $original);
             $this->dispatcher->dispatch($switchEvent, SecurityEvents::SWITCH_USER);
             $original = $switchEvent->getToken();

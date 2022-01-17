@@ -100,6 +100,9 @@ final class YamlExtractor extends AbstractExtractor
             if (!\is_array($propertyValues)) {
                 throw new InvalidArgumentException(sprintf('"%s" setting is expected to be null or an array, %s given in "%s".', $propertyName, \gettype($propertyValues), $path));
             }
+            if (isset($propertyValues['subresource']['resourceClass'])) {
+                $propertyValues['subresource']['resourceClass'] = $this->resolve($propertyValues['subresource']['resourceClass']);
+            }
 
             $this->resources[$resourceName]['properties'][$propertyName] = [
                 'description' => $this->phpize($propertyValues, 'description', 'string'),
@@ -111,7 +114,11 @@ final class YamlExtractor extends AbstractExtractor
                 'identifier' => $this->phpize($propertyValues, 'identifier', 'bool'),
                 'iri' => $this->phpize($propertyValues, 'iri', 'string'),
                 'attributes' => $propertyValues['attributes'] ?? [],
-                'subresource' => $propertyValues['subresource'] ?? null,
+                'subresource' => isset($propertyValues['subresource']) ? [
+                    'collection' => $this->phpize($propertyValues['subresource'], 'collection', 'bool'),
+                    'resourceClass' => $this->phpize($propertyValues['subresource'], 'resourceClass', 'string'),
+                    'maxDepth' => $this->phpize($propertyValues['subresource'], 'maxDepth', 'integer'),
+                ] : null,
             ];
         }
     }
@@ -121,7 +128,7 @@ final class YamlExtractor extends AbstractExtractor
      *
      * @throws InvalidArgumentException
      *
-     * @return bool|string|null
+     * @return bool|int|string|null
      */
     private function phpize(array $array, string $key, string $type)
     {
@@ -132,6 +139,11 @@ final class YamlExtractor extends AbstractExtractor
         switch ($type) {
             case 'bool':
                 if (\is_bool($array[$key])) {
+                    return $array[$key];
+                }
+                break;
+            case 'integer':
+                if (\is_int($array[$key])) {
                     return $array[$key];
                 }
                 break;

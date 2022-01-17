@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace ApiPlatform\Core\Hydra\JsonSchema;
 
+use ApiPlatform\Core\JsonLd\ContextBuilder;
 use ApiPlatform\Core\JsonSchema\Schema;
 use ApiPlatform\Core\JsonSchema\SchemaFactory as BaseSchemaFactory;
 use ApiPlatform\Core\JsonSchema\SchemaFactoryInterface;
@@ -31,17 +32,41 @@ final class SchemaFactory implements SchemaFactoryInterface
         'type' => 'string',
     ];
     private const BASE_PROPS = [
-        '@context' => self::BASE_PROP,
         '@id' => self::BASE_PROP,
         '@type' => self::BASE_PROP,
     ];
+    private const BASE_ROOT_PROPS = [
+        '@context' => [
+            'readOnly' => true,
+            'oneOf' => [
+                ['type' => 'string'],
+                [
+                    'type' => 'object',
+                    'properties' => [
+                        '@vocab' => [
+                            'type' => 'string',
+                        ],
+                        'hydra' => [
+                            'type' => 'string',
+                            'enum' => [ContextBuilder::HYDRA_NS],
+                        ],
+                    ],
+                    'required' => ['@vocab', 'hydra'],
+                    'additionalProperties' => true,
+                ],
+            ],
+        ],
+    ] + self::BASE_PROPS;
 
     private $schemaFactory;
 
-    public function __construct(BaseSchemaFactory $schemaFactory)
+    public function __construct(SchemaFactoryInterface $schemaFactory)
     {
         $this->schemaFactory = $schemaFactory;
-        $schemaFactory->addDistinctFormat('jsonld');
+
+        if ($schemaFactory instanceof BaseSchemaFactory) {
+            $schemaFactory->addDistinctFormat('jsonld');
+        }
     }
 
     /**
@@ -56,15 +81,29 @@ final class SchemaFactory implements SchemaFactoryInterface
 
         $definitions = $schema->getDefinitions();
         if ($key = $schema->getRootDefinitionKey()) {
-            $definitions[$key]['properties'] = self::BASE_PROPS + ($definitions[$key]['properties'] ?? []);
+            $definitions[$key]['properties'] = self::BASE_ROOT_PROPS + ($definitions[$key]['properties'] ?? []);
 
             return $schema;
+        }
+        if ($key = $schema->getItemsDefinitionKey()) {
+            $definitions[$key]['properties'] = self::BASE_PROPS + ($definitions[$key]['properties'] ?? []);
         }
 
         if (($schema['type'] ?? '') === 'array') {
             // hydra:collection
             $items = $schema['items'];
             unset($schema['items']);
+
+            $nullableStringDefinition = ['type' => 'string'];
+
+            switch ($schema->getVersion()) {
+                case Schema::VERSION_JSON_SCHEMA:
+                    $nullableStringDefinition = ['type' => ['string', 'null']];
+                    break;
+                case Schema::VERSION_OPENAPI:
+                    $nullableStringDefinition = ['type' => 'string', 'nullable' => true];
+                    break;
+            }
 
             $schema['type'] = 'object';
             $schema['properties'] = [
@@ -94,6 +133,10 @@ final class SchemaFactory implements SchemaFactoryInterface
                             'type' => 'string',
                             'format' => 'iri-reference',
                         ],
+                        'hydra:previous' => [
+                            'type' => 'string',
+                            'format' => 'iri-reference',
+                        ],
                         'hydra:next' => [
                             'type' => 'string',
                             'format' => 'iri-reference',
@@ -113,7 +156,7 @@ final class SchemaFactory implements SchemaFactoryInterface
                                 'properties' => [
                                     '@type' => ['type' => 'string'],
                                     'variable' => ['type' => 'string'],
-                                    'property' => ['type' => 'string'],
+                                    'property' => $nullableStringDefinition,
                                     'required' => ['type' => 'boolean'],
                                 ],
                             ],

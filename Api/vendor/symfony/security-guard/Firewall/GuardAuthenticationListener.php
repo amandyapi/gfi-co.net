@@ -17,7 +17,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\Security\Core\Authentication\AuthenticationManagerInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
+use Symfony\Component\Security\Core\Exception\AccountStatusException;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
+use Symfony\Component\Security\Core\Exception\BadCredentialsException;
+use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Guard\AuthenticatorInterface;
 use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 use Symfony\Component\Security\Guard\Token\PreAuthenticationGuardToken;
@@ -44,12 +47,13 @@ class GuardAuthenticationListener extends AbstractListener implements ListenerIn
     private $guardAuthenticators;
     private $logger;
     private $rememberMeServices;
+    private $hideUserNotFoundExceptions;
 
     /**
      * @param string                            $providerKey         The provider (i.e. firewall) key
      * @param iterable|AuthenticatorInterface[] $guardAuthenticators The authenticators, with keys that match what's passed to GuardAuthenticationProvider
      */
-    public function __construct(GuardAuthenticatorHandler $guardHandler, AuthenticationManagerInterface $authenticationManager, string $providerKey, $guardAuthenticators, LoggerInterface $logger = null)
+    public function __construct(GuardAuthenticatorHandler $guardHandler, AuthenticationManagerInterface $authenticationManager, string $providerKey, iterable $guardAuthenticators, LoggerInterface $logger = null, bool $hideUserNotFoundExceptions = true)
     {
         if (empty($providerKey)) {
             throw new \InvalidArgumentException('$providerKey must not be empty.');
@@ -60,6 +64,7 @@ class GuardAuthenticationListener extends AbstractListener implements ListenerIn
         $this->providerKey = $providerKey;
         $this->guardAuthenticators = $guardAuthenticators;
         $this->logger = $logger;
+        $this->hideUserNotFoundExceptions = $hideUserNotFoundExceptions;
     }
 
     /**
@@ -164,6 +169,12 @@ class GuardAuthenticationListener extends AbstractListener implements ListenerIn
                 $this->logger->info('Guard authentication failed.', ['exception' => $e, 'authenticator' => \get_class($guardAuthenticator)]);
             }
 
+            // Avoid leaking error details in case of invalid user (e.g. user not found or invalid account status)
+            // to prevent user enumeration via response content
+            if ($this->hideUserNotFoundExceptions && ($e instanceof UsernameNotFoundException || $e instanceof AccountStatusException)) {
+                $e = new BadCredentialsException('Bad credentials.', 0, $e);
+            }
+
             $response = $this->guardHandler->handleAuthenticationFailure($e, $request, $guardAuthenticator, $this->providerKey);
 
             if ($response instanceof Response) {
@@ -222,7 +233,7 @@ class GuardAuthenticationListener extends AbstractListener implements ListenerIn
         }
 
         if (!$response instanceof Response) {
-            throw new \LogicException(sprintf('%s::onAuthenticationSuccess *must* return a Response if you want to use the remember me functionality. Return a Response, or set remember_me to false under the guard configuration.', \get_class($guardAuthenticator)));
+            throw new \LogicException(sprintf('"%s::onAuthenticationSuccess()" *must* return a Response if you want to use the remember me functionality. Return a Response, or set remember_me to false under the guard configuration.', \get_class($guardAuthenticator)));
         }
 
         $this->rememberMeServices->loginSuccess($request, $response, $token);

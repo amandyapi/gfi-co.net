@@ -11,17 +11,24 @@
 
 namespace Symfony\Bundle\MakerBundle\Doctrine;
 
-use Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory;
-use Doctrine\Common\Persistence\Mapping\ClassMetadata;
-use Doctrine\Common\Persistence\Mapping\Driver\AnnotationDriver;
-use Doctrine\Common\Persistence\Mapping\Driver\MappingDriver;
-use Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain;
-use Doctrine\Common\Persistence\Mapping\MappingException as PersistenceMappingException;
+use Doctrine\Common\Persistence\ManagerRegistry as LegacyManagerRegistry;
+use Doctrine\Common\Persistence\Mapping\ClassMetadata as LegacyClassMetadata;
+use Doctrine\Common\Persistence\Mapping\MappingException as LegacyPersistenceMappingException;
+use Doctrine\DBAL\Connection;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Mapping\Driver\AttributeDriver;
 use Doctrine\ORM\Mapping\MappingException as ORMMappingException;
+use Doctrine\ORM\Mapping\NamingStrategy;
 use Doctrine\ORM\Tools\DisconnectedClassMetadataFactory;
-use Symfony\Bridge\Doctrine\ManagerRegistry;
+use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Persistence\Mapping\AbstractClassMetadataFactory;
+use Doctrine\Persistence\Mapping\ClassMetadata;
+use Doctrine\Persistence\Mapping\Driver\AnnotationDriver;
+use Doctrine\Persistence\Mapping\Driver\MappingDriver;
+use Doctrine\Persistence\Mapping\Driver\MappingDriverChain;
+use Doctrine\Persistence\Mapping\MappingException as PersistenceMappingException;
 use Symfony\Bundle\MakerBundle\Util\ClassNameDetails;
+use Symfony\Bundle\MakerBundle\Util\PhpCompatUtil;
 
 /**
  * @author Fabien Potencier <fabien@symfony.com>
@@ -36,19 +43,36 @@ final class DoctrineHelper
      * @var string
      */
     private $entityNamespace;
+    private $phpCompatUtil;
 
     /**
      * @var ManagerRegistry
      */
     private $registry;
 
-    public function __construct(string $entityNamespace, ManagerRegistry $registry = null)
+    /**
+     * @var array|null
+     */
+    private $mappingDriversByPrefix;
+
+    private $attributeMappingSupport;
+
+    /**
+     * @var ManagerRegistry|LegacyManagerRegistry
+     */
+    public function __construct(string $entityNamespace, PhpCompatUtil $phpCompatUtil, $registry = null, bool $attributeMappingSupport = false, array $annotatedPrefixes = null)
     {
         $this->entityNamespace = trim($entityNamespace, '\\');
+        $this->phpCompatUtil = $phpCompatUtil;
         $this->registry = $registry;
+        $this->attributeMappingSupport = $attributeMappingSupport;
+        $this->mappingDriversByPrefix = $annotatedPrefixes;
     }
 
-    public function getRegistry(): ManagerRegistry
+    /**
+     * @return LegacyManagerRegistry|ManagerRegistry
+     */
+    public function getRegistry()
     {
         // this should never happen: we will have checked for the
         // DoctrineBundle dependency before calling this
@@ -69,35 +93,65 @@ final class DoctrineHelper
         return $this->entityNamespace;
     }
 
-    /**
-     * @param string $className
-     *
-     * @return MappingDriver|null
-     *
-     * @throws \Exception
-     */
-    public function getMappingDriverForClass(string $className)
+    public function doesClassUseDriver(string $className, string $driverClass): bool
     {
-        /** @var EntityManagerInterface $em */
-        $em = $this->getRegistry()->getManagerForClass($className);
+        try {
+            /** @var EntityManagerInterface $em */
+            $em = $this->getRegistry()->getManagerForClass($className);
+        } catch (\ReflectionException $exception) {
+            // this exception will be thrown by the registry if the class isn't created yet.
+            // an example case is the "make:entity" command, which needs to know which driver is used for the class to determine
+            // if the class should be generated with attributes or annotations. If this exception is thrown, we will check based on the
+            // namespaces for the given $className and compare it with the doctrine configuration to get the correct MappingDriver.
+
+            return $this->isInstanceOf($this->getMappingDriverForNamespace($className), $driverClass);
+        }
 
         if (null === $em) {
             throw new \InvalidArgumentException(sprintf('Cannot find the entity manager for class "%s"', $className));
         }
 
-        $metadataDriver = $em->getConfiguration()->getMetadataDriverImpl();
+        if (null === $this->mappingDriversByPrefix) {
+            // doctrine-bundle <= 2.2
+            $metadataDriver = $em->getConfiguration()->getMetadataDriverImpl();
 
-        if (!$metadataDriver instanceof MappingDriverChain) {
-            return $metadataDriver;
+            if (!$this->isInstanceOf($metadataDriver, MappingDriverChain::class)) {
+                return $this->isInstanceOf($metadataDriver, $driverClass);
+            }
+
+            foreach ($metadataDriver->getDrivers() as $namespace => $driver) {
+                if (0 === strpos($className, $namespace)) {
+                    return $this->isInstanceOf($driver, $driverClass);
+                }
+            }
+
+            return $this->isInstanceOf($metadataDriver->getDefaultDriver(), $driverClass);
         }
 
-        foreach ($metadataDriver->getDrivers() as $namespace => $driver) {
-            if (0 === strpos($className, $namespace)) {
-                return $driver;
+        $managerName = array_search($em, $this->getRegistry()->getManagers(), true);
+
+        foreach ($this->mappingDriversByPrefix[$managerName] as [$prefix, $prefixDriver]) {
+            if (0 === strpos($className, $prefix)) {
+                return $this->isInstanceOf($prefixDriver, $driverClass);
             }
         }
 
-        return $metadataDriver->getDefaultDriver();
+        return false;
+    }
+
+    public function isClassAnnotated(string $className): bool
+    {
+        return $this->doesClassUseDriver($className, AnnotationDriver::class);
+    }
+
+    public function doesClassUsesAttributes(string $className): bool
+    {
+        return $this->doesClassUseDriver($className, AttributeDriver::class);
+    }
+
+    public function isDoctrineSupportingAttributes(): bool
+    {
+        return $this->isDoctrineInstalled() && $this->attributeMappingSupport && $this->phpCompatUtil->canUseAttributes();
     }
 
     public function getEntitiesForAutocomplete(): array
@@ -114,17 +168,28 @@ final class DoctrineHelper
             }
         }
 
+        sort($entities);
+
         return $entities;
     }
 
     /**
-     * @param string|null $classOrNamespace
-     * @param bool        $disconnected
-     *
-     * @return array|ClassMetadata
+     * @return array|ClassMetadata|LegacyClassMetadata
      */
     public function getMetadata(string $classOrNamespace = null, bool $disconnected = false)
     {
+        $classNames = (new \ReflectionClass(AnnotationDriver::class))->getProperty('classNames');
+        $classNames->setAccessible(true);
+
+        // Invalidating the cached AnnotationDriver::$classNames to find new Entity classes
+        foreach ($this->mappingDriversByPrefix ?? [] as $managerName => $prefixes) {
+            foreach ($prefixes as [$prefix, $annotationDriver]) {
+                if (null !== $annotationDriver) {
+                    $classNames->setValue($annotationDriver, null);
+                }
+            }
+        }
+
         $metadata = [];
 
         /** @var EntityManagerInterface $em */
@@ -135,9 +200,11 @@ final class DoctrineHelper
                 try {
                     $loaded = $cmf->getAllMetadata();
                 } catch (ORMMappingException $e) {
-                    $loaded = $cmf instanceof AbstractClassMetadataFactory ? $cmf->getLoadedMetadata() : [];
+                    $loaded = $this->isInstanceOf($cmf, AbstractClassMetadataFactory::class) ? $cmf->getLoadedMetadata() : [];
+                } catch (LegacyPersistenceMappingException $e) {
+                    $loaded = $this->isInstanceOf($cmf, AbstractClassMetadataFactory::class) ? $cmf->getLoadedMetadata() : [];
                 } catch (PersistenceMappingException $e) {
-                    $loaded = $cmf instanceof AbstractClassMetadataFactory ? $cmf->getLoadedMetadata() : [];
+                    $loaded = $this->isInstanceOf($cmf, AbstractClassMetadataFactory::class) ? $cmf->getLoadedMetadata() : [];
                 }
 
                 $cmf = new DisconnectedClassMetadataFactory();
@@ -147,15 +214,14 @@ final class DoctrineHelper
                     $cmf->setMetadataFor($m->getName(), $m);
                 }
 
-                // Invalidating the cached AnnotationDriver::$classNames to find new Entity classes
-                $metadataDriver = $em->getConfiguration()->getMetadataDriverImpl();
-                if ($metadataDriver instanceof MappingDriverChain) {
-                    foreach ($metadataDriver->getDrivers() as $driver) {
-                        if ($driver instanceof AnnotationDriver) {
-                            $classNames = (new \ReflectionObject($driver))->getProperty('classNames');
-                            $classNames->setAccessible(true);
-                            $classNames->setValue($driver, null);
-                            $classNames->setAccessible(false);
+                if (null === $this->mappingDriversByPrefix) {
+                    // Invalidating the cached AnnotationDriver::$classNames to find new Entity classes
+                    $metadataDriver = $em->getConfiguration()->getMetadataDriverImpl();
+                    if ($this->isInstanceOf($metadataDriver, MappingDriverChain::class)) {
+                        foreach ($metadataDriver->getDrivers() as $driver) {
+                            if ($this->isInstanceOf($driver, AnnotationDriver::class)) {
+                                $classNames->setValue($driver, null);
+                            }
                         }
                     }
                 }
@@ -179,16 +245,11 @@ final class DoctrineHelper
         return $metadata;
     }
 
-    /**
-     * @param string $entityClassName
-     *
-     * @return EntityDetails|null
-     */
-    public function createDoctrineDetails(string $entityClassName)
+    public function createDoctrineDetails(string $entityClassName): ?EntityDetails
     {
         $metadata = $this->getMetadata($entityClassName);
 
-        if ($metadata instanceof ClassMetadata) {
+        if ($this->isInstanceOf($metadata, ClassMetadata::class)) {
             return new EntityDetails($metadata);
         }
 
@@ -202,5 +263,65 @@ final class DoctrineHelper
         }
 
         return (bool) $this->getMetadata($className);
+    }
+
+    private function isInstanceOf($object, string $class): bool
+    {
+        if (!\is_object($object)) {
+            return false;
+        }
+
+        $legacyClass = str_replace('Doctrine\\Persistence\\', 'Doctrine\\Common\\Persistence\\', $class);
+
+        return $object instanceof $class || $object instanceof $legacyClass;
+    }
+
+    public function getPotentialTableName(string $className): string
+    {
+        $entityManager = $this->getRegistry()->getManager();
+
+        if (!$entityManager instanceof EntityManagerInterface) {
+            throw new \RuntimeException('ObjectManager is not an EntityManagerInterface.');
+        }
+
+        /** @var NamingStrategy $namingStrategy */
+        $namingStrategy = $entityManager->getConfiguration()->getNamingStrategy();
+
+        return $namingStrategy->classToTableName($className);
+    }
+
+    public function isKeyword(string $name): bool
+    {
+        /** @var Connection $connection */
+        $connection = $this->getRegistry()->getConnection();
+
+        return $connection->getDatabasePlatform()->getReservedKeywordsList()->isKeyword($name);
+    }
+
+    /**
+     * this method tries to find the correct MappingDriver for the given namespace/class
+     * To determine which MappingDriver belongs to the class we check the prefixes configured in Doctrine and use the
+     * prefix that has the closest match to the given $namespace.
+     *
+     * this helper function is needed to create entities with the configuration of doctrine if they are not yet been registered
+     * in the ManagerRegistry
+     */
+    private function getMappingDriverForNamespace(string $namespace): ?MappingDriver
+    {
+        $lowestCharacterDiff = null;
+        $foundDriver = null;
+
+        foreach ($this->mappingDriversByPrefix as $key => $mappings) {
+            foreach ($mappings as [$prefix, $driver]) {
+                $diff = substr_compare($namespace, $prefix, 0);
+
+                if ($diff >= 0 && (null === $lowestCharacterDiff || $diff < $lowestCharacterDiff)) {
+                    $lowestCharacterDiff = $diff;
+                    $foundDriver = $driver;
+                }
+            }
+        }
+
+        return $foundDriver;
     }
 }

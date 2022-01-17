@@ -45,13 +45,13 @@ class ChannelListener extends AbstractListener implements ListenerInterface
      */
     public function supports(Request $request): ?bool
     {
-        list(, $channel) = $this->map->getPatterns($request);
+        [, $channel] = $this->map->getPatterns($request);
 
         if ('https' === $channel && !$request->isSecure()) {
             if (null !== $this->logger) {
                 if ('https' === $request->headers->get('X-Forwarded-Proto')) {
                     $this->logger->info('Redirecting to HTTPS. ("X-Forwarded-Proto" header is set to "https" - did you set "trusted_proxies" correctly?)');
-                } elseif (false !== strpos($request->headers->get('Forwarded'), 'proto=https')) {
+                } elseif (str_contains($request->headers->get('Forwarded', ''), 'proto=https')) {
                     $this->logger->info('Redirecting to HTTPS. ("Forwarded" header is set to "proto=https" - did you set "trusted_proxies" correctly?)');
                 } else {
                     $this->logger->info('Redirecting to HTTPS.');

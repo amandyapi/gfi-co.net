@@ -41,7 +41,7 @@ final class ContainerLintCommand extends Command
     protected function configure()
     {
         $this
-            ->setDescription('Ensures that arguments injected into services match type declarations')
+            ->setDescription('Ensure that arguments injected into services match type declarations')
             ->setHelp('This command parses service definitions and ensures that injected values match the type declarations of each services\' class.')
         ;
     }
@@ -102,11 +102,12 @@ final class ContainerLintCommand extends Command
             $refl->setAccessible(true);
             $refl->setValue($parameterBag, true);
 
-            $passConfig = $container->getCompilerPassConfig();
-            $passConfig->setRemovingPasses([]);
-            $passConfig->setAfterRemovingPasses([]);
-
-            $skippedIds = $kernelContainer->getRemovedIds();
+            $skippedIds = [];
+            foreach ($container->getServiceIds() as $serviceId) {
+                if (str_starts_with($serviceId, '.errored.')) {
+                    $skippedIds[$serviceId] = true;
+                }
+            }
         }
 
         $container->setParameter('container.build_hash', 'lint_container');

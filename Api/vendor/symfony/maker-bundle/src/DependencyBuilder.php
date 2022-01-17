@@ -16,7 +16,7 @@ final class DependencyBuilder
     private $dependencies = [];
     private $devDependencies = [];
 
-    private $minimumPHPVersion = 70000;
+    private $minimumPHPVersion = 70100;
 
     /**
      * Add a dependency that will be reported if the given class is missing.
@@ -25,7 +25,7 @@ final class DependencyBuilder
      * the user if other required dependencies are missing. An example
      * is the "validator" when trying to work with forms.
      */
-    public function addClassDependency(string $class, string $package, bool $required = true, bool $devDependency = false)
+    public function addClassDependency(string $class, string $package, bool $required = true, bool $devDependency = false): void
     {
         if ($devDependency) {
             $this->devDependencies[] = [
@@ -42,9 +42,9 @@ final class DependencyBuilder
         }
     }
 
-    public function requirePHP71()
+    public function requirePHP71(): void
     {
-        $this->minimumPHPVersion = 70100;
+        // no-op - MakerBundle now required PHP 7.1
     }
 
     /**
@@ -96,7 +96,7 @@ final class DependencyBuilder
         $message = sprintf(
             "Missing package%s: %s, run:\n",
             $packagesCount > 1 ? 's' : '',
-            $message ? $message : sprintf('to use the %s command', $commandName)
+            $message ?: sprintf('to use the %s command', $commandName)
         );
 
         if (!empty($packages)) {

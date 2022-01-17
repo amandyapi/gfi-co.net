@@ -11,7 +11,8 @@
 
 namespace Symfony\Bundle\MakerBundle\Doctrine;
 
-use Doctrine\Common\Persistence\Mapping\ClassMetadata;
+use Doctrine\Common\Persistence\Mapping\ClassMetadata as LegacyClassMetadata;
+use Doctrine\Persistence\Mapping\ClassMetadata;
 
 /**
  * @author Sadicov Vladimir <sadikoff@gmail.com>
@@ -23,14 +24,14 @@ final class EntityDetails
     private $metadata;
 
     /**
-     * @param ClassMetadata|\Doctrine\ORM\Mapping\ClassMetadata $metadata
+     * @param ClassMetadata|LegacyClassMetadata $metadata
      */
-    public function __construct(ClassMetadata $metadata)
+    public function __construct($metadata)
     {
         $this->metadata = $metadata;
     }
 
-    public function getRepositoryClass()
+    public function getRepositoryClass(): ?string
     {
         return $this->metadata->customRepositoryClassName;
     }
@@ -40,12 +41,12 @@ final class EntityDetails
         return $this->metadata->identifier[0];
     }
 
-    public function getDisplayFields()
+    public function getDisplayFields(): array
     {
         return $this->metadata->fieldMappings;
     }
 
-    public function getFormFields()
+    public function getFormFields(): array
     {
         $fields = (array) $this->metadata->fieldNames;
         // Remove the primary key field if it's not managed manually

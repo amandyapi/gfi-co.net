@@ -64,8 +64,8 @@ interface ExecutionContextInterface
     /**
      * Adds a violation at the current node of the validation graph.
      *
-     * @param string|object $message The error message as a string or a stringable object
-     * @param array         $params  The parameters substituted in the error message
+     * @param string|\Stringable $message The error message as a string or a stringable object
+     * @param array              $params  The parameters substituted in the error message
      */
     public function addViolation($message, array $params = []);
 
@@ -76,13 +76,13 @@ interface ExecutionContextInterface
      * add the violation when you're done with the configuration:
      *
      *     $context->buildViolation('Please enter a number between %min% and %max%.')
-     *         ->setParameter('%min%', 3)
-     *         ->setParameter('%max%', 10)
+     *         ->setParameter('%min%', '3')
+     *         ->setParameter('%max%', '10')
      *         ->setTranslationDomain('number_validation')
      *         ->addViolation();
      *
-     * @param string|object $message    The error message as a string or a stringable object
-     * @param array         $parameters The parameters substituted in the error message
+     * @param string|\Stringable $message    The error message as a string or a stringable object
+     * @param array              $parameters The parameters substituted in the error message
      *
      * @return ConstraintViolationBuilderInterface The violation builder
      */

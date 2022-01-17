@@ -21,6 +21,7 @@ use Symfony\Component\Validator\Mapping\MemberMetadata;
 use Symfony\Component\Validator\Mapping\MetadataInterface;
 use Symfony\Component\Validator\Mapping\PropertyMetadataInterface;
 use Symfony\Component\Validator\Util\PropertyPath;
+use Symfony\Component\Validator\Validator\LazyProperty;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Component\Validator\Violation\ConstraintViolationBuilder;
 use Symfony\Component\Validator\Violation\ConstraintViolationBuilderInterface;
@@ -55,7 +56,7 @@ class ExecutionContext implements ExecutionContextInterface
     private $translator;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $translationDomain;
 
@@ -111,23 +112,24 @@ class ExecutionContext implements ExecutionContextInterface
     /**
      * Stores which objects have been validated in which group.
      *
-     * @var array
+     * @var bool[][]
      */
     private $validatedObjects = [];
 
     /**
      * Stores which class constraint has been validated for which object.
      *
-     * @var array
+     * @var bool[]
      */
     private $validatedConstraints = [];
 
     /**
      * Stores which objects have been initialized.
      *
-     * @var array
+     * @var bool[]
      */
     private $initializedObjects;
+    private $cachedObjectsRefs;
 
     /**
      * Creates a new execution context.
@@ -145,13 +147,14 @@ class ExecutionContext implements ExecutionContextInterface
     public function __construct(ValidatorInterface $validator, $root, $translator, string $translationDomain = null)
     {
         if (!$translator instanceof LegacyTranslatorInterface && !$translator instanceof TranslatorInterface) {
-            throw new \TypeError(sprintf('Argument 3 passed to %s() must be an instance of %s, %s given.', __METHOD__, TranslatorInterface::class, \is_object($translator) ? \get_class($translator) : \gettype($translator)));
+            throw new \TypeError(sprintf('Argument 3 passed to "%s()" must be an instance of "%s", "%s" given.', __METHOD__, TranslatorInterface::class, \is_object($translator) ? \get_class($translator) : \gettype($translator)));
         }
         $this->validator = $validator;
         $this->root = $root;
         $this->translator = $translator;
         $this->translationDomain = $translationDomain;
         $this->violations = new ConstraintViolationList();
+        $this->cachedObjectsRefs = new \SplObjectStorage();
     }
 
     /**
@@ -192,7 +195,7 @@ class ExecutionContext implements ExecutionContextInterface
             $parameters,
             $this->root,
             $this->propertyPath,
-            $this->value,
+            $this->getValue(),
             null,
             null,
             $this->constraint
@@ -211,7 +214,7 @@ class ExecutionContext implements ExecutionContextInterface
             $parameters,
             $this->root,
             $this->propertyPath,
-            $this->value,
+            $this->getValue(),
             $this->translator,
             $this->translationDomain
         );
@@ -246,6 +249,10 @@ class ExecutionContext implements ExecutionContextInterface
      */
     public function getValue()
     {
+        if ($this->value instanceof LazyProperty) {
+            return $this->value->getPropertyValue();
+        }
+
         return $this->value;
     }
 
@@ -352,5 +359,21 @@ class ExecutionContext implements ExecutionContextInterface
     public function isObjectInitialized($cacheKey): bool
     {
         return isset($this->initializedObjects[$cacheKey]);
+    }
+
+    /**
+     * @internal
+     *
+     * @param object $object
+     *
+     * @return string
+     */
+    public function generateCacheKey($object)
+    {
+        if (!isset($this->cachedObjectsRefs[$object])) {
+            $this->cachedObjectsRefs[$object] = spl_object_hash($object);
+        }
+
+        return $this->cachedObjectsRefs[$object];
     }
 }

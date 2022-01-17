@@ -38,11 +38,11 @@ class TwigExtension extends Extension
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('twig.xml');
 
-        if (class_exists('Symfony\Component\Form\Form')) {
+        if (class_exists(\Symfony\Component\Form\Form::class)) {
             $loader->load('form.xml');
         }
 
-        if (interface_exists('Symfony\Component\Templating\EngineInterface')) {
+        if (interface_exists(\Symfony\Component\Templating\EngineInterface::class)) {
             $loader->load('templating.xml');
         }
 
@@ -122,7 +122,7 @@ class TwigExtension extends Extension
 
         if (file_exists($dir = $container->getParameter('kernel.root_dir').'/Resources/views')) {
             if ($dir !== $defaultTwigPath) {
-                @trigger_error(sprintf('Loading Twig templates from the "%s" directory is deprecated since Symfony 4.2, use "%s" instead.', $dir, $defaultTwigPath), E_USER_DEPRECATED);
+                @trigger_error(sprintf('Loading Twig templates from the "%s" directory is deprecated since Symfony 4.2, use "%s" instead.', $dir, $defaultTwigPath), \E_USER_DEPRECATED);
             }
 
             $twigFilesystemLoaderDefinition->addMethodCall('addPath', [$dir]);
@@ -179,7 +179,7 @@ class TwigExtension extends Extension
             $defaultOverrideBundlePath = $container->getParameterBag()->resolveValue($config['default_path']).'/bundles/'.$name;
 
             if (file_exists($dir = $container->getParameter('kernel.root_dir').'/Resources/'.$name.'/views')) {
-                @trigger_error(sprintf('Loading Twig templates for "%s" from the "%s" directory is deprecated since Symfony 4.2, use "%s" instead.', $name, $dir, $defaultOverrideBundlePath), E_USER_DEPRECATED);
+                @trigger_error(sprintf('Loading Twig templates for "%s" from the "%s" directory is deprecated since Symfony 4.2, use "%s" instead.', $name, $dir, $defaultOverrideBundlePath), \E_USER_DEPRECATED);
 
                 $bundleHierarchy[$name][] = $dir;
             }
@@ -201,7 +201,7 @@ class TwigExtension extends Extension
 
     private function normalizeBundleName(string $name): string
     {
-        if ('Bundle' === substr($name, -6)) {
+        if (str_ends_with($name, 'Bundle')) {
             $name = substr($name, 0, -6);
         }
 

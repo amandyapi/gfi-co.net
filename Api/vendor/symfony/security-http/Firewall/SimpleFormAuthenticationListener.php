@@ -29,7 +29,7 @@ use Symfony\Component\Security\Http\HttpUtils;
 use Symfony\Component\Security\Http\ParameterBagUtils;
 use Symfony\Component\Security\Http\Session\SessionAuthenticationStrategyInterface;
 
-@trigger_error(sprintf('The "%s" class is deprecated since Symfony 4.2, use Guard instead.', SimpleFormAuthenticationListener::class), E_USER_DEPRECATED);
+@trigger_error(sprintf('The "%s" class is deprecated since Symfony 4.2, use Guard instead.', SimpleFormAuthenticationListener::class), \E_USER_DEPRECATED);
 
 /**
  * @author Jordi Boggiano <j.boggiano@seld.be>
@@ -47,7 +47,7 @@ class SimpleFormAuthenticationListener extends AbstractAuthenticationListener
     public function __construct(TokenStorageInterface $tokenStorage, AuthenticationManagerInterface $authenticationManager, SessionAuthenticationStrategyInterface $sessionStrategy, HttpUtils $httpUtils, string $providerKey, AuthenticationSuccessHandlerInterface $successHandler, AuthenticationFailureHandlerInterface $failureHandler, array $options = [], LoggerInterface $logger = null, EventDispatcherInterface $dispatcher = null, CsrfTokenManagerInterface $csrfTokenManager = null, SimpleFormAuthenticatorInterface $simpleAuthenticator = null)
     {
         if (!$simpleAuthenticator) {
-            throw new \InvalidArgumentException('Missing simple authenticator');
+            throw new \InvalidArgumentException('Missing simple authenticator.');
         }
 
         $this->simpleAuthenticator = $simpleAuthenticator;
@@ -84,7 +84,7 @@ class SimpleFormAuthenticationListener extends AbstractAuthenticationListener
         if (null !== $this->csrfTokenManager) {
             $csrfToken = ParameterBagUtils::getRequestParameterValue($request, $this->options['csrf_parameter']);
 
-            if (false === $this->csrfTokenManager->isTokenValid(new CsrfToken($this->options['csrf_token_id'], $csrfToken))) {
+            if (!\is_string($csrfToken) || false === $this->csrfTokenManager->isTokenValid(new CsrfToken($this->options['csrf_token_id'], $csrfToken))) {
                 throw new InvalidCsrfTokenException('Invalid CSRF token.');
             }
         }

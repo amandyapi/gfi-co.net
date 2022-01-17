@@ -2,26 +2,21 @@
 
 namespace <?= $namespace; ?>;
 
-use <?= $user_full_class_name ?>;
-use <?= $form_full_class_name ?>;
-<?php if ($authenticator_full_class_name): ?>
-use <?= $authenticator_full_class_name; ?>;
-<?php endif; ?>
-use Symfony\Bundle\FrameworkBundle\Controller\<?= $parent_class_name; ?>;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-<?php if ($authenticator_full_class_name): ?>
-use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
-<?php endif; ?>
+<?= $use_statements; ?>
 
 class <?= $class_name; ?> extends <?= $parent_class_name; ?><?= "\n" ?>
 {
-    /**
-     * @Route("<?= $route_path ?>", name="<?= $route_name ?>")
-     */
-    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder<?= $authenticator_full_class_name ? sprintf(', GuardAuthenticatorHandler $guardHandler, %s $authenticator', $authenticator_class_name) : '' ?>): Response
+<?php if ($will_verify_email): ?>
+    private <?= $generator->getPropertyType($email_verifier_class_details) ?>$emailVerifier;
+
+    public function __construct(<?= $email_verifier_class_details->getShortName() ?> $emailVerifier)
+    {
+        $this->emailVerifier = $emailVerifier;
+    }
+
+<?php endif; ?>
+<?= $generator->generateRouteForControllerMethod($route_path, $route_name) ?>
+    public function register(Request $request, <?= $password_class_details->getShortName() ?> <?= $password_variable_name ?><?= $authenticator_full_class_name ? sprintf(', GuardAuthenticatorHandler $guardHandler, %s $authenticator', $authenticator_class_name) : '' ?>): Response
     {
         $user = new <?= $user_class_name ?>();
         $form = $this->createForm(<?= $form_class_name ?>::class, $user);
@@ -30,7 +25,7 @@ class <?= $class_name; ?> extends <?= $parent_class_name; ?><?= "\n" ?>
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
             $user->set<?= ucfirst($password_field) ?>(
-                $passwordEncoder->encodePassword(
+            <?= $password_variable_name ?>-><?= $use_password_hasher ? 'hashPassword' : 'encodePassword' ?>(
                     $user,
                     $form->get('plainPassword')->getData()
                 )
@@ -39,7 +34,17 @@ class <?= $class_name; ?> extends <?= $parent_class_name; ?><?= "\n" ?>
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
+<?php if ($will_verify_email): ?>
 
+            // generate a signed url and email it to the user
+            $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
+                (new TemplatedEmail())
+                    ->from(new Address('<?= $from_email ?>', '<?= $from_email_name ?>'))
+                    ->to($user-><?= $email_getter ?>())
+                    ->subject('Please Confirm your Email')
+                    ->htmlTemplate('registration/confirmation_email.html.twig')
+            );
+<?php endif; ?>
             // do anything else you need here, like send an email
 
 <?php if ($authenticator_full_class_name): ?>
@@ -58,4 +63,46 @@ class <?= $class_name; ?> extends <?= $parent_class_name; ?><?= "\n" ?>
             'registrationForm' => $form->createView(),
         ]);
     }
+<?php if ($will_verify_email): ?>
+
+<?= $generator->generateRouteForControllerMethod('/verify/email', 'app_verify_email') ?>
+    public function verifyUserEmail(Request $request<?= $verify_email_anonymously ? sprintf(', %s %s', $repository_class_name, $repository_var) : null ?>): Response
+    {
+<?php if (!$verify_email_anonymously): ?>
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+<?php else: ?>
+        $id = $request->get('id');
+
+        if (null === $id) {
+            return $this->redirectToRoute('app_register');
+        }
+<?php if ('$manager' === $repository_var): ?>
+
+        $repository = $manager->getRepository(<?= $user_class_name ?>::class);
+        $user = $repository->find($id);
+<?php else: ?>
+
+        $user = <?= $repository_var; ?>->find($id);
+<?php endif; ?>
+
+        if (null === $user) {
+            return $this->redirectToRoute('app_register');
+        }
+<?php endif; ?>
+
+        // validate email confirmation link, sets User::isVerified=true and persists
+        try {
+            $this->emailVerifier->handleEmailConfirmation($request, <?= $verify_email_anonymously ? '$user' : '$this->getUser()' ?>);
+        } catch (VerifyEmailExceptionInterface $exception) {
+            $this->addFlash('verify_email_error', $exception->getReason());
+
+            return $this->redirectToRoute('<?= $route_name ?>');
+        }
+
+        // @TODO Change the redirect on success and handle or remove the flash message in your templates
+        $this->addFlash('success', 'Your email address has been verified.');
+
+        return $this->redirectToRoute('app_register');
+    }
+<?php endif; ?>
 }

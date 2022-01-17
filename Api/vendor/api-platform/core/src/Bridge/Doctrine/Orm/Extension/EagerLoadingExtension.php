@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace ApiPlatform\Core\Bridge\Doctrine\Orm\Extension;
 
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Util\EagerLoadingTrait;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Util\QueryBuilderHelper;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Util\QueryNameGeneratorInterface;
 use ApiPlatform\Core\Exception\InvalidArgumentException;
 use ApiPlatform\Core\Exception\PropertyNotFoundException;
@@ -24,6 +25,7 @@ use ApiPlatform\Core\Metadata\Property\Factory\PropertyNameCollectionFactoryInte
 use ApiPlatform\Core\Metadata\Resource\Factory\ResourceMetadataFactoryInterface;
 use ApiPlatform\Core\Serializer\SerializerContextBuilderInterface;
 use Doctrine\ORM\Mapping\ClassMetadataInfo;
+use Doctrine\ORM\Query\Expr\Join;
 use Doctrine\ORM\QueryBuilder;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactoryInterface;
@@ -55,10 +57,10 @@ final class EagerLoadingExtension implements ContextAwareQueryCollectionExtensio
     public function __construct(PropertyNameCollectionFactoryInterface $propertyNameCollectionFactory, PropertyMetadataFactoryInterface $propertyMetadataFactory, ResourceMetadataFactoryInterface $resourceMetadataFactory, int $maxJoins = 30, bool $forceEager = true, RequestStack $requestStack = null, SerializerContextBuilderInterface $serializerContextBuilder = null, bool $fetchPartial = false, ClassMetadataFactoryInterface $classMetadataFactory = null)
     {
         if (null !== $this->requestStack) {
-            @trigger_error(sprintf('Passing an instance of "%s" is deprecated since version 2.2 and will be removed in 3.0. Use the data provider\'s context instead.', RequestStack::class), E_USER_DEPRECATED);
+            @trigger_error(sprintf('Passing an instance of "%s" is deprecated since version 2.2 and will be removed in 3.0. Use the data provider\'s context instead.', RequestStack::class), \E_USER_DEPRECATED);
         }
         if (null !== $this->serializerContextBuilder) {
-            @trigger_error(sprintf('Passing an instance of "%s" is deprecated since version 2.2 and will be removed in 3.0. Use the data provider\'s context instead.', SerializerContextBuilderInterface::class), E_USER_DEPRECATED);
+            @trigger_error(sprintf('Passing an instance of "%s" is deprecated since version 2.2 and will be removed in 3.0. Use the data provider\'s context instead.', SerializerContextBuilderInterface::class), \E_USER_DEPRECATED);
         }
 
         $this->propertyNameCollectionFactory = $propertyNameCollectionFactory;
@@ -165,10 +167,11 @@ final class EagerLoadingExtension implements ContextAwareQueryCollectionExtensio
                 continue;
             }
 
+            // prepare the child context
+            $childNormalizationContext = $normalizationContext;
             if (isset($normalizationContext[AbstractNormalizer::ATTRIBUTES])) {
                 if ($inAttributes = isset($normalizationContext[AbstractNormalizer::ATTRIBUTES][$association])) {
-                    // prepare the child context
-                    $normalizationContext[AbstractNormalizer::ATTRIBUTES] = $normalizationContext[AbstractNormalizer::ATTRIBUTES][$association];
+                    $childNormalizationContext[AbstractNormalizer::ATTRIBUTES] = $normalizationContext[AbstractNormalizer::ATTRIBUTES][$association];
                 }
             } else {
                 $inAttributes = null;
@@ -178,7 +181,7 @@ final class EagerLoadingExtension implements ContextAwareQueryCollectionExtensio
                 (null === $fetchEager = $propertyMetadata->getAttribute('fetch_eager')) &&
                 (null !== $fetchEager = $propertyMetadata->getAttribute('fetchEager'))
             ) {
-                @trigger_error('The "fetchEager" attribute is deprecated since 2.3. Please use "fetch_eager" instead.', E_USER_DEPRECATED);
+                @trigger_error('The "fetchEager" attribute is deprecated since 2.3. Please use "fetch_eager" instead.', \E_USER_DEPRECATED);
             }
 
             if (false === $fetchEager) {
@@ -190,16 +193,20 @@ final class EagerLoadingExtension implements ContextAwareQueryCollectionExtensio
                 continue;
             }
 
-            $isNullable = $mapping['joinColumns'][0]['nullable'] ?? true;
-            if (false !== $wasLeftJoin || true === $isNullable) {
-                $method = 'leftJoin';
-            } else {
-                $method = 'innerJoin';
-            }
+            $existingJoin = QueryBuilderHelper::getExistingJoin($queryBuilder, $parentAlias, $association);
 
-            $associationAlias = $queryNameGenerator->generateJoinAlias($association);
-            $queryBuilder->{$method}(sprintf('%s.%s', $parentAlias, $association), $associationAlias);
-            ++$joinCount;
+            if (null !== $existingJoin) {
+                $associationAlias = $existingJoin->getAlias();
+                $isLeftJoin = Join::LEFT_JOIN === $existingJoin->getJoinType();
+            } else {
+                $isNullable = $mapping['joinColumns'][0]['nullable'] ?? true;
+                $isLeftJoin = false !== $wasLeftJoin || true === $isNullable;
+                $method = $isLeftJoin ? 'leftJoin' : 'innerJoin';
+
+                $associationAlias = $queryNameGenerator->generateJoinAlias($association);
+                $queryBuilder->{$method}(sprintf('%s.%s', $parentAlias, $association), $associationAlias);
+                ++$joinCount;
+            }
 
             if (true === $fetchPartial) {
                 try {
@@ -230,7 +237,7 @@ final class EagerLoadingExtension implements ContextAwareQueryCollectionExtensio
                 }
             }
 
-            $this->joinRelations($queryBuilder, $queryNameGenerator, $mapping['targetEntity'], $forceEager, $fetchPartial, $associationAlias, $options, $normalizationContext, 'leftJoin' === $method, $joinCount, $currentDepth);
+            $this->joinRelations($queryBuilder, $queryNameGenerator, $mapping['targetEntity'], $forceEager, $fetchPartial, $associationAlias, $options, $childNormalizationContext, $isLeftJoin, $joinCount, $currentDepth);
         }
     }
 

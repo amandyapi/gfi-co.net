@@ -44,8 +44,8 @@ class WebProfilerExtension extends ProfilerExtension
 
     public function __construct(HtmlDumper $dumper = null)
     {
-        $this->dumper = $dumper ?: new HtmlDumper();
-        $this->dumper->setOutput($this->output = fopen('php://memory', 'r+b'));
+        $this->dumper = $dumper ?? new HtmlDumper();
+        $this->dumper->setOutput($this->output = fopen('php://memory', 'r+'));
     }
 
     /**
@@ -62,7 +62,7 @@ class WebProfilerExtension extends ProfilerExtension
     public function leave(Profile $profile)
     {
         if (0 === --$this->stackLevel) {
-            $this->dumper->setOutput($this->output = fopen('php://memory', 'r+b'));
+            $this->dumper->setOutput($this->output = fopen('php://memory', 'r+'));
         }
     }
 
@@ -98,7 +98,7 @@ class WebProfilerExtension extends ProfilerExtension
         $message = twig_escape_filter($env, $message);
         $message = preg_replace('/&quot;(.*?)&quot;/', '&quot;<b>$1</b>&quot;', $message);
 
-        if (null === $context || false === strpos($message, '{')) {
+        if (null === $context || !str_contains($message, '{')) {
             return '<span class="dump-inline">'.$message.'</span>';
         }
 

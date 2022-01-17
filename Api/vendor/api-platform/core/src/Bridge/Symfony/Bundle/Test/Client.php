@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace ApiPlatform\Core\Bridge\Symfony\Bundle\Test;
 
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
+use Symfony\Component\BrowserKit\CookieJar;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpClient\HttpClientTrait;
 use Symfony\Component\HttpKernel\KernelInterface;
@@ -44,6 +45,7 @@ final class Client implements HttpClientInterface
         'body' => '',
         'json' => null,
         'base_uri' => 'http://example.com',
+        'extra' => [],
     ];
 
     private $kernelBrowser;
@@ -81,8 +83,6 @@ final class Client implements HttpClientInterface
 
     /**
      * {@inheritdoc}
-     *
-     * @return Response
      */
     public function request(string $method, string $url, array $options = []): ResponseInterface
     {
@@ -93,14 +93,10 @@ final class Client implements HttpClientInterface
 
         // Convert headers to a $_SERVER-like array
         foreach (self::extractHeaders($options) as $key => $value) {
-            if ('content-type' === $key) {
-                $server['CONTENT_TYPE'] = $value[0] ?? '';
-
-                continue;
-            }
-
+            $normalizedHeaderName = strtoupper(str_replace('-', '_', $key));
+            $header = \in_array($normalizedHeaderName, ['CONTENT_TYPE', 'REMOTE_ADDR'], true) ? $normalizedHeaderName : sprintf('HTTP_%s', $normalizedHeaderName);
             // BrowserKit doesn't support setting several headers with the same name
-            $server['HTTP_'.strtoupper(str_replace('-', '_', $key))] = $value[0] ?? '';
+            $server[$header] = $value[0] ?? '';
         }
 
         if ($basic) {
@@ -121,7 +117,7 @@ final class Client implements HttpClientInterface
             'url' => $resolvedUrl,
             'primary_port' => 'http:' === $url['scheme'] ? 80 : 443,
         ];
-        $this->kernelBrowser->request($method, $resolvedUrl, [], [], $server, $options['body'] ?? null);
+        $this->kernelBrowser->request($method, $resolvedUrl, $options['extra']['parameters'] ?? [], $options['extra']['files'] ?? [], $server, $options['body'] ?? null);
 
         return $this->response = new Response($this->kernelBrowser->getResponse(), $this->kernelBrowser->getInternalResponse(), $info);
     }
@@ -164,6 +160,14 @@ final class Client implements HttpClientInterface
     public function getContainer(): ?ContainerInterface
     {
         return $this->kernelBrowser->getContainer();
+    }
+
+    /**
+     * Returns the CookieJar instance.
+     */
+    public function getCookieJar(): CookieJar
+    {
+        return $this->kernelBrowser->getCookieJar();
     }
 
     /**
@@ -235,5 +239,16 @@ final class Client implements HttpClientInterface
         }
 
         return $headers;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function withOptions(array $options): self
+    {
+        $clone = clone $this;
+        $clone->defaultOptions = self::mergeDefaultOptions($options, $this->defaultOptions);
+
+        return $clone;
     }
 }

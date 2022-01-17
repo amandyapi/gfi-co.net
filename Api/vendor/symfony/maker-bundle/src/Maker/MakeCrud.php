@@ -12,8 +12,10 @@
 namespace Symfony\Bundle\MakerBundle\Maker;
 
 use Doctrine\Bundle\DoctrineBundle\DoctrineBundle;
-use Doctrine\Common\Inflector\Inflector;
+use Doctrine\Common\Inflector\Inflector as LegacyInflector;
+use Doctrine\Inflector\InflectorFactory;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\MakerBundle\ConsoleStyle;
 use Symfony\Bundle\MakerBundle\DependencyBuilder;
 use Symfony\Bundle\MakerBundle\Doctrine\DoctrineHelper;
@@ -41,15 +43,28 @@ final class MakeCrud extends AbstractMaker
 
     private $formTypeRenderer;
 
+    private $inflector;
+
+    private $controllerClassName;
+
     public function __construct(DoctrineHelper $doctrineHelper, FormTypeRenderer $formTypeRenderer)
     {
         $this->doctrineHelper = $doctrineHelper;
         $this->formTypeRenderer = $formTypeRenderer;
+
+        if (class_exists(InflectorFactory::class)) {
+            $this->inflector = InflectorFactory::create()->build();
+        }
     }
 
     public static function getCommandName(): string
     {
         return 'make:crud';
+    }
+
+    public static function getCommandDescription(): string
+    {
+        return 'Creates CRUD for Doctrine entity class';
     }
 
     /**
@@ -58,7 +73,6 @@ final class MakeCrud extends AbstractMaker
     public function configureCommand(Command $command, InputConfiguration $inputConfig)
     {
         $command
-            ->setDescription('Creates CRUD for Doctrine entity class')
             ->addArgument('entity-class', InputArgument::OPTIONAL, sprintf('The class name of the entity to create CRUD (e.g. <fg=yellow>%s</>)', Str::asClassName(Str::getRandomTerm())))
             ->setHelp(file_get_contents(__DIR__.'/../Resources/help/MakeCrud.txt'))
         ;
@@ -80,6 +94,13 @@ final class MakeCrud extends AbstractMaker
 
             $input->setArgument('entity-class', $value);
         }
+
+        $defaultControllerClass = Str::asClassName(sprintf('%s Controller', $input->getArgument('entity-class')));
+
+        $this->controllerClassName = $io->ask(
+            sprintf('Choose a name for your controller class (e.g. <fg=yellow>%s</>)', $defaultControllerClass),
+            $defaultControllerClass
+        );
     }
 
     public function generate(InputInterface $input, ConsoleStyle $io, Generator $generator)
@@ -103,12 +124,12 @@ final class MakeCrud extends AbstractMaker
             $repositoryVars = [
                 'repository_full_class_name' => $repositoryClassDetails->getFullName(),
                 'repository_class_name' => $repositoryClassDetails->getShortName(),
-                'repository_var' => lcfirst(Inflector::singularize($repositoryClassDetails->getShortName())),
+                'repository_var' => lcfirst($this->singularize($repositoryClassDetails->getShortName())),
             ];
         }
 
         $controllerClassDetails = $generator->createClassNameDetails(
-            $entityClassDetails->getRelativeNameWithoutSuffix().'Controller',
+            $this->controllerClassName,
             'Controller\\',
             'Controller'
         );
@@ -123,8 +144,8 @@ final class MakeCrud extends AbstractMaker
             ++$iter;
         } while (class_exists($formClassDetails->getFullName()));
 
-        $entityVarPlural = lcfirst(Inflector::pluralize($entityClassDetails->getShortName()));
-        $entityVarSingular = lcfirst(Inflector::singularize($entityClassDetails->getShortName()));
+        $entityVarPlural = lcfirst($this->pluralize($entityClassDetails->getShortName()));
+        $entityVarSingular = lcfirst($this->singularize($entityClassDetails->getShortName()));
 
         $entityTwigVarPlural = Str::asTwigVariable($entityVarPlural);
         $entityTwigVarSingular = Str::asTwigVariable($entityVarSingular);
@@ -148,6 +169,7 @@ final class MakeCrud extends AbstractMaker
                     'entity_var_singular' => $entityVarSingular,
                     'entity_twig_var_singular' => $entityTwigVarSingular,
                     'entity_identifier' => $entityDoctrineDetails->getIdentifier(),
+                    'use_render_form' => method_exists(AbstractController::class, 'renderForm'),
                 ],
                 $repositoryVars
             )
@@ -171,6 +193,7 @@ final class MakeCrud extends AbstractMaker
                 'entity_twig_var_singular' => $entityTwigVarSingular,
                 'entity_identifier' => $entityDoctrineDetails->getIdentifier(),
                 'route_name' => $routeName,
+                'templates_path' => $templatesPath,
             ],
             'index' => [
                 'entity_class_name' => $entityClassDetails->getShortName(),
@@ -183,6 +206,7 @@ final class MakeCrud extends AbstractMaker
             'new' => [
                 'entity_class_name' => $entityClassDetails->getShortName(),
                 'route_name' => $routeName,
+                'templates_path' => $templatesPath,
             ],
             'show' => [
                 'entity_class_name' => $entityClassDetails->getShortName(),
@@ -190,6 +214,7 @@ final class MakeCrud extends AbstractMaker
                 'entity_identifier' => $entityDoctrineDetails->getIdentifier(),
                 'entity_fields' => $entityDoctrineDetails->getDisplayFields(),
                 'route_name' => $routeName,
+                'templates_path' => $templatesPath,
             ],
         ];
 
@@ -235,7 +260,7 @@ final class MakeCrud extends AbstractMaker
 
         $dependencies->addClassDependency(
             DoctrineBundle::class,
-            'orm-pack'
+            'orm'
         );
 
         $dependencies->addClassDependency(
@@ -247,5 +272,23 @@ final class MakeCrud extends AbstractMaker
             ParamConverter::class,
             'annotations'
         );
+    }
+
+    private function pluralize(string $word): string
+    {
+        if (null !== $this->inflector) {
+            return $this->inflector->pluralize($word);
+        }
+
+        return LegacyInflector::pluralize($word);
+    }
+
+    private function singularize(string $word): string
+    {
+        if (null !== $this->inflector) {
+            return $this->inflector->singularize($word);
+        }
+
+        return LegacyInflector::singularize($word);
     }
 }

@@ -11,6 +11,7 @@
 
 namespace Symfony\Bridge\Doctrine\DependencyInjection;
 
+use Symfony\Component\Config\Resource\GlobResource;
 use Symfony\Component\DependencyInjection\Alias;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
@@ -88,6 +89,25 @@ abstract class AbstractDoctrineExtension extends Extension
                 if (!$mappingConfig) {
                     continue;
                 }
+            } elseif (!$mappingConfig['type'] && \PHP_VERSION_ID < 80000) {
+                $mappingConfig['type'] = 'annotation';
+            } elseif (!$mappingConfig['type']) {
+                $mappingConfig['type'] = 'attribute';
+
+                $glob = new GlobResource($mappingConfig['dir'], '*', true);
+                $container->addResource($glob);
+
+                foreach ($glob as $file) {
+                    $content = file_get_contents($file);
+
+                    if (preg_match('/^#\[.*Entity\b/m', $content)) {
+                        break;
+                    }
+                    if (preg_match('/^ \* @.*Entity\b/m', $content)) {
+                        $mappingConfig['type'] = 'annotation';
+                        break;
+                    }
+                }
             }
 
             $this->assertValidMappingConfiguration($mappingConfig, $objectManager['name']);
@@ -151,7 +171,7 @@ abstract class AbstractDoctrineExtension extends Extension
         }
 
         if (!$bundleConfig['dir']) {
-            if (\in_array($bundleConfig['type'], ['annotation', 'staticphp'])) {
+            if (\in_array($bundleConfig['type'], ['annotation', 'staticphp', 'attribute'])) {
                 $bundleConfig['dir'] = $bundleDir.'/'.$this->getMappingObjectDefaultName();
             } else {
                 $bundleConfig['dir'] = $bundleDir.'/'.$this->getMappingResourceConfigDirectory();
@@ -193,6 +213,10 @@ abstract class AbstractDoctrineExtension extends Extension
                     $args[0] = array_merge(array_values($driverPaths), $args[0]);
                 }
                 $mappingDriverDef->setArguments($args);
+            } elseif ('attribute' === $driverType) {
+                $mappingDriverDef = new Definition($this->getMetadataDriverClass($driverType), [
+                    array_values($driverPaths),
+                ]);
             } elseif ('annotation' == $driverType) {
                 $mappingDriverDef = new Definition($this->getMetadataDriverClass($driverType), [
                     new Reference($this->getObjectManagerElementName('metadata.annotation_reader')),
@@ -204,7 +228,7 @@ abstract class AbstractDoctrineExtension extends Extension
                 ]);
             }
             $mappingDriverDef->setPublic(false);
-            if (false !== strpos($mappingDriverDef->getClass(), 'yml') || false !== strpos($mappingDriverDef->getClass(), 'xml')) {
+            if (str_contains($mappingDriverDef->getClass(), 'yml') || str_contains($mappingDriverDef->getClass(), 'xml')) {
                 $mappingDriverDef->setArguments([array_flip($driverPaths)]);
                 $mappingDriverDef->addMethodCall('setGlobalBasename', ['mapping']);
             }
@@ -236,8 +260,8 @@ abstract class AbstractDoctrineExtension extends Extension
             throw new \InvalidArgumentException(sprintf('Specified non-existing directory "%s" as Doctrine mapping source.', $mappingConfig['dir']));
         }
 
-        if (!\in_array($mappingConfig['type'], ['xml', 'yml', 'annotation', 'php', 'staticphp'])) {
-            throw new \InvalidArgumentException(sprintf('Can only configure "xml", "yml", "annotation", "php" or "staticphp" through the DoctrineBundle. Use your own bundle to configure other metadata drivers. You can register them by adding a new driver to the "%s" service definition.', $this->getObjectManagerElementName($objectManagerName.'_metadata_driver')));
+        if (!\in_array($mappingConfig['type'], ['xml', 'yml', 'annotation', 'php', 'staticphp', 'attribute'])) {
+            throw new \InvalidArgumentException(sprintf('Can only configure "xml", "yml", "annotation", "php", "staticphp" or "attribute" through the DoctrineBundle. Use your own bundle to configure other metadata drivers. You can register them by adding a new driver to the "%s" service definition.', $this->getObjectManagerElementName($objectManagerName.'_metadata_driver')));
         }
     }
 
@@ -253,11 +277,11 @@ abstract class AbstractDoctrineExtension extends Extension
         $configPath = $this->getMappingResourceConfigDirectory();
         $extension = $this->getMappingResourceExtension();
 
-        if (glob($dir.'/'.$configPath.'/*.'.$extension.'.xml', GLOB_NOSORT)) {
+        if (glob($dir.'/'.$configPath.'/*.'.$extension.'.xml', \GLOB_NOSORT)) {
             $driver = 'xml';
-        } elseif (glob($dir.'/'.$configPath.'/*.'.$extension.'.yml', GLOB_NOSORT)) {
+        } elseif (glob($dir.'/'.$configPath.'/*.'.$extension.'.yml', \GLOB_NOSORT)) {
             $driver = 'yml';
-        } elseif (glob($dir.'/'.$configPath.'/*.'.$extension.'.php', GLOB_NOSORT)) {
+        } elseif (glob($dir.'/'.$configPath.'/*.'.$extension.'.php', \GLOB_NOSORT)) {
             $driver = 'php';
         } else {
             // add the closest existing directory as a resource
@@ -435,9 +459,9 @@ abstract class AbstractDoctrineExtension extends Extension
      */
     protected function getMetadataDriverClass(string $driverType): string
     {
-        @trigger_error(sprintf('Not declaring the "%s" method in class "%s" is deprecated since Symfony 4.4. This method will be abstract in Symfony 5.0.', __METHOD__, static::class), E_USER_DEPRECATED);
+        @trigger_error(sprintf('Not declaring the "%s" method in class "%s" is deprecated since Symfony 4.4. This method will be abstract in Symfony 5.0.', __METHOD__, static::class), \E_USER_DEPRECATED);
 
-        return '%'.$this->getObjectManagerElementName('metadata.'.$driverType.'.class%');
+        return '%'.$this->getObjectManagerElementName('metadata.'.$driverType.'.class').'%';
     }
 
     /**
@@ -454,7 +478,7 @@ abstract class AbstractDoctrineExtension extends Extension
             }
 
             if (null !== $autoMappedManager) {
-                throw new \LogicException(sprintf('You cannot enable "auto_mapping" on more than one manager at the same time (found in "%s" and %s").', $autoMappedManager, $name));
+                throw new \LogicException(sprintf('You cannot enable "auto_mapping" on more than one manager at the same time (found in "%s" and "%s"").', $autoMappedManager, $name));
             }
 
             $autoMappedManager = $name;

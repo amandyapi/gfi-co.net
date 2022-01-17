@@ -1,6 +1,16 @@
 CHANGELOG
 =========
 
+0.4.1
+-----
+
+* Compatibility with PHP 8
+
+0.4.0
+-----
+
+* Compatibility with Mercure 0.10
+
 0.3.0
 -----
 

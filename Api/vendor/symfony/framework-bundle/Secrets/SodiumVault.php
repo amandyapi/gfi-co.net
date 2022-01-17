@@ -12,6 +12,7 @@
 namespace Symfony\Bundle\FrameworkBundle\Secrets;
 
 use Symfony\Component\DependencyInjection\EnvVarLoaderInterface;
+use Symfony\Component\VarExporter\VarExporter;
 
 /**
  * @author Tobias Schultze <http://tobion.de>
@@ -28,13 +29,13 @@ class SodiumVault extends AbstractVault implements EnvVarLoaderInterface
     private $secretsDir;
 
     /**
-     * @param string|object|null $decryptionKey A string or a stringable object that defines the private key to use to decrypt the vault
-     *                                          or null to store generated keys in the provided $secretsDir
+     * @param string|\Stringable|null $decryptionKey A string or a stringable object that defines the private key to use to decrypt the vault
+     *                                               or null to store generated keys in the provided $secretsDir
      */
     public function __construct(string $secretsDir, $decryptionKey = null)
     {
         if (null !== $decryptionKey && !\is_string($decryptionKey) && !(\is_object($decryptionKey) && method_exists($decryptionKey, '__toString'))) {
-            throw new \TypeError(sprintf('Decryption key should be a string or an object that implements the __toString() method, %s given.', \gettype($decryptionKey)));
+            throw new \TypeError(sprintf('Decryption key should be a string or an object that implements the __toString() method, "%s" given.', \gettype($decryptionKey)));
         }
 
         $this->pathPrefix = rtrim(strtr($secretsDir, '/', \DIRECTORY_SEPARATOR), \DIRECTORY_SEPARATOR).\DIRECTORY_SEPARATOR.basename($secretsDir).'.';
@@ -47,7 +48,9 @@ class SodiumVault extends AbstractVault implements EnvVarLoaderInterface
         $this->lastMessage = null;
 
         if (null === $this->encryptionKey && '' !== $this->decryptionKey = (string) $this->decryptionKey) {
-            throw new \LogicException('Cannot generate keys when a decryption key has been provided while instantiating the vault.');
+            $this->lastMessage = 'Cannot generate keys when a decryption key has been provided while instantiating the vault.';
+
+            return false;
         }
 
         try {
@@ -87,7 +90,7 @@ class SodiumVault extends AbstractVault implements EnvVarLoaderInterface
         $list = $this->list();
         $list[$name] = null;
         uksort($list, 'strnatcmp');
-        file_put_contents($this->pathPrefix.'list.php', sprintf("<?php\n\nreturn %s;\n", var_export($list, true), LOCK_EX));
+        file_put_contents($this->pathPrefix.'list.php', sprintf("<?php\n\nreturn %s;\n", VarExporter::export($list)), \LOCK_EX);
 
         $this->lastMessage = sprintf('Secret "%s" encrypted in "%s"; you can commit it.', $name, $this->getPrettyPath(\dirname($this->pathPrefix).\DIRECTORY_SEPARATOR));
     }
@@ -139,7 +142,7 @@ class SodiumVault extends AbstractVault implements EnvVarLoaderInterface
 
         $list = $this->list();
         unset($list[$name]);
-        file_put_contents($this->pathPrefix.'list.php', sprintf("<?php\n\nreturn %s;\n", var_export($list, true), LOCK_EX));
+        file_put_contents($this->pathPrefix.'list.php', sprintf("<?php\n\nreturn %s;\n", VarExporter::export($list)), \LOCK_EX);
 
         $this->lastMessage = sprintf('Secret "%s" removed from "%s".', $name, $this->getPrettyPath(\dirname($this->pathPrefix).\DIRECTORY_SEPARATOR));
 
@@ -175,7 +178,7 @@ class SodiumVault extends AbstractVault implements EnvVarLoaderInterface
     private function loadKeys(): void
     {
         if (!\function_exists('sodium_crypto_box_seal')) {
-            throw new \LogicException('The "sodium" PHP extension is required to deal with secrets. Alternatively, try running "composer require paragonie/sodium_compat" if you cannot enable the extension."');
+            throw new \LogicException('The "sodium" PHP extension is required to deal with secrets. Alternatively, try running "composer require paragonie/sodium_compat" if you cannot enable the extension.".');
         }
 
         if (null !== $this->encryptionKey || '' !== $this->decryptionKey = (string) $this->decryptionKey) {
@@ -203,16 +206,16 @@ class SodiumVault extends AbstractVault implements EnvVarLoaderInterface
 
         $this->createSecretsDir();
 
-        if (false === file_put_contents($this->pathPrefix.$file.'.php', $data, LOCK_EX)) {
+        if (false === file_put_contents($this->pathPrefix.$file.'.php', $data, \LOCK_EX)) {
             $e = error_get_last();
-            throw new \ErrorException($e['message'] ?? 'Failed to write secrets data.', 0, $e['type'] ?? E_USER_WARNING);
+            throw new \ErrorException($e['message'] ?? 'Failed to write secrets data.', 0, $e['type'] ?? \E_USER_WARNING);
         }
     }
 
     private function createSecretsDir(): void
     {
         if ($this->secretsDir && !is_dir($this->secretsDir) && !@mkdir($this->secretsDir, 0777, true) && !is_dir($this->secretsDir)) {
-            throw new \RuntimeException(sprintf('Unable to create the secrets directory (%s)', $this->secretsDir));
+            throw new \RuntimeException(sprintf('Unable to create the secrets directory (%s).', $this->secretsDir));
         }
 
         $this->secretsDir = null;

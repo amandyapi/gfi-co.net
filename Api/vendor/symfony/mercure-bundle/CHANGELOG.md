@@ -1,6 +1,23 @@
 CHANGELOG
 =========
 
+0.2.6
+-----
+
+* Expose privateness of published messages in profiler panel
+* Compatibility with PHP 8
+
+0.2.5
+-----
+
+* Fix a bug in the debugger panel
+* Compatibility with Symfony 5.1
+
+0.2.4
+-----
+
+* Compatibility with Mercure 0.10
+
 0.2.3
 -----
 

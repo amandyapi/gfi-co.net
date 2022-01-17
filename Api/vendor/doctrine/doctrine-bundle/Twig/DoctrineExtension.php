@@ -2,16 +2,37 @@
 
 namespace Doctrine\Bundle\DoctrineBundle\Twig;
 
-use SqlFormatter;
+use Doctrine\SqlFormatter\HtmlHighlighter;
+use Doctrine\SqlFormatter\NullHighlighter;
+use Doctrine\SqlFormatter\SqlFormatter;
 use Symfony\Component\VarDumper\Cloner\Data;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
+
+use function addslashes;
+use function array_key_exists;
+use function bin2hex;
+use function implode;
+use function is_array;
+use function is_bool;
+use function is_object;
+use function is_string;
+use function method_exists;
+use function preg_match;
+use function preg_replace_callback;
+use function sprintf;
+use function strtoupper;
+use function substr;
+use function trigger_deprecation;
 
 /**
  * This class contains the needed functions in order to do the query highlighting
  */
 class DoctrineExtension extends AbstractExtension
 {
+    /** @var SqlFormatter */
+    private $sqlFormatter;
+
     /**
      * Define our functions
      *
@@ -20,56 +41,11 @@ class DoctrineExtension extends AbstractExtension
     public function getFilters()
     {
         return [
-            new TwigFilter('doctrine_pretty_query', [$this, 'formatQuery'], ['is_safe' => ['html']]),
+            new TwigFilter('doctrine_pretty_query', [$this, 'formatQuery'], ['is_safe' => ['html'], 'deprecated' => true]),
+            new TwigFilter('doctrine_prettify_sql', [$this, 'prettifySql'], ['is_safe' => ['html']]),
+            new TwigFilter('doctrine_format_sql', [$this, 'formatSql'], ['is_safe' => ['html']]),
             new TwigFilter('doctrine_replace_query_parameters', [$this, 'replaceQueryParameters']),
         ];
-    }
-
-    /**
-     * Get the possible combinations of elements from the given array
-     *
-     * @param array $elements
-     * @param int   $combinationsLevel
-     *
-     * @return array
-     */
-    private function getPossibleCombinations(array $elements, $combinationsLevel)
-    {
-        $baseCount = count($elements);
-        $result    = [];
-
-        if ($combinationsLevel === 1) {
-            foreach ($elements as $element) {
-                $result[] = [$element];
-            }
-
-            return $result;
-        }
-
-        $nextLevelElements = $this->getPossibleCombinations($elements, $combinationsLevel - 1);
-
-        foreach ($nextLevelElements as $nextLevelElement) {
-            $lastElement = $nextLevelElement[$combinationsLevel - 2];
-            $found       = false;
-
-            foreach ($elements as $key => $element) {
-                if ($element === $lastElement) {
-                    $found = true;
-                    continue;
-                }
-
-                if ($found !== true || $key >= $baseCount) {
-                    continue;
-                }
-
-                $tmp              = $nextLevelElement;
-                $newCombination   = array_slice($tmp, 0);
-                $newCombination[] = $element;
-                $result[]         = array_slice($newCombination, 0);
-            }
-        }
-
-        return $result;
     }
 
     /**
@@ -101,11 +77,11 @@ class DoctrineExtension extends AbstractExtension
                     $value = static::escapeFunction($value);
                 }
 
-                $result = implode(', ', $result);
+                $result = implode(', ', $result) ?: 'NULL';
                 break;
 
-            case is_object($result):
-                $result = addslashes((string) $result);
+            case is_object($result) && method_exists($result, '__toString'):
+                $result = addslashes($result->__toString());
                 break;
 
             case $result === null:
@@ -123,8 +99,8 @@ class DoctrineExtension extends AbstractExtension
     /**
      * Return a query with the parameters replaced
      *
-     * @param string     $query
-     * @param array|Data $parameters
+     * @param string       $query
+     * @param mixed[]|Data $parameters
      *
      * @return string
      */
@@ -169,26 +145,53 @@ class DoctrineExtension extends AbstractExtension
      */
     public function formatQuery($sql, $highlightOnly = false)
     {
-        SqlFormatter::$pre_attributes            = 'class="highlight highlight-sql"';
-        SqlFormatter::$quote_attributes          = 'class="string"';
-        SqlFormatter::$backtick_quote_attributes = 'class="string"';
-        SqlFormatter::$reserved_attributes       = 'class="keyword"';
-        SqlFormatter::$boundary_attributes       = 'class="symbol"';
-        SqlFormatter::$number_attributes         = 'class="number"';
-        SqlFormatter::$word_attributes           = 'class="word"';
-        SqlFormatter::$error_attributes          = 'class="error"';
-        SqlFormatter::$comment_attributes        = 'class="comment"';
-        SqlFormatter::$variable_attributes       = 'class="variable"';
+        trigger_deprecation(
+            'doctrine/doctrine-bundle',
+            '2.1',
+            'The "%s()" method is deprecated and will be removed in doctrine-bundle 3.0.',
+            __METHOD__
+        );
+
+        $this->setUpSqlFormatter(true, true);
 
         if ($highlightOnly) {
-            $html = SqlFormatter::highlight($sql);
-            $html = preg_replace('/<pre class=".*">([^"]*+)<\/pre>/Us', '\1', $html);
-        } else {
-            $html = SqlFormatter::format($sql);
-            $html = preg_replace('/<pre class="(.*)">([^"]*+)<\/pre>/Us', '<div class="\1"><pre>\2</pre></div>', $html);
+            return $this->sqlFormatter->highlight($sql);
         }
 
-        return $html;
+        return sprintf(
+            '<div class="highlight highlight-sql"><pre>%s</pre></div>',
+            $this->sqlFormatter->format($sql)
+        );
+    }
+
+    public function prettifySql(string $sql): string
+    {
+        $this->setUpSqlFormatter();
+
+        return $this->sqlFormatter->highlight($sql);
+    }
+
+    public function formatSql(string $sql, bool $highlight): string
+    {
+        $this->setUpSqlFormatter($highlight);
+
+        return $this->sqlFormatter->format($sql);
+    }
+
+    private function setUpSqlFormatter(bool $highlight = true, bool $legacy = false): void
+    {
+        $this->sqlFormatter = new SqlFormatter($highlight ? new HtmlHighlighter([
+            HtmlHighlighter::HIGHLIGHT_PRE            => 'class="highlight highlight-sql"',
+            HtmlHighlighter::HIGHLIGHT_QUOTE          => 'class="string"',
+            HtmlHighlighter::HIGHLIGHT_BACKTICK_QUOTE => 'class="string"',
+            HtmlHighlighter::HIGHLIGHT_RESERVED       => 'class="keyword"',
+            HtmlHighlighter::HIGHLIGHT_BOUNDARY       => 'class="symbol"',
+            HtmlHighlighter::HIGHLIGHT_NUMBER         => 'class="number"',
+            HtmlHighlighter::HIGHLIGHT_WORD           => 'class="word"',
+            HtmlHighlighter::HIGHLIGHT_ERROR          => 'class="error"',
+            HtmlHighlighter::HIGHLIGHT_COMMENT        => 'class="comment"',
+            HtmlHighlighter::HIGHLIGHT_VARIABLE       => 'class="variable"',
+        ], ! $legacy) : new NullHighlighter());
     }
 
     /**

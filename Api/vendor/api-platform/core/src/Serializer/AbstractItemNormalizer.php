@@ -16,6 +16,7 @@ namespace ApiPlatform\Core\Serializer;
 use ApiPlatform\Core\Api\IriConverterInterface;
 use ApiPlatform\Core\Api\ResourceClassResolverInterface;
 use ApiPlatform\Core\DataProvider\ItemDataProviderInterface;
+use ApiPlatform\Core\DataTransformer\DataTransformerInitializerInterface;
 use ApiPlatform\Core\DataTransformer\DataTransformerInterface;
 use ApiPlatform\Core\Exception\InvalidArgumentException;
 use ApiPlatform\Core\Exception\InvalidValueException;
@@ -24,13 +25,17 @@ use ApiPlatform\Core\Metadata\Property\Factory\PropertyMetadataFactoryInterface;
 use ApiPlatform\Core\Metadata\Property\Factory\PropertyNameCollectionFactoryInterface;
 use ApiPlatform\Core\Metadata\Property\PropertyMetadata;
 use ApiPlatform\Core\Metadata\Resource\Factory\ResourceMetadataFactoryInterface;
+use ApiPlatform\Core\Security\ResourceAccessCheckerInterface;
 use ApiPlatform\Core\Util\ClassInfoTrait;
 use Symfony\Component\PropertyAccess\Exception\NoSuchPropertyException;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
 use Symfony\Component\PropertyInfo\Type;
+use Symfony\Component\Serializer\Encoder\CsvEncoder;
+use Symfony\Component\Serializer\Encoder\XmlEncoder;
 use Symfony\Component\Serializer\Exception\LogicException;
 use Symfony\Component\Serializer\Exception\MissingConstructorArgumentsException;
+use Symfony\Component\Serializer\Exception\NotNormalizableValueException;
 use Symfony\Component\Serializer\Exception\RuntimeException;
 use Symfony\Component\Serializer\Exception\UnexpectedValueException;
 use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactoryInterface;
@@ -51,17 +56,20 @@ abstract class AbstractItemNormalizer extends AbstractObjectNormalizer
     use ContextTrait;
     use InputOutputMetadataTrait;
 
+    public const IS_TRANSFORMED_TO_SAME_CLASS = 'is_transformed_to_same_class';
+
     protected $propertyNameCollectionFactory;
     protected $propertyMetadataFactory;
     protected $iriConverter;
     protected $resourceClassResolver;
+    protected $resourceAccessChecker;
     protected $propertyAccessor;
     protected $itemDataProvider;
     protected $allowPlainIdentifiers;
     protected $dataTransformers = [];
     protected $localCache = [];
 
-    public function __construct(PropertyNameCollectionFactoryInterface $propertyNameCollectionFactory, PropertyMetadataFactoryInterface $propertyMetadataFactory, IriConverterInterface $iriConverter, ResourceClassResolverInterface $resourceClassResolver, PropertyAccessorInterface $propertyAccessor = null, NameConverterInterface $nameConverter = null, ClassMetadataFactoryInterface $classMetadataFactory = null, ItemDataProviderInterface $itemDataProvider = null, bool $allowPlainIdentifiers = false, array $defaultContext = [], iterable $dataTransformers = [], ResourceMetadataFactoryInterface $resourceMetadataFactory = null)
+    public function __construct(PropertyNameCollectionFactoryInterface $propertyNameCollectionFactory, PropertyMetadataFactoryInterface $propertyMetadataFactory, IriConverterInterface $iriConverter, ResourceClassResolverInterface $resourceClassResolver, PropertyAccessorInterface $propertyAccessor = null, NameConverterInterface $nameConverter = null, ClassMetadataFactoryInterface $classMetadataFactory = null, ItemDataProviderInterface $itemDataProvider = null, bool $allowPlainIdentifiers = false, array $defaultContext = [], iterable $dataTransformers = [], ResourceMetadataFactoryInterface $resourceMetadataFactory = null, ResourceAccessCheckerInterface $resourceAccessChecker = null)
     {
         if (!isset($defaultContext['circular_reference_handler'])) {
             $defaultContext['circular_reference_handler'] = function ($object) {
@@ -83,6 +91,7 @@ abstract class AbstractItemNormalizer extends AbstractObjectNormalizer
         $this->allowPlainIdentifiers = $allowPlainIdentifiers;
         $this->dataTransformers = $dataTransformers;
         $this->resourceMetadataFactory = $resourceMetadataFactory;
+        $this->resourceAccessChecker = $resourceAccessChecker;
     }
 
     /**
@@ -90,7 +99,7 @@ abstract class AbstractItemNormalizer extends AbstractObjectNormalizer
      */
     public function supportsNormalization($data, $format = null)
     {
-        if (!\is_object($data) || $data instanceof \Traversable) {
+        if (!\is_object($data)) {
             return false;
         }
 
@@ -112,17 +121,23 @@ abstract class AbstractItemNormalizer extends AbstractObjectNormalizer
      */
     public function normalize($object, $format = null, array $context = [])
     {
-        if ($object !== $transformed = $this->transformOutput($object, $context)) {
+        if (!($isTransformed = isset($context[self::IS_TRANSFORMED_TO_SAME_CLASS])) && $outputClass = $this->getOutputClass($this->getObjectClass($object), $context)) {
             if (!$this->serializer instanceof NormalizerInterface) {
                 throw new LogicException('Cannot normalize the output because the injected serializer is not a normalizer');
             }
 
-            $context['api_normalize'] = true;
-            $context['api_resource'] = $object;
-            unset($context['output']);
-            unset($context['resource_class']);
+            if ($object !== $transformed = $this->transformOutput($object, $context, $outputClass)) {
+                $context['api_normalize'] = true;
+                $context['api_resource'] = $object;
+                unset($context['output'], $context['resource_class']);
+            } else {
+                $context[self::IS_TRANSFORMED_TO_SAME_CLASS] = true;
+            }
 
             return $this->serializer->normalize($transformed, $format, $context);
+        }
+        if ($isTransformed) {
+            unset($context[self::IS_TRANSFORMED_TO_SAME_CLASS]);
         }
 
         $resourceClass = $this->resourceClassResolver->getResourceClass($object, $context['resource_class'] ?? null);
@@ -169,7 +184,11 @@ abstract class AbstractItemNormalizer extends AbstractObjectNormalizer
      */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        $resourceClass = $this->resourceClassResolver->getResourceClass(null, $class);
+        if (null === $objectToPopulate = $this->extractObjectToPopulate($class, $context, static::OBJECT_TO_POPULATE)) {
+            $normalizedData = $this->prepareForDenormalization($data);
+            $class = $this->getClassDiscriminatorResolvedClass($normalizedData, $class);
+        }
+        $resourceClass = $this->resourceClassResolver->getResourceClass($objectToPopulate, $class);
         $context['api_denormalize'] = true;
         $context['resource_class'] = $resourceClass;
 
@@ -182,9 +201,20 @@ abstract class AbstractItemNormalizer extends AbstractObjectNormalizer
             if (!$this->serializer instanceof DenormalizerInterface) {
                 throw new LogicException('Cannot denormalize the input because the injected serializer is not a denormalizer');
             }
-            $denormalizedInput = $this->serializer->denormalize($data, $inputClass, $format, $context);
+
+            if ($dataTransformer instanceof DataTransformerInitializerInterface) {
+                $context[AbstractObjectNormalizer::OBJECT_TO_POPULATE] = $dataTransformer->initialize($inputClass, $context);
+                $context[AbstractObjectNormalizer::DEEP_OBJECT_TO_POPULATE] = true;
+            }
+
+            try {
+                $denormalizedInput = $this->serializer->denormalize($data, $inputClass, $format, $context);
+            } catch (NotNormalizableValueException $e) {
+                throw new UnexpectedValueException('The input data is misformatted.', $e->getCode(), $e);
+            }
+
             if (!\is_object($denormalizedInput)) {
-                throw new \UnexpectedValueException('Expected denormalized input to be an object.');
+                throw new UnexpectedValueException('Expected denormalized input to be an object.');
             }
 
             return $dataTransformer->transform($denormalizedInput, $resourceClass, $dataTransformerContext);
@@ -224,7 +254,7 @@ abstract class AbstractItemNormalizer extends AbstractObjectNormalizer
 
     /**
      * Method copy-pasted from symfony/serializer.
-     * Remove it after symfony/serializer version update @link https://github.com/symfony/symfony/pull/28263.
+     * Remove it after symfony/serializer version update @see https://github.com/symfony/symfony/pull/28263.
      *
      * {@inheritdoc}
      *
@@ -238,19 +268,8 @@ abstract class AbstractItemNormalizer extends AbstractObjectNormalizer
             return $object;
         }
 
-        if ($this->classDiscriminatorResolver && $mapping = $this->classDiscriminatorResolver->getMappingForClass($class)) {
-            if (!isset($data[$mapping->getTypeProperty()])) {
-                throw new RuntimeException(sprintf('Type property "%s" not found for the abstract object "%s"', $mapping->getTypeProperty(), $class));
-            }
-
-            $type = $data[$mapping->getTypeProperty()];
-            if (null === ($mappedClass = $mapping->getClassForType($type))) {
-                throw new RuntimeException(sprintf('The type "%s" has no mapped class for the abstract object "%s"', $type, $class));
-            }
-
-            $class = $mappedClass;
-            $reflectionClass = new \ReflectionClass($class);
-        }
+        $class = $this->getClassDiscriminatorResolvedClass($data, $class);
+        $reflectionClass = new \ReflectionClass($class);
 
         $constructor = $this->getConstructor($data, $class, $context, $reflectionClass, $allowedAttributes);
         if ($constructor) {
@@ -293,6 +312,24 @@ abstract class AbstractItemNormalizer extends AbstractObjectNormalizer
         }
 
         return new $class();
+    }
+
+    protected function getClassDiscriminatorResolvedClass(array &$data, string $class): string
+    {
+        if (null === $this->classDiscriminatorResolver || (null === $mapping = $this->classDiscriminatorResolver->getMappingForClass($class))) {
+            return $class;
+        }
+
+        if (!isset($data[$mapping->getTypeProperty()])) {
+            throw new RuntimeException(sprintf('Type property "%s" not found for the abstract object "%s"', $mapping->getTypeProperty(), $class));
+        }
+
+        $type = $data[$mapping->getTypeProperty()];
+        if (null === ($mappedClass = $mapping->getClassForType($type))) {
+            throw new RuntimeException(sprintf('The type "%s" has no mapped class for the abstract object "%s"', $type, $class));
+        }
+
+        return $mappedClass;
     }
 
     /**
@@ -342,6 +379,27 @@ abstract class AbstractItemNormalizer extends AbstractObjectNormalizer
     /**
      * {@inheritdoc}
      */
+    protected function isAllowedAttribute($classOrObject, $attribute, $format = null, array $context = [])
+    {
+        if (!parent::isAllowedAttribute($classOrObject, $attribute, $format, $context)) {
+            return false;
+        }
+
+        $options = $this->getFactoryOptions($context);
+        $propertyMetadata = $this->propertyMetadataFactory->create($context['resource_class'], $attribute, $options);
+        $security = $propertyMetadata->getAttribute('security');
+        if ($this->resourceAccessChecker && $security) {
+            return $this->resourceAccessChecker->isGranted($context['resource_class'], $security, [
+                'object' => $classOrObject,
+            ]);
+        }
+
+        return true;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     protected function setAttributeValue($object, $attribute, $value, $format = null, array $context = [])
     {
         $this->setValue($object, $attribute, $this->createAttributeValue($attribute, $value, $format, $context));
@@ -377,7 +435,7 @@ abstract class AbstractItemNormalizer extends AbstractObjectNormalizer
             throw new InvalidArgumentException(sprintf('The type of the "%s" attribute must be "array", "%s" given.', $attribute, \gettype($value)));
         }
 
-        $collectionKeyType = $type->getCollectionKeyType();
+        $collectionKeyType = method_exists(Type::class, 'getCollectionKeyTypes') ? ($type->getCollectionKeyTypes()[0] ?? null) : $type->getCollectionKeyType();
         $collectionKeyBuiltinType = null === $collectionKeyType ? null : $collectionKeyType->getBuiltinType();
 
         $values = [];
@@ -486,7 +544,7 @@ abstract class AbstractItemNormalizer extends AbstractObjectNormalizer
      */
     protected function createRelationSerializationContext(string $resourceClass, array $context): array
     {
-        @trigger_error(sprintf('The method %s() is deprecated since 2.1 and will be removed in 3.0.', __METHOD__), E_USER_DEPRECATED);
+        @trigger_error(sprintf('The method %s() is deprecated since 2.1 and will be removed in 3.0.', __METHOD__), \E_USER_DEPRECATED);
 
         return $context;
     }
@@ -494,7 +552,6 @@ abstract class AbstractItemNormalizer extends AbstractObjectNormalizer
     /**
      * {@inheritdoc}
      *
-     * @throws NoSuchPropertyException
      * @throws UnexpectedValueException
      * @throws LogicException
      */
@@ -503,6 +560,7 @@ abstract class AbstractItemNormalizer extends AbstractObjectNormalizer
         $context['api_attribute'] = $attribute;
         $propertyMetadata = $this->propertyMetadataFactory->create($context['resource_class'], $attribute, $this->getFactoryOptions($context));
 
+        // BC to be removed in 3.0
         try {
             $attributeValue = $this->propertyAccessor->getValue($object, $attribute);
         } catch (NoSuchPropertyException $e) {
@@ -513,12 +571,16 @@ abstract class AbstractItemNormalizer extends AbstractObjectNormalizer
             $attributeValue = null;
         }
 
+        if ($context['api_denormalize'] ?? false) {
+            return $attributeValue;
+        }
+
         $type = $propertyMetadata->getType();
 
         if (
             $type &&
             $type->isCollection() &&
-            ($collectionValueType = $type->getCollectionValueType()) &&
+            ($collectionValueType = method_exists(Type::class, 'getCollectionValueTypes') ? ($type->getCollectionValueTypes()[0] ?? null) : $type->getCollectionValueType()) &&
             ($className = $collectionValueType->getClassName()) &&
             $this->resourceClassResolver->isResourceClass($className)
         ) {
@@ -599,6 +661,7 @@ abstract class AbstractItemNormalizer extends AbstractObjectNormalizer
             }
 
             $normalizedRelatedObject = $this->serializer->normalize($relatedObject, $format, $context);
+            // @phpstan-ignore-next-line throwing an explicit exception helps debugging
             if (!\is_string($normalizedRelatedObject) && !\is_array($normalizedRelatedObject) && !$normalizedRelatedObject instanceof \ArrayObject && null !== $normalizedRelatedObject) {
                 throw new UnexpectedValueException('Expected normalized relation to be an IRI, array, \ArrayObject or null');
             }
@@ -637,9 +700,12 @@ abstract class AbstractItemNormalizer extends AbstractObjectNormalizer
      * For a given resource, it returns an output representation if any
      * If not, the resource is returned.
      */
-    protected function transformOutput($object, array $context = [])
+    protected function transformOutput($object, array $context = [], string $outputClass = null)
     {
-        $outputClass = $this->getOutputClass($this->getObjectClass($object), $context);
+        if (null === $outputClass) {
+            $outputClass = $this->getOutputClass($this->getObjectClass($object), $context);
+        }
+
         if (null !== $outputClass && null !== $dataTransformer = $this->getDataTransformer($object, $outputClass, $context)) {
             return $dataTransformer->transform($object, $outputClass, $context);
         }
@@ -661,9 +727,18 @@ abstract class AbstractItemNormalizer extends AbstractObjectNormalizer
             return $value;
         }
 
+        $collectionValueType = method_exists(Type::class, 'getCollectionValueTypes') ? ($type->getCollectionValueTypes()[0] ?? null) : $type->getCollectionValueType();
+
+        /* From @see AbstractObjectNormalizer::validateAndDenormalize() */
+        // Fix a collection that contains the only one element
+        // This is special to xml format only
+        if ('xml' === $format && null !== $collectionValueType && (!\is_array($value) || !\is_int(key($value)))) {
+            $value = [$value];
+        }
+
         if (
             $type->isCollection() &&
-            null !== ($collectionValueType = $type->getCollectionValueType()) &&
+            null !== $collectionValueType &&
             null !== ($className = $collectionValueType->getClassName()) &&
             $this->resourceClassResolver->isResourceClass($className)
         ) {
@@ -686,7 +761,7 @@ abstract class AbstractItemNormalizer extends AbstractObjectNormalizer
 
         if (
             $type->isCollection() &&
-            null !== ($collectionValueType = $type->getCollectionValueType()) &&
+            null !== $collectionValueType &&
             null !== ($className = $collectionValueType->getClassName())
         ) {
             if (!$this->serializer instanceof DenormalizerInterface) {
@@ -706,6 +781,51 @@ abstract class AbstractItemNormalizer extends AbstractObjectNormalizer
             unset($context['resource_class']);
 
             return $this->serializer->denormalize($value, $className, $format, $context);
+        }
+
+        /* From @see AbstractObjectNormalizer::validateAndDenormalize() */
+        // In XML and CSV all basic datatypes are represented as strings, it is e.g. not possible to determine,
+        // if a value is meant to be a string, float, int or a boolean value from the serialized representation.
+        // That's why we have to transform the values, if one of these non-string basic datatypes is expected.
+        if (\is_string($value) && (XmlEncoder::FORMAT === $format || CsvEncoder::FORMAT === $format)) {
+            if ('' === $value && $type->isNullable() && \in_array($type->getBuiltinType(), [Type::BUILTIN_TYPE_BOOL, Type::BUILTIN_TYPE_INT, Type::BUILTIN_TYPE_FLOAT], true)) {
+                return null;
+            }
+
+            switch ($type->getBuiltinType()) {
+                case Type::BUILTIN_TYPE_BOOL:
+                    // according to https://www.w3.org/TR/xmlschema-2/#boolean, valid representations are "false", "true", "0" and "1"
+                    if ('false' === $value || '0' === $value) {
+                        $value = false;
+                    } elseif ('true' === $value || '1' === $value) {
+                        $value = true;
+                    } else {
+                        throw new NotNormalizableValueException(sprintf('The type of the "%s" attribute for class "%s" must be bool ("%s" given).', $attribute, $className, $value));
+                    }
+                    break;
+                case Type::BUILTIN_TYPE_INT:
+                    if (ctype_digit($value) || ('-' === $value[0] && ctype_digit(substr($value, 1)))) {
+                        $value = (int) $value;
+                    } else {
+                        throw new NotNormalizableValueException(sprintf('The type of the "%s" attribute for class "%s" must be int ("%s" given).', $attribute, $className, $value));
+                    }
+                    break;
+                case Type::BUILTIN_TYPE_FLOAT:
+                    if (is_numeric($value)) {
+                        return (float) $value;
+                    }
+
+                    switch ($value) {
+                        case 'NaN':
+                            return \NAN;
+                        case 'INF':
+                            return \INF;
+                        case '-INF':
+                            return -\INF;
+                        default:
+                            throw new NotNormalizableValueException(sprintf('The type of the "%s" attribute for class "%s" must be float ("%s" given).', $attribute, $className, $value));
+                    }
+            }
         }
 
         if ($context[static::DISABLE_TYPE_ENFORCEMENT] ?? false) {

@@ -64,7 +64,7 @@ class CorsListener
         }
 
         // skip if not a CORS request
-        if (!$request->headers->has('Origin') || $request->headers->get('Origin') == $request->getSchemeAndHttpHost()) {
+        if (!$request->headers->has('Origin') || $request->headers->get('Origin') === $request->getSchemeAndHttpHost()) {
             return;
         }
 
@@ -169,15 +169,16 @@ class CorsListener
 
         // check request headers
         $headers = $request->headers->get('Access-Control-Request-Headers');
-        if (!$this->isWildcard($options, 'allow_headers') && $headers) {
-            $headers = trim(strtolower($headers));
+        if ($headers && !$this->isWildcard($options, 'allow_headers')) {
+            $headers = strtolower(trim($headers));
             foreach (preg_split('{, *}', $headers) as $header) {
                 if (in_array($header, self::$simpleHeaders, true)) {
                     continue;
                 }
                 if (!in_array($header, $options['allow_headers'], true)) {
+                    $sanitizedMessage = htmlentities('Unauthorized header '.$header, ENT_QUOTES, 'UTF-8');
                     $response->setStatusCode(400);
-                    $response->setContent('Unauthorized header '.$header);
+                    $response->setContent($sanitizedMessage);
                     break;
                 }
             }

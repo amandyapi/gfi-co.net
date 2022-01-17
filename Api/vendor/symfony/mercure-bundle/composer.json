@@ -16,11 +16,11 @@
         }
     ],
     "require": {
-        "php": "^7.1.3",
-        "symfony/config": "^4.3.7|^5.0",
-        "symfony/dependency-injection": "^4.3.7|^5.0",
-        "symfony/http-kernel": "^4.3.7|^5.0",
-        "symfony/mercure": "^0.3"
+        "php": ">=7.1.3",
+        "symfony/config": "^4.4|^5.0",
+        "symfony/dependency-injection": "^4.4|^5.0",
+        "symfony/http-kernel": "^4.4|^5.0",
+        "symfony/mercure": "^0.3|^0.4"
     },
     "autoload": {
         "psr-4": { "Symfony\\Bundle\\MercureBundle\\": "src/" }
@@ -30,7 +30,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "0.2.x-dev"
+            "dev-main": "0.2.x-dev"
         }
     },
     "config": {

@@ -14,8 +14,8 @@ declare(strict_types=1);
 namespace ApiPlatform\Core\Bridge\Doctrine\EventListener;
 
 use ApiPlatform\Core\EventListener\WriteListener as BaseWriteListener;
-use Doctrine\Common\Persistence\ManagerRegistry;
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\HttpKernel\Event\ViewEvent;
 
 /**
@@ -31,7 +31,7 @@ final class WriteListener
 
     public function __construct(ManagerRegistry $managerRegistry)
     {
-        @trigger_error(sprintf('The %s class is deprecated since version 2.2 and will be removed in 3.0. Use the %s class instead.', __CLASS__, BaseWriteListener::class), E_USER_DEPRECATED);
+        @trigger_error(sprintf('The %s class is deprecated since version 2.2 and will be removed in 3.0. Use the %s class instead.', __CLASS__, BaseWriteListener::class), \E_USER_DEPRECATED);
 
         $this->managerRegistry = $managerRegistry;
     }

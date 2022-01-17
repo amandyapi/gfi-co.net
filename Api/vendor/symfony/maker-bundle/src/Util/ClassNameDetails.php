@@ -16,9 +16,7 @@ use Symfony\Bundle\MakerBundle\Str;
 final class ClassNameDetails
 {
     private $fullClassName;
-
     private $namespacePrefix;
-
     private $suffix;
 
     public function __construct(string $fullClassName, string $namespacePrefix, string $suffix = null)
@@ -44,8 +42,6 @@ final class ClassNameDetails
      *
      * For example, assuming the namespace is App\Entity:
      *      App\Entity\Admin\User => Admin\User
-     *
-     * @return string
      */
     public function getRelativeName(): string
     {

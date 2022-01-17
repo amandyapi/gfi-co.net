@@ -21,12 +21,15 @@ use ApiPlatform\Core\DataProvider\Pagination;
 use ApiPlatform\Core\Exception\InvalidArgumentException;
 use ApiPlatform\Core\Metadata\Resource\Factory\ResourceMetadataFactoryInterface;
 use ApiPlatform\Core\Metadata\Resource\ResourceMetadata;
-use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\ORM\Tools\Pagination\CountWalker;
 use Doctrine\ORM\Tools\Pagination\Paginator as DoctrineOrmPaginator;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
+
+// Help opcache.preload discover always-needed symbols
+class_exists(AbstractPaginator::class);
 
 /**
  * Applies pagination on the Doctrine query for resource collection when enabled.
@@ -65,8 +68,8 @@ final class PaginationExtension implements ContextAwareQueryResultCollectionExte
     public function __construct(ManagerRegistry $managerRegistry, /* ResourceMetadataFactoryInterface */ $resourceMetadataFactory, /* Pagination */ $pagination)
     {
         if ($resourceMetadataFactory instanceof RequestStack && $pagination instanceof ResourceMetadataFactoryInterface) {
-            @trigger_error(sprintf('Passing an instance of "%s" as second argument of "%s" is deprecated since API Platform 2.4 and will not be possible anymore in API Platform 3. Pass an instance of "%s" instead.', RequestStack::class, self::class, ResourceMetadataFactoryInterface::class), E_USER_DEPRECATED);
-            @trigger_error(sprintf('Passing an instance of "%s" as third argument of "%s" is deprecated since API Platform 2.4 and will not be possible anymore in API Platform 3. Pass an instance of "%s" instead.', ResourceMetadataFactoryInterface::class, self::class, Pagination::class), E_USER_DEPRECATED);
+            @trigger_error(sprintf('Passing an instance of "%s" as second argument of "%s" is deprecated since API Platform 2.4 and will not be possible anymore in API Platform 3. Pass an instance of "%s" instead.', RequestStack::class, self::class, ResourceMetadataFactoryInterface::class), \E_USER_DEPRECATED);
+            @trigger_error(sprintf('Passing an instance of "%s" as third argument of "%s" is deprecated since API Platform 2.4 and will not be possible anymore in API Platform 3. Pass an instance of "%s" instead.', ResourceMetadataFactoryInterface::class, self::class, Pagination::class), \E_USER_DEPRECATED);
 
             $this->requestStack = $resourceMetadataFactory;
             $resourceMetadataFactory = $pagination;
@@ -89,7 +92,7 @@ final class PaginationExtension implements ContextAwareQueryResultCollectionExte
 
             foreach ($legacyPaginationArgs as $pos => $arg) {
                 if (\array_key_exists($pos, $args)) {
-                    @trigger_error(sprintf('Passing "$%s" arguments is deprecated since API Platform 2.4 and will not be possible anymore in API Platform 3. Pass an instance of "%s" as third argument instead.', implode('", "$', array_column($legacyPaginationArgs, 'arg_name')), Paginator::class), E_USER_DEPRECATED);
+                    @trigger_error(sprintf('Passing "$%s" arguments is deprecated since API Platform 2.4 and will not be possible anymore in API Platform 3. Pass an instance of "%s" as third argument instead.', implode('", "$', array_column($legacyPaginationArgs, 'arg_name')), Paginator::class), \E_USER_DEPRECATED);
 
                     if (!((null === $arg['default'] && null === $args[$pos]) || \call_user_func("is_{$arg['type']}", $args[$pos]))) {
                         throw new InvalidArgumentException(sprintf('The "$%s" argument is expected to be a %s%s.', $arg['arg_name'], $arg['type'], null === $arg['default'] ? ' or null' : ''));
@@ -161,8 +164,8 @@ final class PaginationExtension implements ContextAwareQueryResultCollectionExte
             $query->setHint(CountWalker::HINT_DISTINCT, false);
         }
 
-        $doctrineOrmPaginator = new DoctrineOrmPaginator($query, $this->shouldDoctrinePaginatorFetchJoinCollection($queryBuilder, $resourceClass, $operationName));
-        $doctrineOrmPaginator->setUseOutputWalkers($this->shouldDoctrinePaginatorUseOutputWalkers($queryBuilder, $resourceClass, $operationName));
+        $doctrineOrmPaginator = new DoctrineOrmPaginator($query, $this->shouldDoctrinePaginatorFetchJoinCollection($queryBuilder, $resourceClass, $operationName, $context));
+        $doctrineOrmPaginator->setUseOutputWalkers($this->shouldDoctrinePaginatorUseOutputWalkers($queryBuilder, $resourceClass, $operationName, $context));
 
         if (null === $this->requestStack) {
             $isPartialEnabled = $this->pagination->isPartialEnabled($resourceClass, $operationName, $context);
@@ -221,7 +224,7 @@ final class PaginationExtension implements ContextAwareQueryResultCollectionExte
             $maxItemsPerPage = $resourceMetadata->getCollectionOperationAttribute($operationName, 'maximum_items_per_page', null, true);
 
             if (null !== $maxItemsPerPage) {
-                @trigger_error('The "maximum_items_per_page" option has been deprecated since API Platform 2.5 in favor of "pagination_maximum_items_per_page" and will be removed in API Platform 3.', E_USER_DEPRECATED);
+                @trigger_error('The "maximum_items_per_page" option has been deprecated since API Platform 2.5 in favor of "pagination_maximum_items_per_page" and will be removed in API Platform 3.', \E_USER_DEPRECATED);
             }
 
             $maxItemsPerPage = $resourceMetadata->getCollectionOperationAttribute($operationName, 'pagination_maximum_items_per_page', $maxItemsPerPage ?? $this->maximumItemPerPage, true);
@@ -271,7 +274,7 @@ final class PaginationExtension implements ContextAwareQueryResultCollectionExte
         }
 
         if ($clientEnabled && $request) {
-            $enabled = filter_var($this->getPaginationParameter($request, $this->partialParameterName, $enabled), FILTER_VALIDATE_BOOLEAN);
+            $enabled = filter_var($this->getPaginationParameter($request, $this->partialParameterName, $enabled), \FILTER_VALIDATE_BOOLEAN);
         }
 
         return $enabled;
@@ -283,7 +286,7 @@ final class PaginationExtension implements ContextAwareQueryResultCollectionExte
         $clientEnabled = $resourceMetadata->getCollectionOperationAttribute($operationName, 'pagination_client_enabled', $this->clientEnabled, true);
 
         if ($clientEnabled) {
-            $enabled = filter_var($this->getPaginationParameter($request, $this->enabledParameterName, $enabled), FILTER_VALIDATE_BOOLEAN);
+            $enabled = filter_var($this->getPaginationParameter($request, $this->enabledParameterName, $enabled), \FILTER_VALIDATE_BOOLEAN);
         }
 
         return $enabled;
@@ -295,7 +298,7 @@ final class PaginationExtension implements ContextAwareQueryResultCollectionExte
             return \array_key_exists($parameterName, $paginationAttribute) ? $paginationAttribute[$parameterName] : $default;
         }
 
-        return $request->query->get($parameterName, $default);
+        return $request->query->all()[$parameterName] ?? $default;
     }
 
     private function addCountToContext(QueryBuilder $queryBuilder, array $context): array
@@ -314,12 +317,16 @@ final class PaginationExtension implements ContextAwareQueryResultCollectionExte
     /**
      * Determines the value of the $fetchJoinCollection argument passed to the Doctrine ORM Paginator.
      */
-    private function shouldDoctrinePaginatorFetchJoinCollection(QueryBuilder $queryBuilder, string $resourceClass = null, string $operationName = null): bool
+    private function shouldDoctrinePaginatorFetchJoinCollection(QueryBuilder $queryBuilder, string $resourceClass = null, string $operationName = null, array $context = []): bool
     {
         if (null !== $resourceClass) {
             $resourceMetadata = $this->resourceMetadataFactory->create($resourceClass);
 
-            if (null !== $fetchJoinCollection = $resourceMetadata->getCollectionOperationAttribute($operationName, 'pagination_fetch_join_collection', null, true)) {
+            if (isset($context['collection_operation_name']) && null !== $fetchJoinCollection = $resourceMetadata->getCollectionOperationAttribute($operationName, 'pagination_fetch_join_collection', null, true)) {
+                return $fetchJoinCollection;
+            }
+
+            if (isset($context['graphql_operation_name']) && null !== $fetchJoinCollection = $resourceMetadata->getGraphqlAttribute($operationName, 'pagination_fetch_join_collection', null, true)) {
                 return $fetchJoinCollection;
             }
         }
@@ -345,12 +352,16 @@ final class PaginationExtension implements ContextAwareQueryResultCollectionExte
     /**
      * Determines whether the Doctrine ORM Paginator should use output walkers.
      */
-    private function shouldDoctrinePaginatorUseOutputWalkers(QueryBuilder $queryBuilder, string $resourceClass = null, string $operationName = null): bool
+    private function shouldDoctrinePaginatorUseOutputWalkers(QueryBuilder $queryBuilder, string $resourceClass = null, string $operationName = null, array $context = []): bool
     {
         if (null !== $resourceClass) {
             $resourceMetadata = $this->resourceMetadataFactory->create($resourceClass);
 
-            if (null !== $useOutputWalkers = $resourceMetadata->getCollectionOperationAttribute($operationName, 'pagination_use_output_walkers', null, true)) {
+            if (isset($context['collection_operation_name']) && null !== $useOutputWalkers = $resourceMetadata->getCollectionOperationAttribute($operationName, 'pagination_use_output_walkers', null, true)) {
+                return $useOutputWalkers;
+            }
+
+            if (isset($context['graphql_operation_name']) && null !== $useOutputWalkers = $resourceMetadata->getGraphqlAttribute($operationName, 'pagination_use_output_walkers', null, true)) {
                 return $useOutputWalkers;
             }
         }

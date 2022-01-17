@@ -54,7 +54,7 @@ class ObjectNormalizer extends AbstractObjectNormalizer
      */
     public function hasCacheableSupportsMethod(): bool
     {
-        return __CLASS__ === \get_class($this);
+        return __CLASS__ === static::class;
     }
 
     /**
@@ -82,14 +82,14 @@ class ObjectNormalizer extends AbstractObjectNormalizer
             $name = $reflMethod->name;
             $attributeName = null;
 
-            if (0 === strpos($name, 'get') || 0 === strpos($name, 'has')) {
+            if (str_starts_with($name, 'get') || str_starts_with($name, 'has')) {
                 // getters and hassers
                 $attributeName = substr($name, 3);
 
                 if (!$reflClass->hasProperty($attributeName)) {
                     $attributeName = lcfirst($attributeName);
                 }
-            } elseif (0 === strpos($name, 'is')) {
+            } elseif (str_starts_with($name, 'is')) {
                 // issers
                 $attributeName = substr($name, 2);
 
@@ -106,8 +106,20 @@ class ObjectNormalizer extends AbstractObjectNormalizer
         $checkPropertyInitialization = \PHP_VERSION_ID >= 70400;
 
         // properties
-        foreach ($reflClass->getProperties(\ReflectionProperty::IS_PUBLIC) as $reflProperty) {
-            if ($checkPropertyInitialization && !$reflProperty->isInitialized($object)) {
+        foreach ($reflClass->getProperties() as $reflProperty) {
+            $isPublic = $reflProperty->isPublic();
+
+            if ($checkPropertyInitialization) {
+                if (!$isPublic) {
+                    $reflProperty->setAccessible(true);
+                }
+                if (!$reflProperty->isInitialized($object)) {
+                    unset($attributes[$reflProperty->name]);
+                    continue;
+                }
+            }
+
+            if (!$isPublic) {
                 continue;
             }
 

@@ -11,7 +11,7 @@
 
 namespace Symfony\Bundle\FrameworkBundle\Templating\Helper;
 
-@trigger_error('The '.CodeHelper::class.' class is deprecated since version 4.3 and will be removed in 5.0; use Twig instead.', E_USER_DEPRECATED);
+@trigger_error('The '.CodeHelper::class.' class is deprecated since version 4.3 and will be removed in 5.0; use Twig instead.', \E_USER_DEPRECATED);
 
 use Symfony\Component\HttpKernel\Debug\FileLinkFormatter;
 use Symfony\Component\Templating\Helper\Helper;
@@ -63,8 +63,8 @@ class CodeHelper extends Helper
 
     public function abbrMethod($method)
     {
-        if (false !== strpos($method, '::')) {
-            list($class, $method) = explode('::', $method, 2);
+        if (str_contains($method, '::')) {
+            [$class, $method] = explode('::', $method, 2);
             $result = sprintf('%s::%s()', $this->abbrClass($class), $method);
         } elseif ('Closure' === $method) {
             $result = sprintf('<abbr title="%s">%1$s</abbr>', $method);
@@ -93,7 +93,7 @@ class CodeHelper extends Helper
             } elseif ('array' === $item[0]) {
                 $formattedValue = sprintf('<em>array</em>(%s)', \is_array($item[1]) ? $this->formatArgs($item[1]) : $item[1]);
             } elseif ('string' === $item[0]) {
-                $formattedValue = sprintf("'%s'", htmlspecialchars($item[1], ENT_QUOTES, $this->getCharset()));
+                $formattedValue = sprintf("'%s'", htmlspecialchars($item[1], \ENT_QUOTES, $this->getCharset()));
             } elseif ('null' === $item[0]) {
                 $formattedValue = '<em>null</em>';
             } elseif ('boolean' === $item[0]) {
@@ -101,7 +101,7 @@ class CodeHelper extends Helper
             } elseif ('resource' === $item[0]) {
                 $formattedValue = '<em>resource</em>';
             } else {
-                $formattedValue = str_replace("\n", '', var_export(htmlspecialchars((string) $item[1], ENT_QUOTES, $this->getCharset()), true));
+                $formattedValue = str_replace("\n", '', var_export(htmlspecialchars((string) $item[1], \ENT_QUOTES, $this->getCharset()), true));
             }
 
             $result[] = \is_int($key) ? $formattedValue : sprintf("'%s' => %s", $key, $formattedValue);
@@ -125,7 +125,7 @@ class CodeHelper extends Helper
                 $finfo = new \finfo();
 
                 // Check if the file is an application/octet-stream (eg. Phar file) because highlight_file cannot parse these files
-                if ('application/octet-stream' === $finfo->file($file, FILEINFO_MIME_TYPE)) {
+                if ('application/octet-stream' === $finfo->file($file, \FILEINFO_MIME_TYPE)) {
                     return '';
                 }
             }
@@ -159,12 +159,12 @@ class CodeHelper extends Helper
      */
     public function formatFile($file, $line, $text = null)
     {
-        $flags = ENT_QUOTES | ENT_SUBSTITUTE;
+        $flags = \ENT_QUOTES | \ENT_SUBSTITUTE;
 
         if (null === $text) {
             $file = trim($file);
             $fileStr = $file;
-            if (0 === strpos($fileStr, $this->rootDir)) {
+            if (str_starts_with($fileStr, $this->rootDir)) {
                 $fileStr = str_replace(['\\', $this->rootDir], ['/', ''], $fileStr);
                 $fileStr = htmlspecialchars($fileStr, $flags, $this->charset);
                 $fileStr = sprintf('<abbr title="%s">kernel.project_dir</abbr>/%s', htmlspecialchars($this->rootDir, $flags, $this->charset), $fileStr);

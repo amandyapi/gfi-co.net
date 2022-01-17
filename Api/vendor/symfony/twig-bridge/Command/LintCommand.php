@@ -35,6 +35,7 @@ use Twig\Source;
 class LintCommand extends Command
 {
     protected static $defaultName = 'lint:twig';
+    protected static $defaultDescription = 'Lint a Twig template and outputs encountered errors';
 
     private $twig;
 
@@ -48,7 +49,7 @@ class LintCommand extends Command
     protected function configure()
     {
         $this
-            ->setDescription('Lints a template and outputs encountered errors')
+            ->setDescription(self::$defaultDescription)
             ->addOption('format', null, InputOption::VALUE_REQUIRED, 'The output format', 'txt')
             ->addOption('show-deprecations', null, InputOption::VALUE_NONE, 'Show deprecations as errors')
             ->addArgument('filename', InputArgument::IS_ARRAY, 'A file, a directory or "-" for reading from STDIN')
@@ -85,13 +86,6 @@ EOF
         }
 
         if (!$filenames) {
-            // @deprecated to be removed in 5.0
-            if (0 === ftell(STDIN)) {
-                @trigger_error('Piping content from STDIN to the "lint:twig" command without passing the dash symbol "-" as argument is deprecated since Symfony 4.4.', E_USER_DEPRECATED);
-
-                return $this->display($input, $output, $io, [$this->validate(file_get_contents('php://stdin'), uniqid('sf_', true))]);
-            }
-
             $loader = $this->twig->getLoader();
             if ($loader instanceof FilesystemLoader) {
                 $paths = [];
@@ -108,9 +102,9 @@ EOF
 
         if ($showDeprecations) {
             $prevErrorHandler = set_error_handler(static function ($level, $message, $file, $line) use (&$prevErrorHandler) {
-                if (E_USER_DEPRECATED === $level) {
+                if (\E_USER_DEPRECATED === $level) {
                     $templateLine = 0;
-                    if (preg_match('/ at line (\d+) /', $message, $matches)) {
+                    if (preg_match('/ at line (\d+)[ .]/', $message, $matches)) {
                         $templateLine = $matches[1];
                     }
 
@@ -144,7 +138,7 @@ EOF
         return $filesInfo;
     }
 
-    protected function findFiles($filename)
+    protected function findFiles(string $filename)
     {
         if (is_file($filename)) {
             return [$filename];
@@ -152,7 +146,7 @@ EOF
             return Finder::create()->files()->in($filename)->name('*.twig');
         }
 
-        throw new RuntimeException(sprintf('File or directory "%s" is not readable', $filename));
+        throw new RuntimeException(sprintf('File or directory "%s" is not readable.', $filename));
     }
 
     private function validate(string $template, string $file): array
@@ -221,12 +215,12 @@ EOF
             }
         });
 
-        $output->writeln(json_encode($filesInfo, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
+        $output->writeln(json_encode($filesInfo, \JSON_PRETTY_PRINT | \JSON_UNESCAPED_SLASHES));
 
         return min($errors, 1);
     }
 
-    private function renderException(OutputInterface $output, string $template, Error $exception, string $file = null)
+    private function renderException(SymfonyStyle $output, string $template, Error $exception, string $file = null)
     {
         $line = $exception->getTemplateLine();
 
@@ -234,6 +228,14 @@ EOF
             $output->text(sprintf('<error> ERROR </error> in %s (line %s)', $file, $line));
         } else {
             $output->text(sprintf('<error> ERROR </error> (line %s)', $line));
+        }
+
+        // If the line is not known (this might happen for deprecations if we fail at detecting the line for instance),
+        // we render the message without context, to ensure the message is displayed.
+        if ($line <= 0) {
+            $output->text(sprintf('<error> >> %s</error> ', $exception->getRawMessage()));
+
+            return;
         }
 
         foreach ($this->getContext($template, $line) as $lineNumber => $code) {

@@ -76,7 +76,7 @@ class ContextListener extends AbstractListener implements ListenerInterface
             $this->dispatcher = $dispatcher;
         }
 
-        $this->trustResolver = $trustResolver ?: new AuthenticationTrustResolver(AnonymousToken::class, RememberMeToken::class);
+        $this->trustResolver = $trustResolver ?? new AuthenticationTrustResolver(AnonymousToken::class, RememberMeToken::class);
         $this->sessionTrackerEnabler = $sessionTrackerEnabler;
     }
 
@@ -89,7 +89,7 @@ class ContextListener extends AbstractListener implements ListenerInterface
      */
     public function setLogoutOnUserChange($logoutOnUserChange)
     {
-        @trigger_error(sprintf('The "%s()" method is deprecated since Symfony 4.1.', __METHOD__), E_USER_DEPRECATED);
+        @trigger_error(sprintf('The "%s()" method is deprecated since Symfony 4.1.', __METHOD__), \E_USER_DEPRECATED);
     }
 
     /**
@@ -115,10 +115,10 @@ class ContextListener extends AbstractListener implements ListenerInterface
 
         if (null !== $session) {
             $usageIndexValue = method_exists(Request::class, 'getPreferredFormat') && $session instanceof Session ? $usageIndexReference = &$session->getUsageIndex() : 0;
-            $sessionId = $session->getId();
+            $sessionId = $request->cookies->get($session->getName());
             $token = $session->get($this->sessionKey);
 
-            if ($this->sessionTrackerEnabler && $session->getId() === $sessionId) {
+            if ($this->sessionTrackerEnabler && \in_array($sessionId, [true, $session->getId()], true)) {
                 $usageIndexReference = $usageIndexValue;
             }
         }
@@ -218,10 +218,15 @@ class ContextListener extends AbstractListener implements ListenerInterface
 
         $userNotFoundByProvider = false;
         $userDeauthenticated = false;
+        $userClass = \get_class($user);
 
         foreach ($this->userProviders as $provider) {
             if (!$provider instanceof UserProviderInterface) {
                 throw new \InvalidArgumentException(sprintf('User provider "%s" must implement "%s".', \get_class($provider), UserProviderInterface::class));
+            }
+
+            if (!$provider->supportsClass($userClass)) {
+                continue;
             }
 
             try {
@@ -287,7 +292,7 @@ class ContextListener extends AbstractListener implements ListenerInterface
             return null;
         }
 
-        throw new \RuntimeException(sprintf('There is no user provider for user "%s".', \get_class($user)));
+        throw new \RuntimeException(sprintf('There is no user provider for user "%s". Shouldn\'t the "supportsClass()" method of your user provider return true for this classname?', $userClass));
     }
 
     private function safelyUnserialize(string $serializedToken)
@@ -323,7 +328,7 @@ class ContextListener extends AbstractListener implements ListenerInterface
     /**
      * @internal
      */
-    public static function handleUnserializeCallback($class)
+    public static function handleUnserializeCallback(string $class)
     {
         throw new \ErrorException('Class not found: '.$class, 0x37313bc);
     }
