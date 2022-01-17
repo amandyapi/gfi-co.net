@@ -46,3 +46,23 @@ articleNew:
     path: /edition/articles
     controller: App\Controller\ArticleController::save
     methods: ["POST"]
+
+
+## MAIL
+
+mailGetAll:
+    path: /mails
+    controller: App\Controller\MailController::getAll
+    methods: ["GET"]
+
+mailGetOne:
+    path: /mails/{id}
+    controller: App\Controller\MailController::getOne
+    methods: ["GET"]
+    requirements:
+        id: '\d+'
+
+mailSendOne:
+    path: /mails
+    controller: App\Controller\MailController::sendOneMail
+    methods: ["POST"]

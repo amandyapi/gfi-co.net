@@ -7,7 +7,6 @@ use App\Repository\MailRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
  * @ORM\Entity(repositoryClass=MailRepository::class)
  */
 class Mail
@@ -20,34 +19,40 @@ class Mail
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(name="senderFullName",type="string", length=100)
      */
     private $senderFullName;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(name="senderMail",type="string", length=100)
      */
     private $senderMail;
 
     /**
-     * @ORM\Column(type="string", length=25, nullable=true)
+     * @ORM\Column(name="senderContact",type="string", length=25, nullable=true)
      */
     private $senderContact;
 
     /**
-     * @ORM\Column(type="string", length=60)
+     * @ORM\Column(name="title",type="string", length=60)
      */
     private $title;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(name="content",type="text")
      */
     private $content;
 
     /**
-     * @ORM\Column(type="string", length=25)
+     * @ORM\Column(name="createTime",type="string", length=25)
      */
     private $createTime;
+
+    public function __construct()
+    {
+        $now = new \DateTime('NOW');
+        $this->createTime = $now->format('Y-m-d\TH:i:s.u');
+    }
 
     public function getId(): ?int
     {

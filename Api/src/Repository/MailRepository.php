@@ -19,32 +19,57 @@ class MailRepository extends ServiceEntityRepository
         parent::__construct($registry, Mail::class);
     }
 
-    // /**
-    //  * @return Mail[] Returns an array of Mail objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function findMails()
     {
-        return $this->createQueryBuilder('m')
-            ->andWhere('m.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('m.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+        $result = null;
+        $conn = $this->getEntityManager()->getConnection();
 
-    /*
-    public function findOneBySomeField($value): ?Mail
-    {
-        return $this->createQueryBuilder('m')
-            ->andWhere('m.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        $sql = 'SELECT * 
+                FROM mail m';
+
+        $stmt = $conn->prepare($sql);
+
+        $stmt->execute();
+
+        $result = $stmt->fetchAll();
+        return $result;
     }
-    */
+
+    public function findMail($id)
+    {
+        $result = null;
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = 'SELECT *
+                FROM mail m
+                WHERE m.id = :id';
+
+        $stmt = $conn->prepare($sql);
+
+        $stmt->execute([
+            'id' => $id,
+        ]);
+
+        $result = $stmt->fetch();
+        return $result;
+    }
+    
+    public function findArticleByLang($lang)
+    {
+        $result = null;
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = 'SELECT *
+                FROM article a
+                WHERE a.lang = :lang';
+
+        $stmt = $conn->prepare($sql);
+
+        $stmt->execute([
+            'lang' => $lang,
+        ]);
+
+        $result = $stmt->fetch();
+        return $result;
+    }
 }
