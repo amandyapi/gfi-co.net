@@ -42,5 +42,82 @@ class PageController extends AbstractController
         return $this->render($template); 
     }
 
+    public function about($lang)
+    {
+
+        $template = 'about/about-'.$lang.'.html.twig';            
+        return $this->render($template); 
+    }
+
+    public function team($lang)
+    {
+
+        $template = 'team/team-'.$lang.'.html.twig';            
+        return $this->render($template); 
+    }
+
+    public function prestations($lang)
+    {
+
+        $template = 'prestations/prestations-'.$lang.'.html.twig';            
+        return $this->render($template); 
+    }
+
+    public function prestationsInfos($lang, $slug)
+    {
+
+        $template = 'prestations/prestations-info-'.$lang.'.html.twig';            
+        return $this->render($template); 
+    }
+
+    public function projects($lang)
+    {
+
+        $template = 'projects/projects-'.$lang.'.html.twig';            
+        return $this->render($template); 
+    }
+
+    public function projectsInfos($lang, $slug)
+    {
+
+        $template = 'projects/projects-info-'.$lang.'.html.twig';            
+        return $this->render($template); 
+    }
+
+    public function concepts($lang)
+    {
+
+        $template = 'concepts/concepts-'.$lang.'.html.twig';            
+        return $this->render($template); 
+    }
+
+    public function conceptsInfos($lang, $slug)
+    {
+
+        $template = 'concepts/concepts-info-'.$lang.'.html.twig';            
+        return $this->render($template); 
+    }
+
+    public function articles($lang)
+    {
+
+        $template = 'articles/articles-'.$lang.'.html.twig';            
+        return $this->render($template); 
+    }
+
+    public function articlesInfo($lang, $slug)
+    {
+
+        $template = 'articles/articles-info-'.$lang.'.html.twig';            
+        return $this->render($template); 
+    }
+
+    public function contact($lang, $slug)
+    {
+
+        $template = 'contacts/contact-'.$lang.'.html.twig';            
+        return $this->render($template); 
+    }
+
 	
 }
