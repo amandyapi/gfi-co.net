@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Routes } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  lang: any = {};
+
+  constructor(
+    private actRoute: ActivatedRoute
+    ) {
+      console.log('Home')
+      this.lang = this.actRoute.snapshot.params['id'];
+      console.log('lang', this.lang);
+    }
 
   ngOnInit(): void {
   }

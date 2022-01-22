@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ConceptRoutingModule } from './concept-routing.module';
 import { ConceptListComponent } from './concept-list/concept-list.component';
 import { ConceptInfoComponent } from './concept-info/concept-info.component';
-
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -13,7 +13,8 @@ import { ConceptInfoComponent } from './concept-info/concept-info.component';
   ],
   imports: [
     CommonModule,
-    ConceptRoutingModule
+    ConceptRoutingModule,
+    SharedModule
   ]
 })
 export class ConceptModule { }

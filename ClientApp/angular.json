@@ -31,10 +31,11 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/assets/css/libraries.css",
+              "src/assets/css/style.css"
             ],
             "scripts": [
-              "node_modules/jquery/dist/jquery.js",
+              "src/assets/js/jquery-3.5.1.min.js",
               "src/assets/js/plugins.js",
               "src/assets/js/main.js"
             ]
