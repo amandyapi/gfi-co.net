@@ -1,0 +1,15 @@
+{% extends 'layout-en.html.twig' %}
+
+{% block title %}Home
+{% endblock %}
+
+{% block content %}
+    <!-- ============================
+        Slider
+    ============================== -->
+    <section class="slider slider-layout1">
+        <video loop="true" autoplay="autoplay" preload="auto" style="width: 100%">
+            <source src="{{ asset('assets/videos/gfi-home.mp4') }}" type="video/mp4">
+        </video>
+    </section>
+{% endblock %}
