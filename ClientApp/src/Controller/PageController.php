@@ -32,7 +32,7 @@ class PageController extends AbstractController
         $this->mailer = $mailer;
     }
 
-    public function root()
+    public function firstHome()
     {
         return $this->redirectToRoute('gfi-root');
     }
