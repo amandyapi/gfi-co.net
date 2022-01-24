@@ -1,4 +1,8 @@
 ## PAGES
+gfi-root:
+    path: /
+    controller: App\Controller\PageController::root
+
 gfi-home:
     path: /{lang}/home
     controller: App\Controller\PageController::home

@@ -19,6 +19,24 @@ class ArticleRepository extends ServiceEntityRepository
         parent::__construct($registry, Article::class);
     }
 
+    public function findLastArticles($lim)
+    {
+        $result = null;
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = 'SELECT *
+                FROM article a
+                ORDER BY a.id DESC
+                LIMIT 3';
+
+        $stmt = $conn->prepare($sql);
+
+        $stmt->execute();
+
+        $result = $stmt->fetchAll();
+        return $result;
+    }
+
     public function findArticles()
     {
         $result = null;

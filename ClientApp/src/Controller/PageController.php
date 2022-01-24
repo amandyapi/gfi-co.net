@@ -32,14 +32,24 @@ class PageController extends AbstractController
         $this->mailer = $mailer;
     }
 
+    public function root()
+    {
+        return $this->redirectToRoute('gfi-root');
+    }
+
     public function home($lang)
     {
-        /*$articles = $this->getDoctrine()
+        $recentArticles = [];
+        $recentArticles = $this->getDoctrine()
                       ->getRepository(Article::class)
-                      ->findArticles();*/
+                      ->findLastArticles(3);
+        //var_dump($recentArticles);die();
 
         $template = 'home/home-'.$lang.'.html.twig';            
-        return $this->render($template); 
+        return $this->render($template, [
+            'lang' => $lang,
+            'recentArticles' => $recentArticles,
+        ]); 
     }
 
     public function about($lang)
