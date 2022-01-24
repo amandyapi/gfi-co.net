@@ -112,10 +112,10 @@ class PageController extends AbstractController
         return $this->render($template); 
     }
 
-    public function contact($lang, $slug)
+    public function contact($lang)
     {
 
-        $template = 'contacts/contact-'.$lang.'.html.twig';            
+        $template = 'contacts/contacts-'.$lang.'.html.twig';            
         return $this->render($template); 
     }
 

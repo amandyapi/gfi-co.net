@@ -149,15 +149,9 @@
                     <i class="icon-globe mr-1" ></i> <span>English</span>
                   </button>
                   <div class="dropdown-menu" aria-labelledby="langDrobdown">
-                    <a class="dropdown-item" href="{{ path('gfi-home', { 'lang': 'en' }) }}">English</a>
-                    <a class="dropdown-item" href="{{ path('gfi-home', { 'lang': 'fr' }) }}">Français</a>
+                    <a class="dropdown-item">English</a>
+                    <a class="dropdown-item" onclick="changeLang('en')">Français</a>
                   </div>
-                </li>
-                <li>
-                  <form class="header-search__form">
-                    <input type="text" placeholder="Search..." class="form-control">
-                    <button class="header-search__btn"><i class="fa fa-search"></i></button>
-                  </form>
                 </li>
               </ul>
             </div><!-- /.header-actions -->
@@ -293,6 +287,31 @@
   <script src="{{ asset('assets/js/jquery-3.5.1.min.js') }}"></script>
   <script src="{{ asset('assets/js/plugins.js') }}"></script>
   <script src="{{ asset('assets/js/main.js') }}"></script>
+
+  <script>
+  console.log('Redirect!!!');
+      function changeLang(lang) {
+        console.log('Redirect!!!');
+        var pathname = window.location.pathname; 
+        var _pathname = '';
+        var url      = window.location.href;  
+        var redirect = '';   
+        var origin   = window.location.origin;
+
+        var pageLang = '';
+        let position = pathname.search(lang);
+
+        if(position > -1)
+        {
+           _pathname = pathname.replace('/fr/', '/en/');
+            redirect = origin + _pathname;
+
+            window.location.href = redirect;  
+        }
+       
+        //console.log('newPath', newPath);
+      }
+  </script>
 </body>
 
 </html>
