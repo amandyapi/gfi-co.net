@@ -1,0 +1,49 @@
+{% extends 'layout-fr.html.twig' %}
+
+{% block title %}Concepts
+{% endblock %}
+
+{% block content %}
+<section class="page-title page-title-layout1 bg-overlay bg-parallax">
+    <div class="bg-img"><img src="{{ asset('assets/images/page-titles/8.jpg') }}" alt="background"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-9">
+          <h1 class="pagetitle__heading">Nos Concepts</h1>
+        </div>
+      </div>
+    </div>
+  </section>
+      
+  <section class="portfolio-grid">
+    <div class="container">
+      
+      <div id="filtered-items-wrap" class="row">
+        <!-- portfolio item #1 -->
+        <div class="col-sm-6 col-md-6 col-lg-6 mix filter-renovations">
+          <div class="portfolio-item">
+            <div class="portfolio-item__img">
+              <img src="{{ asset('assets/images/projets/pearl/1.jpg') }}" alt="portfolio img">
+            </div><!-- /.portfolio-img -->
+            <div class="portfolio-item__content">
+              <h4 class="portfolio-item__title"><a href="#">Villa THE PEARL</a></h4>
+              
+            </div><!-- /.portfolio-content -->
+          </div><!-- /.portfolio-item -->
+        </div><!-- /.col-lg-4 -->
+        <!-- portfolio item #2 -->
+        <div class="col-sm-6 col-md-6 col-lg-6 mix filter-interior">
+          <div class="portfolio-item">
+            <div class="portfolio-item__img">
+              <img src="{{ asset('assets/images/projets/bigpearl/1.jpg') }}" alt="portfolio img">
+            </div><!-- /.portfolio-img -->
+            <div class="portfolio-item__content">
+              <h4 class="portfolio-item__title"><a href="#">Villa THE BIG PEARL</a></h4>
+              
+            </div><!-- /.portfolio-content -->
+          </div><!-- /.portfolio-item -->
+        </div><!-- /.col-lg-4 -->
+        
+    </div><!-- /.container -->
+  </section><!-- /.portfolio Grid -->   
+{% endblock %}

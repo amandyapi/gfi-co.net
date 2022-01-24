@@ -1,0 +1,135 @@
+## PAGES   
+gfi-home:
+    path: /{lang}/home
+    controller: App\Controller\PageController::home
+
+gfi-about:
+    path: /{lang}/about
+    controller: App\Controller\PageController::about
+
+gfi-team:
+    path: /{lang}/team
+    controller: App\Controller\PageController::team
+
+gfi-prestations:
+    path: /{lang}/prestations
+    controller: App\Controller\PageController::prestations
+
+gfi-prestations-info:
+    path: /{lang}/prestations/{slug}
+    controller: App\Controller\PageController::prestationsInfos
+
+gfi-project:
+    path: /{lang}/realisations
+    controller: App\Controller\PageController::projects
+
+gfi-project-info:
+    path: /{lang}/realisations/{slug}
+    controller: App\Controller\PageController::projectsInfos
+
+gfi-concept:
+    path: /{lang}/concepts
+    controller: App\Controller\PageController::concepts
+
+gfi-concept-info:
+    path: /{lang}/concepts/{slug}
+    controller: App\Controller\PageController::conceptsInfos
+
+gfi-article:
+    path: /{lang}/articles
+    controller: App\Controller\PageController::articles
+
+gfi-article-info:
+    path: /{lang}/articles/{slug}
+    controller: App\Controller\PageController::articlesInfo
+
+gfi-contact:
+    path: /{lang}/contact
+    controller: App\Controller\PageController::contact
+
+## USERS
+userLogin:
+    path: /security/users/login
+    controller: App\Controller\UserController::login
+    methods: ["POST"]
+
+userGetAll:
+    path: /security/users
+    controller: App\Controller\UserController::getAll
+    methods: ["GET"]
+
+userGetOne:
+    path: /security/users/{id}
+    controller: App\Controller\UserController::getOne
+    methods: ["GET"]
+    requirements:
+        id: '\d+'
+
+## ARTICLES
+
+articleGetAll:
+    path: /edition/articles
+    controller: App\Controller\ArticleController::getAll
+    methods: ["GET"]
+
+articleGetOne:
+    path: /edition/articles/{id}
+    controller: App\Controller\ArticleController::getOne
+    methods: ["GET"]
+    requirements:
+        id: '\d+'
+
+articleUpdateOne:
+    path: /edition/articles/{id}
+    controller: App\Controller\ArticleController::updateOne
+    methods: ["PUT"]
+    requirements:
+        id: '\d+'
+
+articleGetByLang:
+    path: /edition/articles/{lang}
+    controller: App\Controller\ArticleController::getAllByLang
+    methods: ["GET"]
+
+articleNew:
+    path: /edition/articles
+    controller: App\Controller\ArticleController::save
+    methods: ["POST"]
+
+
+## MAIL
+
+mailGetAll:
+    path: /mails
+    controller: App\Controller\MailController::getAll
+    methods: ["GET"]
+
+mailGetOne:
+    path: /mails/{id}
+    controller: App\Controller\MailController::getOne
+    methods: ["GET"]
+    requirements:
+        id: '\d+'
+
+mailSendOne:
+    path: /mails
+    controller: App\Controller\MailController::sendOneMail
+    methods: ["POST"]
+
+
+## PICTURES
+
+PictureGetAllByEntities:
+    path: /{entity}/pictures/{ref}
+    controller: App\Controller\PictureController::getAllByEntity
+    methods: ["GET"]
+
+PictureGetOne:
+    path: /pictures/{id}
+    controller: App\Controller\PictureController::getOne
+    methods: ["GET"]
+
+PictureAddOne:
+    path: /pictures
+    controller: App\Controller\PictureController::save
+    methods: ["POST"]
