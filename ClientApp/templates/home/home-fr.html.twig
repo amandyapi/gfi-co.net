@@ -55,13 +55,6 @@
           <div class="col-sm-12 col-md-12 col-lg-6">
             <div class="about__img">
               <img src="{{ asset('assets/images/about/1.jpg') }}" alt="about" class="img-fluid">
-              <div class="cta-banner">
-                <div class="cta-banner__icon">
-                  <i class="icon-hard-hat"></i>
-                </div>
-                <h5 class="cta-banner__title ">Découvrez notre équipe</h5>
-                <a href="{{ path('gfi-team', { 'lang': 'fr' }) }}" class="btn btn__primary btn__link"><i class="icon-arrow-right1"></i></a>
-              </div><!-- /.cta-banner -->
             </div><!-- /.about-img -->
           </div><!-- /.col-lg-6 -->
         </div><!-- /.row -->
@@ -176,7 +169,7 @@
         <div class="row">
           <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6 background-banner">
             <div class="bg-img">
-              <img src="{{ asset('assets/images/banners/1.jpg') }}" alt="banner">
+              <img src="{{ asset('assets/images/page-titles/2.jpg') }}" alt="banner">
             </div>
             
             <div class="cta-banner">
@@ -200,8 +193,8 @@
           <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6">
             <div class="inner-padding py-0">
               <div class="heading-layout2 heading-light mb-40">
-                <h3 class="heading__title">Nous vous aidons à construire et à préparer l'avenir.</h3>
-                <p class="heading__desc">En tant qu'entreprise intervenant dans tous les aspects de l'immobilier et de la construction, GFI-CO est un partenaire fiable pour l'étude et la mise en oeuvre de tous vos projets immobiliers!
+                <h3 class="heading__title">GFI-CO, Construction</h3>
+                <p class="heading__desc">En tant qu'entreprise intervenant dans tous les aspects de la construction, GFI-CO est un partenaire fiable pour l'étude et la mise en oeuvre de tous vos projets!
                 </p>
               </div><!-- /.heading -->
               <div class="d-flex flex-wrap justify-content-between fancybox-wrapper">
@@ -345,7 +338,7 @@
         </div><!-- /.row -->
         <div class="row">
           <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-end">
-            <a href="#" class="btn btn__link btn__loadMore">
+            <a href="{{ path('gfi-project', { 'lang': 'fr' }) }}" class="btn btn__link btn__loadMore">
               <span class="mr-2">Explorer Nos Projets</span> <i class="icon-arrow-right1"></i>
             </a>
           </div><!-- /.col-lg-12 -->

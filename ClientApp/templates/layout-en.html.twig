@@ -150,7 +150,7 @@
                   </button>
                   <div class="dropdown-menu" aria-labelledby="langDrobdown">
                     <a class="dropdown-item">English</a>
-                    <a class="dropdown-item" onclick="changeLang('en')">Français</a>
+                    <a class="dropdown-item" onclick="changeLang('fr')">Français</a>
                   </div>
                 </li>
               </ul>
@@ -301,12 +301,25 @@
         var pageLang = '';
         let position = pathname.search(lang);
 
-        if(position > -1)
+        if(lang == 'fr')
         {
-           _pathname = pathname.replace('/fr/', '/en/');
+          _pathname = pathname.replace('/en/', '/fr/');
+           
             redirect = origin + _pathname;
-
-            window.location.href = redirect;  
+            console.log('Redirect!!!', redirect);
+            window.location.href = redirect;
+        }
+        else if(lang == 'en')
+        {
+          _pathname = pathname.replace('/fr/', '/en/');
+           
+            redirect = origin + _pathname;
+            console.log('Redirect!!!', redirect);
+            window.location.href = redirect;
+        }
+        else
+        {
+          console.log('No Redirect!!!');
         }
        
         //console.log('newPath', newPath);

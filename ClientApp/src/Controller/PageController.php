@@ -62,7 +62,7 @@ class PageController extends AbstractController
     public function team($lang)
     {
 
-        $template = 'team/team-'.$lang.'.html.twig';            
+        $template = 'about/team-'.$lang.'.html.twig';            
         return $this->render($template); 
     }
 
@@ -110,9 +110,16 @@ class PageController extends AbstractController
 
     public function articles($lang)
     {
-
+        $articles = [];
+        $articles = $this->getDoctrine()
+                      ->getRepository(Article::class)
+                      ->findArticles(3);
+                      
         $template = 'articles/articles-'.$lang.'.html.twig';            
-        return $this->render($template); 
+        return $this->render($template, [
+            'lang' => $lang,
+            'recentArticles' => $articles,
+        ]); 
     }
 
     public function articlesInfo($lang, $slug)

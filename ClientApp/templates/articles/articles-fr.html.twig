@@ -1,0 +1,62 @@
+{% extends 'layout-fr.html.twig' %}
+
+{% block title %}News
+{% endblock %}
+
+{% block content %}
+<section class="page-title page-title-layout1 bg-overlay bg-parallax">
+    <div class="bg-img"><img src="{{ asset('assets/images/page-titles/12.jpg')}} " alt="background"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-9">
+          <h1 class="pagetitle__heading">Actualités</h1>
+        </div>
+      </div>
+    </div>
+  </section>
+      
+  <section class="blog-carousel pt-20 pb-50"> 
+    <div class="container">
+        <div class="row">
+         {% for a in recentArticles %}
+          <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="post-item">
+              <div class="post-item__img">
+                <a href="{{ path('gfi-article-info', { 'lang': 'fr', 'slug': a.slug }) }}">
+                  <img src="{{ asset('assets/uploads/articles/') }}{{a.picture}}" alt="blog image">
+                </a>
+                <div class="post-item__meta__cat">
+                  <a href="#">{{a.category}}</a>
+                </div>
+              </div>
+              <div class="post-item__content">
+                <span class="post-item__meta__date">{{a.createTime|date("d-m-Y")}}</span>
+                <h4 class="post-item__title">{{a.title|slice(0,31)}}...</a>
+                </h4>
+                <p class="post-item__desc">
+                  {{a.content|slice(0,133)|raw}}...
+                </p>
+                <a href="{{ path('gfi-article-info', { 'lang': 'fr', 'slug': a.slug }) }}" class="btn btn__secondary btn__link">
+                  <i class="icon-arrow-right1"></i>
+                  <span>Lire l'article</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+          
+        </div><!-- /.row -->
+      <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+          <nav class="pagination-area">
+            <ul class="pagination justify-content-center">
+              <li><a class="current" href="#">1</a></li>
+              <li><a href="#">2</a></li>
+              <li><a href="#"><i class="icon-arrow-right1"></i></a></li>
+            </ul>
+          </nav><!-- .pagination-area -->
+        </div><!-- /.col-lg-12 -->
+      </div><!-- /.row -->
+    </div><!-- /.container -->
+  </section><!-- /.blog carousel -->
+{% endblock %}
