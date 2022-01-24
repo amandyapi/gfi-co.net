@@ -1,6 +1,6 @@
-{% extends 'layout-en.html.twig' %}
+{% extends 'layout-fr.html.twig' %}
 
-{% block title %}Home
+{% block title %}Accueil
 {% endblock %}
 
 {% block content %}
@@ -8,8 +8,546 @@
         Slider
     ============================== -->
     <section class="slider slider-layout1">
-        <video loop="true" autoplay="autoplay" preload="auto" style="width: 100%">
+        <video loop="true" autoplay muted style="width: 100%">
             <source src="{{ asset('assets/videos/gfi-home.mp4') }}" type="video/mp4">
         </video>
     </section>
+
+    <section class="about-layout2 pb-50">
+      <div class="container">
+        <div class="row mb-50 align-items-center">
+          <div class="col-sm-12 col-md-12 col-lg-6">
+            <div class="heading-layout2 mb-20">
+              {# <h2 class="heading__subtitle">Leading The Way In Building And Civil Construction</h2> #}
+              <h3 class="heading__title">GFI-CO Militant Écologique De Projets Immobiliers Haut Standing Et De Concepts Innovants !
+              </h3>
+            </div><!-- /heading -->
+          </div><!-- /.col-lg-6 -->
+          <div class="col-sm-12 col-md-12 col-lg-5 offset-lg-1 d-flex justify-content-end counters-wrapper">
+            <!-- counter item #1 -->
+            <div class="counter-item">
+              <h4 class="counter">25</h4>
+              <p class="counter-item__desc">Projets et Concepts en vue</p>
+            </div>
+            <!-- counter item #2 -->
+            <div class="counter-item">
+              <h4 class="counter">4</h4>
+              <p class="counter-item__desc">Partenaires financiers et technique de taille</p>
+            </div>
+          </div><!-- /.col-lg-6 -->
+        </div><!-- /.row -->
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-6">
+            <p class="heading__desc mb-30">En tant qu’acteur écologique, nos projets immobiliers offrent un plan d’architecture créatif avec l'utilisation d’énergies renouvelables. Construire écologiquement est pour GFI-CO SARL un devoir d’avenir car nous sommes militants de la préservation de la vie et de la santé de nos clients. </p>
+
+            {# <p class="heading__desc">
+            The world is changing faster than ever before, Eteon constructions are threatened
+              as technology disrupts and software.
+            </p> #}
+            <ul class="list-items list-unstyled mb-20 mt-40">
+              <li>Guarantie de satisfaction à 100%</li>
+              <li>Personnel hautement qualifiés</li>
+            </ul>
+            <a href="{{ path('gfi-about', { 'lang': 'fr' }) }}" class="btn btn__primary btn__lg mb-30">
+              <i class="icon-arrow-right1"></i><span>En Savoir Plus</span>
+            </a>
+          </div><!-- /.col-lg-6 -->
+          <div class="col-sm-12 col-md-12 col-lg-6">
+            <div class="about__img">
+              <img src="{{ asset('assets/images/about/1.jpg') }}" alt="about" class="img-fluid">
+            </div><!-- /.about-img -->
+          </div><!-- /.col-lg-6 -->
+        </div><!-- /.row -->
+      </div><!-- /.container -->
+    </section>
+
+    
+    <!-- =========================== 
+      Features Carousel
+    ============================= -->
+    <section class="features-carousel pb-50 bg-gray">
+      <div class="bg-img"><img src="{{ asset('assets/images/backgrounds/map.png') }}" alt="background"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-8 offset-lg-2">
+            <div class="heading text-center mb-40">
+              {# <span class="heading__subtitle">The Best A Grade Commercial & Residential Services</span> #}
+              <h2 class="heading__title">GFI-CO, L’Expertise De L’Immobilier Écologique</h2>
+            </div><!-- /.heading -->
+          </div><!-- /.col-lg-8 -->
+        </div><!-- /.row -->
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-12">
+            <div class="slick-carousel"
+              data-slick='{"slidesToShow": 3, "slidesToScroll": 3, "arrows": false, "dots": true, "responsive": [ {"breakpoint": 992, "settings": {"slidesToShow": 2}}, {"breakpoint": 767, "settings": {"slidesToShow": 2}}, {"breakpoint": 480, "settings": {"slidesToShow": 1}}]}'>
+              <!-- Feature Item #1 -->
+              <div class="feature-item">
+                <div class="feature-item__icon">
+                  <i class="icon-brick"></i>
+                </div><!-- /.feature-item__icon -->
+                <h4 class="feature-item__title"><a href="{{ path('gfi-prestations-info', { 'lang': 'fr', 'slug': '1' }) }}">Service varié adapté à vos besoins</a></h4>
+                <p class="feature-item__desc">La sécurisation du foncier urbain constitue l'une des priorités de la politique de développement de GFI-CO SARL.</p>
+                <a href="{{ path('gfi-prestations-info', { 'lang': 'fr', 'slug': '1' }) }}" class="btn btn__secondary btn__link">
+                  <i class="icon-arrow-right1"></i><span>En savoir plus</span>
+                </a>
+              </div><!-- /.portfolio-item -->
+              <!-- Feature Item #2 -->
+              <div class="feature-item">
+                <div class="feature-item__icon">
+                  <i class="icon-floor-plan"></i>
+                </div><!-- /.feature-item__icon -->
+                <h4 class="feature-item__title"><a href="{{ path('gfi-prestations-info', { 'lang': 'fr', 'slug': '1' }) }}">Service <br/> clé en main</a></h4>
+                <p class="feature-item__desc"> S’engager à construire son logement est une décision qui ne doit pas altérer votre qualité de vie. 
+                GFI-CO vous propose un service clé en main.</p>
+                <a href="{{ path('gfi-prestations-info', { 'lang': 'fr', 'slug': '1' }) }}" class="btn btn__secondary btn__link">
+                  <i class="icon-arrow-right1"></i><span>En savoir plus</span>
+                </a>
+              </div><!-- /.portfolio-item -->
+              <!-- Feature Item #3 -->
+              <div class="feature-item">
+                <div class="feature-item__icon">
+                  <i class="icon-high-visibility"></i>
+                </div><!-- /.feature-item__icon -->
+                <h4 class="feature-item__title"><a href="{{ path('gfi-prestations-info', { 'lang': 'fr', 'slug': '1' }) }}">Service <br/> prêt à décorer</a></h4>
+                <p class="feature-item__desc">
+                Dans le but de pousser encore plus loin la satisfaction clientèle, GFI-CO vous propose un service prêt à décorer afin de personnaliser ...
+              </p>
+                <a href="{{ path('gfi-prestations-info', { 'lang': 'fr', 'slug': '1' }) }}" class="btn btn__secondary btn__link">
+                  <i class="icon-arrow-right1"></i><span>En savoir plus</span>
+                </a>
+              </div><!-- /.portfolio-item -->
+              <!-- Feature Item #4 -->
+              <div class="feature-item">
+                <div class="feature-item__icon">
+                  <i class="icon-brick"></i>
+                </div><!-- /.feature-item__icon -->
+                <h4 class="feature-item__title"><a href="{{ path('gfi-prestations-info', { 'lang': 'fr', 'slug': '1' }) }}">Architechture d'Intérieur</a></h4>
+                <p class="feature-item__desc">
+                Nos réalisations se veulent une réponse créative, spécifique, personnalisée et innovante en adéquation avec votre existentiel.
+              </p>
+                <a href="{{ path('gfi-prestations-info', { 'lang': 'fr', 'slug': '1' }) }}" class="btn btn__secondary btn__link">
+                  <i class="icon-arrow-right1"></i><span>En savoir plus</span>
+                </a>
+              </div><!-- /.portfolio-item -->
+              <!-- Feature Item #5 -->
+              <div class="feature-item">
+                <div class="feature-item__icon">
+                  <i class="icon-floor-plan"></i>
+                </div><!-- /.feature-item__icon -->
+                <h4 class="feature-item__title"><a href="{{ path('gfi-prestations-info', { 'lang': 'fr', 'slug': '1' }) }}">Réhabilitation & Rafraichissement</a></h4>
+                <p class="feature-item__desc">
+                GFI-CO SARL propose également l’ensemble des services en rafraichissement et en rénovation immobilière.
+              </p>
+                <a href="{{ path('gfi-prestations-info', { 'lang': 'fr', 'slug': '1' }) }}" class="btn btn__secondary btn__link">
+                  <i class="icon-arrow-right1"></i><span>En savoir plus</span>
+                </a>
+              </div><!-- /.portfolio-item -->
+              <!-- Feature Item #6 -->
+              <div class="feature-item">
+                <div class="feature-item__icon">
+                  <i class="icon-high-visibility"></i>
+                </div><!-- /.feature-item__icon -->
+                <h4 class="feature-item__title"><a href="{{ path('gfi-prestations-info', { 'lang': 'fr', 'slug': '1' }) }}">Gestion Immobilière (Vente/Location)</a></h4>
+                <p class="feature-item__desc">
+                Grâce à notre connaissance pointue du marché immobilier, nous trouvons pour vous les biens à louer ou à vendre correspondants à vos ...
+              </p>
+                <a href="{{ path('gfi-prestations-info', { 'lang': 'fr', 'slug': '1' }) }}" class="btn btn__secondary btn__link">
+                  <i class="icon-arrow-right1"></i><span>En savoir plus</span>
+                </a>
+              </div><!-- /.portfolio-item -->
+            </div><!-- /.carousel -->
+          </div><!-- /.col-lg-12 -->
+        </div><!-- /.row -->
+      </div><!-- /.container -->
+    </section><!-- /.Features Carousel -->
+
+    <!-- =========================
+       Banner layout 1
+      =========================== -->
+    <section class="banner-layout1 pb-100 banner-gray-top bg-secondary">
+      <div class="container-fluid col-padding-0">
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6 background-banner">
+            <div class="bg-img">
+              <img src="{{ asset('assets/images/page-titles/2.jpg') }}" alt="banner">
+            </div>
+            
+            <div class="cta-banner">
+              {# <h4 class="cta-banner__subtitle ">Savoir faire et Expérience</h4> 
+              <h5 class="cta-banner__title " style="font-size: 21px">Expérience<br>Savoir-Faire</h5>
+              <a href="#" class="btn btn__primary btn__link"><i class="icon-arrow-right1"></i></a>#}
+            </div> 
+            <div class="video__box">
+              {# <a class="video__btn video__btn-white popup-video" href="https://www.youtube.com/watch?v=nrJtHemSPW4">
+                <div class="video__player">
+                  <span class="video__player-animation"></span>
+                  <span class="video__player-animation video__player-animation-2"></span>
+                  <i class="fa fa-play"></i>
+                </div>
+              </a>#}
+              <div class="video__box-text">
+                {# <span class="color-white">Regarder la vidéo</span> #}
+              </div> 
+            </div><!-- /.video__box -->
+          </div><!-- /.col-xl-6 -->
+          <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6">
+            <div class="inner-padding py-0">
+              <div class="heading-layout2 heading-light mb-40">
+                <h3 class="heading__title">GFI-CO, Construction</h3>
+                <p class="heading__desc">En tant qu'entreprise intervenant dans tous les aspects de la construction, GFI-CO est un partenaire fiable pour l'étude et la mise en oeuvre de tous vos projets!
+                </p>
+              </div><!-- /.heading -->
+              <div class="d-flex flex-wrap justify-content-between fancybox-wrapper">
+                <!-- fancybox item #1 -->
+                <div class="fancybox-item">
+                  <div class="fancybox-item__icon">
+                    <i class="icon-measurement"></i>
+                  </div><!-- /.fancybox-icon -->
+                  <div class="fancybox-item__content">
+                    <h4 class="fancybox-item__title">Stratégie produit efficace</h4>
+                  </div><!-- /.fancybox-content -->
+                </div><!-- /.fancybox-item -->
+                <!-- fancybox item #2 -->
+                <div class="fancybox-item">
+                  <div class="fancybox-item__icon">
+                    <i class="icon-gloves"></i>
+                  </div><!-- /.fancybox-icon -->
+                  <div class="fancybox-item__content">
+                    <h4 class="fancybox-item__title">Système de contrôle qualité</h4>
+                  </div><!-- /.fancybox-content -->
+                </div><!-- /.col-lg-4 -->
+                <!-- fancybox item #3 -->
+                <div class="fancybox-item">
+                  <div class="fancybox-item__icon">
+                    <i class="icon-ladder"></i>
+                  </div><!-- /.fancybox-icon -->
+                  <div class="fancybox-item__content">
+                    <h4 class="fancybox-item__title">Projets récompensés</h4>
+                  </div><!-- /.fancybox-content -->
+                </div><!-- /.fancybox-item -->
+              </div><!-- /.row -->
+              <p class="color-white mb-20">Nous sommes prêts à vous accompagner et à vous aider à mener à bien vos projets
+              </p>
+              {# <img src="{{ asset('assets/images/about/singnture.png') }}" alt="singnture"> #}
+            </div>
+          </div><!-- /.col-xl-6 -->
+        </div><!-- /.row -->
+      </div><!-- /.container -->
+    </section><!-- /.Banner layout 1 -->
+
+    <!-- =========================== 
+      portfolio carousel 
+    ============================= -->
+    <section class="portfolio-carousel pb-60">
+      <div class="container">
+        <div class="row align-items-center mb-20">
+          <div class="col-sm-12 col-md-12 col-lg-5">
+            <h3 class="heading__title mb-20">Projets Vedettes</h3>
+          </div><!-- /.col-lg-6 -->
+          <div class="col-sm-12 col-md-12 col-lg-7">
+            <nav id="slick-filter-buttons" class="nav nav-tabs justify-content-end mt-50 mt-0-xs-sm">
+              <a href="#" class="nav__link active" data-value="all">TOUT</a>
+              <a href="#" class="nav__link" data-value="pearl">VILLA THE PEARL</a>
+              <a href="#" class="nav__link" data-value="bigpearl">VILLA THE BIG PEARL</a>
+            </nav>
+          </div><!-- /.col-lg-6 -->
+        </div><!-- /.row -->
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-12">
+            <div class="slick-carousel" id="filter-carousel"
+              data-slick='{"slidesToShow": 4, "arrows": false, "dots": true, "responsive": [ {"breakpoint": 992, "settings": {"slidesToShow": 2}}, {"breakpoint": 768, "settings": {"slidesToShow": 1}}]}'>
+              <!-- portfolio item #1 -->
+              <div class="portfolio-item pearl all">
+                <div class="portfolio-item__img">
+                  <img src="{{ asset('assets/images/projets/pearl/1.jpg') }}" alt="portfolio img">
+                </div><!-- /.portfolio-img -->
+                <div class="portfolio-item__hover">
+                  <div class="portfolio-item__content">
+                    <h4 class="portfolio-item__title"><a href="{{ path('gfi-project-info', { 'lang': 'fr', 'slug': 'pearl' }) }}">Villa The Pearl</a></h4>
+                  </div><!-- /.portfolio-content -->
+                </div><!-- /.portfolio-item__hover -->
+              </div><!-- /.portfolio-item -->
+              <!-- portfolio item #2 -->
+              <div class="portfolio-item pearl all">
+                <div class="portfolio-item__img">
+                  <img src="{{ asset('assets/images/projets/pearl/2.jpg') }}" alt="portfolio img">
+                </div><!-- /.portfolio-img -->
+                <div class="portfolio-item__hover">
+                  <div class="portfolio-item__content">
+                    <h4 class="portfolio-item__title"><a href="{{ path('gfi-project-info', { 'lang': 'fr', 'slug': 'pearl' }) }}">Villa The Pearl</a></h4>
+                  </div><!-- /.portfolio-item__hover -->
+                </div><!-- /.portfolio-content -->
+              </div><!-- /.portfolio-item -->
+              <!-- portfolio item #3 -->
+              <div class="portfolio-item pearl all">
+                <div class="portfolio-item__img">
+                  <img src="{{ asset('assets/images/projets/pearl/3.jpg') }}" alt="portfolio img">
+                </div><!-- /.portfolio-img -->
+                <div class="portfolio-item__hover">
+                  <div class="portfolio-item__content">
+                    <h4 class="portfolio-item__title"><a href="{{ path('gfi-project-info', { 'lang': 'fr', 'slug': 'pearl' }) }}">Villa The Pearl</a></h4>
+                  </div><!-- /.portfolio-content -->
+                </div><!-- /.portfolio-item__hover -->
+              </div><!-- /.portfolio-item -->
+              <!-- portfolio item #4 -->
+              <div class="portfolio-item bigpearl all">
+                <div class="portfolio-item__img">
+                  <img src="{{ asset('assets/images/projets/bigpearl/4.jpg') }}" alt="portfolio img">
+                </div><!-- /.portfolio-img -->
+                <div class="portfolio-item__hover">
+                  <div class="portfolio-item__content">
+                    <h4 class="portfolio-item__title"><a href="{{ path('gfi-project-info', { 'lang': 'fr', 'slug': 'bigpearl' }) }}">Villa The Big Pearl</a></h4>
+                  </div><!-- /.portfolio-content -->
+                </div><!-- /.portfolio-item__hover -->
+              </div><!-- /.portfolio-item -->
+              <!-- portfolio item #5 -->
+              <div class="portfolio-item bigpearl all">
+                <div class="portfolio-item__img">
+                  <img src="{{ asset('assets/images/projets/bigpearl/1.jpg') }}" alt="portfolio img">
+                </div><!-- /.portfolio-img -->
+                <div class="portfolio-item__hover">
+                  <div class="portfolio-item__content">
+                    <h4 class="portfolio-item__title"><a href="{{ path('gfi-project-info', { 'lang': 'fr', 'slug': 'bigpearl' }) }}">Villa The Big Pearl</a></h4>
+                  </div><!-- /.portfolio-content -->
+                </div><!-- /.portfolio-item__hover -->
+              </div><!-- /.portfolio-item -->
+              <!-- portfolio item #6 -->
+              <div class="portfolio-item bigpearl all">
+                <div class="portfolio-item__img">
+                  <img src="{{ asset('assets/images/projets/bigpearl/2.jpg') }}" alt="portfolio img">
+                </div><!-- /.portfolio-img -->
+                <div class="portfolio-item__hover">
+                  <div class="portfolio-item__content">
+                    <h4 class="portfolio-item__title"><a href="{{ path('gfi-project-info', { 'lang': 'fr', 'slug': 'bigpearl' }) }}">Villa The Big Pearl</a></h4>
+                  </div><!-- /.portfolio-content -->
+                </div><!-- /.portfolio-item__hover -->
+              </div><!-- /.portfolio-item -->
+              <!-- portfolio item #7 -->
+              <div class="portfolio-item bigpearl all">
+                <div class="portfolio-item__img">
+                  <img src="{{ asset('assets/images/projets/bigpearl/3.jpg') }}" alt="portfolio img">
+                </div><!-- /.portfolio-img -->
+                <div class="portfolio-item__hover">
+                  <div class="portfolio-item__content">
+                    <h4 class="portfolio-item__title"><a href="{{ path('gfi-project-info', { 'lang': 'fr', 'slug': 'bigpearl' }) }}">Villa The Big Pearl</a></h4>
+                  </div><!-- /.portfolio-content -->
+                </div><!-- /.portfolio-item__hover -->
+              </div><!-- /.portfolio-item -->
+            </div><!-- /.carousel -->
+          </div><!-- /.col-lg-12 -->
+        </div><!-- /.row -->
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-end">
+            <a href="{{ path('gfi-project', { 'lang': 'fr' }) }}" class="btn btn__link btn__loadMore">
+              <span class="mr-2">Explorer Nos Projets</span> <i class="icon-arrow-right1"></i>
+            </a>
+          </div><!-- /.col-lg-12 -->
+        </div>
+      </div><!-- /.container -->
+    </section><!-- /.portfolio carousel -->
+
+    <!-- =====================
+         Clients
+      ======================== -->
+    <section class="clients border-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-12">
+            <div class="slick-carousel"
+              data-slick='{"slidesToShow": 6, "arrows": false, "dots": false, "autoplay": true,"autoplaySpeed": 2000, "infinite": true, "responsive": [ {"breakpoint": 992, "settings": {"slidesToShow": 4}}, {"breakpoint": 767, "settings": {"slidesToShow": 3}}, {"breakpoint": 480, "settings": {"slidesToShow": 2}}]}'>
+              <div class="client">
+                <a href="#"><img src="{{ asset('assets/images/clients/sobha.jpg') }}" alt="client"></a>
+              </div><!-- /.client -->
+              <div class="client">
+                <a href="#"><img src="{{ asset('assets/images/clients/danube.jpg') }}" alt="client"></a>
+              </div><!-- /.client -->
+              <div class="client">
+                <a href="#"><img src="{{ asset('assets/images/clients/cfaci.jpg') }}" alt="client"></a>
+              </div><!-- /.client -->
+              <div class="client">
+                <a href="#"><img src="{{ asset('assets/images/clients/ufp.jpg') }}" alt="client"></a>
+              </div><!-- /.client -->
+              <div class="client">
+                <a href="#"><img src="{{ asset('assets/images/clients/mad.jpg') }}" alt="client"></a>
+              </div><!-- /.client -->
+              <div class="client">
+                <a href="#"><img src="{{ asset('assets/images/clients/arcd.jpg') }}" alt="client"></a>
+              </div><!-- /.client -->
+            </div><!-- /.carousel -->
+          </div><!-- /.col-lg-12 -->
+        </div><!-- /.row -->
+      </div><!-- /.container -->
+    </section><!-- /.clients -->
+
+    <!-- =========================
+       Banner layout 3
+      =========================== -->
+    <section class="banner-layout3 bg-overlay bg-overlay-gradient">
+      <div class="bg-img">
+        <img src="{{ asset('assets/images/banners/4.jpg') }}" alt="banner">
+      </div>
+      <div class="container">
+        <div class="row heading-layout3 heading-light mb-40">
+          <div class="col-sm-12 col-md-12 col-lg-6">
+            <h3 class="heading__title">Chef de file dans le bâtiment et la construction civile !</h3>
+          </div><!-- /.col-lg-6 -->
+          <div class="col-sm-12 col-md-12 col-lg-6">
+            <p class="heading__desc">Le monde change plus vite que jamais, les constructions d'Eteon sont menacées
+               que la technologie perturbe et les logiciels. Pourtant, ceux qui embrassent le changement prospèrent, construisent plus grand, mieux,
+               des produits plus rapides et plus solides que jamais, nous vous aidons à bâtir sur votre passé et à préparer l'avenir.</p>
+          </div><!-- /.col-lg-6 -->
+        </div><!-- /.row -->
+        <div class="row">
+          <div class="col-sm-6 col-md-6 col-lg-3">
+            <!-- fancybox item #1 -->
+            <div class="fancybox-item">
+              <div class="fancybox-item__icon">
+                <i class="icon-drill"></i>
+              </div><!-- /.fancybox-icon -->
+              <div class="fancybox-item__content">
+                <h4 class="fancybox-item__title">Personnel professionnel</h4>
+              </div><!-- /.fancybox-content -->
+            </div><!-- /.fancybox-item -->
+          </div><!-- /.col-lg-3 -->
+          <div class="col-sm-6 col-md-6 col-lg-3">
+            <!-- fancybox item #2 -->
+            <div class="fancybox-item">
+              <div class="fancybox-item__icon">
+                <i class="icon-crane1"></i>
+              </div><!-- /.fancybox-icon -->
+              <div class="fancybox-item__content">
+                <h4 class="fancybox-item__title">Satisfaction garantie à 100%</h4>
+              </div><!-- /.fancybox-content -->
+            </div><!-- /.col-lg-4 -->
+          </div><!-- /.col-lg-3 -->
+          <div class="col-sm-6 col-md-6 col-lg-3">
+            <!-- fancybox item #3 -->
+            <div class="fancybox-item">
+              <div class="fancybox-item__icon">
+                <i class="icon-pipes"></i>
+              </div><!-- /.fancybox-icon -->
+              <div class="fancybox-item__content">
+                <h4 class="fancybox-item__title">Réalisation de Tests précis</h4>
+              </div><!-- /.fancybox-content -->
+            </div><!-- /.fancybox-item -->
+          </div><!-- /.col-lg-3 -->
+          <div class="col-sm-6 col-md-6 col-lg-3">
+            <!-- fancybox item #3 -->
+            <div class="fancybox-item">
+              <div class="fancybox-item__icon">
+                <i class="icon-excavator"></i>
+              </div><!-- /.fancybox-icon -->
+              <div class="fancybox-item__content">
+                <h4 class="fancybox-item__title">Tarification transparente</h4>
+              </div><!-- /.fancybox-content -->
+            </div><!-- /.fancybox-item -->
+          </div><!-- /.col-lg-3 -->
+        </div><!-- /.row -->
+      </div><!-- /.container -->
+    </section><!-- /.Banner layout 3 -->
+
+    
+    
+    <!-- ======================
+     Work Process 
+    ========================= -->
+    {# <section class="work-process">
+      <div class="bg-img"><img src="{{ asset('assets/images/backgrounds/1.jpg') }}" alt="background"></div>
+      <div class="container">
+        <div class="row heading heading-layout3 mb-80">
+          <div class="col-sm-12 col-md-12 col-lg-6">
+            <h3 class="heading__title color-white">Pushing The Boundaries Of What’s Possible.</h3>
+          </div>
+        </div>
+        <div class="row process-items-wrapper">
+        
+          <div class="col-sm-6 col-md-6 col-lg-3">
+            <div class="process-item">
+              <div class="process-item__icon">
+                <i class="icon-planning"></i>
+              </div>
+              <h4 class="process-item__title">Evaluation And Signing Of The Contract.</h4>
+              <p class="process-item__desc">Step 01</p>
+            </div>
+          </div>
+          
+          <div class="col-sm-6 col-md-6 col-lg-3">
+            <div class="process-item">
+              <div class="process-item__icon">
+                <i class="icon-barrier1"></i>
+              </div>
+              <h4 class="process-item__title">Preparation Of The Work Plan.</h4>
+              <p class="process-item__desc">Step 02</p>
+            </div>
+          </div>
+          
+          <div class="col-sm-6 col-md-6 col-lg-3">
+            <div class="process-item">
+              <div class="process-item__icon">
+                <i class="icon-concrete-mixer-1"></i>
+              </div>
+              <h4 class="process-item__title">Implementation Of Quality Works</h4>
+              <p class="process-item__desc">Step 03</p>
+            </div>
+          </div>
+          
+          <div class="col-sm-6 col-md-6 col-lg-3">
+            <div class="process-item">
+              <div class="process-item__icon">
+                <i class="icon-pantone"></i>
+              </div>
+              <h4 class="process-item__title">Delivering The Project To The Customer</h4>
+              <p class="process-item__desc">Step 04</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> #}
+
+    <!-- ======================
+      Blog carousel
+    ========================= -->
+    <section class="blog-carousel pt-0 pb-50 mt--210 z-index-2">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-12 heading-wrapper d-flex justify-content-between mb-10">
+            <div class="heading heading-light">
+              <h2 class="heading__title">Articles Récents</h2>
+            </div><!-- /.heading -->
+            <a href="{{ path('gfi-article', { 'lang': 'fr' }) }}" class="btn btn__white btn__bordered btn__explore">Explorer</a>
+          </div><!-- /.col-lg-6 -->
+        </div><!-- /.row -->
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-12">
+            <div class="slick-carousel"
+              data-slick='{"slidesToShow": 3, "slidesToScroll": 3, "arrows": true, "dots": false, "responsive": [ {"breakpoint": 992, "settings": {"slidesToShow": 2}}, {"breakpoint": 767, "settings": {"slidesToShow": 2}}, {"breakpoint": 480, "settings": {"slidesToShow": 1}}]}'>
+              {% for a in recentArticles %}
+                <!-- Blog Item #1 -->
+                <div class="post-item">
+                  <div class="post-item__img">
+                    <a href="{{ path('gfi-article-info', { 'lang': 'fr', 'slug': '1' }) }}">
+                      <img src="{{ asset('assets/uploads/articles/') }}{{a.picture}}" alt="blog image">
+                    </a>
+                    <div class="post-item__meta__cat">
+                      <a href="#">{{a.category}}</a>
+                    </div><!-- /.blog-meta-cat -->
+                  </div><!-- /.blog-img -->
+                  <div class="post-item__content">
+                    <span class="post-item__meta__date">{{a.createTime|date("d-m-Y")}}</span>
+                    <h4 class="post-item__title"><a href="#">{{a.title|slice(0,31)}}...</a>
+                    </h4>
+                    <p class="post-item__desc" style="color: rgba(0, 0, 0, 0.6) !important">{{a.content|slice(0,133)|raw}}...
+                    </p>
+                    <a href="{{ path('gfi-article-info', { 'lang': 'fr', 'slug': '1' }) }}" class="btn btn__secondary btn__link">
+                      <i class="icon-arrow-right1"></i>
+                      <span>Lire l'article</span>
+                    </a>
+                  </div><!-- /.blog-content -->
+                </div><!-- /.post-item -->
+              {% endfor %}
+            </div><!-- /.carousel -->
+          </div><!-- /.col-lg-12 -->
+        </div><!-- /.row -->
+      </div><!-- /.container -->
+    </section><!-- /.blog carousel -->
 {% endblock %}
