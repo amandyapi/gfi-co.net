@@ -1,3 +1,52 @@
+## PAGES   
+gfi-home:
+    path: /{lang}/home
+    controller: App\Controller\PageController::home
+
+gfi-about:
+    path: /{lang}/about
+    controller: App\Controller\PageController::about
+
+gfi-team:
+    path: /{lang}/team
+    controller: App\Controller\PageController::team
+
+gfi-prestations:
+    path: /{lang}/prestations
+    controller: App\Controller\PageController::prestations
+
+gfi-prestations-info:
+    path: /{lang}/prestations/{slug}
+    controller: App\Controller\PageController::prestationsInfos
+
+gfi-project:
+    path: /{lang}/realisations
+    controller: App\Controller\PageController::projects
+
+gfi-project-info:
+    path: /{lang}/realisations/{slug}
+    controller: App\Controller\PageController::projectsInfos
+
+gfi-concept:
+    path: /{lang}/concepts
+    controller: App\Controller\PageController::concepts
+
+gfi-concept-info:
+    path: /{lang}/concepts/{slug}
+    controller: App\Controller\PageController::conceptsInfos
+
+gfi-article:
+    path: /{lang}/articles
+    controller: App\Controller\PageController::articles
+
+gfi-article-info:
+    path: /{lang}/articles/{slug}
+    controller: App\Controller\PageController::articlesInfo
+
+gfi-contact:
+    path: /{lang}/contact
+    controller: App\Controller\PageController::contact
+
 ## USERS
 userLogin:
     path: /security/users/login

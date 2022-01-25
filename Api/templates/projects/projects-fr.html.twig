@@ -1,0 +1,61 @@
+{% extends 'layout-fr.html.twig' %}
+
+{% block title %}Projets
+{% endblock %}
+
+{% block content %}
+<section class="page-title page-title-layout1 bg-overlay bg-parallax">
+    <div class="bg-img"><img src="{{ asset('assets/images/page-titles/9.jpg') }}" alt="background"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-9">
+          <h1 class="pagetitle__heading">Nos Projets</h1>
+        </div>
+      </div>
+    </div>
+  </section>
+      
+  <section class="portfolio-grid">
+    <div class="container">
+      
+      <div id="filtered-items-wrap" class="row">
+        <!-- portfolio item #1 -->
+        <div class="col-sm-6 col-md-6 col-lg-4 mix filter-renovations">
+          <div class="portfolio-item">
+            <div class="portfolio-item__img">
+              <img src="{{ asset('assets/images/realisation/citebonheur/2.jpg') }}" alt="portfolio img">
+            </div><!-- /.portfolio-img -->
+            <div class="portfolio-item__content">
+              <h4 class="portfolio-item__title"><a href="#">Cité du bonheur</a></h4>
+              
+            </div><!-- /.portfolio-content -->
+          </div><!-- /.portfolio-item -->
+        </div><!-- /.col-lg-4 -->
+        <!-- portfolio item #2 -->
+        <div class="col-sm-6 col-md-6 col-lg-4 mix filter-interior">
+          <div class="portfolio-item">
+            <div class="portfolio-item__img">
+              <img src="{{ asset('assets/images/realisation/12mili/1.jpg') }}" alt="portfolio img">
+            </div><!-- /.portfolio-img -->
+            <div class="portfolio-item__content">
+              <h4 class="portfolio-item__title"><a href="#">Villa 12 Mili</a></h4>
+              
+            </div><!-- /.portfolio-content -->
+          </div><!-- /.portfolio-item -->
+        </div><!-- /.col-lg-4 -->
+        <!-- portfolio item #3 -->
+        <div class="col-sm-6 col-md-6 col-lg-4 mix filter-building">
+          <div class="portfolio-item">
+            <div class="portfolio-item__img">
+              <img src="{{ asset('assets/images/realisation/hoteldaloa/1.jpg') }}" alt="portfolio img">
+            </div><!-- /.portfolio-img -->
+            <div class="portfolio-item__content">
+              <h4 class="portfolio-item__title"><a href="#">Résidence Hotelière de Daloa</a></h4>
+              
+            </div><!-- /.portfolio-content -->
+          </div><!-- /.portfolio-item -->
+        </div><!-- /.col-lg-4 -->
+        <!-- portfolio item #4 -->
+    </div><!-- /.container -->
+  </section><!-- /.portfolio Grid -->
+{% endblock %}

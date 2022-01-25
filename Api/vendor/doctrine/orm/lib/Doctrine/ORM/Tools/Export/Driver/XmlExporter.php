@@ -90,7 +90,7 @@ class XmlExporter extends AbstractExporter
         $trackingPolicy = $this->_getChangeTrackingPolicyString($metadata->changeTrackingPolicy);
 
         if ($trackingPolicy !== 'DEFERRED_IMPLICIT') {
-            $root->addChild('change-tracking-policy', $trackingPolicy);
+            $root->addAttribute('change-tracking-policy', $trackingPolicy);
         }
 
         if (isset($metadata->table['indexes'])) {
@@ -178,10 +178,7 @@ class XmlExporter extends AbstractExporter
                 $fieldXml = $root->addChild('field');
                 $fieldXml->addAttribute('name', $field['fieldName']);
                 $fieldXml->addAttribute('type', $field['type']);
-
-                if (isset($field['columnName'])) {
-                    $fieldXml->addAttribute('column', $field['columnName']);
-                }
+                $fieldXml->addAttribute('column', $field['columnName']);
 
                 if (isset($field['length'])) {
                     $fieldXml->addAttribute('length', (string) $field['length']);

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="description" content="Eteon - Construction And Building Template">
+  <link href="{{ asset('assets/images/favicon/favicon.png') }}" rel="icon">
+  <title>
+    GFI-CO|{% block title %}{% endblock %}
+  </title>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Barlow:400,500,600,700%7cHeebo:400,500,700&display=swap">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css">
+  <link rel="stylesheet" href="{{ asset('assets/css/libraries.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="preloader">
+      <div class="loading">
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+    <!-- /.preloader -->
+    <!-- =========================
+        Header
+    =========================== -->
+    <header class="header header-layout2">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <a class="navbar-brand" href="index.html">
+            <img src="{{ asset('assets/images/logo/logo-dark.png') }}" class="logo-dark" alt="logo">
+          </a>
+          <div class="header-topbar d-none d-lg-block">
+            <div class="d-flex flex-wrap">
+              <ul class="header-topbar__contact d-flex flex-wrap list-unstyled mb-0">
+                <li>
+                  <i class="icon-phone1"></i>
+                  <div>
+                    <span>Phone:</span><strong><a href="tel:+5565454117">+225 01 431 00 250</a></strong>
+                  </div>
+                </li>
+                <li>
+                  <i class="icon-envelope1"></i>
+                  <div>
+                    <span>Email:</span><strong><a href="mailto:contact@gfi-co.net">contact@gfi-co.net</a></strong>
+                  </div>
+                </li>
+                <li>
+                  <i class="icon-clock1"></i>
+                  <div>
+                    <span>Opening Hours:</span><strong>Mon-Fri: 8am – 7pm</strong>
+                  </div>
+                </li>
+              </ul>
+              <a href="{{ path('gfi-contact', { 'lang': 'en' }) }}" class="btn btn__secondary header__btn">
+                <i class="icon-arrow-right1"></i><span>Contact</span>
+              </a>
+            </div>
+          </div><!-- /.header-topbar -->
+          <button class="navbar-toggler" type="button">
+            <span class="menu-lines"><span></span></span>
+          </button>
+        </div><!-- /.container -->
+        <div class="navbar__bottom sticky-navbar">
+          <div class="container">
+            <div class="collapse navbar-collapse" id="mainNavigation">
+              <ul class="navbar-nav">
+                <li class="nav__item with-dropdown">
+                  <a href="{{ path('gfi-home', { 'lang': 'fr' }) }}" class="nav__item-link">Home</a>
+                </li><!-- /.nav-item -->
+                <li class="nav__item with-dropdown">
+                  <a href="#" class="dropdown-toggle nav__item-link">Our Company</a>
+                  <i data-toggle="dropdown" class="fa fa-angle-down d-block d-lg-none"></i>
+                  <ul class="dropdown-menu">
+                    <li class="nav__item"><a href="{{ path('gfi-about', { 'lang': 'en' }) }}" class="nav__item-link">Presentation</a></li>
+                    <!-- /.nav-item -->
+                    <li class="nav__item"><a href="{{ path('gfi-team', { 'lang': 'en' }) }}" class="nav__item-link">Team</a></li>
+                    <!-- /.nav-item -->
+                  </ul><!-- /.dropdown-menu -->
+                </li><!-- /.nav-item -->
+                <li class="nav__item">
+                  <a href="{{ path('gfi-prestations', { 'lang': 'en' }) }}" class="nav__item-link">Services</a>
+                </li><!-- /.nav-item -->
+                <li class="nav__item with-dropdown">
+                  <a href="#" class="dropdown-toggle nav__item-link">Projects</a>
+                  <i data-toggle="dropdown" class="fa fa-angle-down d-block d-lg-none"></i>
+                  <ul class="dropdown-menu">
+                    <li class="nav__item"><a href="{{ path('gfi-concept', { 'lang': 'en' }) }}" class="nav__item-link">Concepts</a></li>
+                    <!-- /.nav-item -->
+                    <li class="nav__item"><a href="{{ path('gfi-project', { 'lang': 'en' }) }}" class="nav__item-link">Projects</a>
+                    </li>
+                    <!-- /.nav-item -->
+                  </ul><!-- /.dropdown-menu -->
+                </li><!-- /.nav-item -->
+                <li class="nav__item">
+                  <a href="{{ path('gfi-article', { 'lang': 'en' }) }}" class="nav__item-link">News</a>
+                </li><!-- /.nav-item -->
+                <li class="nav__item">
+                  <a href="{{ path('gfi-contact', { 'lang': 'en' }) }}" class="nav__item-link">Info Line</a>
+                </li><!-- /.nav-item -->
+              </ul><!-- /.navbar-nav -->
+            </div><!-- /.navbar-collapse -->
+            <div class="header-actions d-none d-lg-block">
+              <ul class="header-actions__list list-unstyled d-flex align-items-center mb-0">
+                <li class="dropdown">
+                  <button class="dropdown-toggle" id="langDrobdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="icon-globe mr-1" ></i> <span>English</span>
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="langDrobdown">
+                    <a class="dropdown-item" onclick="changeLang('fr')">Français</a>
+                  </div>
+                </li>
+              </ul>
+            </div><!-- /.header-actions -->
+          </div><!-- /.container -->
+        </div><!-- /.navbar-bottom -->
+      </nav><!-- /.navabr -->
+    </header><!-- /.Header -->
+    
+    {% block content %}{% endblock %}
+
+    <!-- ========================
+      Footer
+    ========================== -->
+    <footer class="footer">
+      <div class="footer-contact">
+        <div class="container">
+          <div class="row">
+            <div class="offset-lg-4 col-sm-12 col-md-12 col-lg-8 d-flex flex-wrap justify-content-between">
+              <div class="footer-contact__item d-flex align-items-center">
+                <div class="footer-contact__icon">
+                  <i class="icon-phone1"></i>
+                </div><!-- /.footer-contact__icon -->
+                <div class="footer-contact__text">
+                  <span>Phone:</span>
+                  <strong><a href="tel:002250143100250">(+225) 01 431 00 250</a></strong>
+                </div><!-- /.footer-contact__text -->
+              </div><!-- /.footer-contact__item -->
+              <div class="footer-contact__item d-flex align-items-center">
+                <div class="footer-contact__icon">
+                  <i class="icon-envelope1"></i>
+                </div><!-- /.footer-contact__icon -->
+                <div class="footer-contact__text">
+                  <span>Email:</span>
+                  <strong><a href="mailto:contact@gfi-co.net">contact@gfi-co.net</a></strong>
+                </div><!-- /.footer-contact__text -->
+              </div><!-- /.footer-contact__item -->
+              <div class="footer-contact__item d-flex align-items-center">
+                <div class="footer-contact__icon">
+                  <i class="icon-clock1"></i>
+                </div><!-- /.footer-contact__icon -->
+                <div class="footer-contact__text">
+                  <span>Opening Hours:</span>
+                  <strong>Mon-Fri: 8am – 7pm</strong>
+                </div><!-- /.footer-contact__text -->
+              </div><!-- /.footer-contact__item -->
+            </div><!-- /.col-lg-8 -->
+          </div><!-- /.row -->
+        </div><!-- /.container -->
+      </div><!-- /.footer-contact -->
+      <div class="footer-primary bg-primary">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 footer-widget footer-widget__newsletter">
+              <form class="footer-widget__newsletter__form">
+                <i class="footer-widget__newsletter__icon icon-brush"></i>
+                <h6 class="footer-widget__newsletter__title">Subscribe to receive our news</h6>
+                <div class="form-group mb-0">
+                  <input type="text" class="form-control" placeholder="Your email">
+                  <button type="submit" class="btn btn__primary">Subscribe</button>
+                </div>
+              </form>
+            </div><!-- /.col-xl-4 -->
+            <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3 footer-widget">
+              <h6 class="footer-widget__title">GFI-CO SARL</h6>
+              <div class="footer-widget__content">
+                <p class="mb-20">In accordance with environmental standards, and reference standards in the field, GFI-CO SARL is a company
+                 real estate whose specificity lies in the construction and promotion of ecological houses.</p>
+                <a href="{{ path('gfi-about', { 'lang': 'en' }) }}" class="btn btn__primary btn__link btn__icon">
+                  <i class="icon-arrow-right1"></i><span>Read more</span>
+                </a>
+              </div><!-- /.footer-widget__content -->
+            </div><!-- /.col-xl-2 -->
+            <div class="col-sm-6 col-md-6 col-lg-2 col-xl-2 footer-widget footer-widget-nav">
+              <h6 class="footer-widget__title">Navigation</h6>
+              <div class="footer-widget__content">
+                <nav>
+                  <ul class="list-unstyled">
+                    <li><a href="{{ path('gfi-about', { 'lang': 'en' }) }}">Presentation</a></li>
+                    <li><a href="{{ path('gfi-team', { 'lang': 'en' }) }}">Leading team</a></li>
+                    <li><a href="{{ path('gfi-concept', { 'lang': 'en' }) }}">Ours Concepts</a></li>
+                    <li><a href="{{ path('gfi-project', { 'lang': 'en' }) }}">Achievements</a></li>
+                    <li><a href="{{ path('gfi-contact', { 'lang': 'en' }) }}">Contact</a></li>
+                  </ul>
+                </nav>
+              </div><!-- /.footer-widget__content -->
+            </div><!-- /.col-xl-2 -->
+            <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3 footer-widget">
+              <h6 class="footer-widget__title">Location and contact</h6>
+              <div class="footer-widget__content">
+                <p>SCI Carrière Abatta, Abidjan, Lot 423 ilot 37, Côte d'Ivoire</p>
+                <p class="footer-contact__phone d-flex align-items-center">
+                  <i class="icon-phone1"></i>
+                  <a href="tel:0025565454117">(+225) 01 431 00 250</a>
+                </p>
+              </div><!-- /.footer-widget__content -->
+            </div><!-- /.col-xl-4 -->
+          </div><!-- /.row -->
+        </div><!-- /.container -->
+      </div><!-- /.footer-primary -->
+      <div class="footer-secondary">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-sm-12 col-md-12 col-lg-8 d-flex flex-wrap align-items-center">
+              <img src="{{ asset('assets/images/logo/logo-footer.png') }}" alt="logo" class="mr-20">
+              <nav>
+                <ul class="footer__copyright-links list-unstyled d-flex flex-wrap mb-0">
+                  <li><a href="#">Terms & Conditions</a></li>
+                  <li><a href="#">Privacy Policy</a></li>
+                </ul>
+                <p class="mb-0"> &copy; 2022 GFI-CO SARL
+                </p>
+              </nav>
+            </div><!-- /.col-lg-8 -->
+            <div class="col-sm-12 col-md-12 col-lg-4">
+              <ul class="social__icons list-unstyled justify-content-end mb-0">
+                <li><a target="_blank" href="https://facebook.com/GFICoSarl/"><i class="fab fa-facebook-f"></i></a></li>
+                <li><a target="_blank" href="https://www.instagram.com/gfi_co_sarl/"><i class="fab fa-instagram"></i></a></li>
+                <li><a target="_blank" href="https://ci.linkedin.com/company/gfi-co-sarl"><i class="fab fa-linkedin"></i></a></li>
+                <li><a target="_blank" href="https://www.youtube.com/channel/UCi9LXahkRXvtFuS3B_jS4jA"><i class="fab fa-youtube"></i></a></li>
+              </ul><!-- /.social-icons -->
+            </div><!-- /.col-lg-4 -->
+          </div><!-- /.row -->
+        </div><!-- /.container -->
+      </div><!-- /.footer-secondary -->
+    </footer><!-- /.Footer -->
+    <button id="scrollTopBtn"><i class="fas fa-long-arrow-alt-up"></i></button>
+  </div><!-- /.wrapper -->
+
+  <script type="text/javascript" src="{{ asset('assets/js/google-map.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('assets/js/jquery-3.5.1.min.js') }}"></script>
+  
+  <script type="text/javascript" src="{{ asset('assets/js/plugins.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('assets/js/main.js') }}"></script>
+
+  <script>
+    $(document).ready(function() {
+        //$('.preloader').delay(2000).hide();
+        $('.preloader').hide();
+    });
+  </script>
+
+  <script>
+  console.log('Redirect!!!');
+      function changeLang(lang) {
+        console.log('Redirect!!!');
+        var pathname = window.location.pathname; 
+        var _pathname = '';
+        var url      = window.location.href;  
+        var redirect = '';   
+        var origin   = window.location.origin;
+
+        var pageLang = '';
+        let position = pathname.search(lang);
+
+        if(lang == 'fr')
+        {
+          _pathname = pathname.replace('/en/', '/fr/');
+           
+            redirect = origin + _pathname;
+            console.log('Redirect!!!', redirect);
+            window.location.href = redirect;
+        }
+        else if(lang == 'en')
+        {
+          _pathname = pathname.replace('/fr/', '/en/');
+           
+            redirect = origin + _pathname;
+            console.log('Redirect!!!', redirect);
+            window.location.href = redirect;
+        }
+        else
+        {
+          console.log('No Redirect!!!');
+        }
+       
+        //console.log('newPath', newPath);
+      }
+  </script>
+</body>
+
+</html>
