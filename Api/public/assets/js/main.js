@@ -145,7 +145,7 @@ $(function () {
     });
 
     /*==========  Contact Form validation  ==========*/
-    var contactForm = $("#contactForm"),
+    /*var contactForm = $("#contactForm"),
         contactResult = $('.contact-result');
     contactForm.validate({
         debug: false,
@@ -163,7 +163,7 @@ $(function () {
             });
             return false;
         }
-    });
+    });*/
 
     /*==========  Popup Video  ==========*/
     $('.popup-video').magnificPopup({
