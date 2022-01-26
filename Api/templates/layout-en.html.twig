@@ -85,16 +85,8 @@
                 <li class="nav__item">
                   <a href="{{ path('gfi-prestations', { 'lang': 'en' }) }}" class="nav__item-link">Services</a>
                 </li><!-- /.nav-item -->
-                <li class="nav__item with-dropdown">
-                  <a href="#" class="dropdown-toggle nav__item-link">Projects</a>
-                  <i data-toggle="dropdown" class="fa fa-angle-down d-block d-lg-none"></i>
-                  <ul class="dropdown-menu">
-                    <li class="nav__item"><a href="{{ path('gfi-concept', { 'lang': 'en' }) }}" class="nav__item-link">Concepts</a></li>
-                    <!-- /.nav-item -->
-                    <li class="nav__item"><a href="{{ path('gfi-project', { 'lang': 'en' }) }}" class="nav__item-link">Projects</a>
-                    </li>
-                    <!-- /.nav-item -->
-                  </ul><!-- /.dropdown-menu -->
+                <li class="nav__item">
+                   <a href="{{ path('gfi-project-grid', { 'lang': 'fr' }) }}" class="nav__item-link">Projets</a>
                 </li><!-- /.nav-item -->
                 <li class="nav__item">
                   <a href="{{ path('gfi-article', { 'lang': 'en' }) }}" class="nav__item-link">News</a>
@@ -192,8 +184,7 @@
                   <ul class="list-unstyled">
                     <li><a href="{{ path('gfi-about', { 'lang': 'en' }) }}">Presentation</a></li>
                     <li><a href="{{ path('gfi-team', { 'lang': 'en' }) }}">Leading team</a></li>
-                    <li><a href="{{ path('gfi-concept', { 'lang': 'en' }) }}">Ours Concepts</a></li>
-                    <li><a href="{{ path('gfi-project', { 'lang': 'en' }) }}">Achievements</a></li>
+                    <li><a href="{{ path('gfi-project-grid', { 'lang': 'fr' }) }}">Project</a></li>
                     <li><a href="{{ path('gfi-contact', { 'lang': 'en' }) }}">Contact</a></li>
                   </ul>
                 </nav>

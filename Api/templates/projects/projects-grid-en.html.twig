@@ -1,0 +1,187 @@
+{% extends 'layout-fr.html.twig' %}
+
+{% block title %}Projets
+{% endblock %}
+
+{% block content %}
+<section class="page-title page-title-layout1 bg-overlay bg-parallax">
+    <div class="bg-img"><img src="{{ asset('assets/images/page-titles/9.jpg') }}" alt="background"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-9">
+          <h1 class="pagetitle__heading">Nos Projets</h1>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="portfolio-grid">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-12">
+            <ul class="portfolio-filter d-flex flex-wrap justify-content-center list-unstyled">
+              <li><a class="filter active" href="#" data-filter="all">ALL Works</a></li>
+              <li><a class="filter" href="#" data-filter=".filter-construction">Construction</a></li>
+              <li><a class="filter" href="#" data-filter=".filter-architecture">Architecture</a></li>
+              <li><a class="filter" href="#" data-filter=".filter-building">Building</a></li>
+              <li><a class="filter" href="#" data-filter=".filter-renovations">Renovations</a></li>
+              <li><a class="filter" href="#" data-filter=".filter-interior">Interior</a></li>
+            </ul><!-- /.portfolio-filter  -->
+          </div><!-- /.col-lg-12 -->
+        </div><!-- /.row -->
+        <div id="filtered-items-wrap" class="row">
+          <!-- portfolio item #1 -->
+          <div class="col-sm-6 col-md-6 col-lg-4 mix filter-renovations">
+            <div class="portfolio-item">
+              <div class="portfolio-item__img">
+                <img src="assets/images/portfolio/grid/1.jpg" alt="portfolio img">
+              </div><!-- /.portfolio-img -->
+              <div class="portfolio-item__hover">
+                <div class="portfolio-item__content">
+                  <h4 class="portfolio-item__title"><a href="#">The Fallingwater House</a></h4>
+                  <div class="portfolio-item__cat">
+                    <a href="#">Building</a><a href="#">Interior</a>
+                  </div><!-- /.portfolio-cat -->
+                </div><!-- /.portfolio-content -->
+              </div><!-- /.portfolio-item__hover -->
+            </div><!-- /.portfolio-item -->
+          </div><!-- /.col-lg-4 -->
+          <!-- portfolio item #2 -->
+          <div class="col-sm-6 col-md-6 col-lg-4 mix filter-interior">
+            <div class="portfolio-item">
+              <div class="portfolio-item__img">
+                <img src="assets/images/portfolio/grid/2.jpg" alt="portfolio img">
+              </div><!-- /.portfolio-img -->
+              <div class="portfolio-item__hover">
+                <div class="portfolio-item__content">
+                  <h4 class="portfolio-item__title"><a href="#">The Guggenheim Museum</a></h4>
+                  <div class="portfolio-item__cat">
+                    <a href="#">Construction</a><a href="#">Engineering</a>
+                  </div><!-- /.portfolio-cat -->
+                </div><!-- /.portfolio-item__hover -->
+              </div><!-- /.portfolio-content -->
+            </div><!-- /.portfolio-item -->
+          </div><!-- /.col-lg-4 -->
+          <!-- portfolio item #3 -->
+          <div class="col-sm-6 col-md-6 col-lg-4 mix filter-building">
+            <div class="portfolio-item">
+              <div class="portfolio-item__img">
+                <img src="assets/images/portfolio/grid/3.jpg" alt="portfolio img">
+              </div><!-- /.portfolio-img -->
+              <div class="portfolio-item__hover">
+                <div class="portfolio-item__content">
+                  <h4 class="portfolio-item__title"><a href="#">Neue National Galerie</a></h4>
+                  <div class="portfolio-item__cat">
+                    <a href="#">Renovation</a><a href="#">Architecture</a>
+                  </div><!-- /.portfolio-cat -->
+                </div><!-- /.portfolio-content -->
+              </div><!-- /.portfolio-item__hover -->
+            </div><!-- /.portfolio-item -->
+          </div><!-- /.col-lg-4 -->
+          <!-- portfolio item #4 -->
+          <div class="col-sm-6 col-md-6 col-lg-4 mix filter-architecture">
+            <div class="portfolio-item">
+              <div class="portfolio-item__img">
+                <img src="assets/images/portfolio/grid/4.jpg" alt="portfolio img">
+              </div><!-- /.portfolio-img -->
+              <div class="portfolio-item__hover">
+                <div class="portfolio-item__content">
+                  <h4 class="portfolio-item__title"><a href="#">Sagrada Familia</a></h4>
+                  <div class="portfolio-item__cat">
+                    <a href="#">Construstion</a><a href="#">Cuilding</a>
+                  </div><!-- /.portfolio-cat -->
+                </div><!-- /.portfolio-content -->
+              </div><!-- /.portfolio-item__hover -->
+            </div><!-- /.portfolio-item -->
+          </div><!-- /.col-lg-4 -->
+          <!-- portfolio item #5 -->
+          <div class="col-sm-6 col-md-6 col-lg-4 mix filter-construction">
+            <div class="portfolio-item">
+              <div class="portfolio-item__img">
+                <img src="assets/images/portfolio/grid/5.jpg" alt="portfolio img">
+              </div><!-- /.portfolio-img -->
+              <div class="portfolio-item__hover">
+                <div class="portfolio-item__content">
+                  <h4 class="portfolio-item__title"><a href="#">Heydar Aliyev Center</a></h4>
+                  <div class="portfolio-item__cat">
+                    <a href="#">Engineering</a><a href="#">Renovation</a>
+                  </div><!-- /.portfolio-cat -->
+                </div><!-- /.portfolio-content -->
+              </div><!-- /.portfolio-item__hover -->
+            </div><!-- /.portfolio-item -->
+          </div><!-- /.col-lg-4 -->
+          <!-- portfolio item #6 -->
+          <div class="col-sm-6 col-md-6 col-lg-4 mix filter-interior">
+            <div class="portfolio-item">
+              <div class="portfolio-item__img">
+                <img src="assets/images/portfolio/grid/6.jpg" alt="portfolio img">
+              </div><!-- /.portfolio-img -->
+              <div class="portfolio-item__hover">
+                <div class="portfolio-item__content">
+                  <h4 class="portfolio-item__title"><a href="#">Cathedral of Brasilia</a></h4>
+                  <div class="portfolio-item__cat">
+                    <a href="#">Building</a><a href="#">Modern</a>
+                  </div><!-- /.portfolio-cat -->
+                </div><!-- /.portfolio-content -->
+              </div><!-- /.portfolio-item__hover -->
+            </div><!-- /.portfolio-item -->
+          </div><!-- /.col-lg-4 -->
+          <!-- portfolio item #7 -->
+          <div class="col-sm-6 col-md-6 col-lg-4 mix filter-construction portfolio-hidden">
+            <div class="portfolio-item">
+              <div class="portfolio-item__img">
+                <img src="assets/images/portfolio/grid/7.jpg" alt="portfolio img">
+              </div><!-- /.portfolio-img -->
+              <div class="portfolio-item__hover">
+                <div class="portfolio-item__content">
+                  <h4 class="portfolio-item__title"><a href="#">Neue National Galerie</a></h4>
+                  <div class="portfolio-item__cat">
+                    <a href="#">construction</a>
+                  </div><!-- /.portfolio-cat -->
+                </div><!-- /.portfolio-content -->
+              </div><!-- /.portfolio-item__hover -->
+            </div><!-- /.portfolio-item -->
+          </div><!-- /.col-lg-4 -->
+          <!-- portfolio item #8 -->
+          <div class="col-sm-6 col-md-6 col-lg-4 mix filter-building portfolio-hidden">
+            <div class="portfolio-item">
+              <div class="portfolio-item__img">
+                <img src="assets/images/portfolio/grid/8.jpg" alt="portfolio img">
+              </div><!-- /.portfolio-img -->
+              <div class="portfolio-item__hover">
+                <div class="portfolio-item__content">
+                  <h4 class="portfolio-item__title"><a href="#">Villy Manufacturing Inc</a></h4>
+                  <div class="portfolio-item__cat">
+                    <a href="#">Engineering</a><a href="#">Auto</a>
+                  </div><!-- /.portfolio-cat -->
+                </div><!-- /.portfolio-content -->
+              </div><!-- /.portfolio-item__hover -->
+            </div><!-- /.portfolio-item -->
+          </div><!-- /.col-lg-4 -->
+          <!-- portfolio item #9 -->
+          <div class="col-sm-6 col-md-6 col-lg-4 mix filter-renovations portfolio-hidden">
+            <div class="portfolio-item">
+              <div class="portfolio-item__img">
+                <img src="assets/images/portfolio/grid/9.jpg" alt="portfolio img">
+              </div><!-- /.portfolio-img -->
+              <div class="portfolio-item__hover">
+                <div class="portfolio-item__content">
+                  <h4 class="portfolio-item__title"><a href="#">Highway Energy Station</a></h4>
+                  <div class="portfolio-item__cat">
+                    <a href="#">Construction</a><a href="#">Energy</a>
+                  </div><!-- /.portfolio-cat -->
+                </div><!-- /.portfolio-content -->
+              </div><!-- /.portfolio-item__hover -->
+            </div><!-- /.portfolio-item -->
+          </div><!-- /.col-lg-4 -->
+        </div><!-- /.row -->
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+            <button type="button" class="btn btn__primary btn__bordered btn__loadMore loadMoreportfolio">
+              <i class="icon-arrow-right1"></i><span>Explore All</span>
+            </button>
+          </div><!-- /.col-lg-12 -->
+        </div><!-- /.row -->
+      </div><!-- /.container -->
+    </section><!-- /.portfolio grid -->
+{% endblock %}

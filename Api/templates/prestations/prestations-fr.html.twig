@@ -7,11 +7,17 @@
 <section class="page-title page-title-layout1 bg-overlay bg-parallax">
     <div class="bg-img"><img src="{{ asset('assets/images/page-titles/7.jpg') }}" alt="background"></div>
     <div class="container">
-      <div class="row">
+      {# <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-9">
           <h1 class="pagetitle__heading">Nos différentes prestations</h1>
         </div>
-      </div>
+      </div> #}
+      <div class="row align-items-center">
+          <div class="col-sm-12 col-md-12 col-lg-12 col-xl-7">
+            <h1 class="pagetitle__heading">Nos différentes prestations</h1>
+            <p class="pagetitle__desc">GFI-CO Militant Écologique De Projets Immobiliers Haut Standing Et De Concepts Innovants !</p>
+          </div><!-- /.col-xl-7 -->
+        </div>
     </div>
   </section>
       
@@ -20,110 +26,119 @@
     <div class="container">
       
       <div class="row">
+      {% for p in prestations %}
         <div class="col-sm-12 col-md-4 col-lg-4">
           <div class="service-item">
             <div class="service-item__content">
-              <h4 class="service-item__title">Service varié, adapté à vos attentes</h4>
+              <h4 class="service-item__title">{{p.title|raw}}</h4>
               <p class="service-item__desc">
-                La sécurisation du foncier urbain constitue l'une des priorités de la politique de développement de GFI-CO SARL.
+                {{p.content}}
               </p>
-              <a href="#" class="btn btn__secondary btn__link">
+              <a href="{{ path('gfi-prestations-info', { 'lang': 'fr', 'id': p.id,'slug': p.slug }) }}" class="btn btn__secondary btn__link">
                 <i class="icon-arrow-right1"></i>
                 <span>En savoir plus</span>
               </a>
             </div><!-- /.service-content -->
             <div class="service-item__img">
-              <img src="{{ asset('assets/images/services/6.jpg')}}" alt="service" class="w-100">
+              <img src="{{ asset(p.image)}}" alt="service" class="w-100">
             </div><!-- /.service-item__img -->
           </div><!-- /.service-item -->
         </div><!-- /.col-lg-4 -->
-        <div class="col-sm-12 col-md-4 col-lg-4">
-          <div class="service-item">
-            <div class="service-item__content">
-              <h4 class="service-item__title">Service <br> clé en main</h4>
-              <p class="service-item__desc">
-                S’engager à construire son logement est une décision qui ne doit pas altérer votre qualité de vie. 
-                GFI-CO vous propose un service clé en main.  
-              </p>
-              <a href="#" class="btn btn__secondary btn__link">
-                <i class="icon-arrow-right1"></i>
-                <span>En savoir plus</span>
-              </a>
-            </div><!-- /.service-content -->
-            <div class="service-item__img">
-              <img src="{{ asset('assets/images/services/5.jpg') }}" alt="service" class="w-100">
-            </div><!-- /.service-item__img -->
-          </div><!-- /.service-item -->
-        </div><!-- /.col-lg-4 -->
-        <div class="col-sm-12 col-md-4 col-lg-4">
-          <div class="service-item">
-            <div class="service-item__content">
-              <h4 class="service-item__title">Service <br> prêt à décorer</h4>
-              <p class="service-item__desc">
-                Dans le but de pousser encore plus loin la satisfaction clientèle, GFI-CO vous propose un service prêt à décorer afin de personnaliser ...
-              </p>
-              <a href="#" class="btn btn__secondary btn__link">
-                <i class="icon-arrow-right1"></i>
-                <span>En savoir plus</span>
-              </a>
-            </div><!-- /.service-content -->
-            <div class="service-item__img">
-              <img src="{{ asset('assets/images/services/4.jpg') }}" alt="service" class="w-100">
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-12 col-md-4 col-lg-4">
-          <div class="service-item">
-            <div class="service-item__content">
-              <h4 class="service-item__title">Architecture <br> d'Intérieur</h4>
-              <p class="service-item__desc">
-                Nos réalisations se veulent une réponse créative, spécifique, personnalisée et innovante en adéquation avec votre existentiel.
-              </p>
-              <a href="#" class="btn btn__secondary btn__link">
-                <i class="icon-arrow-right1"></i>
-                <span>En savoir plus</span>
-              </a>
-            </div><!-- /.service-content -->
-            <div class="service-item__img">
-              <img src="{{ asset('assets/images/services/3.jpg') }}" alt="service" class="w-100">
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-12 col-md-4 col-lg-4">
-          <div class="service-item">
-            <div class="service-item__content">
-              <h4 class="service-item__title">Rafraichissement <br>  & Rénovation</h4>
-              <p class="service-item__desc">
-                GFI-CO SARL propose également l’ensemble des services en rafraichissement et en rénovation immobilière...
-              </p>
-              <a href="#" class="btn btn__secondary btn__link">
-                <i class="icon-arrow-right1"></i>
-                <span>Read more</span>
-              </a>
-            </div><!-- /.service-content -->
-            <div class="service-item__img">
-              <img src="{{ asset('assets/images/services/1.jpg') }}" alt="service" class="w-100">
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-12 col-md-4 col-lg-4">
-          <div class="service-item">
-            <div class="service-item__content">
-              <h4 class="service-item__title">Gestion Immobilière <br> (Vente / Location)</h4>
-              <p class="service-item__desc">
-                Dans le but de pousser encore plus loin la satisfaction clientèle, GFI-CO vous propose un service prêt à décorer afin de personnaliser ...
-              </p>
-              <a href="#" class="btn btn__secondary btn__link">
-                <i class="icon-arrow-right1"></i>
-                <span>En savoir plus</span>
-              </a>
-            </div><!-- /.service-content -->
-            <div class="service-item__img">
-              <img src="{{ asset('assets/images/services/2.jpg') }}" alt="service" class="w-100">
-            </div><!-- /.service-item__img -->
-          </div><!-- /.service-item -->
-        </div><!-- /.col-lg-4 -->
+      {% endfor %} 
       </div><!-- /.row -->
     </div><!-- /.container -->
   </section><!-- /.Services Layout 1 -->
+
+  <section class="page-title page-title-layout1 bg-overlay bg-parallax">
+    <div class="bg-img"><img src="{{ asset('assets/images/page-titles/4.jpg') }}" alt="background"></div>
+    <div class="container">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+  </section>
+
+  <section class="contact-layout2 pt-0 mt--120">
+      <div class="container">
+        <div class="row contact-panel">
+          <div class="col-sm-12 col-md-12 col-lg-8">
+            <form class="contact-panel__form" method="post" action="#" id="contactForm">
+              <div class="row">
+                <div class="col-sm-12">
+                  <h4 class="contact-panel__title">Contactez-nous</h4>
+                  <p class="contact-panel__desc mb-40">
+                  Faites-nous part de vos préoccupations, par message. Notre service client vous répondra dans les plus brefs délais. 
+                  </p>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                  <div class="form-group"><input type="text" class="form-control" placeholder="Nom complet" id="contact-name"
+                      name="contact-name" required></div>
+                </div><!-- /.col-lg-6 -->
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                  <div class="form-group"><input type="email" class="form-control" placeholder="Email"
+                      id="contact-email" name="contact-email" required></div>
+                </div><!-- /.col-lg-6 -->
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                  <div class="form-group"><input type="text" class="form-control" placeholder="Téléphone" id="contact-Phone"
+                      name="contact-phone" required></div>
+                </div><!-- /.col-lg-6 -->
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                  <div class="form-group">
+                    <select class="form-control" name="objet">
+                      <option value="0">Objet de votre message</option>
+                      <option value="Devis">DEMANDE DE DEVIS</option>
+                      <option value="Partenariat">DEMANDE DE PARTENARIAT</option>
+                      <option value="Informations">DEMANDE D'INFORMATIONS</option>
+                      <option value="Autre">AUTRE DEMANDE</option>
+                    </select>
+                  </div>
+                </div><!-- /.col-lg-6 -->
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                  <div class="form-group">
+                    <textarea class="form-control" placeholder="Ecrivez votre message" id="contact-messgae"
+                      name="contact-messgae" required></textarea>
+                  </div>
+                </div><!-- /.col-lg-12 -->
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                  <input type="submit" name="envoyer" value="Envoyer" style="" class="btn btn__secondary btn__block">
+                  {# <div class="contact-result"></div> #}
+                </div><!-- /.col-lg-12 -->
+              </div><!-- /.row -->
+            </form>
+          </div><!-- /.col-lg-8 -->
+          <div class="col-sm-12 col-md-12 col-lg-4">
+            <div class="contact-panel__info bg-secondary">
+              <h4 class="contact-panel__info__title">Informations</h4>
+              <div class="contact-panel__block">
+                <h5 class="contact-panel__block__title">Notre Localisation</h5>
+                <ul class="contact-panel__block__list list-unstyled">
+                  <li>SCI Carrière Abatta, Abidjan, Lot 423 ilot 37, Côte d'Ivoire</li>
+                </ul>
+              </div><!-- /.contact-panel__info__block -->
+              <div class="contact-panel__block">
+                <h5 class="contact-panel__block__title">Contacts</h5>
+                <ul class="contact-panel__block__list list-unstyled">
+                  <li><a href="mailto:Email: Eteon@7oroof.com"></a>Email: contact@gfi-co.net</li>
+                  <li><a href="tel:Email: Eteon@7oroof.com"></a>Téléphone: (+225) 01 431 00 250 </li>
+                </ul>
+              </div><!-- /.contact-panel__info__block -->
+              <div class="contact-panel__block">
+                <h5 class="contact-panel__block__title">Horaires d'ouverture</h5>
+                <ul class="contact-panel__block__list list-unstyled">
+                  <li>Lundi - Vendredi</li>
+                  <li>08H - 17H</li>
+                </ul>
+              </div><!-- /.contact-panel__info__block -->
+              <h5 class="contact-panel__block__title">Avez-vous des questions, contactez-nous !!</h5>
+              {# <a href="{{ path('gfi-contact', { 'lang': 'fr' }) }}" class="btn btn__primary btn__block">Contactez-nous</a> #}
+            </div><!-- /.contact-panel__info -->
+          </div><!-- /.col-lg-4 -->
+        </div><!-- /.row -->
+      </div><!-- /.container -->
+    </section><!-- /.contact layout 2 -->
 {% endblock %}

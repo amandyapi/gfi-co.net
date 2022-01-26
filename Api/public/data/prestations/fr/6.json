@@ -1,0 +1,19 @@
+{
+    "id": 6,
+    "title": "Gestion Immobilière",
+    "image": "assets/images/services/2.jpg",
+    "content": {
+        "0": "Du premier contact avec le vendeur et l'acheteur, jusqu'à la signature de l'acte authentique, nous mettons toute notre compétence en œuvre afin de parvenir à la vente ou à l’achat de votre bien immobilier. Dans cette optique, vous bénéficierez de notre fine connaissance du marché, de notre sens de la négociation et de notre grande disponibilité. Nous vous accompagnons également dans vos projets de placement immobilier (immeuble locatif, meublé, etc.). ",
+        "1": "Nous vous assurons une recherche rigoureuse de locataire, ou du bien qui répond à vos besoins. Grâce à notre base de données propriétaires nous accélérons votre recherche. Si vous êtes bailleurs, des dossiers locataires qualifiés sélectionnés à partir de notre base de données et de notre prospection vous seront transmis pour vous assurer la maîtrise de vos revenus locatifs."
+    },
+    "customContent": {
+        "0": {
+            "ul": "Vous souhaitez vendre un bien ?",
+            "text": "Du premier contact avec le vendeur et l'acheteur, jusqu'à la signature de l'acte authentique, nous mettons toute notre compétence en œuvre afin de parvenir à la vente ou à l’achat de votre bien immobilier. Dans cette optique, vous bénéficierez de notre fine connaissance du marché, de notre sens de la négociation et de notre grande disponibilité. Nous vous accompagnons également dans vos projets de placement immobilier (immeuble locatif, meublé, etc.). "
+        },
+        "1": {
+            "ul": "Vous souhaitez louer un bien ?",
+            "text": "Nous vous assurons une recherche rigoureuse de locataire, ou du bien qui répond à vos besoins. Grâce à notre base de données propriétaires nous accélérons votre recherche. Si vous êtes bailleurs, des dossiers locataires qualifiés sélectionnés à partir de notre base de données et de notre prospection vous seront transmis pour vous assurer la maîtrise de vos revenus locatifs."
+        }
+    }
+}

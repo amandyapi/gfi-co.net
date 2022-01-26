@@ -16,24 +16,16 @@ gfi-prestations:
     controller: App\Controller\PageController::prestations
 
 gfi-prestations-info:
-    path: /{lang}/prestations/{slug}
+    path: /{lang}/prestations/{id}-{slug}
     controller: App\Controller\PageController::prestationsInfos
 
-gfi-project:
-    path: /{lang}/realisations
+gfi-project-grid:
+    path: /{lang}/projets
     controller: App\Controller\PageController::projects
 
-gfi-project-info:
-    path: /{lang}/realisations/{slug}
+gfi-project-grid-info:
+    path: /{lang}/projets/{slug}
     controller: App\Controller\PageController::projectsInfos
-
-gfi-concept:
-    path: /{lang}/concepts
-    controller: App\Controller\PageController::concepts
-
-gfi-concept-info:
-    path: /{lang}/concepts/{slug}
-    controller: App\Controller\PageController::conceptsInfos
 
 gfi-article:
     path: /{lang}/articles
@@ -46,6 +38,14 @@ gfi-article-info:
 gfi-contact:
     path: /{lang}/contact
     controller: App\Controller\PageController::contact
+
+gfi-success-mail:
+    path: /{lang}/success-mail
+    controller: App\Controller\PageController::successMail
+
+gfi-error-mail:
+    path: /{lang}/error-mail/{page}
+    controller: App\Controller\PageController::errorMail
 
 ## USERS
 userLogin:

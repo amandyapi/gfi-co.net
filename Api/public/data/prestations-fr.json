@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "slug": "service-varie-adapte-a-vos-attentes",
+        "title": "Service varié, adapté à vos attentes",
+        "image": "assets/images/services/6.jpg",
+        "content": "La sécurisation du foncier urbain constitue l'une des priorités de la politique de développement de GFI-CO SARL."
+    },
+    {
+        "id": 2,
+        "slug": "service-cle-en-main",
+        "title": "Service <br>Clé en main",
+        "image": "assets/images/services/5.jpg",
+        "content": "S’engager à construire son logement est une décision qui ne doit pas altérer votre qualité de vie. GFI-CO vous propose un service clé en main."
+    },
+    {
+        "id": 3,
+        "slug": "service-pret-a-decorer",
+        "title": "Service <br>Prêt à décorer",
+        "image": "assets/images/services/4.jpg",
+        "content": "Dans le but de pousser encore plus loin la satisfaction clientèle, GFI-CO vous propose un service prêt à décorer afin de personnaliser ..."
+    },
+    {
+        "id": 4,
+        "slug": "architecture-d-interieur",
+        "title": "Architecture <br>D'Intérieur",
+        "image": "assets/images/services/3.jpg",
+        "content": "Nos réalisations se veulent une réponse créative, spécifique, personnalisée et innovante en adéquation avec votre existentiel."
+    },
+    {
+        "id": 5,
+        "slug": "rafraichissement-renovation",
+        "title": "Rafraichissement <br>& Rénovation",
+        "image": "assets/images/services/1.jpg",
+        "content": "GFI-CO SARL propose également l’ensemble des services en rafraichissement et en rénovation immobilière..."
+    },
+    {
+        "id": 6,
+        "slug": "gestion-immobiliere-vente-location",
+        "title": "Gestion Immobilière <br>(Vente / Location)",
+        "image": "assets/images/services/2.jpg",
+        "content": "Dans le but de pousser encore plus loin la satisfaction clientèle, GFI-CO vous propose un service prêt à décorer afin de personnaliser ..."
+    }
+]
