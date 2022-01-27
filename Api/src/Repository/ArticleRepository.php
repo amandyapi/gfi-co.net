@@ -27,7 +27,7 @@ class ArticleRepository extends ServiceEntityRepository
         $sql = 'SELECT *
                 FROM article a
                 ORDER BY a.id DESC
-                LIMIT 3';
+                LIMIT 6';
 
         $stmt = $conn->prepare($sql);
 
