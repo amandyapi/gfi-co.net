@@ -24,24 +24,15 @@
                             <h5 class="widget__title">Services</h5>
                             <div class="widget-content">
                                 <ul class="list-unstyled">
+                                {% for a in aside %}
                                     <li>
-                                        <a href="#" class="active">Architecture & building</a>
+                                        {% if a.id == id %}
+                                        <a href="#" class="active">{{a.title}}</a>
+                                        {% else %}
+                                        <a href="{{ path('gfi-prestations-info', { 'lang': 'fr', 'id': a.id,'slug': a.slug }) }}" class="#">{{a.title}}</a>
+                                        {% endif %}
                                     </li>
-                                    <li>
-                                        <a href="#">Construction Consultants</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Construction Management</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Tiling And Painting</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Planning And Scheduling</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Design Build Contracts</a>
-                                    </li>
+                                {% endfor %}
                                 </ul>
                             </div>
                             <!-- /.widget-content -->
@@ -49,15 +40,11 @@
                         <!-- /.widget-categories -->
 
                         <div class="widget widget-download">
-                            <h5 class="widget__title">Download</h5>
+                            <h5 class="widget__title">Téléchargement</h5>
                             <div class="widget-body">
-                                <a href="#" class="btn btn__secondary btn__block mb-20">
-                                    <span>Company Report 2020</span>
-                                    <img src="assets/images/icons/pdf.png" alt="pdf">
-                                </a>
                                 <a href="#" class="btn btn__primary btn__block">
-                                    <span>Company Brochure</span>
-                                    <img src="assets/images/icons/pdf.png" alt="pdf">
+                                    <span>Notre Brochure</span>
+                                    <img src="{{ asset('assets/images/icons/pdf.png') }}" alt="pdf">
                                 </a>
                             </div>
                             <!-- /.widget-content -->
@@ -75,23 +62,21 @@
 					</div>
 					<!-- /.portfolio-grid-layout2 -->
 					<div class="text__block mb-30">
-                    {% if prestation.id == 6 %}
-                        {% for customContent in prestation.customContent %}
-                        <ul class="list-items list-unstyled mb-20 mt-20">
-							<li>{{customContent.ul}}</li>
-						</ul>
+                        {% for c in content %}
+                            {% if prestation.id == 6 %}
+                            <ul class="list-items list-unstyled mb-20 mt-20">
+                                <li>{{c.ul}}</li>
+                            </ul>
 
-                        <p class="text__block-desc" style="font-size: 13pt; text-align: justify">
-							{{customContent.text}}
-						</p>
+                            <p class="text__block-desc" style="font-size: 13pt; text-align: justify">
+                                {{c.text}}
+                            </p>
+                            {% else %}
+                                <p class="text__block-desc" style="font-size: 13pt; text-align: justify">
+                                    {{c}}
+                                </p>
+                            {% endif %}
                         {% endfor %}
-                    {% else %}
-                        {% for content in prestation.content %}
-                        <p class="text__block-desc" style="font-size: 13pt; text-align: justify">
-							{{content}}
-						</p>
-                        {% endfor %}
-                    {% endif %}
 					</div>
 
 				</div>

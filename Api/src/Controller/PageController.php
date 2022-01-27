@@ -140,11 +140,49 @@ class PageController extends AbstractController
         $file = "data/prestations/".$lang."/".$id.".json";
         $data = file_get_contents($file);
         $prestation = \json_decode($data);
-        //var_dump($prestation);die();
+
+        $asideFile = "data/prestations-".$lang.".json";
+        $asiteData = file_get_contents($asideFile);
+        $asideRaw = \json_decode($asiteData);
+
+        $content = [];
+        $aside = [];
+        
+        foreach ($prestation->content as $key => $value) {
+
+            if($prestation->id == 6)
+            {
+                //foreach ($prestation->content as $k => $v) {
+                    $content[] = [
+                        'ul' => $value->ul,
+                        'text' => $value->text,
+                    ];
+                //}
+            }
+            else{
+                $content[] = $value;
+            }
+            
+         }
+
+        $i = 1;
+        foreach ($asideRaw as $key => $value) {
+            $a = new \stdClass;
+            $a->id = $value->id;
+            $a->title = $value->titleTxt;
+            $a->slug = $value->slug;
+            
+            $aside[] = $a;
+            $i++;
+        }
+        //var_dump($aside);die();
 
         $template = 'prestations/prestations-info-'.$lang.'.html.twig';            
         return $this->render($template, [
-            'prestation' => $prestation
+            'prestation' => $prestation,
+            'content' => $content,
+            'aside' => $aside,
+            'id' => $id
         ]); 
     }
 
