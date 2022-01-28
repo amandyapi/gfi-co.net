@@ -79,7 +79,7 @@
         <div class="row">
           <div class="col-sm-12 col-md-12 col-lg-12">
             <div class="slick-carousel"
-              data-slick='{"slidesToShow": 3, "slidesToScroll": 3, "arrows": false, "dots": true, "responsive": [ {"breakpoint": 992, "settings": {"slidesToShow": 2}}, {"breakpoint": 767, "settings": {"slidesToShow": 2}}, {"breakpoint": 480, "settings": {"slidesToShow": 1}}]}'>
+              data-slick='{"slidesToShow": 3, "autoplay": true, "slidesToScroll": 3, "arrows": false, "dots": true, "responsive": [ {"breakpoint": 992, "settings": {"slidesToShow": 2}}, {"breakpoint": 767, "settings": {"slidesToShow": 2}}, {"breakpoint": 480, "settings": {"slidesToShow": 1}}]}'>
               <!-- Feature Item #1 -->
               <div class="feature-item">
                 <div class="feature-item__icon">
@@ -465,72 +465,15 @@
       </div><!-- /.container -->
     </section><!-- /.Banner layout 3 -->
 
-    
-    
-    <!-- ======================
-     Work Process 
-    ========================= -->
-    {# <section class="work-process">
-      <div class="bg-img"><img src="{{ asset('assets/images/backgrounds/1.jpg') }}" alt="background"></div>
-      <div class="container">
-        <div class="row heading heading-layout3 mb-80">
-          <div class="col-sm-12 col-md-12 col-lg-6">
-            <h3 class="heading__title color-white">Pushing The Boundaries Of What’s Possible.</h3>
-          </div>
-        </div>
-        <div class="row process-items-wrapper">
-        
-          <div class="col-sm-6 col-md-6 col-lg-3">
-            <div class="process-item">
-              <div class="process-item__icon">
-                <i class="icon-planning"></i>
-              </div>
-              <h4 class="process-item__title">Evaluation And Signing Of The Contract.</h4>
-              <p class="process-item__desc">Step 01</p>
-            </div>
-          </div>
-          
-          <div class="col-sm-6 col-md-6 col-lg-3">
-            <div class="process-item">
-              <div class="process-item__icon">
-                <i class="icon-barrier1"></i>
-              </div>
-              <h4 class="process-item__title">Preparation Of The Work Plan.</h4>
-              <p class="process-item__desc">Step 02</p>
-            </div>
-          </div>
-          
-          <div class="col-sm-6 col-md-6 col-lg-3">
-            <div class="process-item">
-              <div class="process-item__icon">
-                <i class="icon-concrete-mixer-1"></i>
-              </div>
-              <h4 class="process-item__title">Implementation Of Quality Works</h4>
-              <p class="process-item__desc">Step 03</p>
-            </div>
-          </div>
-          
-          <div class="col-sm-6 col-md-6 col-lg-3">
-            <div class="process-item">
-              <div class="process-item__icon">
-                <i class="icon-pantone"></i>
-              </div>
-              <h4 class="process-item__title">Delivering The Project To The Customer</h4>
-              <p class="process-item__desc">Step 04</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section> #}
 
     <!-- ======================
       Blog carousel
     ========================= -->
-    <section class="blog-carousel pt-0 pb-50 mt--210 z-index-2">
+    <section class="blog-carousel pt-0 pb-20 mt-50 z-index-2">
       <div class="container">
         <div class="row">
           <div class="col-sm-12 col-md-12 col-lg-12 heading-wrapper d-flex justify-content-between mb-10">
-            <div class="heading heading-light">
+            <div class="heading">
               <h2 class="heading__title">Articles Récents</h2>
             </div><!-- /.heading -->
             <a href="{{ path('gfi-article', { 'lang': 'fr' }) }}" class="btn btn__white btn__bordered btn__explore">Explorer</a>
