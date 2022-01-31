@@ -42,7 +42,7 @@
                         <div class="widget widget-download">
                             <h5 class="widget__title">Téléchargement</h5>
                             <div class="widget-body">
-                                <a href="#" class="btn btn__primary btn__block">
+                                <a href="{{ asset('assets/pdf/plaquette_gfi-co_fr.pdf') }}" title="plaquette GFI-CO" class="btn btn__primary btn__block">
                                     <span>Notre Brochure</span>
                                     <img src="{{ asset('assets/images/icons/pdf.png') }}" alt="pdf">
                                 </a>
@@ -73,7 +73,7 @@
                             </p>
                             {% else %}
                                 <p class="text__block-desc" style="font-size: 13pt; text-align: justify">
-                                    {{c}}
+                                    {{c|raw}}
                                 </p>
                             {% endif %}
                         {% endfor %}
