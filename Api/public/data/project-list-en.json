@@ -1,0 +1,51 @@
+[
+    {
+        "filter": "filter-concept",
+        "image": "assets/images/projets/pearl/1.jpg",
+        "title": "THE PEARL villa",
+        "slug": "villa-the-pearl",
+        "category": "concept"
+    },
+    {
+        "filter": "filter-concept",
+        "image": "assets/images/projets/bigpearl/1.jpg",
+        "title": "THE BIG PEARL villa ",
+        "slug": "villa-the-big-pearl",
+        "category": "concept"
+    },
+    {
+        "filter": "filter-architecture",
+        "image": "assets/images/realisation/architecture/citebonheur/1.jpg",
+        "title": "Hapiness City",
+        "slug": "hapiness-city",
+        "category": "architecture"
+    },
+    {
+        "filter": "filter-projet",
+        "image": "assets/images/realisation/duplexbingerville/1.jpg",
+        "title": "Construction of two Duplex villas in Bingerville",
+        "slug": "construction-of-two-duplex-villas-in-bingerville",
+        "category": "projet"
+    },
+    {
+        "filter": "filter-architecture",
+        "image": "assets/images/realisation/12mili/1.jpg",
+        "title": "Villa 12 Mili",
+        "slug": "villa-12-mili",
+        "category": "architecture"
+    },
+    {
+        "filter": "filter-projet",
+        "image": "assets/images/realisation/hoteldaloa/1.jpg",
+        "title": "Daloa's hotelery residence",
+        "slug": "daloa-hotelery-residence",
+        "category": "projet"
+    },
+    {
+        "filter": "filter-interieur",
+        "image": "assets/images/realisation/interieur/1.jpg",
+        "title": "Interior designer",
+        "slug": "interior-designer",
+        "category": "interieur"
+    }
+]

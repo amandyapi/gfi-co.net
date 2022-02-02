@@ -1,19 +1,15 @@
 {
     "id": 6,
-    "title": "Gestion Immobilière",
+    "title": "Property Management (Sale / Rental)",
     "image": "assets/images/services/2.jpg",
     "content": {
-        "0": "Du premier contact avec le vendeur et l'acheteur, jusqu'à la signature de l'acte authentique, nous mettons toute notre compétence en œuvre afin de parvenir à la vente ou à l’achat de votre bien immobilier. Dans cette optique, vous bénéficierez de notre fine connaissance du marché, de notre sens de la négociation et de notre grande disponibilité. Nous vous accompagnons également dans vos projets de placement immobilier (immeuble locatif, meublé, etc.). ",
-        "1": "Nous vous assurons une recherche rigoureuse de locataire, ou du bien qui répond à vos besoins. Grâce à notre base de données propriétaires nous accélérons votre recherche. Si vous êtes bailleurs, des dossiers locataires qualifiés sélectionnés à partir de notre base de données et de notre prospection vous seront transmis pour vous assurer la maîtrise de vos revenus locatifs."
-    },
-    "customContent": {
         "0": {
-            "ul": "Vous souhaitez vendre un bien ?",
-            "text": "Du premier contact avec le vendeur et l'acheteur, jusqu'à la signature de l'acte authentique, nous mettons toute notre compétence en œuvre afin de parvenir à la vente ou à l’achat de votre bien immobilier. Dans cette optique, vous bénéficierez de notre fine connaissance du marché, de notre sens de la négociation et de notre grande disponibilité. Nous vous accompagnons également dans vos projets de placement immobilier (immeuble locatif, meublé, etc.). "
+            "ul": "Do you want to sell a property ?",
+            "text": "From the first contact with the seller and the buyer, until the signing of the authentic instrument, we use all our skills to achieve the sale or purchase of your property. In this context, you will benefit from our in-depth knowledge of the market, our sense of negotiation and our great availability. We also support you in your real estate investment projects (rental property, furnished property, etc.)."
         },
         "1": {
-            "ul": "Vous souhaitez louer un bien ?",
-            "text": "Nous vous assurons une recherche rigoureuse de locataire, ou du bien qui répond à vos besoins. Grâce à notre base de données propriétaires nous accélérons votre recherche. Si vous êtes bailleurs, des dossiers locataires qualifiés sélectionnés à partir de notre base de données et de notre prospection vous seront transmis pour vous assurer la maîtrise de vos revenus locatifs."
+            "ul": "Do you want to rent a property?",
+            "text": "We assure you a rigorous search for a tenant, or for the property that meets your needs. Thanks to our proprietary database, we speed up your research. If you are lessors, qualified tenant files selected from our database and prospecting will be sent to you to ensure you have control over your rental income."
         }
     }
 }

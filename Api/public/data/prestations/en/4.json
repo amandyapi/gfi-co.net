@@ -1,9 +1,9 @@
 {
     "id": 4,
-    "title": "Architecture d'Intérieur",
+    "title": "Interior Designer",
     "image": "assets/images/services/3.jpg",
     "content": {
-        "0": "L’architecture d’intérieur ou le design d'espace est un autre volet de notre domaine de définition. L’objectif est de moderniser votre espace pour le rendre plus accueillant, confortable et fonctionnel dans un cadre de vie attrayant. Ici, l’accent est mis sur l’esthétique.",
-        "1": "Nos réalisations se veulent une réponse créative, spécifique, personnalisée et innovante en adéquation avec votre existentiel."
+        "0": "Interior architecture or space design is one of the services we offer. The goal is to modernize your space by making it more welcoming, comfortable, functional in a beautiful living space.",
+        "1": "Our achievements are creatives, specific, personalized and innovative in line with your existential balance."
     }
 }

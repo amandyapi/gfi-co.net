@@ -1,9 +1,9 @@
 {
     "id": 5,
-    "title": "Rafraichissement & Rénovation",
+    "title": "Renovation & Refreshment",
     "image": "assets/images/services/1.jpg",
     "content": {
-        "0": "<strong>Vous avez acquis une maison et vous voulez la rénover ? Envie de moderniser vos pièces ? Remettre aux normes un bâti vieillissant ?</strong>",
-        "1": "GFI-CO SARL propose également l’ensemble des services en rafraichissement et en rénovation immobilière. Nos travailleurs professionnels sont à votre disposition pour des travaux de Peinture, Maçonnerie, Menuiserie Générale, Électricité, Plomberie, Pose de parquet, Plâtrerie et cloisonnement, Travaux Isolation, Aménagement comble, Aménagement cuisine, Aménagement salle de bain."
+        "0": "<strong>Have you bought a house and want to renovate it? Want to modernize your rooms? Bring aging buildings up to standard?</strong>",
+        "1": "GIF-CO SARL offer real estate renovation and refreshment services. Our professional workers are available for painting, masonry, general carpentry, electricity, plumbing, laying of parquet, plastering and partitioning work, insulation work, full layout, kitchen layout, bathroom layout."
     }
 }

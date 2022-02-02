@@ -1,10 +1,10 @@
 {
     "id": 2,
-    "title": "Un service clé en main",
+    "title": "Turnkey service",
     "image": "assets/images/services/5.jpg",
     "content": {
-        "0": "S’engager à construire son logement est une décision qui ne doit pas altérer votre qualité de vie. À cet effet, GFI-CO vous propose un service clé en main. Une offre sur mesure afin de mieux répondre à vos exigences en immobilier.",
-        "1": "Le service clé en main prend en compte l’évaluation de votre budget en amont. L’achat de terrains sécurisés avec une étude de sol en fonction de votre zone géographique. La conception des plans d’architecture, les études techniques, les devis estimatif et quantitatif. Le choix des matériaux de construction, la date de livraison et le prix global de votre résidence future.",
-        "2": "Le service clé en main de GFI-CO est également un service personnalisable permettant au mieux de profiter du confort de votre maison en toute quiétude."
+        "0": "Committing to build your own home is a decision that should not affect your life quality. GIF-CO offers you a turnkey service. An offer made to answer to your requirements in real estate.",
+        "1": "The turnkey service takes your budget evaluation. The purchase of secure land with a study of your geographical location soil. Architecture plan and conception, technical studies estimated and quantitative estimates. The choice of construction materials, delivery date and your future residence price.",
+        "2": "The turnkey service is also a personalized service which permits you to enjoy your home comfort."
     }
 }
