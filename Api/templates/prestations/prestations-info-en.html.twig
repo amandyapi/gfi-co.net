@@ -1,0 +1,91 @@
+{% extends 'layout-en.html.twig' %}
+
+{% block title %}Services
+{% endblock %}
+
+{% block content %}
+	<section class="page-title page-title-layout1 bg-overlay bg-parallax">
+		<div class="bg-img"><img src="{{ asset('assets/images/page-titles/7.jpg') }}" alt="background"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-12 col-xl-9">
+					<h1 class="pagetitle__heading">{{prestation.title}}</h1>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="text-content-section pb-90">
+		<div class="container">
+			<div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-4">
+                    <aside class="sidebar mb-30">
+                        <div class="widget widget-categories">
+                            <h5 class="widget__title">Services</h5>
+                            <div class="widget-content">
+                                <ul class="list-unstyled">
+                                {% for a in aside %}
+                                    <li>
+                                        {% if a.id == id %}
+                                        <a href="#" class="active">{{a.title}}</a>
+                                        {% else %}
+                                        <a href="{{ path('gfi-prestations-info', { 'lang': 'fr', 'id': a.id,'slug': a.slug }) }}" class="#">{{a.title}}</a>
+                                        {% endif %}
+                                    </li>
+                                {% endfor %}
+                                </ul>
+                            </div>
+                            <!-- /.widget-content -->
+                        </div>
+                        <!-- /.widget-categories -->
+
+                        <div class="widget widget-download">
+                            <h5 class="widget__title">Downloads</h5>
+                            <div class="widget-body">
+                                <a href="{{ asset('assets/pdf/plaquette_gfi-co_fr.pdf') }}" title="plaquette GFI-CO" class="btn btn__primary btn__block">
+                                    <span>Our Booklet</span>
+                                    <img src="{{ asset('assets/images/icons/pdf.png') }}" alt="pdf">
+                                </a>
+                            </div>
+                            <!-- /.widget-content -->
+                        </div>
+                        <!-- /.widget-download -->
+                    </aside>
+                </div>
+				<div class="col-sm-12 col-md-12 col-lg-8">
+					<div class="portfolio-grid-layout2">
+						<div class="row">
+							<div class="video-banner mb-50">
+								<img src="{{ asset(prestation.image) }}" alt="">
+							</div>
+						</div>
+					</div>
+					<!-- /.portfolio-grid-layout2 -->
+					<div class="text__block mb-30">
+                        {% for c in content %}
+                            {% if prestation.id == 6 %}
+                            <ul class="list-items list-unstyled mb-20 mt-20">
+                                <li>{{c.ul}}</li>
+                            </ul>
+
+                            <p class="text__block-desc" style="font-size: 13pt; text-align: justify">
+                                {{c.text}}
+                            </p>
+                            {% else %}
+                                <p class="text__block-desc" style="font-size: 13pt; text-align: justify">
+                                    {{c|raw}}
+                                </p>
+                            {% endif %}
+                        {% endfor %}
+					</div>
+
+				</div>
+				<!-- /.col-lg-8 -->
+			</div>
+			<!-- /.row -->
+		</div>
+		<!-- /.container -->
+	</section>
+	<!-- /.Text Content Section -->
+
+{% endblock %}

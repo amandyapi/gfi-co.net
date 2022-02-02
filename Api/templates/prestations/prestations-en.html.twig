@@ -1,0 +1,150 @@
+{% extends 'layout-en.html.twig' %}
+
+{% block title %}Services
+{% endblock %}
+
+{% block content %}
+<section class="page-title page-title-layout1 bg-overlay bg-parallax">
+    <div class="bg-img"><img src="{{ asset('assets/images/page-titles/7.jpg') }}" alt="background"></div>
+    <div class="container">
+      {# <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-9">
+          <h1 class="pagetitle__heading">Nos différentes prestations</h1>
+        </div>
+      </div> #}
+      <div class="row align-items-center">
+          <div class="col-sm-12 col-md-12 col-lg-12 col-xl-7">
+            <h1 class="pagetitle__heading">We help you build on your past and prepare for the future</h1>
+            <p class="pagetitle__desc"></p>
+          </div><!-- /.col-xl-7 -->
+        </div>
+    </div>
+  </section>
+      
+  <section class="services-layout1 pb-90 bg-gray">
+    <div class="bg-img"><img src="{{ asset('assets/images/backgrounds/map.png') }}" alt="background"></div>
+    <div class="container">
+      <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-8 offset-lg-2">
+            <div class="heading text-center mb-40">
+              {# <span class="heading__subtitle">The Best A Grade Commercial & Residential Services</span> #}
+              <h2 class="heading__title">GFI-CO Ecological Activist Of High Standing Real Estate Projects And Innovative Concepts!</h2>
+            </div><!-- /.heading -->
+          </div><!-- /.col-lg-8 -->
+        </div>
+      <div class="row">
+      {% for p in prestations %}
+        <div class="col-sm-12 col-md-4 col-lg-4">
+          <div class="service-item">
+            <div class="service-item__content">
+              <h4 class="service-item__title">{{p.title|raw}}</h4>
+              <p class="service-item__desc">
+                {{p.content}}
+              </p>
+              <a href="{{ path('gfi-prestations-info', { 'lang': 'en', 'id': p.id,'slug': p.slug }) }}" class="btn btn__secondary btn__link">
+                <i class="icon-arrow-right1"></i>
+                <span>Read more</span>
+              </a>
+            </div><!-- /.service-content -->
+            <div class="service-item__img">
+              <img src="{{ asset(p.image)}}" alt="service" class="w-100">
+            </div><!-- /.service-item__img -->
+          </div><!-- /.service-item -->
+        </div><!-- /.col-lg-4 -->
+      {% endfor %} 
+      </div><!-- /.row -->
+    </div><!-- /.container -->
+  </section><!-- /.Services Layout 1 -->
+
+  <section class="page-title page-title-layout1 bg-overlay bg-parallax">
+    <div class="bg-img"><img src="{{ asset('assets/images/page-titles/4.jpg') }}" alt="background"></div>
+    <div class="container">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+  </section>
+
+  <section class="contact-layout2 pt-0 mt--120">
+      <div class="container">
+        <div class="row contact-panel">
+          <div class="col-sm-12 col-md-12 col-lg-8">
+            <form class="contact-panel__form" method="post" action="#" id="contactForm">
+              <div class="row">
+                <div class="col-sm-12">
+                  <h4 class="contact-panel__title">Contact us</h4>
+                  <p class="contact-panel__desc mb-40">
+                  Let us know your concerns, by message. Our customer service will answer you as soon as possible.
+                  </p>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                  <div class="form-group"><input type="text" class="form-control" placeholder="Full name" id="contact-name"
+                      name="contact-name" required></div>
+                </div><!-- /.col-lg-6 -->
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                  <div class="form-group"><input type="email" class="form-control" placeholder="Email"
+                      id="contact-email" name="contact-email" required></div>
+                </div><!-- /.col-lg-6 -->
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                  <div class="form-group"><input type="text" class="form-control" placeholder="Phone number" id="contact-Phone"
+                      name="contact-phone" required></div>
+                </div><!-- /.col-lg-6 -->
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                  <div class="form-group">
+                    <select class="form-control" name="objet">
+                      <option value="0">Subject of your message</option>
+                      <option value="Devis">QUOTE REQUEST</option>
+                      <option value="Partenariat">PARTNERSHIP REQUES</option>
+                      <option value="Informations">INFORMATION REQUEST</option>
+                      <option value="Autre">OTHER REQUEST</option>
+                    </select>
+                  </div>
+                </div><!-- /.col-lg-6 -->
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                  <div class="form-group">
+                    <textarea class="form-control" placeholder="Write your message" id="contact-messgae"
+                      name="contact-messgae" required></textarea>
+                  </div>
+                </div><!-- /.col-lg-12 -->
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                  <input type="submit" name="envoyer" value="Send" style="" class="btn btn__secondary btn__block">
+                  {# <div class="contact-result"></div> #}
+                </div><!-- /.col-lg-12 -->
+              </div><!-- /.row -->
+            </form>
+          </div><!-- /.col-lg-8 -->
+          <div class="col-sm-12 col-md-12 col-lg-4">
+            <div class="contact-panel__info bg-secondary">
+              <h4 class="contact-panel__info__title">Information</h4>
+              <div class="contact-panel__block">
+                <h5 class="contact-panel__block__title">Our Location</h5>
+                <ul class="contact-panel__block__list list-unstyled">
+                  <li>SCI Carrière Abatta, Abidjan, Lot 423 ilot 37, Côte d'Ivoire</li>
+                </ul>
+              </div><!-- /.contact-panel__info__block -->
+              <div class="contact-panel__block">
+                <h5 class="contact-panel__block__title">Contacts</h5>
+                <ul class="contact-panel__block__list list-unstyled">
+                  <li><a href="mailto:Email: Eteon@7oroof.com"></a>Email: contact@gfi-co.net</li>
+                  <li><a href="tel:Email: Eteon@7oroof.com"></a>Phone: (+225) 01 431 00 250 </li>
+                </ul>
+              </div><!-- /.contact-panel__info__block -->
+              <div class="contact-panel__block">Opening Hours</h5>
+                <ul class="contact-panel__block__list list-unstyled">
+                  <li>Mon - Fri</li>
+                  <li>8am – 7pm</li>
+                </ul>
+              </div><!-- /.contact-panel__info__block -->
+              <h5 class="contact-panel__block__title">Do you have any questions, contact us!!</h5>
+              {# <a href="{{ path('gfi-contact', { 'lang': 'fr' }) }}" class="btn btn__primary btn__block">Contactez-nous</a> #}
+            </div><!-- /.contact-panel__info -->
+          </div><!-- /.col-lg-4 -->
+        </div><!-- /.row -->
+      </div><!-- /.container -->
+    </section><!-- /.contact layout 2 -->
+{% endblock %}

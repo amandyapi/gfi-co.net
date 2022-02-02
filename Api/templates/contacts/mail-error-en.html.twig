@@ -1,4 +1,4 @@
-{% extends 'layout-fr.html.twig' %}
+{% extends 'layout-en.html.twig' %}
 
 {% block title %}Présentation
 {% endblock %}
@@ -26,15 +26,15 @@
             </h3>
           </div>
           <p class="heading__desc mb-30" style="font-size: 13pt">
-            Une erreur est survenue lors de l'envoi de votre message
+            An error occurred while sending your message
           </p>
           {% if page == 'prestations' %}
             <p class="heading__desc" style="font-size: 13pt">
-              Revenir au <a href="{{ path('gfi-prestations', { 'lang': 'fr' }) }}#contactForm">formulaire</a>
+              Return to <a href="{{ path('gfi-prestations', { 'lang': 'en' }) }}#contactForm">form</a>
             </p>
           {% elseif page == 'contacts' %}
             <p class="heading__desc" style="font-size: 13pt">
-              Revenir au <a href="{{ path('gfi-contact', { 'lang': 'fr' }) }}">formulaire</a>
+              Return to <a href="{{ path('gfi-contact', { 'lang': 'en' }) }}">form</a>
             </p>
           {% else %}
             Sold-out!

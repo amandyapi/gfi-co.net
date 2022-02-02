@@ -9,181 +9,84 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-9">
-          <h1 class="pagetitle__heading">Nos Projets</h1>
+          <h1 class="pagetitle__heading">{{projet.title}}</h1>
         </div>
       </div>
     </div>
   </section>
-  
-  <section class="portfolio-grid">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-12 col-md-12 col-lg-12">
-            <ul class="portfolio-filter d-flex flex-wrap justify-content-center list-unstyled">
-              <li><a class="filter active" href="#" data-filter="all">TOUTES LES OEUVRES</a></li>
-              <li><a class="filter" href="#" data-filter=".filter-concept">Nos Concepts</a></li>
-              <li><a class="filter" href="#" data-filter=".filter-projet">Nos Projets</a></li>
-              <li><a class="filter" href="#" data-filter=".filter-architecture">Nos Architectures</a></li>
-              <li><a class="filter" href="#" data-filter=".filter-renovations">Nos Rénovations</a></li>
-              <li><a class="filter" href="#" data-filter=".filter-interieur">Nos design d'Intérieur</a></li>
-            </ul><!-- /.portfolio-filter  -->
-          </div><!-- /.col-lg-12 -->
-        </div><!-- /.row -->
-        <div id="filtered-items-wrap" class="row">
-          <!-- portfolio item #1 -->
-          
-          <div class="col-sm-6 col-md-6 col-lg-4 mix filter-concept">
-            <div class="portfolio-item">
-              <div class="portfolio-item__img">
-                <img src="{{ asset('assets/images/projets/pearl/1.jpg') }}" alt="portfolio img">
-              </div><!-- /.portfolio-img -->
-              <div class="portfolio-item__hover">
-                <div class="portfolio-item__content">
-                  <h4 class="portfolio-item__title"><a href="#">Villa THE PEARL</a></h4>
-                  <div class="portfolio-item__cat">
-                    <a href="#">concept</a>
-                  </div><!-- /.portfolio-cat -->
-                </div><!-- /.portfolio-content -->
-              </div><!-- /.portfolio-item__hover -->
-            </div><!-- /.portfolio-item -->
-          </div><!-- /.col-lg-4 -->
 
-          <!-- portfolio item #2 -->
-          <div class="col-sm-6 col-md-6 col-lg-4 mix filter-concept">
-            <div class="portfolio-item">
-              <div class="portfolio-item__img">
-                <img src="{{ asset('assets/images/projets/bigpearl/1.jpg') }}" alt="portfolio img">
-              </div><!-- /.portfolio-img -->
-              <div class="portfolio-item__hover">
-                <div class="portfolio-item__content">
-                  <h4 class="portfolio-item__title"><a href="#">Villa THE BIG PEARL</a></h4>
-                  <div class="portfolio-item__cat">
-                    <a href="#">Concept</a>
-                  </div><!-- /.portfolio-cat -->
-                </div><!-- /.portfolio-item__hover -->
-              </div><!-- /.portfolio-content -->
-            </div><!-- /.portfolio-item -->
-          </div><!-- /.col-lg-4 -->
-          <!-- portfolio item #3 -->
-          <div class="col-sm-6 col-md-6 col-lg-4 mix filter-projet">
-            <div class="portfolio-item">
-              <div class="portfolio-item__img">
-                <img src="{{ asset('assets/images/realisation/citebonheur/2.jpg') }}" alt="portfolio img">
-              </div><!-- /.portfolio-img -->
-              <div class="portfolio-item__hover">
-                <div class="portfolio-item__content">
-                  <h4 class="portfolio-item__title"><a href="#">Cité Du Bonheur</a></h4>
-                  <div class="portfolio-item__cat">
-                    <a href="#">Projets</a>
-                  </div><!-- /.portfolio-cat -->
-                </div><!-- /.portfolio-content -->
-              </div><!-- /.portfolio-item__hover -->
-            </div><!-- /.portfolio-item -->
-          </div><!-- /.col-lg-4 -->
-          <!-- portfolio item #4 -->
-          <div class="col-sm-6 col-md-6 col-lg-4 mix filter-projet">
-            <div class="portfolio-item">
-              <div class="portfolio-item__img">
-                <img src="{{ asset('assets/images/realisation/12mili/1.jpg') }}" alt="portfolio img">
-              </div><!-- /.portfolio-img -->
-              <div class="portfolio-item__hover">
-                <div class="portfolio-item__content">
-                  <h4 class="portfolio-item__title"><a href="#">Villa 12 Mili</a></h4>
-                  <div class="portfolio-item__cat">
-                    <a href="#">Projets</a>
-                  </div><!-- /.portfolio-cat -->
-                </div><!-- /.portfolio-content -->
-              </div><!-- /.portfolio-item__hover -->
-            </div><!-- /.portfolio-item -->
-          </div><!-- /.col-lg-4 -->
-          <!-- portfolio item #5 -->
-          <div class="col-sm-6 col-md-6 col-lg-4 mix filter-projet">
-            <div class="portfolio-item">
-              <div class="portfolio-item__img">
-                <img src="{{ asset('assets/images/realisation/hoteldaloa/1.jpg') }}" alt="portfolio img">
-              </div><!-- /.portfolio-img -->
-              <div class="portfolio-item__hover">
-                <div class="portfolio-item__content">
-                  <h4 class="portfolio-item__title"><a href="#">Résidence Hotelière De Daloa</a></h4>
-                  <div class="portfolio-item__cat">
-                    <a href="#">Projets</a>
-                  </div><!-- /.portfolio-cat -->
-                </div><!-- /.portfolio-content -->
-              </div><!-- /.portfolio-item__hover -->
-            </div><!-- /.portfolio-item -->
-          </div><!-- /.col-lg-4 -->
-          <!-- portfolio item #6 -->
-          <div class="col-sm-6 col-md-6 col-lg-4 mix filter-architecture">
-            <div class="portfolio-item">
-              <div class="portfolio-item__img">
-                <img src="{{ asset('assets/images/realisation/hoteldaloa/1.jpg') }}" alt="portfolio img">
-              </div><!-- /.portfolio-img -->
-              <div class="portfolio-item__hover">
-                <div class="portfolio-item__content">
-                  <h4 class="portfolio-item__title"><a href="#">Cathedral of Brasilia</a></h4>
-                  <div class="portfolio-item__cat">
-                    <a href="#">Architecture</a>
-                  </div><!-- /.portfolio-cat -->
-                </div><!-- /.portfolio-content -->
-              </div><!-- /.portfolio-item__hover -->
-            </div><!-- /.portfolio-item -->
-          </div><!-- /.col-lg-4 -->
-          <!-- portfolio item #7 -->
-          <div class="col-sm-6 col-md-6 col-lg-4 mix filter-architecture">
-            <div class="portfolio-item">
-              <div class="portfolio-item__img">
-                <img src="{{ asset('assets/images/realisation/architecture/1.jpg') }}" alt="portfolio img">
-              </div><!-- /.portfolio-img -->
-              <div class="portfolio-item__hover">
-                <div class="portfolio-item__content">
-                  <h4 class="portfolio-item__title"><a href="#">Maison de briques</a></h4>
-                  <div class="portfolio-item__cat">
-                    <a href="#">Architecture</a>
-                  </div><!-- /.portfolio-cat -->
-                </div><!-- /.portfolio-content -->
-              </div><!-- /.portfolio-item__hover -->
-            </div><!-- /.portfolio-item -->
-          </div><!-- /.col-lg-4 -->
-          <!-- portfolio item #8 -->
-          <div class="col-sm-6 col-md-6 col-lg-4 mix filter-renovations">
-            <div class="portfolio-item">
-              <div class="portfolio-item__img">
-                <img src="{{ asset('assets/images/realisation/architecture/2.jpg') }}" alt="portfolio img">
-              </div><!-- /.portfolio-img -->
-              <div class="portfolio-item__hover">
-                <div class="portfolio-item__content">
-                  <h4 class="portfolio-item__title"><a href="#">Maison de briques</a></h4>
-                  <div class="portfolio-item__cat">
-                    <a href="#">Renovations</a>
-                  </div><!-- /.portfolio-cat -->
-                </div><!-- /.portfolio-content -->
-              </div><!-- /.portfolio-item__hover -->
-            </div><!-- /.portfolio-item -->
-          </div><!-- /.col-lg-4 -->
-          <!-- portfolio item #9 -->
-          <div class="col-sm-6 col-md-6 col-lg-4 mix filter-interieur">
-            <div class="portfolio-item">
-              <div class="portfolio-item__img">
-                <img src="{{ asset('assets/images/realisation/interieur/1.jpg') }}" alt="portfolio img">
-              </div><!-- /.portfolio-img -->
-              <div class="portfolio-item__hover">
-                <div class="portfolio-item__content">
-                  <h4 class="portfolio-item__title"><a href="#">Design intérieur</a></h4>
-                  <div class="portfolio-item__cat">
-                    <a href="#">Interieur</a>
-                  </div><!-- /.portfolio-cat -->
-                </div><!-- /.portfolio-content -->
-              </div><!-- /.portfolio-item__hover -->
-            </div><!-- /.portfolio-item -->
-          </div><!-- /.col-lg-4 -->
-        </div><!-- /.row -->
-        {# <div class="row">
-          <div class="col-sm-12 col-md-12 col-lg-12 text-center">
-            <button type="button" class="btn btn__primary btn__bordered btn__loadMore loadMoreportfolio">
-              <i class="icon-arrow-right1"></i><span>Explorer</span>
-            </button>
-          </div><!-- /.col-lg-12 -->
-        </div> #}<!-- /.row -->
-      </div><!-- /.container -->
-    </section><!-- /.portfolio grid -->
+  <section class="portfolio-single pt-30 pb-10">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+          <div class="portfolio-item">
+            <div class="video-banner text-center mb-20">
+                <video src="{{ asset(projet.video) }}" controls autoplay="true" style="width: 75%"></video>
+            </div>
+            
+          </div><!-- /.portfolio-item  -->
+        </div><!-- /.col-lg-12 -->
+      </div><!-- /.row -->
+    </div><!-- /.container -->
+  </section><!-- /.portfolio single -->
+
+{% if projet.type == "concept" %}
+  <section class="text-content pt-20 pb-30">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-6 offset-lg-1">
+          <div class="text__block">
+            <h5 class="text__block-title mb-10">{{title}} Description</h5>
+            <ul class="portfolio-item__meta-list list-unstyled mt-10 mb-30">
+                <li><strong>Land area:</strong><span> {{ projet.area.land }}</span></li>
+                <li><strong>Floor area:</strong><span> {{ projet.area.floor }}</span></li>
+              </ul>
+              <h5 class="text__block-title mb-10">RDC</h5>
+              <ul class="list-items list-unstyled mt-20">
+                {% for r in rdc %}
+                <li>{{r}}</li>
+                {% endfor %}
+              </ul>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-5">
+          <div class="text__block">
+                <h5 class="text__block-title mb-10" style="visibility: hidden">villa THE PEARL</h5>
+                <ul class="portfolio-item__meta-list list-unstyled mt-10 mb-30" style="visibility: hidden">
+                    <li><strong>Superficie de Terrain:</strong><span>0 m²</span></li>
+                    <li><strong>Superficie Batie au sol:</strong><span>7 m²</span></li>
+                </ul>
+              <h5 class="text__block-title mb-10">R+1</h5>
+              <ul class="list-items list-unstyled mt-20">
+                {% for e in etage %}
+                    <li>{{e}}</li>
+                {% endfor %}
+              </ul>
+          </div>
+        </div>
+        
+      </div><!-- /.row -->
+    </div><!-- /.container -->
+  </section><!-- /.Text Content -->
+{% endif %}
+
+<section class="portfolio-gallery py-0">
+    <div class="container">
+      <div class="row">
+      {% for p in pictures %}
+        <!-- portfolio item #1 -->
+        <div class="col-sm-6 col-md-6 col-lg-4">
+          <div class="portfolio-item">
+            <div class="portfolio-item__img">
+              <a class="popup-gallery-item" href="{{ asset(p) }}">
+                <img src="{{ asset('assets/images/projets/pearl/1.jpg') }}" alt="portfolio img">
+              </a>
+            </div><!-- /.portfolio-img -->
+          </div><!-- /.portfolio-item -->
+        </div><!-- /.col-lg-4 -->
+       {% endfor %}
+      </div><!-- /.row -->
+    </div><!-- /.container -->
+  </section>
+
 {% endblock %}
