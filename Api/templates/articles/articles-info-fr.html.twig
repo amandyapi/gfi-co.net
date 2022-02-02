@@ -1,0 +1,101 @@
+{% extends 'layout-fr.html.twig' %}
+
+{% block title %}News
+{% endblock %}
+
+{% block content %}
+
+	<section class="blog blog-single pt-100 pb-40">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-4">
+					<aside class="sidebar mb-30">
+                    
+						<!-- /.widget-search -->
+						<div class="widget widget-posts">
+							<h5 class="widget__title">Articles récents</h5>
+							<div class="widget__content">
+								<div class="slick-carousel" data-slick='{"slidesToShow": 1, "autoplay": true, "arrows": false, "dots": true}'>
+									<!-- post item #1 -->
+                                    {% for recent in recentArticles %}
+									<div class="widget-post-item">
+										<div class="widget-post__img">
+											<a href="#"><img src="{{ asset('assets/uploads/articles/') }}{{recent.picture}}" alt="thumb"></a>
+										</div>
+										<!-- /.widget-post-img -->
+										<div class="widget-post__content">
+											<span class="widget-post__date">{{recent.createTime|date("d-m-Y")}}</span>
+											<h6 class="widget-post__title">
+												<a href="{{ path('gfi-article-info', { 'lang': lang, 'slug': recent.slug }) }}">
+                                                {{recent.content|slice(0,133)|raw}}...
+                                                </a>
+											</h6>
+										</div>
+										<!-- /.widget-post-content -->
+									</div>
+                                    {% endfor %}
+									<!-- /.widget-post-item -->
+                                    
+								</div>
+								<!-- /.carousel -->
+							</div>
+							<!-- /.widget-content -->
+						</div>
+						<!-- /.widget-posts -->
+						
+					</aside>
+					<!-- /.sidebar -->
+				</div>
+				<!-- /.col-lg-4 -->
+				<div class="col-sm-12 col-md-12 col-lg-8">
+					<div class="post-item mb-0">
+						<div class="post-item__meta d-flex align-items-center">
+							<div class="post-item__meta__cat">
+								<a href="#">{{article.category}}</a>
+							</div>
+							<!-- /.blog-meta-cat -->
+							{# <span class="post-item__meta__author">By:
+								<a href="#">Mike Dooley</a>
+							</span> #}
+							<span class="post-item__meta__date">{{article.createTime|date("d-m-Y")}}</span>
+						</div>
+						<!-- /.blog-meta -->
+						<h1 class="post-item__title">{{article.title}}</h1>
+						<div class="post-item__img">
+							<a href="#">
+								<img src="{{ asset('assets/uploads/articles/') }}{{article.picture}}" alt="blog image">
+							</a>
+						</div>
+						<!-- /.entry-img -->
+						<div class="post-item__content">
+							<div class="post-item__desc">
+								{{article.content|raw}}
+							</div>
+							<!-- /.blog-desc -->
+						</div>
+						<!-- /.entry-content -->
+					</div>
+					<!-- /.post-item -->
+					<div style="width: 20% !important" class="blog-share d-flex justify-content-between mb-30 mt-20">
+						<a href="#" class="btn btn__social btn__facebook">
+							<i class="fab fa-facebook-f"></i>
+							{# <span>Partager sur Facebook</span> #}
+						</a>
+                        &nbsp;&nbsp;&nbsp;
+						<a href="#" class="btn btn__social btn__twitter">
+							<i class="fab fa-twitter"></i>
+							{# <span>Partager sur Twitter</span> #}
+						</a>
+					</div>
+					<!-- /.blog-share -->
+					<!-- /.blog-comments-form -->
+				</div>
+				<!-- /.col-lg-8 -->
+			</div>
+			<!-- /.row -->
+		</div>
+		<!-- /.container -->
+	</section>
+	<!-- /.blog Single -->
+
+{% endblock %}

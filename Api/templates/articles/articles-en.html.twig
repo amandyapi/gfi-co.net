@@ -24,7 +24,7 @@
           <div class="col-sm-12 col-md-6 col-lg-4">
             <div class="post-item">
               <div class="post-item__img">
-                <a href="{{ path('gfi-article-info', { 'lang': 'fr', 'slug': a.slug }) }}">
+                <a href="{{ path('gfi-article-info', { 'lang': lang, 'slug': a.slug }) }}">
                   <img src="{{ asset('assets/uploads/articles/') }}{{a.picture}}" alt="blog image">
                 </a>
                 <div class="post-item__meta__cat">
@@ -38,7 +38,7 @@
                 <p class="post-item__desc">
                   {{a.content|slice(0,133)|raw}}...
                 </p>
-                <a href="{{ path('gfi-article-info', { 'lang': 'fr', 'slug': a.slug }) }}" class="btn btn__secondary btn__link">
+                <a href="{{ path('gfi-article-info', { 'lang': lang, 'slug': a.slug }) }}" class="btn btn__secondary btn__link">
                   <i class="icon-arrow-right1"></i>
                   <span>Lire l'article</span>
                 </a>

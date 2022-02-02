@@ -19,6 +19,24 @@ class ArticleRepository extends ServiceEntityRepository
         parent::__construct($registry, Article::class);
     }
 
+    public function findVeryLastArticles($lim)
+    {
+        $result = null;
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = 'SELECT *
+                FROM article a
+                ORDER BY a.id DESC
+                LIMIT 4';
+
+        $stmt = $conn->prepare($sql);
+
+        $stmt->execute();
+
+        $result = $stmt->fetchAll();
+        return $result;
+    }
+
     public function findLastArticles($lim)
     {
         $result = null;
@@ -37,17 +55,20 @@ class ArticleRepository extends ServiceEntityRepository
         return $result;
     }
 
-    public function findArticles()
+    public function findArticles($lang)
     {
         $result = null;
         $conn = $this->getEntityManager()->getConnection();
 
         $sql = 'SELECT *
-                FROM article a';
+                FROM article a
+                WHERE a.lang = :lang';
 
         $stmt = $conn->prepare($sql);
 
-        $stmt->execute();
+        $stmt->execute([
+            'lang' => $lang
+        ]);
 
         $result = $stmt->fetchAll();
         return $result;
@@ -66,6 +87,27 @@ class ArticleRepository extends ServiceEntityRepository
 
         $stmt->execute([
             'id' => $id,
+        ]);
+
+        $result = $stmt->fetch();
+        return $result;
+    }
+
+    public function findArticleBySlug($lang, $slug)
+    {
+        $result = null;
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = 'SELECT *
+                FROM article a
+                WHERE a.slug = :slug
+                AND a.lang = :lang';
+
+        $stmt = $conn->prepare($sql);
+
+        $stmt->execute([
+            'lang' => $lang,
+            'slug' => $slug
         ]);
 
         $result = $stmt->fetch();

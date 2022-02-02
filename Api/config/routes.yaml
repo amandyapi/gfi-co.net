@@ -24,7 +24,7 @@ gfi-project-grid:
     controller: App\Controller\PageController::projects
 
 gfi-project-grid-info:
-    path: /{lang}/projets/{slug}
+    path: /{lang}/project/{slug}
     controller: App\Controller\PageController::projectsInfos
 
 gfi-article:

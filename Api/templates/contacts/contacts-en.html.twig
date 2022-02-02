@@ -9,7 +9,7 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-9">
-          <h1 class="pagetitle__heading">Comment nous joindre?</h1>
+          <h1 class="pagetitle__heading">HOW TO CONTACT US</h1>
         </div>
       </div>
     </div>
@@ -23,9 +23,9 @@
             <div class="contact-panel__banner d-flex align-items mb-20">
               <div class="bg-img"><img src="{{ asset('assets/images/contact/1.jpg') }}" alt="banner"></div>
               <div class="contact-panel__banner__inner">
-                <h4 class="contact-panel__banner__title">Devenez Partenaire Ou Contactez - Nous Pour tous vos Travaux !</h4>
+                <h4 class="contact-panel__banner__title">Become A Partner Or Contact Us For All Your Work</h4>
                 <p class="contact-panel__banner__desc">
-                  Faites-nous part de vos préoccupations, par message. Notre service client vous répondra dans les plus brefs délais.
+                  Send us your concerns by message. Our customer service team will answer you as soon as possible.
                 </p>
                 
               </div>
@@ -33,37 +33,33 @@
             <form class="contact-panel__form" method="POST" action="#">
               <div class="row">
                 <div class="col-sm-6 col-md-6 col-lg-6">
-                  <div class="form-group"><input type="text" class="form-control" placeholder="Nom complet" id="name" name="name" required></div>
+                  <div class="form-group"><input type="text" class="form-control" placeholder="Full Name" id="name" name="contact-name" required></div>
                 </div>
                 <div class="col-sm-6 col-md-6 col-lg-6">
-                  <div class="form-group"><input type="email" class="form-control" placeholder="Email" id="email" name="email" required></div>
+                  <div class="form-group"><input type="email" class="form-control" placeholder="Email" id="email" name="contact-email" required></div>
                 </div>
-                <div class="col-sm-6 col-md-6 col-lg-6" style="display: none">
-                  <div class="form-group">
-                    <input type="text" class="form-control" value="POST" id="_method" name="_method" required/>
-                  </div>
-                </div>
+                
                 <div class="col-sm-6 col-md-6 col-lg-6">
-                  <div class="form-group"><input type="text" class="form-control" placeholder="Téléphone" id="phone" name="phone" required></div>
+                  <div class="form-group"><input type="text" class="form-control" placeholder="Phone" id="phone" name="contact-phone" required></div>
                 </div>
                 <div class="col-sm-6 col-md-6 col-lg-6">
                   <div class="form-group">
                     <select class="form-control" id="objet" name="objet">
-                      <option value="">Objet de votre message</option>
-                      <option value="DEMANDE DE DEVIS">DEMANDE DE DEVIS</option>
-                      <option value="DEMANDE DE PARTENARIAT">DEMANDE DE PARTENARIAT</option>
-                      <option value="DEMANDE D'INFORMATION">DEMANDE D'INFORMATION</option>
-                      <option value="AUTRE DEMANDE">AUTRE DEMANDE</option>
+                      <option value="0">Subject</option>
+                      <option value="Devis">QUOTE REQUEST</option>
+                      <option value="Partenariat">PARTNERSHIP REQUES</option>
+                      <option value="Informations">INFORMATION REQUEST</option>
+                      <option value="Autre">OTHER REQUEST</option>
                     </select>
                   </div>
                 </div>
                 <div class="col-sm-12 col-md-12 col-lg-12">
                   <div class="form-group">
-                    <textarea class="form-control" placeholder="Ecrivez votre message" id="message" name="message" required></textarea>
+                    <textarea class="form-control" placeholder="Write your message" id="message" name="contact-message" required></textarea>
                   </div>
                 </div>
                 <div class="col-sm-12 col-md-12 col-lg-12">
-                  <button type="submite" class="btn btn__secondary btn__block ">Envoyez votre message </button>
+                  <input type="submit" name="envoyer" value="Send Your Message" style="" class="btn btn__secondary btn__block">
                   <div id="info"></div>
                 </div>
               </div>

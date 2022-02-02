@@ -29,7 +29,7 @@
                                         {% if a.id == id %}
                                         <a href="#" class="active">{{a.title}}</a>
                                         {% else %}
-                                        <a href="{{ path('gfi-prestations-info', { 'lang': 'fr', 'id': a.id,'slug': a.slug }) }}" class="#">{{a.title}}</a>
+                                        <a href="{{ path('gfi-prestations-info', { 'lang': 'en', 'id': a.id,'slug': a.slug }) }}" class="#">{{a.title}}</a>
                                         {% endif %}
                                     </li>
                                 {% endfor %}

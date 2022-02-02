@@ -249,8 +249,8 @@ class PageController extends AbstractController
         $articles = [];
         $articles = $this->getDoctrine()
                       ->getRepository(Article::class)
-                      ->findArticles(3);
-                      
+                      ->findArticles($lang);
+        //var_dump($articles);die();
         $template = 'articles/articles-'.$lang.'.html.twig';            
         return $this->render($template, [
             'lang' => $lang,
@@ -260,14 +260,81 @@ class PageController extends AbstractController
 
     public function articlesInfo($lang, $slug)
     {
+        $articles = [];
+        $article = $this->getDoctrine()
+                      ->getRepository(Article::class)
+                      ->findArticleBySlug($lang, $slug);
+        $recentArticles = $this->getDoctrine()
+                      ->getRepository(Article::class)
+                      ->findVeryLastArticles(3);
+        //var_dump($article);die();
 
         $template = 'articles/articles-info-'.$lang.'.html.twig';            
-        return $this->render($template); 
+        return $this->render($template, [
+            'lang' => $lang,
+            'article' => $article,
+            'recentArticles' => $recentArticles
+        ]); 
     }
 
-    public function contact($lang)
+    public function contact($lang, Request $request)
     {
         $page = 'contacts';
+
+        if(!empty($request->request->get('envoyer')))
+        {
+            $page = 'prestations';
+
+            $response;
+            $entityManager = $this->getDoctrine()->getManager();
+            
+            $gfiContactMail = 'contact@gfi-co.net';
+            $senderFullName = $request->request->get('contact-name');
+            $senderMail = $request->request->get('contact-email');
+            $senderContact = $request->request->get('contact-phone');
+            $title = $request->request->get('objet');
+            $content = $request->request->get('contact-messgae');
+
+            try {
+                $email = (new TemplatedEmail())
+                    ->from(new Address($senderMail, $senderFullName))
+                    ->to(new Address($gfiContactMail))
+                    ->subject($title)
+                    ->htmlTemplate('contact-mail.html.twig')
+    
+                    ->context([
+                        'senderFullName' => $senderFullName,
+                        'senderMail' => $senderMail,
+                        'senderContact' => $senderContact,
+                        'title' => $title,
+                        'content' => $content,
+                    ]);
+    
+                $this->mailer->send($email);
+    
+                $mail = new Mail();
+                $mail->setSenderFullName(\strtolower($senderFullName));
+                $mail->setSenderMail(\strtolower($senderMail));
+                $mail->setSenderContact(\strtolower($senderContact));
+                $mail->setTitle(\strtolower($title));
+                $mail->setContent(\strtolower($content));
+    
+                $entityManager->persist($mail);
+                $entityManager->flush();
+    
+                //return $this->json(true, 200);
+                return $this->redirectToRoute('gfi-success-mail', [
+                    'lang' => $lang
+                ]);
+            } catch (\Throwable $th) {
+                $response = $th->getMessage();
+                
+                return $this->redirectToRoute('gfi-error-mail', [
+                    'lang' => $lang,
+                    'page' => $page
+                ]);
+            }
+        }
         
         $template = 'contacts/contacts-'.$lang.'.html.twig';            
         return $this->render($template, [
