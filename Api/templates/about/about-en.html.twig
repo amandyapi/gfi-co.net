@@ -43,10 +43,10 @@
               ECOLOGICAL REAL ESTATE
             </h3>
           </div>
-          <p class="heading__desc mb-30" style="font-size: 13pt">
+          <p class="heading__desc mb-30 div1" style="font-size: 13pt">
             In accordance with ecological standards, GIF-CO SARL is a real estate company whose specificity is based on construction and ecological houses.
           </p>
-          <p class="heading__desc" style="font-size: 13pt">
+          <p class="heading__desc div1" style="font-size: 13pt">
             It was created in 2020 through an expertise of professional workers such as financials, architects, engineers, lawyers, land developers and notaries.
           </p>
           
@@ -179,4 +179,20 @@
       </div>
     </div>
   </section>
+{% endblock %}
+
+{% block script %}
+	<script>
+		function displayOnScroll(x, c, t) {
+        $(window).scroll(function () {
+          if ($(this).scrollTop() > x) {
+            $(c).show(t);
+          }
+        });
+      };
+
+    $('.div1').hide();
+
+    displayOnScroll(55, '.div1', 2000);
+	</script>
 {% endblock %}
