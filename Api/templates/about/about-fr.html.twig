@@ -165,7 +165,7 @@
 						<img src="{{ asset('assets/images/about/6.jpg') }}" alt="about" class="img-fluid">
 					</div>
 				</div>
-				<div class="col-sm-12 col-md-12 col-lg-6 hidden">
+				<div class="col-sm-12 col-md-12 col-lg-6 hidden div4">
 					<div class="heading-layout2 mb-20">
 						<h3 class="heading__title" style="color: aliceblue">
 							GFI-CO SARL, UN LABEL BIOSOURCÉ
@@ -194,21 +194,7 @@
 
 {% block script %}
 	<script>
-  //alert('Hello World FR !!!');
-
-		function displayOnScroll(x, c, t) {
-        $(window).scroll(function () {
-          if ($(this).scrollTop() > x) {
-            $(c).show(t);
-          }
-        });
-      };
-
       $('.hidden p').hide();
-
-      displayOnScroll(55, '.div1 p', 2000);
-      displayOnScroll(150, '.div2 p', 2000);
-
       console.clear();
 
       function Utils() { } 
@@ -242,16 +228,16 @@
 
 
       $(window).scroll(function () {
-        var isElementInView = Utils.isElementInView($('.div3'), false); 
-        if(isElementInView) { 
-          console.log('DIV3 in view'); 
-          //$('.div3 p').show(1500);
-          $('.div3 p').fadeIn(2000);
-        } 
-        /*else 
-        { 
-          console.log('DIV3 out of view'); 
-        }*/
+        var div1 = Utils.isElementInView($('.div1'), false); 
+        var div2 = Utils.isElementInView($('.div2'), false); 
+        var div3 = Utils.isElementInView($('.div3'), false); 
+        var div4 = Utils.isElementInView($('.div4'), false); 
+
+        if(div1) { $('.div1 p').fadeIn(2000);} 
+        if(div2) { $('.div2 p').fadeIn(2000);} 
+        if(div3) { $('.div3 p').fadeIn(2000);} 
+        if(div4) { $('.div4 p').fadeIn(2000);} 
+		
       });
 
 	</script>

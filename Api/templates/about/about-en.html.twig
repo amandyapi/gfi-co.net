@@ -37,7 +37,7 @@
     <div class="container">
       
       <div class="row">
-        <div class="col-sm-12 col-md-12 col-lg-6">
+        <div class="col-sm-12 col-md-12 col-lg-6 hidden div1">
           <div class="heading-layout2 mb-20">
             <h3 class="heading__title">
               ECOLOGICAL REAL ESTATE
@@ -80,7 +80,7 @@
             <img src="{{ asset('assets/images/about/4.jpg') }}" alt="about" class="img-fluid">
           </div>
         </div>
-        <div class="col-sm-12 col-md-12 col-lg-6">
+        <div class="col-sm-12 col-md-12 col-lg-6 hidden div2">
           <div class="heading-layout2 mb-20">
             <h3 class="heading__title" style="color: aliceblue">
               LEITMOTIV
@@ -111,7 +111,7 @@
   <section class="about-layout2">
     <div class="container">
       <div class="row">
-        <div class="col-sm-12 col-md-12 col-lg-6">
+        <div class="col-sm-12 col-md-12 col-lg-6 hidden div3">
           <div class="heading-layout2 mb-20">
             <h3 class="heading__title">
               ECOLOGICAL RESPONSIBILITY
@@ -160,7 +160,7 @@
             <img src="{{ asset('assets/images/about/6.jpg') }}" alt="about" class="img-fluid">
           </div>
         </div>
-        <div class="col-sm-12 col-md-12 col-lg-6">
+        <div class="col-sm-12 col-md-12 col-lg-6 hidden div4">
           <div class="heading-layout2 mb-20">
             <h3 class="heading__title" style="color: aliceblue">
               GIF-CO SARL, A BIOSOURCED LABEL
@@ -183,16 +183,51 @@
 
 {% block script %}
 	<script>
-		function displayOnScroll(x, c, t) {
-        $(window).scroll(function () {
-          if ($(this).scrollTop() > x) {
-            $(c).show(t);
-          }
-        });
-      };
+      $('.hidden p').hide();
+      console.clear();
 
-    $('.div1').hide();
+      function Utils() { } 
+      
+      Utils.prototype = { 
+            constructor: Utils, 
+            isElementInView: function (element, fullyInView) { 
+                var pageTop = $(window).scrollTop(); 
+                var pageBottom = pageTop + $(window).height(); 
+                var elementTop = $(element).offset().top; 
+                var elementBottom = elementTop + $(element).height(); 
+                
+                if(fullyInView === true) { 
+                  return ((pageTop < elementTop) && (pageBottom > elementBottom)); 
+                } 
+                else { 
+                  return ((elementTop <= pageBottom) && (elementBottom >= pageTop)); 
+                } 
+              } 
+          }; 
+      var Utils = new Utils();
 
-    displayOnScroll(55, '.div1', 2000);
+      function isScrolledIntoView(elem) { 
+        var docViewTop = $(window).scrollTop(); 
+        var docViewBottom = docViewTop + $(window).height(); 
+        var elemTop = $(elem).offset().top; 
+        var elemBottom = elemTop + $(elem).height();
+
+        return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop)); 
+      }
+
+
+      $(window).scroll(function () {
+        var div1 = Utils.isElementInView($('.div1'), false); 
+        var div2 = Utils.isElementInView($('.div2'), false); 
+        var div3 = Utils.isElementInView($('.div3'), false); 
+        var div4 = Utils.isElementInView($('.div4'), false); 
+
+        if(div1) { $('.div1 p').fadeIn(2000);} 
+        if(div2) { $('.div2 p').fadeIn(2000);} 
+        if(div3) { $('.div3 p').fadeIn(2000);} 
+        if(div4) { $('.div4 p').fadeIn(2000);} 
+		
+      });
+
 	</script>
 {% endblock %}
