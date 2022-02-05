@@ -47,6 +47,43 @@ gfi-error-mail:
     path: /{lang}/error-mail/{page}
     controller: App\Controller\PageController::errorMail
 
+## ADMIN
+
+admin_security_login:
+    path: /admin/security/login
+    controller: App\Controller\SecurityController::login
+
+admin_security_logout:
+    path: /admin/security/login
+    controller: App\Controller\SecurityController::logout
+
+admin_dashboard:
+    path: /admin/dashboard
+    controller: App\Controller\AdminController::dashboard
+
+admin_mails:
+    path: /admin/mails
+    controller: App\Controller\AdminController::mailList
+
+admin_mail_info:
+    path: /admin/mails/{id}
+    controller: App\Controller\AdminController::mailInfo
+
+admin_articles:
+    path: /admin/articles
+    controller: App\Controller\AdminController::articleList
+
+admin_article_info:
+    path: /admin/articles/{id}
+    controller: App\Controller\AdminController::articleInfo
+
+admin_article_edit:
+    path: /admin/articles/{id}/edit
+    controller: App\Controller\AdminController::articleEdit
+
+
+## ADMIN
+
 ## USERS
 userLogin:
     path: /security/users/login
