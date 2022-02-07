@@ -3,6 +3,14 @@
 {% block title %}News
 {% endblock %}
 
+{% block fb %}
+<meta property="og:url"           content="http://newsite.gfi-co.net/{{lang}}/articles/{{article.slug}}" />
+  <meta property="og:type"          content="website" />
+  <meta property="og:title"         content="GFI-CO" />
+  <meta property="og:description"   content="GFI-CO Militant Écologique De Projets Immobiliers Haut Standing Et De Concepts Innovants" />
+  <meta property="og:image"         content="http://newsite.gfi-co.net/assets/images/favicon/favicon.png" />
+{% endblock %}
+
 {% block content %}
 
 	<section class="blog blog-single pt-100 pb-40">
@@ -85,10 +93,11 @@
 					</div>
 					<!-- /.post-item -->
 					<div style="width: 20% !important" class="blog-share d-flex justify-content-between mb-30 mt-20">
-						<a href="#" class="btn btn__social btn__facebook">
-							<i class="fab fa-facebook-f"></i>
-							{# <span>Partager sur Facebook</span> #}
-						</a>
+						<div class="fb-share-button btn btn__social btn__facebook" 
+                            data-href="http://newsite.gfi-co.net/{{lang}}/articles/{{article.slug}}" 
+                            data-layout="button_count">
+					        <i class="fab fa-facebook-f"></i>
+                        </div>
                         &nbsp;&nbsp;&nbsp;
 						<a href="#" class="btn btn__social btn__twitter">
 							<i class="fab fa-twitter"></i>
