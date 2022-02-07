@@ -250,11 +250,43 @@ class PageController extends AbstractController
         $articles = $this->getDoctrine()
                       ->getRepository(Article::class)
                       ->findArticles($lang);
-        //var_dump($articles);die();
+                      
         $template = 'articles/articles-'.$lang.'.html.twig';            
         return $this->render($template, [
             'lang' => $lang,
-            'recentArticles' => $articles,
+            'articles' => $articles,
+        ]); 
+    }
+
+
+    public function articlesPaged($lang, $page)
+    {
+        $articles = [];
+        $limit = 6;
+        $offset = ($page-1)*$limit;
+
+        $totalArticles = $this->getDoctrine()
+                      ->getRepository(Article::class)
+                      ->findTotalArticles($lang);
+
+        $nbPages = \ceil($totalArticles/$limit);
+        
+        $articles = $this->getDoctrine()
+                      ->getRepository(Article::class)
+                      ->customFindArticles($limit, $offset, $lang);
+
+        /*var_dump($totalArticles);
+        var_dump($nbPages);
+        var_dump($articles);
+        die();*/
+
+        $template = 'articles/articles-'.$lang.'.html.twig';            
+        return $this->render($template, [
+            'lang' => $lang,
+            'articles' => $articles,
+            'totalArticles' => $totalArticles,
+            'nbPages' => $nbPages,
+            'page' => $page,
         ]); 
     }
 

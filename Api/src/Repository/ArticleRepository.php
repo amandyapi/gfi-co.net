@@ -55,6 +55,46 @@ class ArticleRepository extends ServiceEntityRepository
         return $result;
     }
 
+    public function findTotalArticles($lang)
+    {
+        $result = null;
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = 'SELECT COUNT(a.id) as nb
+                FROM article a
+                WHERE a.lang = :lang';
+
+        $stmt = $conn->prepare($sql);
+
+        $stmt->execute([
+            'lang' => $lang
+        ]);
+
+        $result = $stmt->fetch();
+        return \intval($result['nb']);
+    }
+
+    public function customFindArticles($lim, $off, $lang)
+    {
+        $result = null;
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = "SELECT *
+                FROM article a
+                WHERE a.lang = :lang
+                ORDER BY a.id DESC
+                LIMIT ".$lim." OFFSET ".$off;
+
+        $stmt = $conn->prepare($sql);
+
+        $stmt->execute([
+            'lang' => $lang
+        ]);
+
+        $result = $stmt->fetchAll();
+        return $result;
+    }
+
     public function findArticles($lang)
     {
         $result = null;

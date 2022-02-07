@@ -89,7 +89,7 @@
                   <a href="{{ path('gfi-project-grid', { 'lang': 'en' }) }}" class="nav__item-link">Projects</a>
                 </li><!-- /.nav-item -->
                 <li class="nav__item">
-                  <a href="{{ path('gfi-article', { 'lang': 'en' }) }}" class="nav__item-link">News</a>
+                  <a href="{{ path('gfi-article_paged', { 'lang': 'en', 'page': 1 }) }}" class="nav__item-link">News</a>
                 </li><!-- /.nav-item -->
                 <li class="nav__item">
                   <a href="{{ path('gfi-contact', { 'lang': 'en' }) }}" class="nav__item-link">Infoline</a>
@@ -250,40 +250,78 @@
   </script>
 
   <script>
-  console.log('Redirect!!!');
       function changeLang(lang) {
         console.log('Redirect!!!');
         var pathname = window.location.pathname; 
+        
         var _pathname = '';
-        var url      = window.location.href;  
+        var url      = window.location.href; 
+        
         var redirect = '';   
         var origin   = window.location.origin;
 
         var pageLang = '';
         let position = pathname.search(lang);
+      
+        let prestation = pathname.search('/prestations/');
+        let projet = pathname.search('/projets/');
+        let articles = pathname.search('/articles/');
 
         if(lang == 'fr')
         {
-          _pathname = pathname.replace('/en/', '/fr/');
+          if(prestation == -1 && projet == -1){
+            _pathname = pathname.replace('/en/', '/fr/');
            
             redirect = origin + _pathname;
-            console.log('Redirect!!!', redirect);
             window.location.href = redirect;
+          }
+          else if(prestation != -1)
+          {
+            redirect = origin + '/fr/prestations/';
+            window.location.href = redirect;
+          }
+          else if(projet != -1)
+          {
+            redirect = origin + '/fr/projets/';
+            window.location.href = redirect;
+          }
+          else if(articles != -1)
+          {
+            redirect = origin + '/fr/articles/';
+            window.location.href = redirect;
+          }
+           
         }
         else if(lang == 'en')
         {
-          _pathname = pathname.replace('/fr/', '/en/');
+          if(prestation == -1 && projet == -1){
+            _pathname = pathname.replace('/fr/', '/en/');
            
             redirect = origin + _pathname;
-            console.log('Redirect!!!', redirect);
             window.location.href = redirect;
+          }
+          else if(prestation != -1)
+          {
+            redirect = origin + '/en/prestations/';
+            window.location.href = redirect;
+          }
+          else if(projet != -1)
+          {
+            redirect = origin + '/en/projets/';
+            window.location.href = redirect;
+          }
+          else if(articles != -1)
+          {
+            redirect = origin + '/en/articles/';
+            window.location.href = redirect;
+          }
+          
         }
         else
         {
           console.log('No Redirect!!!');
         }
        
-        //console.log('newPath', newPath);
       }
   </script>
 

@@ -31,6 +31,12 @@ gfi-article:
     path: /{lang}/articles
     controller: App\Controller\PageController::articles
 
+gfi-article_paged:
+    path: /{lang}/articles/{page}
+    controller: App\Controller\PageController::articlesPaged
+    requirements:
+        page: '\d+'
+
 gfi-article-info:
     path: /{lang}/articles/{slug}
     controller: App\Controller\PageController::articlesInfo
