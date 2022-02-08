@@ -95,6 +95,23 @@ class ArticleRepository extends ServiceEntityRepository
         return $result;
     }
 
+    public function findAllArticles()
+    {
+        $result = null;
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = 'SELECT *
+                FROM article a';
+
+        $stmt = $conn->prepare($sql);
+
+        $stmt->execute();
+
+        $result = $stmt->fetchAll();
+        return $result;
+    }
+
+
     public function findArticles($lang)
     {
         $result = null;
@@ -121,6 +138,26 @@ class ArticleRepository extends ServiceEntityRepository
 
         $sql = 'SELECT *
                 FROM article a
+                WHERE a.id = :id';
+
+        $stmt = $conn->prepare($sql);
+
+        $stmt->execute([
+            'id' => $id,
+        ]);
+
+        $result = $stmt->fetch();
+        return $result;
+    }
+
+    public function customFindArticle($id)
+    {
+        $result = null;
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = 'SELECT a.id, a.lang, a.title, concat(u.firstName, " ", u.lastName) as user, a.content, a.createTime, a.picture
+                FROM article a
+                JOIN user u ON u.id = a.user
                 WHERE a.id = :id';
 
         $stmt = $conn->prepare($sql);

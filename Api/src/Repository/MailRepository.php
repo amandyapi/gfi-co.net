@@ -24,7 +24,7 @@ class MailRepository extends ServiceEntityRepository
         $result = null;
         $conn = $this->getEntityManager()->getConnection();
 
-        $sql = 'SELECT * 
+        $sql = 'SELECT m.id, m.senderFullName as user, m.senderContact as contact, m.senderMail as userMail, m.title, m.createTime 
                 FROM mail m';
 
         $stmt = $conn->prepare($sql);

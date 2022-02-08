@@ -71,6 +71,11 @@ class SecurityController extends AbstractController
         ]); 
     }
 
+    public function logout(SessionInterface $session){
+        $session->clear();
+        return $this->redirectToRoute('admin_security_login');
+    }
+
 
 	
 }

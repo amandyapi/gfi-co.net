@@ -76,15 +76,15 @@ admin_mail_info:
     controller: App\Controller\AdminController::mailInfo
 
 admin_articles:
-    path: /admin/articles
+    path: /admin/news
     controller: App\Controller\AdminController::articleList
 
 admin_article_info:
-    path: /admin/articles/{id}
+    path: /admin/news/{id}
     controller: App\Controller\AdminController::articleInfo
 
 admin_article_edit:
-    path: /admin/articles/{id}/edit
+    path: /admin/news/{id}/edit
     controller: App\Controller\AdminController::articleEdit
 
 

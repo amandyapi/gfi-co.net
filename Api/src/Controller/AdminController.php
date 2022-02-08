@@ -47,11 +47,118 @@ class AdminController extends AbstractController
                       ->getRepository(Mail::class)
                       ->findMails();
 
-        //var_dump($mails);die();
-
         $template = 'mail/mails.html.twig';            
         return $this->render($template, [
-            
+            'mails' => $mails,
+            'user' => $user,
+        ]); 
+    }
+
+    public function mailInfo($id, SessionInterface $session)
+    {
+        $user = $session->get('user');
+        if($session->get('user') == NULL || $session->get('user') == null) 
+        {
+            return $this->redirectToRoute('login');
+        }
+
+        $repository = $this->getDoctrine()->getRepository(Mail::class);
+
+        $mail = $this->getDoctrine()
+                      ->getRepository(Mail::class)
+                      ->findMail($id);
+
+        //var_dump($mail);die();
+        $bgUrl = 'https://images.unsplash.com/photo-1531512073830-ba890ca4eba2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80';
+
+        $template = 'mail/mail.html.twig';            
+        return $this->render($template, [
+            'mail' => $mail,
+            'user' => $user,
+            'bgUrl' => $bgUrl
+        ]); 
+    }
+
+
+    public function articleList(SessionInterface $session)
+    {
+        $user = $session->get('user');
+        if($session->get('user') == NULL || $session->get('user') == null) 
+        {
+            return $this->redirectToRoute('login');
+        }
+
+        $repository = $this->getDoctrine()->getRepository(Article::class);
+
+        $articles = $this->getDoctrine()
+                      ->getRepository(Article::class)
+                      ->findAllArticles();
+
+        //var_dump($articles[0]);die();
+
+        $template = 'articles/articles-list.html.twig';            
+        return $this->render($template, [
+            'articles' => $articles,
+            'user' => $user
+        ]); 
+    }
+
+
+    public function articleInfo($id, SessionInterface $session)
+    {
+        $user = $session->get('user');
+        if($session->get('user') == NULL || $session->get('user') == null) 
+        {
+            return $this->redirectToRoute('login');
+        }
+
+        $repository = $this->getDoctrine()->getRepository(Article::class);
+
+        $article = $this->getDoctrine()
+                      ->getRepository(Article::class)
+                      ->customFindArticle($id);
+
+        //var_dump($article);die();
+        
+        $bgUrl = "http://newsite.gfi-co.net/assets/uploads/articles/".$article["picture"];
+
+        $template = 'articles/article.html.twig';            
+        return $this->render($template, [
+            'article' => $article,
+            'user' => $user,
+            'bgUrl' => $bgUrl
+        ]); 
+    }
+
+    public function articleEdit($id, SessionInterface $session, Request $request)
+    {
+        $user = $session->get('user');
+        if($session->get('user') == NULL || $session->get('user') == null) 
+        {
+            return $this->redirectToRoute('login');
+        }
+
+        $repository = $this->getDoctrine()->getRepository(Article::class);
+
+        $article = $this->getDoctrine()
+                      ->getRepository(Article::class)
+                      ->customFindArticle($id);
+
+        //var_dump($article);die();
+        
+        $bgUrl = "http://newsite.gfi-co.net/assets/uploads/articles/".$article["picture"];
+
+        $repository = $this->getDoctrine()->getRepository(Article::class);
+        if(!empty($request->request->get('save')))
+        {
+            var_dump($request->request);die();
+        }
+
+        $template = 'articles/article-edit.html.twig';            
+        return $this->render($template, [
+            'article' => $article,
+            'user' => $user,
+            'bgUrl' => $bgUrl
         ]); 
     }
 
