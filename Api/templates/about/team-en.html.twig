@@ -1,134 +1,314 @@
 {% extends 'layout-en.html.twig' %}
 
-{% block title %}Team
+{% block title %}GFI-CO Real Estate Agency
 {% endblock %}
 
 {% block content %}
-<!-- ========================
-      Team layout 1
-  ========================== -->
-  <section class="team-layout1 text-center  pb-30">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 text-center mb-30" style="font-size: 14pt"> 
-          GFI-CO SARL benefits from professional efficiency. This is thanks to the mastery of a dynamic team attentive to the market. Professionals in the trade whose expertise is based on various training courses. A mix of business sectors meeting customer needs.
-        </div>
-        <!-- Member #1 -->
-        <div class="col-sm-6 col-md-4 col-lg-4"> 
-          <div class="member">
-            <div class="member__img">
-              <img src="{{ asset('assets/images/team/1.jpg') }}" alt="member img">
-              <div class="member__hover">
-                <div class="member__content-inner">
-                  <ul class="social__icons  justify-content-center list-unstyled mb-0">
-                    <li><a href="https://www.facebook.com/abdoulwahab.magassouba" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="https://www.linkedin.com/in/abdoulwahabmagassouba/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
-                  </ul><!-- /.social-icons -->
-                </div><!-- /.member-content-inner -->
-              </div><!-- /.member-hover -->
-            </div><!-- /.member-img -->
-            <div class="member__info">
-              <h5 class="member__name">Abdoul Wahab Magassouba</h5>
-              <p class="member__desc">Founder and General Manager</p>
-            </div><!-- /.member-info -->
-          </div><!-- /.member -->
-        </div><!-- /.col-lg-4 -->
-        <!-- Member #2 -->
-        <div class="col-sm-6 col-md-4 col-lg-4">
-          <div class="member">
-            <div class="member__img">
-              <img src="{{ asset('assets/images/team/2.jpg') }}" alt="member img">
-              <div class="member__hover">
-                <div class="member__content-inner">
-                  <ul class="social__icons justify-content-center list-unstyled mb-0">
-                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                  </ul><!-- /.social-icons -->
-                </div><!-- /.member-content-inner -->
-              </div><!-- /.member-hover -->
-            </div><!-- /.member-img -->
-            <div class="member__info">
-              <h5 class="member__name">Mohammad Abou Diakité</h5>
-              <p class="member__desc">Architect Engineer</p>
-            </div><!-- /.member-info -->
-          </div><!-- /.member -->
-        </div><!-- /.col-lg-4 -->
-        <!-- Member #3 -->
-        <div class="col-sm-6 col-md-4 col-lg-4">
-          <div class="member">
-            <div class="member__img">
-              <img src="{{ asset('assets/images/team/3.jpg') }}" alt="member img">
-              <div class="member__hover">
-                <div class="member__content-inner">
-                  <ul class="social__icons justify-content-center list-unstyled mb-0">
-                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                  </ul><!-- /.social-icons -->
-                </div><!-- /.member-content-inner -->
-              </div><!-- /.member-hover -->
-            </div><!-- /.member-img -->
-            <div class="member__info">
-              <h5 class="member__name">Martin Fulgence Corréa</h5>
-              <p class="member__desc">Search and Developement</p>
-            </div><!-- /.member-info -->
-          </div><!-- /.member -->
-        </div><!-- /.col-lg-4 -->
-      </div> <!-- /.row -->
-    </div><!-- /.container -->
-  </section><!-- /.Team layout 1  -->
+<section class="page-title page-title-layout1 bg-overlay bg-parallax">
+		<div class="bg-img"><img src="{{ asset('assets/images/page-titles/15.jpg') }}" alt="background"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-12 col-xl-9">
+					<h1 class="pagetitle__heading">GFI-CO Real Estate Agency</h1>
+				</div>
+			</div>
+		</div>
+	</section>
 
-  <!-- ========================
-      Team layout 2
-  ========================== -->
-  <section class="team-layout2 text-center pt-0 pb-30">
-    <div class="container">
-      <div class="row">
-        <!-- Member #1 -->
-        <div class="col-sm-6 col-md-4 col-lg-4">
-          <div class="member">
-            <div class="member__img">
-              <img src="{{ asset('assets/images/team/4.jpg') }}" alt="member img">
-              <div class="member__hover">
-                <div class="member__content-inner">
-                  <ul class="social__icons justify-content-center list-unstyled mb-0">
-                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                  </ul><!-- /.social-icons -->
-                </div><!-- /.member-content-inner -->
-              </div><!-- /.member-hover -->
-            </div><!-- /.member-img -->
-            <div class="member__info">
-              <h5 class="member__name">Ephraïm Dolce</h5>
-              <p class="member__desc">Communication Director</p>
-            </div><!-- /.member-info -->
-          </div><!-- /.member -->
-        </div><!-- /.col-lg-3 -->
-        <!-- Member #2 -->
-        <div class="col-sm-6 col-md-4 col-lg-4">
-          <div class="member">
-            <div class="member__img">
-              <img src="{{ asset('assets/images/team/5.jpg') }}" alt="member img">
-              <div class="member__hover">
-                <div class="member__content-inner">
-                  <ul class="social__icons  justify-content-center list-unstyled mb-0">
-                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                  </ul><!-- /.social-icons -->
-                </div><!-- /.member-content-inner -->
-              </div><!-- /.member-hover -->
-            </div><!-- /.member-img -->
-            <div class="member__info">
-              <h5 class="member__name">Elia Aka Jean Pierre</h5>
-              <p class="member__desc">Building Engineer</p>
-            </div><!-- /.member-info -->
-          </div><!-- /.member -->
-        </div><!-- /.col-lg-3 -->
-        <!-- Member #3 -->
-      </div> <!-- /.row -->
-    </div><!-- /.container -->
-  </section><!-- /.Team layout 2  -->
+  <section class="about-layout2">
+		<div class="container">
+
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-6 hidden div1">
+					{# 
+            <div class="heading-layout2 mb-20">
+              <h3 class="heading__title">
+                Agence immobilière GFI-CO
+              </h3>
+            </div> 
+          #}
+					<p class="heading__desc mb-30" style="font-size: 16pt;font-weight: bold;text-align: justify !important;">
+						Do you have a real estate project?
+					</p>
+					<p class="heading__desc" style="font-size: 13pt;text-align: justify !important;">
+						Do you want to rent, buy, sell, invest or manage a property?
+					</p>
+          <br>
+					<p class="heading__desc" style="font-size: 13pt;text-align: justify !important;">
+						GFI-CO advises and supports you thanks to its portfolio of properties for sale and for rent, and its expertise in the real estate market, in order to estimate the value of your properties and help you make your project a reality.
+					</p>
+          <br>
+					<p class="heading__desc" style="font-size: 13pt;text-align: justify !important;">
+						Whether you are customers, sellers, buyers, owners or tenants, take advantage of our database, our multiple and innovative search methods (municipalities, cities, departments, countries, applications ...), from our first contact, to at the signing of the authentic deed.
+					</p>
+
+				</div>
+				<div class="col-sm-12 col-md-12 col-lg-6">
+					<div class="about__img">
+						<img src="{{ asset('assets/images/agenceimmobiliere/1.jpg') }}" alt="about" class="img-fluid">
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+  <section class="page-title page-title-layout1 bg-overlay bg-parallax">
+		<div class="bg-img"><img src="{{ asset('assets/images/page-titles/16.jpg') }}" alt="background"></div>
+		<div class="container">
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+		</div>
+	</section>
+
+  <section class="work-process pb-50">
+		<div class="bg-img"><img src="{{ asset('assets/images/backgrounds/1.jpg') }}" alt="background"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-6">
+					<div class="about__img">
+						<img src="{{ asset('assets/images/agenceimmobiliere/5.jpg') }}" alt="about" class="img-fluid">
+					</div>
+				</div>
+				<div class="col-sm-12 col-md-12 col-lg-6 hidden div2">
+					<div class="heading-layout2 mb-20">
+						<h3 class="heading__title" style="color: aliceblue">
+							TYPES OF REAL ESTATE 
+						</h3>
+					</div>
+
+          <ul class="list-items list-unstyled mt-20 text-white">
+              <li>Houses</li>
+              <li>Apartments</li>
+              <li>Buildings</li>
+              <li>Parking / box</li>
+              <li>Furnished rentals</li>
+              <li>Seasonal rentals</li>
+              <li>Offices and shops</li>
+          </ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+  <section class="page-title page-title-layout1 bg-overlay bg-parallax">
+		<div class="bg-img"><img src="{{ asset('assets/images/page-titles/17.jpg') }}" alt="background"></div>
+		<div class="container">
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+		</div>
+	</section>
+
+  <section class="about-layout2">
+		<div class="container">
+
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-6 hidden div1">
+            <div class="heading-layout2 mb-20">
+              <h3 class="heading__title">
+                 WHY USE GFI-CO?
+              </h3>
+            </div> 
+					{# <p class="heading__desc mb-30" style="font-size: 16pt;font-weight: bold;">
+						Avez-vous un projet immobilier ?
+					</p> #}
+					<p class="heading__desc" style="font-size: 13pt;text-align: justify !important;">
+						GFI-CO is the real estate intermediary par excellence, providing you in real time with the real estate solution that best meets your needs.
+					</p>
+          <br>
+					<p class="heading__desc" style="font-size: 13pt;text-align: justify !important;">
+						 Namely the search for a solvent tenant, the drafting of the lease, the payment of the charges to the syndic of the condominium building and the sending of the notice to the tenant on behalf of the owner.
+					</p>
+          
+				</div>
+				<div class="col-sm-12 col-md-12 col-lg-6">
+					<div class="about__img">
+						<img src="{{ asset('assets/images/agenceimmobiliere/3.jpg') }}" alt="about" class="img-fluid">
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+  <section class="page-title page-title-layout1 bg-overlay bg-parallax">
+		<div class="bg-img"><img src="{{ asset('assets/images/page-titles/18.jpg') }}" alt="background"></div>
+		<div class="container">
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+		</div>
+	</section>
+
+  <section class="work-process pb-50">
+		<div class="bg-img"><img src="{{ asset('assets/images/backgrounds/1.jpg') }}" alt="background"></div>
+		<div class="container">
+      <div class="heading-layout2 mb-20">
+					<h3 class="heading__title" style="color: aliceblue">
+							RENTAL MANAGEMENT
+					</h3>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-6">
+					<p class="heading__desc mb-20" style="font-size: 13pt;color: white !important;text-align: justify !important;">
+						GFI-CO is the professional who allows you to rent your property with complete peace of mind. This involves checking and ensuring that your accommodation meets rental standards. Otherwise, GFI-CO guides you in the type of work and/or specific arrangements in order to meet the rental criteria.
+					</p>
+					<p class="heading__desc mb-20" style="font-size: 13pt;color: white !important;text-align: justify !important;">
+						Depending on the market and the demand from solvent tenants, GFI-CO provides you with a suitable price range, taking into account the location of the property, its general condition, its surface area, the number of rooms, the layout, construction materials, the presence or absence of outdoor spaces, and even rents charged in the same sector for similar properties. 
+					</p>
+					<p class="heading__desc mb-20" style="font-size: 13pt;color: white !important;text-align: justify !important;">
+						GFI-CO provides you with the drafting of your ad and wide distribution on its various communication channels (social networks, website, etc.). Visits with the various applicants in order to select the potential tenant whose income guarantees solvency. This involves a lease contract that protects you as a landlord, and allows you to facilitate future relations with the tenant. In addition, there is a document of the tenant's entry inventory to avoid any disputes.
+					</p>
+				</div>
+				<div class="col-sm-12 col-md-12 col-lg-6 hidden div4">
+					<p class="heading__desc" style="font-size: 13pt;color: white !important;text-align: justify !important;">
+						GFI-CO is responsible for collecting the rent, reminding the tenant if necessary, editing the rent receipts, dealing with any inconvenience the tenant may encounter, carrying out the mandatory repairs... In the event of unpaid rents, GFI-CO is responsible for collection and unpaid rent insurance which may be included in the rental management contract.
+					</p>
+					<p class="heading__desc" style="font-size: 13pt;color: white !important;text-align: justify !important;">
+						While respecting the legal framework, GFI-CO prepares the tenant's departure upstream by providing for the exit inventory by clauses in the event of wear and tear on certain equipment in order to return all or part of the security deposit to the tenant. after he left.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+  <section class="page-title page-title-layout1 bg-overlay bg-parallax">
+		<div class="bg-img"><img src="{{ asset('assets/images/page-titles/19.jpg') }}" alt="background"></div>
+		<div class="container">
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+		</div>
+	</section>
+
+  <section class="about-layout2">
+		<div class="container">
+      <div class="heading-layout2 mb-20">
+          <h3 class="heading__title">
+                PROPERTY PURCHASE
+          </h3>
+        </div>
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-6 hidden div1">
+					<p class="heading__desc" style="font-size: 13pt;text-align: justify !important;">
+						Buying real estate generally turns out to be a lifetime investment.
+					</p>
+          <br>
+					<p class="heading__desc" style="font-size: 13pt;text-align: justify !important;">
+						 Entrusting your purchase project to GFI-CO is then a valuable time saver that ensures the feasibility of your project in line with your budget.
+					</p>
+          <br>
+					<p class="heading__desc" style="font-size: 13pt;text-align: justify !important;">
+						 You will thus avoid buying a property at an excessive price thanks to our perfect reading of the market. Indeed, individuals tend to overvalue their property because the affective aspect comes into play.
+					</p>
+          <br>
+          
+				</div>
+				<div class="col-sm-12 col-md-12 col-lg-6">
+					<p class="heading__desc" style="font-size: 13pt;text-align: justify !important;">
+						GFI-CO offers you complete and personalized support in your purchasing process. Among other things, targeted research (area, surface area of the property, title deed, diagnostics, etc.), successful visits, upstream negotiation, a purchase schedule, the compliance of the operation until the signature at the notary.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+  
+
+  <section class="page-title page-title-layout1 bg-overlay bg-parallax">
+		<div class="bg-img"><img src="{{ asset('assets/images/page-titles/21.jpg') }}" alt="background"></div>
+		<div class="container">
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+		</div>
+	</section>
+
+  <section class="work-process pb-50">
+		<div class="bg-img"><img src="{{ asset('assets/images/backgrounds/1.jpg') }}" alt="background"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-6">
+					<div class="about__img">
+						<img src="{{ asset('assets/images/agenceimmobiliere/6.jpg') }}" alt="about" class="img-fluid">
+					</div>
+				</div>
+				<div class="col-sm-12 col-md-12 col-lg-6 hidden div4">
+					<div class="heading-layout2 mb-20">
+						<h3 class="heading__title" style="color: aliceblue">
+							PROPERTY SALE
+						</h3>
+					</div>
+					<p class="heading__desc mb-30" style="font-size: 13pt; text-align: justify; color: white">
+						GFI-CO is the guarantee of a quick and efficient sale thanks to a secure real estate transaction including administrative, legal, financial and technical formalities.
+					</p>
+					<p class="heading__desc" style="font-size: 13pt; text-align: justify; color: white">
+					  GFI-CO has a file of potential buyers within a structured network. So your property will not remain long without a buyer. This will save you costs in terms of maintenance, renovation or refreshment.
+					</p>
+					<p class="heading__desc" style="font-size: 13pt; text-align: justify; color: white">
+						 GFI-CO allows you to maximize the profitability of your property through better sales times linked to personalized support.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+  <section class="page-title page-title-layout1 bg-overlay bg-parallax">
+		<div class="bg-img"><img src="{{ asset('assets/images/page-titles/22.jpg') }}" alt="background"></div>
+		<div class="container">
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+		</div>
+	</section>
+
+
+  <section class="work-process pb-50">
+		<div class="bg-img"><img src="{{ asset('assets/images/backgrounds/1.jpg') }}" alt="background"></div>
+		<div class="container">
+      <div class="heading-layout2 mb-20">
+					<h3 class="heading__title" style="color: aliceblue">
+							HAVE YOUR PROPERTY MANAGED BY GFI-CO
+					</h3>
+			</div>
+			<div class="row">
+          <p class="heading__desc mb-20" style="font-size: 13pt;color: white !important;">
+						Using GFI-CO to manage your assets is an advantageous way to secure them. After signing the rental management mandate between the owner and GFI-CO, we undertake to enhance your property through various services such as:
+					</p>
+				<div class="col-sm-12 col-md-12 col-lg-6">
+					<ul class="list-items list-unstyled mt-20 text-white">
+              <li>The valuation of the property</li>
+              <li>Writing and posting the ad</li>
+              <li>Carrying out visits and signing contracts</li>
+              <li>The management of rents and rental charges (collection then redistribution to the owner)</li>
+              <li>The management report </li>
+              <li>The management of the amount of the rent (revision according to the Rent Reference Index)</li>
+          </ul>
+				</div>
+				<div class="col-sm-12 col-md-12 col-lg-6 hidden div4 text-white">
+					<ul class="list-items list-unstyled mt-20">
+              <li>The guarantee in case of damage</li>
+              <li>Claims and works management</li>
+              <li>Management of the dialogue with the tenant(s) (ensure compliance with maintenance and insurance obligations, follow-up in the event of unpaid rent)</li>
+              <li>The provision of an application for monitoring the management of your property.</li>
+          </ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
 {% endblock %}
