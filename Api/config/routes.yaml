@@ -60,7 +60,7 @@ admin_security_login:
     controller: App\Controller\SecurityController::login
 
 admin_security_logout:
-    path: /admin/security/login
+    path: /admin/security/logout
     controller: App\Controller\SecurityController::logout
 
 admin_dashboard:
@@ -79,9 +79,15 @@ admin_articles:
     path: /admin/news
     controller: App\Controller\AdminController::articleList
 
+admin_articles_add:
+    path: /admin/news/add
+    controller: App\Controller\AdminController::articleAdd
+
 admin_article_info:
     path: /admin/news/{id}
     controller: App\Controller\AdminController::articleInfo
+    requirements:
+        id: '\d+'
 
 admin_article_edit:
     path: /admin/news/{id}/edit

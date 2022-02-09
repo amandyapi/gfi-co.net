@@ -15,7 +15,7 @@
 						{{article.title}}
 					</h5>
 					<p class="mb-0 font-weight-normal">
-						<a href="#" class="btn btn-sm bg-warning text-light">Editer</a>
+						<a href="{{ path('admin_article_edit', { 'id': article.id }) }}" class="btn btn-sm bg-warning text-light">Editer</a>
 					</p>
 					<p class="mb-0 font-weight-bold text-sm">
 						{{article.user|capitalize}}
