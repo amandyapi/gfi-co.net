@@ -4,11 +4,11 @@ gfi-home:
     controller: App\Controller\PageController::home
 
 gfi-about:
-    path: /{lang}/about
+    path: /{lang}/gfi-co-construction
     controller: App\Controller\PageController::about
 
 gfi-team:
-    path: /{lang}/team
+    path: /{lang}/gfi-co-agence-immobiliere
     controller: App\Controller\PageController::team
 
 gfi-prestations:

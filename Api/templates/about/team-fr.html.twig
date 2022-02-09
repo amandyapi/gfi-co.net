@@ -1,134 +1,314 @@
 {% extends 'layout-fr.html.twig' %}
 
-{% block title %}Equipe
+{% block title %}GFI-CO Agence Immobilière
 {% endblock %}
 
 {% block content %}
-<!-- ========================
-      Team layout 1
-  ========================== -->
-  <section class="team-layout1 text-center  pb-30">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 text-center mb-30" style="font-size: 14pt"> 
-          GFI-CO SARL bénéficie d’une efficacité professionnelle. Ce, grâce à la maestria d’une dynamique équipe à l’écoute du marché. Des professionnels du métier dont l’expertise repose sur des formations diverses. Un brassage de secteurs d’activités répondant aux besoins des clients.
-        </div>
-        <!-- Member #1 -->
-        <div class="col-sm-6 col-md-4 col-lg-4"> 
-          <div class="member">
-            <div class="member__img">
-              <img src="{{ asset('assets/images/team/1.jpg') }}" alt="member img">
-              <div class="member__hover">
-                <div class="member__content-inner">
-                  <ul class="social__icons  justify-content-center list-unstyled mb-0">
-                    <li><a href="https://www.facebook.com/abdoulwahab.magassouba" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="https://www.linkedin.com/in/abdoulwahabmagassouba/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
-                  </ul><!-- /.social-icons -->
-                </div><!-- /.member-content-inner -->
-              </div><!-- /.member-hover -->
-            </div><!-- /.member-img -->
-            <div class="member__info">
-              <h5 class="member__name">Abdoul Wahab Magassouba</h5>
-              <p class="member__desc">Manager Général & Fondateur</p>
-            </div><!-- /.member-info -->
-          </div><!-- /.member -->
-        </div><!-- /.col-lg-4 -->
-        <!-- Member #2 -->
-        <div class="col-sm-6 col-md-4 col-lg-4">
-          <div class="member">
-            <div class="member__img">
-              <img src="{{ asset('assets/images/team/2.jpg') }}" alt="member img">
-              <div class="member__hover">
-                <div class="member__content-inner">
-                  <ul class="social__icons justify-content-center list-unstyled mb-0">
-                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                  </ul><!-- /.social-icons -->
-                </div><!-- /.member-content-inner -->
-              </div><!-- /.member-hover -->
-            </div><!-- /.member-img -->
-            <div class="member__info">
-              <h5 class="member__name">Mohammad Abou Diakité</h5>
-              <p class="member__desc">Ingénieur Architecte</p>
-            </div><!-- /.member-info -->
-          </div><!-- /.member -->
-        </div><!-- /.col-lg-4 -->
-        <!-- Member #3 -->
-        <div class="col-sm-6 col-md-4 col-lg-4">
-          <div class="member">
-            <div class="member__img">
-              <img src="{{ asset('assets/images/team/3.jpg') }}" alt="member img">
-              <div class="member__hover">
-                <div class="member__content-inner">
-                  <ul class="social__icons justify-content-center list-unstyled mb-0">
-                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                  </ul><!-- /.social-icons -->
-                </div><!-- /.member-content-inner -->
-              </div><!-- /.member-hover -->
-            </div><!-- /.member-img -->
-            <div class="member__info">
-              <h5 class="member__name">Martin Fulgence Corréa</h5>
-              <p class="member__desc">Recherche et Développement</p>
-            </div><!-- /.member-info -->
-          </div><!-- /.member -->
-        </div><!-- /.col-lg-4 -->
-      </div> <!-- /.row -->
-    </div><!-- /.container -->
-  </section><!-- /.Team layout 1  -->
+<section class="page-title page-title-layout1 bg-overlay bg-parallax">
+		<div class="bg-img"><img src="{{ asset('assets/images/page-titles/15.jpg') }}" alt="background"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-12 col-xl-9">
+					<h1 class="pagetitle__heading">GFI-CO AGENCE IMMOBILIERE</h1>
+				</div>
+			</div>
+		</div>
+	</section>
 
-  <!-- ========================
-      Team layout 2
-  ========================== -->
-  <section class="team-layout2 text-center pt-0 pb-30">
-    <div class="container">
-      <div class="row">
-        <!-- Member #1 -->
-        <div class="col-sm-6 col-md-4 col-lg-4">
-          <div class="member">
-            <div class="member__img">
-              <img src="{{ asset('assets/images/team/4.jpg') }}" alt="member img">
-              <div class="member__hover">
-                <div class="member__content-inner">
-                  <ul class="social__icons justify-content-center list-unstyled mb-0">
-                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                  </ul><!-- /.social-icons -->
-                </div><!-- /.member-content-inner -->
-              </div><!-- /.member-hover -->
-            </div><!-- /.member-img -->
-            <div class="member__info">
-              <h5 class="member__name">Ephraïm Dolce</h5>
-              <p class="member__desc">Directeur de la Communication</p>
-            </div><!-- /.member-info -->
-          </div><!-- /.member -->
-        </div><!-- /.col-lg-3 -->
-        <!-- Member #2 -->
-        <div class="col-sm-6 col-md-4 col-lg-4">
-          <div class="member">
-            <div class="member__img">
-              <img src="{{ asset('assets/images/team/5.jpg') }}" alt="member img">
-              <div class="member__hover">
-                <div class="member__content-inner">
-                  <ul class="social__icons  justify-content-center list-unstyled mb-0">
-                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                  </ul><!-- /.social-icons -->
-                </div><!-- /.member-content-inner -->
-              </div><!-- /.member-hover -->
-            </div><!-- /.member-img -->
-            <div class="member__info">
-              <h5 class="member__name">Elia Aka Jean Pierre</h5>
-              <p class="member__desc">Ingénieur Bâtiment</p>
-            </div><!-- /.member-info -->
-          </div><!-- /.member -->
-        </div><!-- /.col-lg-3 -->
-        <!-- Member #3 -->
-      </div> <!-- /.row -->
-    </div><!-- /.container -->
-  </section><!-- /.Team layout 2  -->
+  <section class="about-layout2">
+		<div class="container">
+
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-6 hidden div1">
+					{# 
+            <div class="heading-layout2 mb-20">
+              <h3 class="heading__title">
+                Agence immobilière GFI-CO
+              </h3>
+            </div> 
+          #}
+					<p class="heading__desc mb-30" style="font-size: 16pt;font-weight: bold;text-align: justify !important;">
+						Avez-vous un projet immobilier ?
+					</p>
+					<p class="heading__desc" style="font-size: 13pt;text-align: justify !important;">
+						Souhaitez-vous louer, acheter, vendre, investir ou faire gérer un bien ?
+					</p>
+          <br>
+					<p class="heading__desc" style="font-size: 13pt;text-align: justify !important;">
+						GFI-CO vous conseille et vous accompagne grâce à son portefeuille de biens à vendre et à louer, et de son expertise du marché immobilier, afin d’estimer la valeur de vos biens et vous aider à concrétiser votre projet.
+					</p>
+          <br>
+					<p class="heading__desc" style="font-size: 13pt;text-align: justify !important;">
+						Que vous soyez clients, vendeurs, acquéreurs, propriétaires ou locataires, profitez de notre base de données, de nos modes de recherches multiples et innovants (communes, villes, départements, pays, applications ...), depuis notre premier contact, jusqu'à la signature de l'acte authentique.
+					</p>
+
+				</div>
+				<div class="col-sm-12 col-md-12 col-lg-6">
+					<div class="about__img">
+						<img src="{{ asset('assets/images/agenceimmobiliere/1.jpg') }}" alt="about" class="img-fluid">
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+  <section class="page-title page-title-layout1 bg-overlay bg-parallax">
+		<div class="bg-img"><img src="{{ asset('assets/images/page-titles/16.jpg') }}" alt="background"></div>
+		<div class="container">
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+		</div>
+	</section>
+
+  <section class="work-process pb-50">
+		<div class="bg-img"><img src="{{ asset('assets/images/backgrounds/1.jpg') }}" alt="background"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-6">
+					<div class="about__img">
+						<img src="{{ asset('assets/images/agenceimmobiliere/5.jpg') }}" alt="about" class="img-fluid">
+					</div>
+				</div>
+				<div class="col-sm-12 col-md-12 col-lg-6 hidden div2">
+					<div class="heading-layout2 mb-20">
+						<h3 class="heading__title" style="color: aliceblue">
+							Types de biens
+						</h3>
+					</div>
+
+          <ul class="list-items list-unstyled mt-20 text-white">
+              <li>Maisons</li>
+              <li>Appartements</li>
+              <li>Immeubles</li>
+              <li>Parkings / box</li>
+              <li>Locations meublées</li>
+              <li>Locations saisonnières</li>
+              <li>Bureaux et commerces</li>
+          </ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+  <section class="page-title page-title-layout1 bg-overlay bg-parallax">
+		<div class="bg-img"><img src="{{ asset('assets/images/page-titles/17.jpg') }}" alt="background"></div>
+		<div class="container">
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+		</div>
+	</section>
+
+  <section class="about-layout2">
+		<div class="container">
+
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-6 hidden div1">
+            <div class="heading-layout2 mb-20">
+              <h3 class="heading__title">
+                Pourquoi faire appel à GFI-CO	?
+              </h3>
+            </div> 
+					{# <p class="heading__desc mb-30" style="font-size: 16pt;font-weight: bold;">
+						Avez-vous un projet immobilier ?
+					</p> #}
+					<p class="heading__desc" style="font-size: 13pt;text-align: justify !important;">
+						GFI-CO est l’intermédiaire immobilier par excellence qui vous donne en temps réel la solution immobilière répondant au mieux à vos besoins. 
+					</p>
+          <br>
+					<p class="heading__desc" style="font-size: 13pt;text-align: justify !important;">
+						 À savoir la recherche d’un locataire solvable, la rédaction du bail, le versement des charges au syndic de l’immeuble de copropriété et l’envoi du congé au locataire au nom du propriétaire.
+					</p>
+          
+				</div>
+				<div class="col-sm-12 col-md-12 col-lg-6">
+					<div class="about__img">
+						<img src="{{ asset('assets/images/agenceimmobiliere/3.jpg') }}" alt="about" class="img-fluid">
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+  <section class="page-title page-title-layout1 bg-overlay bg-parallax">
+		<div class="bg-img"><img src="{{ asset('assets/images/page-titles/18.jpg') }}" alt="background"></div>
+		<div class="container">
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+		</div>
+	</section>
+
+  <section class="work-process pb-50">
+		<div class="bg-img"><img src="{{ asset('assets/images/backgrounds/1.jpg') }}" alt="background"></div>
+		<div class="container">
+      <div class="heading-layout2 mb-20">
+					<h3 class="heading__title" style="color: aliceblue">
+							GESTION LOCATIVE
+					</h3>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-6">
+					<p class="heading__desc mb-20" style="font-size: 13pt;color: white !important;text-align: justify !important;">
+						GFI-CO est le professionnel qui vous donne de louer votre bien en toute sérénité. Cela passe par la vérification et la certitude que votre logement soit aux normes de location.  Dans le cas contraire, GFI-CO vous guide dans le type de travaux et/ou des aménagements spécifiques afin de répondre aux critères de location.
+					</p>
+					<p class="heading__desc mb-20" style="font-size: 13pt;color: white !important;text-align: justify !important;">
+						En fonction du marché et de la demande de locataires solvables, GFI-CO met à votre disposition une fourchette de prix convenable en tenant compte de la localisation du bien, de son état général, de sa superficie, du nombre de pièces, de l’agencement, des matériaux de construction, de la présence ou non d’espaces extérieurs, et même des loyers pratiqués dans le même secteur pour des biens similaires. 
+					</p>
+					<p class="heading__desc mb-20" style="font-size: 13pt;color: white !important;text-align: justify !important;">
+						GFI-CO vous assure la rédaction de votre annonce et une large diffusion sur ses différents canaux de communication (réseaux sociaux, site internet…). Des visites avec les différents postulants afin de sélectionner le potentiel locataire dont les revenus garantissent la solvabilité. Cela implique un contrat de bail qui vous protège en tant que propriétaire, et vous permet de faciliter les relations futures avec le locataire.  À cela s’ajoute un document de l’état des lieux d’entrée du locataire pour éviter tous litiges.
+					</p>
+				</div>
+				<div class="col-sm-12 col-md-12 col-lg-6 hidden div4">
+					<p class="heading__desc" style="font-size: 13pt;color: white !important;text-align: justify !important;">
+						GFI-CO se charge de recueillir le loyer, de relancer le locataire le cas échéant, d’éditer les quittances de loyer, de s’occuper des désagréments que peut rencontrer le locataire, d’effectuer les réparations obligatoires... En cas de loyers impayés, GFI- CO se charge du recouvrement et une assurance loyers impayés qui peut être comprise dans le contrat de gestion locative. 
+					</p>
+					<p class="heading__desc" style="font-size: 13pt;color: white !important;text-align: justify !important;">
+						Tout en respectant le cadre légal, GFI-CO prépare en amont le départ du locataire en prévoyant l’état des lieux de sortie par des clauses en cas d’usure de certains équipements afin de restituer intégralement ou une partie du dépôt de garantie au locataire après son départ.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+  <section class="page-title page-title-layout1 bg-overlay bg-parallax">
+		<div class="bg-img"><img src="{{ asset('assets/images/page-titles/19.jpg') }}" alt="background"></div>
+		<div class="container">
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+		</div>
+	</section>
+
+  <section class="about-layout2">
+		<div class="container">
+      <div class="heading-layout2 mb-20">
+          <h3 class="heading__title">
+                ACHAT IMMOBILIER
+          </h3>
+        </div>
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-6 hidden div1">
+					<p class="heading__desc" style="font-size: 13pt;text-align: justify !important;">
+						Acheter un bien immobilier se révèle généralement comme un investissement à vie. 
+					</p>
+          <br>
+					<p class="heading__desc" style="font-size: 13pt;text-align: justify !important;">
+						 Confier votre projet d’achat à GFI-CO est alors un précieux gain de temps qui vous assure la faisabilité de votre projet en adéquation avec votre budget.
+					</p>
+          <br>
+					<p class="heading__desc" style="font-size: 13pt;text-align: justify !important;">
+						 Vous éviterez ainsi d’acheter un bien à un prix démesuré grâce à notre parfaite lecture du marché. En effet, les particuliers ont tendance à surévaluer leurs biens car l'aspect affectif entre en ligne de compte. 
+					</p>
+          <br>
+          
+				</div>
+				<div class="col-sm-12 col-md-12 col-lg-6">
+					<p class="heading__desc" style="font-size: 13pt;text-align: justify !important;">
+						GFI-CO vous offre un accompagnement complet et personnalisé dans votre processus d’achat. Entre autres des recherches ciblées (zone, surface du bien, titre de propriété, diagnostics…), des visites fructueuses, la négociation en amont, un calendrier d’achat, la conformité de l’opération jusqu’à la signature chez le notaire.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+  
+
+  <section class="page-title page-title-layout1 bg-overlay bg-parallax">
+		<div class="bg-img"><img src="{{ asset('assets/images/page-titles/21.jpg') }}" alt="background"></div>
+		<div class="container">
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+		</div>
+	</section>
+
+  <section class="work-process pb-50">
+		<div class="bg-img"><img src="{{ asset('assets/images/backgrounds/1.jpg') }}" alt="background"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-6">
+					<div class="about__img">
+						<img src="{{ asset('assets/images/agenceimmobiliere/6.jpg') }}" alt="about" class="img-fluid">
+					</div>
+				</div>
+				<div class="col-sm-12 col-md-12 col-lg-6 hidden div4">
+					<div class="heading-layout2 mb-20">
+						<h3 class="heading__title" style="color: aliceblue">
+							VENTE IMMOBILIERE
+						</h3>
+					</div>
+					<p class="heading__desc mb-30" style="font-size: 13pt; text-align: justify; color: white">
+						GFI-CO est le gage d’une vente rapide et efficiente grâce à une transaction immobilière sécurisée incluant les formalités administratives, juridiques, financières et techniques. 
+					</p>
+					<p class="heading__desc" style="font-size: 13pt; text-align: justify; color: white">
+					GFI-CO dispose d’un fichier d’acquéreurs potentiels au sein d’un réseau structuré. Ainsi votre bien immobilier ne restera pas longtemps sans acquéreur. Cela vous évitera des coûts en termes d’entretien, de rénovation ou de rafraichissement.
+					</p>
+					<p class="heading__desc" style="font-size: 13pt; text-align: justify; color: white">
+						 GFI-CO vous permet de maximiser la rentabilité de votre bien par de meilleurs délais de vente liés à un accompagnement personnalisé.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+  <section class="page-title page-title-layout1 bg-overlay bg-parallax">
+		<div class="bg-img"><img src="{{ asset('assets/images/page-titles/22.jpg') }}" alt="background"></div>
+		<div class="container">
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+		</div>
+	</section>
+
+
+  <section class="work-process pb-50">
+		<div class="bg-img"><img src="{{ asset('assets/images/backgrounds/1.jpg') }}" alt="background"></div>
+		<div class="container">
+      <div class="heading-layout2 mb-20">
+					<h3 class="heading__title" style="color: aliceblue">
+							FAIRE GERER SON BIEN PAR GFI-CO
+					</h3>
+			</div>
+			<div class="row">
+          <p class="heading__desc mb-20" style="font-size: 13pt;color: white !important;">
+						Recourir à GFI-CO pour la gestion de vos biens est un moyen avantageux de les sécuriser. Après signature du mandat de gestion locative entre le propriétaire et GFI-CO, nous nous engageons à valoriser votre bien à travers des services variés tels que :
+					</p>
+				<div class="col-sm-12 col-md-12 col-lg-6">
+					<ul class="list-items list-unstyled mt-20 text-white">
+              <li>L’estimation du bien</li>
+              <li>La rédaction et la mise en ligne de l’annonce</li>
+              <li>La réalisation des visites et la signature des contrats</li>
+              <li>La gestion des loyers et des charges locatives (encaissement puis redistribution au propriétaire)</li>
+              <li>Le compte-rendu de gérance </li>
+              <li>La gestion du montant du loyer (révision en fonction de l’Indice de Référence des Loyers)</li>
+          </ul>
+				</div>
+				<div class="col-sm-12 col-md-12 col-lg-6 hidden div4 text-white">
+					<ul class="list-items list-unstyled mt-20">
+              <li>La garantie en cas de dégradations</li>
+              <li>La gestion des sinistres et des travaux</li>
+              <li>La gestion du dialogue avec le(s) locataire(s) (veiller au respect des obligations en matière d'entretien et d'assurance, relance en cas de loyers impayés)</li>
+              <li>La mise à disposition d’une application de suivi de gestion de votre bien immobilier.</li>
+          </ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
 {% endblock %}
