@@ -300,12 +300,14 @@ class PageController extends AbstractController
                       ->getRepository(Article::class)
                       ->findVeryLastArticles(3);
         //var_dump($article);die();
+        $serverName = $_SERVER['SERVER_NAME'];
 
         $template = 'articles/articles-info-'.$lang.'.html.twig';            
         return $this->render($template, [
             'lang' => $lang,
             'article' => $article,
-            'recentArticles' => $recentArticles
+            'recentArticles' => $recentArticles,
+            'serverName' => $serverName,
         ]); 
     }
 

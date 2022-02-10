@@ -33,6 +33,10 @@ class SecurityController extends AbstractController
         $this->mailer = $mailer;
     }
 
+    public function index(){
+        return $this->redirectToRoute('admin_security_login');
+    }
+
     public function login(Request $request, SessionInterface $session)
     {
         $repository = $this->getDoctrine()->getRepository(User::class);

@@ -4,11 +4,11 @@
 {% endblock %}
 
 {% block fb %}
-<meta property="og:url"           content="http://newsite.gfi-co.net/{{lang}}/articles/{{article.slug}}" />
+<meta property="og:url"           content="http://{{serverName}}/{{lang}}/articles/{{article.slug}}" />
   <meta property="og:type"          content="website" />
   <meta property="og:title"         content="GFI-CO" />
   <meta property="og:description"   content="GFI-CO Militant Écologique De Projets Immobiliers Haut Standing Et De Concepts Innovants" />
-  <meta property="og:image"         content="http://newsite.gfi-co.net/assets/images/favicon/favicon.png" />
+  <meta property="og:image"         content="http://{{serverName}}/assets/images/favicon/favicon.png" />
 {% endblock %}
 
 {% block content %}
@@ -92,17 +92,20 @@
 						<!-- /.entry-content -->
 					</div>
 					<!-- /.post-item -->
+					<p class="heading__desc" style="font-size: 13pt; text-align: justify; color: #000">
+						Partager cet article:
+					</p>
 					<div style="width: 20% !important" class="blog-share d-flex justify-content-between mb-30 mt-20">
-						<div class="fb-share-button btn btn__social btn__facebook" 
-                            data-href="http://newsite.gfi-co.net/{{lang}}/articles/{{article.slug}}" 
-                            data-layout="button_count">
-					        <i class="fab fa-facebook-f"></i>
-                        </div>
                         &nbsp;&nbsp;&nbsp;
-						<a href="#" class="btn btn__social btn__twitter">
-							<i class="fab fa-twitter"></i>
-							{# <span>Partager sur Twitter</span> #}
+						<a href="https://www.facebook.com/sharer/sharer.php?u=http://newsite.gfi-co.net/{{lang}}/articles/{{article.slug}}" 
+							class"btn btn-sm btn-primary" target="_blank" style="">
+							<img src="https://img.icons8.com/color/50/000000/facebook.png"/>
 						</a>
+						&nbsp;&nbsp;&nbsp;
+						<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">
+							<img src="https://img.icons8.com/color/50/000000/twitter-squared.png"/>
+						</a>
+						<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 					</div>
 					<!-- /.blog-share -->
 					<!-- /.blog-comments-form -->

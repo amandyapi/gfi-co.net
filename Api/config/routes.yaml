@@ -55,6 +55,10 @@ gfi-error-mail:
 
 ## ADMIN
 
+admin_root:
+    path: /admin
+    controller: App\Controller\SecurityController::index
+
 admin_security_login:
     path: /admin/security/login
     controller: App\Controller\SecurityController::login

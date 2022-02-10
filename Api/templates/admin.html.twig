@@ -82,15 +82,24 @@
             </div> 
            
           <ul class="navbar-nav  justify-content-end">
-            <li class="nav-item d-flex align-items-center">
-              <a href="{{ path('admin_security_logout') }}" class="nav-link text-body font-weight-bold px-0">
+            <li class="nav-item dropdown pe-2 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fa fa-user me-sm-1"></i>
-                {% if user is defined %}
-                <span class="d-sm-inline d-none">{{user.firstName|capitalize }} {{user.lastName|upper}}</span>
-                {% else %}
-                <span class="d-sm-inline d-none">John Snow</span>
-                {% endif %}
               </a>
+              <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
+                <li class="mb-2">
+                  <a class="dropdown-item border-radius-md" href="javascript:;">
+                    <div class="d-flex py-1">
+                      <span class="d-sm-inline d-none">{{user.firstName|capitalize }} {{user.lastName|upper}}</span>
+                    </div>
+                  </a>
+                </li>
+                <li class="mb-2">
+                  <a href="{{ path('admin_security_logout') }}" class="dropdown-item border-radius-md">
+                      Deconnexion
+                  </a>
+                </li>
+              </ul>
             </li>
             
           </ul>
