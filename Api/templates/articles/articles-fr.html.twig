@@ -25,7 +25,8 @@
             <div class="post-item">
               <div class="post-item__img">
                 <a href="{{ path('gfi-article-info', { 'lang': lang, 'slug': a.slug }) }}">
-                  <img src="{{ asset('assets/uploads/articles/') }}{{a.picture}}" alt="blog image">
+                  <img style="height: 179px !important;width: 300px !important;" 
+                       src="{{ asset('assets/uploads/articles/') }}{{a.picture}}" alt="blog image">
                 </a>
                 <div class="post-item__meta__cat">
                   <a href="#">{{a.category}}</a>
@@ -35,8 +36,8 @@
                 <span class="post-item__meta__date">{{a.createTime|date("d-m-Y")}}</span>
                 <h4 class="post-item__title">{{a.title|slice(0,31)}}...</a>
                 </h4>
-                <p class="post-item__desc">
-                  {{a.content|slice(0,133)|raw}}...
+                <p class="post-item__desc" style="">
+                  {{a.content|striptags|slice(0,133)|raw}}...
                 </p>
                 <a href="{{ path('gfi-article-info', { 'lang': lang, 'slug': a.slug }) }}" class="btn btn__secondary btn__link">
                   <i class="icon-arrow-right1"></i>

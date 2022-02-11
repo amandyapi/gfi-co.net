@@ -302,12 +302,22 @@ class PageController extends AbstractController
         //var_dump($article);die();
         $serverName = $_SERVER['SERVER_NAME'];
 
+        $url = "http://newsite.gfi-co.net/".$lang."/articles/".$article['slug'];
+        //var_dump($url);die();
+        $title = $article['title'];
+        $summary = "newsite.gfi-co.net/";
+        $source = "gfi-co";
+
         $template = 'articles/articles-info-'.$lang.'.html.twig';            
         return $this->render($template, [
             'lang' => $lang,
             'article' => $article,
             'recentArticles' => $recentArticles,
             'serverName' => $serverName,
+            'url' => $url,
+            'title' => $title,
+            'summary' => $summary,
+            'source' => $source,
         ]); 
     }
 

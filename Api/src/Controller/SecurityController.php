@@ -65,7 +65,15 @@ class SecurityController extends AbstractController
             else 
             {
                 $session->set('user', $user);
-                return $this->redirectToRoute('admin_mails');
+                if($user['role'] == 3)
+                {
+                    return $this->redirectToRoute('admin_articles');
+                }
+                else
+                {
+                    return $this->redirectToRoute('admin_mails');
+                }
+                
             }
         }
 

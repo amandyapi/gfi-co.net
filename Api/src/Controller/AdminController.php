@@ -41,6 +41,11 @@ class AdminController extends AbstractController
             return $this->redirectToRoute('login');
         }
 
+        if($user['role'] == '3') // Role 3 equal to article manager
+        {
+            return $this->redirectToRoute('login');
+        }
+
         $repository = $this->getDoctrine()->getRepository(Mail::class);
 
         $mails = $this->getDoctrine()
@@ -58,6 +63,12 @@ class AdminController extends AbstractController
     {
         $user = $session->get('user');
         if($session->get('user') == NULL || $session->get('user') == null) 
+        {
+            return $this->redirectToRoute('login');
+        }
+
+        
+        if($user['role'] == '3') // Role 3 equal to article manager
         {
             return $this->redirectToRoute('login');
         }
