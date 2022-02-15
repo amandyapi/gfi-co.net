@@ -254,6 +254,34 @@ class AdminController extends AbstractController
         ]);
     }
 
+    public function articleDelete($id, SessionInterface $session, Request $request)
+    {
+        $user = $session->get('user');
+        if($session->get('user') == NULL || $session->get('user') == null) 
+        {
+            return $this->redirectToRoute('login');
+        }
+
+        $repository = $this->getDoctrine()->getRepository(Article::class);
+        $entityManager = $this->getDoctrine()->getManager();
+        
+        try 
+        {
+            $a = $this->getDoctrine()
+                      ->getRepository(Article::class)
+                      ->find($id);
+            //var_dump($a->getTitle());die();
+            $entityManager->remove($a);
+            $entityManager->flush();
+                
+            return $this->redirectToRoute('admin_articles');
+        } catch (\Throwable $th) {
+            $message = $th->getMessage();
+            var_dump($message);die();
+            //return $this->redirectToRoute('admin_articles');
+        }
+    }
+
     public function slugify($text, string $divider = '-')
     {
         // replace non letter or digits by divider

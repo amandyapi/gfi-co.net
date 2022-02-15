@@ -97,6 +97,10 @@ admin_article_edit:
     path: /admin/news/{id}/edit
     controller: App\Controller\AdminController::articleEdit
 
+admin_article_delete:
+    path: /admin/news/{id}/delete
+    controller: App\Controller\AdminController::articleDelete
+
 
 ## ADMIN
 
