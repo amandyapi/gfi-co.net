@@ -2,28 +2,39 @@
     {
         "slug": "villa-the-pearl",
         "type": "concept",
-        "title": "villa the pearl",
+        "title": "villa basse the pearl avec terrasse aménagée",
         "video": "assets/images/projets/pearl/video.mp4",
         "area": {
             "land": "300 m²",
             "floor": "187,07 m²"
         },
+        "land": "",
         "specifications": {
             "rdc": {
-                "1": "1 Vestibule",
-                "2": "1 Toilette visiteurs",
-                "3": "1 Séjour avec salle à manger",
-                "4": "1 térasse pour le Séjour",
-                "5": "3 chambres avec salle de bain",
-                "6": "2 Cuisines (Intérieure et Extérieure)",
-                "7": "3 Patios",
-                "8": "1 Cour avant avec Parking pour 2 voitures",
-                "9": "Des escaliers menant à l'étage"
+                "text": {
+                    "1": "1 Vestibule",
+                    "2": "1 Toilette visiteurs",
+                    "3": "1 Séjour avec salle à manger",
+                    "4": "1 térasse pour le Séjour",
+                    "5": "3 chambres avec salle de bain",
+                    "6": "2 Cuisines (Intérieure et Extérieure)",
+                    "7": "3 Patios",
+                    "8": "1 Cour avant avec Parking pour 2 voitures",
+                    "9": "Des escaliers menant à l'étage"
+                },
+                "sketch": "assets/images/projets/pearl/a.PNG"
             },
             "etage": {
-                "1": "1 Master bedroom avec salle de bain",
-                "2": "1 Terasse pour la chambre",
-                "3": "1 Terrase inaccessible"
+                "text": {
+                    "1": "1 Master bedroom avec salle de bain",
+                    "2": "1 Terasse pour la chambre",
+                    "3": "1 Terrase inaccessible"
+                },
+                "sketch": "assets/images/projets/pearl/b.PNG"
+            },
+            "etage2": {
+                "text": "",
+                "sketch": ""
             }
         },
         "picture": {
@@ -48,23 +59,34 @@
             "land": "300 m²",
             "floor": "151 m²"
         },
+        "land": "",
         "specifications": {
             "rdc": {
-                "1": "1 Vestibule",
-                "2": "1 Toilette visiteurs",
-                "3": "1 Séjour avec salle à manger",
-                "4": "2 Cuisines (Intérieure et Extérieure)",
-                "5": "1 Patios central",
-                "6": "1 Cour latérale",
-                "7": "1 Cour avant avec Parking pour 2 voitures",
-                "8": "Des escaliers menant à l'étage"
+                "text": {
+                    "1": "1 Vestibule",
+                    "2": "1 Toilette visiteurs",
+                    "3": "1 Séjour avec salle à manger",
+                    "4": "2 Cuisines (Intérieure et Extérieure)",
+                    "5": "1 Patios central",
+                    "6": "1 Cour latérale",
+                    "7": "1 Cour avant avec Parking pour 2 voitures",
+                    "8": "Des escaliers menant à l'étage"
+                },
+                "sketch": "assets/images/projets/bigpearl/a.PNG"
             },
             "etage": {
-                "1": "2 chambres avec salle de bain",
-                "2": "1 Séjour",
-                "3": "1 Master bedroom avec salle de bain",
-                "4": "1 Terasse pour la chambre",
-                "5": "1 Terrase inaccessible"
+                "text": {
+                    "1": "2 chambres avec salle de bain",
+                    "2": "1 Séjour",
+                    "3": "1 Master bedroom avec salle de bain",
+                    "4": "1 Terasse pour la chambre",
+                    "5": "1 Terrase inaccessible"
+                },
+                "sketch": "assets/images/projets/bigpearl/b.PNG"
+            },
+            "etage2": {
+                "text": "",
+                "sketch": ""
             }
         },
         "picture": {
@@ -81,12 +103,28 @@
         }
     },
     {
-        "slug": "la-cite-du-bonheur",
+        "slug": "cite-du-bonheur",
         "type": "architecture",
         "title": "La cité du Bonheur",
         "video": "assets/images/realisation/architecture/citebonheur/video.mp4",
-        "area": {},
-        "specifications": {},
+        "area": {
+            "land": "",
+            "floor": ""
+        },
+        "specifications": {
+            "rdc": {
+                "text": "",
+                "sketch": ""
+            },
+            "etage": {
+                "text": "",
+                "sketch": ""
+            },
+            "etage2": {
+                "text": "",
+                "sketch": ""
+            }
+        },
         "picture": {
             "1": "assets/images/realisation/architecture/citebonheur/1.jpg",
             "2": "assets/images/realisation/architecture/citebonheur/2.jpg",
@@ -96,39 +134,82 @@
             "6": "assets/images/realisation/architecture/citebonheur/6.jpg",
             "7": "assets/images/realisation/architecture/citebonheur/7.jpg",
             "8": "assets/images/realisation/architecture/citebonheur/8.jpg",
-            "10": "assets/images/realisation/architecture/citebonheur/9.jpg",
-            "11": "assets/images/realisation/architecture/citebonheur/9.jpg",
-            "12": "assets/images/realisation/architecture/citebonheur/9.jpg",
-            "13": "assets/images/realisation/architecture/citebonheur/9.jpg",
-            "14": "assets/images/realisation/architecture/citebonheur/9.jpg",
-            "15": "assets/images/realisation/architecture/citebonheur/9.jpg",
-            "16": "assets/images/realisation/architecture/citebonheur/9.jpg",
-            "17": "assets/images/realisation/architecture/citebonheur/9.jpg",
-            "18": "assets/images/realisation/architecture/citebonheur/9.jpg",
-            "19": "assets/images/realisation/architecture/citebonheur/9.jpg",
-            "20": "assets/images/realisation/architecture/citebonheur/9.jpg",
-            "21": "assets/images/realisation/architecture/citebonheur/9.jpg",
-            "22": "assets/images/realisation/architecture/citebonheur/9.jpg",
-            "23": "assets/images/realisation/architecture/citebonheur/9.jpg",
-            "24": "assets/images/realisation/architecture/citebonheur/9.jpg",
-            "25": "assets/images/realisation/architecture/citebonheur/9.jpg",
             "9": "assets/images/realisation/architecture/citebonheur/9.jpg",
-            "9": "assets/images/realisation/architecture/citebonheur/9.jpg",
+            "10": "assets/images/realisation/architecture/citebonheur/10.jpg",
+            "11": "assets/images/realisation/architecture/citebonheur/11.jpg",
+            "12": "assets/images/realisation/architecture/citebonheur/12.jpg",
+            "13": "assets/images/realisation/architecture/citebonheur/13.jpg",
+            "14": "assets/images/realisation/architecture/citebonheur/14.jpg",
+            "15": "assets/images/realisation/architecture/citebonheur/15.jpg",
+            "16": "assets/images/realisation/architecture/citebonheur/16.jpg",
+            "17": "assets/images/realisation/architecture/citebonheur/17.jpg",
+            "18": "assets/images/realisation/architecture/citebonheur/18.jpg",
+            "19": "assets/images/realisation/architecture/citebonheur/19.jpg",
+            "20": "assets/images/realisation/architecture/citebonheur/20.jpg",
+            "21": "assets/images/realisation/architecture/citebonheur/21.jpg",
+            "22": "assets/images/realisation/architecture/citebonheur/22.jpg",
+            "23": "assets/images/realisation/architecture/citebonheur/23.jpg",
+            "24": "assets/images/realisation/architecture/citebonheur/24.jpg",
+            "25": "assets/images/realisation/architecture/citebonheur/25.jpg",
+            "26": "assets/images/realisation/architecture/citebonheur/26.jpg"
         }
     },
     {
-        "slug": "construction-de-deux-villas-duplex-a-bingerville",
-        "type": "architecture",
-        "title": "Construction de deux villas Duplex à Bingerville",
-        "video": "assets/images/realisation/duplexbingerville/video.mp4",
-        "area": {},
-        "specifications": {},
+        "slug": "duplex-conakry",
+        "type": "projet",
+        "title": "Réalisation d'une Duplex R+2 à Conakry",
+        "video": "",
+        "area": {
+            "land": "500 m²",
+            "floor": "549 m²"
+        },
+        "land": "",
+        "specifications": {
+            "rdc": {
+                "text": {
+                    "1": "1 toilette visiteurs",
+                    "2": "1 séjour avec Salle à manger",
+                    "3": "1 chambre autonome avec toilette, dressing",
+                    "4": "2 cuisines (Européenne et Africaine)",
+                    "5": "2 indépendances avec toilettes",
+                    "6": "1 cours avant",
+                    "7": "1 cours arrière",
+                    "8": "1 piscine en latérale avec térasse",
+                    "9": "1 espace barbecue",
+                    "10": "1 garage pour 2 véhicules",
+                    "11": "1 patio",
+                    "12": "1 cellier",
+                    "13": "1 buanderie"
+                },
+                "sketch": "assets/images/realisation/duplexconakry/7.PNG"
+            },
+            "etage": {
+                "text": {
+                    "1": "2 chambres enfants autonomes avec dressing et balcon",
+                    "2": "1 chambre principale autonome avec dressing et balcon vue sur la piscine",
+                    "3": "1 escalier",
+                    "4": "1 cuisine européenne",
+                    "5": "1 séjour avec balcon vue sur la piscine"
+                },
+                "sketch": "assets/images/realisation/duplexconakry/5.PNG"
+            },
+            "etage2": {
+                "text": {
+                    "1": "1 première terrasse vide sur la piscine",
+                    "2": "1 escalier",
+                    "3": "1 deuxième terrasse",
+                    "4": "1 séjour",
+                    "5": "1 toillette",
+                    "6": "1 cuisine"
+                },
+                "sketch": "assets/images/realisation/duplexconakry/6.PNG"
+            }
+        },
         "picture": {
-            "1": "assets/images/realisation/duplexbingerville/1.jpg",
-            "2": "assets/images/realisation/duplexbingerville/2.jpg",
-            "3": "assets/images/realisation/duplexbingerville/3.jpg",
-            "4": "assets/images/realisation/duplexbingerville/4.jpg",
-            "5": "assets/images/realisation/duplexbingerville/5.jpg"
+            "1": "assets/images/realisation/duplexconakry/1.PNG",
+            "2": "assets/images/realisation/duplexconakry/2.PNG",
+            "3": "assets/images/realisation/duplexconakry/3.PNG",
+            "4": "assets/images/realisation/duplexconakry/4.PNG"
         }
     },
     {
@@ -136,8 +217,24 @@
         "type": "architecture",
         "title": "Villa 12 Mili",
         "video": "assets/images/realisation/12mili/video.mp4",
-        "area": {},
-        "specifications": {},
+        "area": {
+            "land": "",
+            "floor": ""
+        },
+        "specifications": {
+            "rdc": {
+                "text": "",
+                "sketch": ""
+            },
+            "etage": {
+                "text": "",
+                "sketch": ""
+            },
+            "etage2": {
+                "text": "",
+                "sketch": ""
+            }
+        },
         "picture": {
             "1": "assets/images/realisation/12mili/1.jpg",
             "2": "assets/images/realisation/12mili/2.jpg",
@@ -155,16 +252,42 @@
             "14": "assets/images/realisation/12mili/14.jpg",
             "15": "assets/images/realisation/12mili/15.jpg",
             "16": "assets/images/realisation/12mili/16.jpg",
-            "17": "assets/images/realisation/12mili/17.jpg"
-        }
+            "17": "assets/images/realisation/12mili/17.jpg",
+            "18": "assets/images/realisation/12mili/18.jpg",
+            "19": "assets/images/realisation/12mili/19.jpg",
+            "20": "assets/images/realisation/12mili/20.jpg",
+            "21": "assets/images/realisation/12mili/21.jpg",
+            "22": "assets/images/realisation/12mili/22.jpg",
+            "23": "assets/images/realisation/12mili/23.jpg",
+            "24": "assets/images/realisation/12mili/24.jpg",
+            "25": "assets/images/realisation/12mili/25.jpg"
+        },
+        "sketch": {}
     },
     {
         "slug": "residence-hoteliere-de-daloa",
         "type": "projet",
         "title": "Résidence Hotelière De Daloa",
         "video": "assets/images/realisation/hoteldaloa/video.mp4",
-        "area": {},
-        "specifications": {},
+        "area": {
+            "land": "1200 m²",
+            "floor": ""
+        },
+        "land": "",
+        "specifications": {
+            "rdc": {
+                "text": "",
+                "sketch": ""
+            },
+            "etage": {
+                "text": "",
+                "sketch": ""
+            },
+            "etage2": {
+                "text": "",
+                "sketch": ""
+            }
+        },
         "picture": {
             "1": "assets/images/realisation/hoteldaloa/1.jpg",
             "2": "assets/images/realisation/hoteldaloa/2.jpg",
@@ -179,7 +302,10 @@
             "11": "assets/images/realisation/hoteldaloa/11.jpg",
             "12": "assets/images/realisation/hoteldaloa/12.jpg",
             "13": "assets/images/realisation/hoteldaloa/13.jpg",
-            "14": "assets/images/realisation/hoteldaloa/14.jpg"
+            "14": "assets/images/realisation/hoteldaloa/14.jpg",
+            "15": "assets/images/realisation/hoteldaloa/15.jpg",
+            "16": "assets/images/realisation/hoteldaloa/16.jpg",
+            "17": "assets/images/realisation/hoteldaloa/17.jpg"
         }
     },
     {
@@ -187,8 +313,25 @@
         "type": "interieur",
         "title": "Design intérieur",
         "video": "assets/images/realisation/interieur/video.mp4",
-        "area": {},
-        "specifications": {},
+        "area": {
+            "land": "",
+            "floor": ""
+        },
+        "land": "",
+        "specifications": {
+            "rdc": {
+                "text": "",
+                "sketch": ""
+            },
+            "etage": {
+                "text": "",
+                "sketch": ""
+            },
+            "etage2": {
+                "text": "",
+                "sketch": ""
+            }
+        },
         "picture": {
             "1": "assets/images/realisation/interieur/1.jpg",
             "2": "assets/images/realisation/interieur/1.jpg"

@@ -210,8 +210,10 @@ class PageController extends AbstractController
 
         $projects = \json_decode($data);
         $pictures = [];
+        $sketch = [];
         $rdc = [];
         $etage = [];
+        $etage2 = [];
 
         foreach ($projects as $key => $value) {
             if($projects[$key]->slug == $slug){
@@ -223,24 +225,34 @@ class PageController extends AbstractController
            $pictures[] = $value;
         }
 
-        foreach ($projet->specifications->rdc as $key => $value) {
-           $rdc[] = $value;
+        if($projet->specifications->rdc->text != ""){
+            foreach ($projet->specifications->rdc->text as $key => $value) {
+                $rdc[] = $value;
+            }  
         }
-
-        foreach ($projet->specifications->etage as $key => $value) {
-           $etage[] = $value;
-        }
-
-        //var_dump($pictures);die();
         
-        $template = 'projects/projects-info-'.$lang.'.html.twig';            
+        
+        if($projet->specifications->etage->text != ""){
+            foreach ($projet->specifications->etage->text as $key => $value) {
+                $etage[] = $value;
+            }    
+        }
+        
+        if($projet->specifications->etage2->text != ""){
+            foreach ($projet->specifications->etage2->text as $key => $value) {
+                $etage2[] = $value;
+            }
+        }
+        
+        $template = 'projects/project-'.$lang.'.html.twig';            
         return $this->render($template, [
             'lang' => $lang,
             'title' => $title,
             'projet' => $projet,
             'pictures' => $pictures,
             'rdc' => $rdc,
-            'etage' => $etage
+            'etage' => $etage,
+            'etage2' => $etage2
         ]); 
     }
 
