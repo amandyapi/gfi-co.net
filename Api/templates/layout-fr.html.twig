@@ -254,12 +254,13 @@
   </script>
 
   <script>
-  console.clear();
+      //console.clear();
       function changeLang(lang) {
         console.log('Redirect!!!');
         var pathname = window.location.pathname; 
         
         var _pathname = '';
+        var __pathname = '';
         var url      = window.location.href; 
         
         var redirect = '';   
@@ -270,11 +271,17 @@
       
         let prestation = pathname.search('/prestations/');
         let projet = pathname.search('/projets/');
+        let project = pathname.search('/project/');
         let articles = pathname.search('/articles/');
+        let indexElt = 0;
+        let indexProj = 0;
+
+        let projetsFR = ["villa-the-pearl", "villa-the-big-pearl", "cite-du-bonheur", "duplex-conakry", "villa-12-mili", "residence-hoteliere-de-daloa", "design-interieur"];
+        let projetsEN = ["villa-the-pearl", "villa-the-big-pearl", "hapiness-city", "conakry-duplex", "villa-12-mili", "daloa-hotelery-residence", "interior-designer"];
 
         if(lang == 'fr')
         {
-          if(prestation == -1 && projet == -1){
+          if(prestation == -1 && projet == -1 && project == -1){
             _pathname = pathname.replace('/en/', '/fr/');
            
             redirect = origin + _pathname;
@@ -290,6 +297,16 @@
             redirect = origin + '/fr/projets/';
             window.location.href = redirect;
           }
+          else if(project != -1)
+          {
+            _pathname = pathname.replace('/en/project/', '');
+
+            indexElt = (element) => element == _pathname;
+            indexProj = projetsEN.findIndex(indexElt);
+            console.log('projetsFR', projetsFR[indexProj]);
+            redirect = origin + '/fr/project/' + projetsFR[indexProj];
+            //window.location.href = redirect;
+          }
           else if(articles != -1)
           {
             redirect = origin + '/fr/articles/';
@@ -299,7 +316,7 @@
         }
         else if(lang == 'en')
         {
-          if(prestation == -1 && projet == -1){
+          if(prestation == -1 && projet == -1 && project == -1){
             _pathname = pathname.replace('/fr/', '/en/');
            
             redirect = origin + _pathname;
@@ -315,6 +332,16 @@
             redirect = origin + '/en/projets/';
             window.location.href = redirect;
           }
+          else if(project != -1)
+          {
+            _pathname = pathname.replace('/fr/project/', '');
+            
+            indexElt = (element) => element == _pathname;
+            indexProj = projetsFR.findIndex(indexElt);
+            
+            redirect = origin + '/en/project/' + projetsEN[indexProj];
+            //window.location.href = redirect;
+          }
           else if(articles != -1)
           {
             redirect = origin + '/en/articles/';
@@ -326,6 +353,8 @@
         {
           console.log('No Redirect!!!');
         }
+        
+        console.log('redirect', redirect);
        
       }
   </script>
