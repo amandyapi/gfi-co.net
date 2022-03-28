@@ -3,7 +3,7 @@
         "slug": "villa-the-pearl",
         "type": "concept",
         "title": "villa basse the pearl avec terrasse aménagée",
-        "video": "assets/images/projets/pearl/video.mp4",
+        "video": "assets/images/projets/pearl/pearl.mp4",
         "area": {
             "land": "300 m²",
             "floor": "187,07 m²"
@@ -53,8 +53,8 @@
     {
         "slug": "villa-the-big-pearl",
         "type": "concept",
-        "title": "villa big the pearl",
-        "video": "assets/images/projets/bigpearl/video.mp4",
+        "title": "Villa duplex The Big Pearl",
+        "video": "assets/images/projets/bigpearl/bigpearl.mp4",
         "area": {
             "land": "300 m²",
             "floor": "151 m²"
@@ -206,10 +206,8 @@
             }
         },
         "picture": {
-            "1": "assets/images/realisation/duplexconakry/1.PNG",
-            "2": "assets/images/realisation/duplexconakry/2.PNG",
-            "3": "assets/images/realisation/duplexconakry/3.PNG",
-            "4": "assets/images/realisation/duplexconakry/4.PNG"
+            "1": "assets/images/realisation/duplexconakry/2.PNG",
+            "2": "assets/images/realisation/duplexconakry/4.PNG"
         }
     },
     {

@@ -3325,18 +3325,9 @@ textarea.form-control {
   transition: all 0.3s ease-in-out;
 }
 
-#returnBtn {
-  position: fixed;
-  left: 50px;
-  bottom: 30px;
-  width: 45px !important;
-  height: 45px !important;
-}
-
 #scrollTopBtn:hover {
   background-color: #222222;
 }
-
 
 #scrollTopBtn.actived {
   right: 30px;

@@ -1,6 +1,6 @@
 {% extends 'layout-fr.html.twig' %}
 
-{% block title %}News
+{% block title %}{{article.title}}
 {% endblock %}
 
 {% block fb %}
@@ -127,7 +127,7 @@
 		</div>
 		<!-- /.container -->
 	</section>
-	<!-- /.blog Single -->
+
 	<script>
 		window.twttr = (function(d, s, id) {
 		var js, fjs = d.getElementsByTagName(s)[0],
@@ -146,5 +146,6 @@
 		return t;
 		}(document, "script", "twitter-wjs"));
 	</script>
+	<!-- /.blog Single -->
 
 {% endblock %}

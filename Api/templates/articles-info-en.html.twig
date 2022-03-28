@@ -1,6 +1,6 @@
-{% extends 'layout-fr.html.twig' %}
+{% extends 'layout-en.html.twig' %}
 
-{% block title %}News
+{% block title %}{{article.title}}
 {% endblock %}
 
 {% block fb %}
@@ -19,17 +19,17 @@
 				<div class="col-sm-12 col-md-12 col-lg-4">
 					<aside class="sidebar mb-30">
 						<div class="widget widget-search">
-                			<h5 class="widget__title">Notre Magazine</h5>
+                			<h5 class="widget__title">Our Magazine</h5>
 							<div class="widget__content">
-								<a href="{{ asset('assets/pdf/gfi-co_real_estate.pdf') }}" title="Magazine GFI-CO" class="btn btn__primary btn__block">
-                                    <span>Télécharger</span>
+								<a href="{{ asset('assets/pdf/gfi-co_real_estate.pdf') }}" title="GFI-CO Magazine " class="btn btn__primary btn__block">
+                                    <span>Download</span>
                                     <img src="{{ asset('assets/images/icons/pdf.png') }}" alt="pdf">
                                 </a>
 							</div><!-- /.widget-content -->
 						</div><!-- /.widget-search -->	
 						<!-- /.widget-search -->
 						<div class="widget widget-posts">
-							<h5 class="widget__title">Articles récents</h5>
+							<h5 class="widget__title">Recent articles</h5>
 							<div class="widget__content">
 								<div class="slick-carousel" data-slick='{"slidesToShow": 1, "autoplay": true, "arrows": false, "dots": true}'>
 									<!-- post item #1 -->
@@ -43,7 +43,7 @@
 											<span class="widget-post__date">{{recent.createTime|date("d-m-Y")}}</span>
 											<h6 class="widget-post__title">
 												<a href="{{ path('gfi-article-info', { 'lang': lang, 'slug': recent.slug }) }}">
-												{{recent.content|striptags|slice(0,133)|raw}}...
+                                                {{recent.content|striptags|slice(0,133)|raw}}...
                                                 </a>
 											</h6>
 										</div>
@@ -60,6 +60,7 @@
 						<!-- /.widget-posts -->
 						
 					</aside>
+					<!-- /.sidebar -->
 				</div>
 				<!-- /.col-lg-4 -->
 				<div class="col-sm-12 col-md-12 col-lg-8">
@@ -92,7 +93,7 @@
 					</div>
 					<!-- /.post-item -->
 					<p class="heading__desc" style="font-size: 13pt; text-align: justify; color: #000">
-						Partager cet article:
+						Share this article:
 					</p>
 					<div style="width: 20% !important" class="blog-share d-flex justify-content-between mb-30 mt-20">
                         &nbsp;&nbsp;&nbsp;
@@ -128,23 +129,5 @@
 		<!-- /.container -->
 	</section>
 	<!-- /.blog Single -->
-	<script>
-		window.twttr = (function(d, s, id) {
-		var js, fjs = d.getElementsByTagName(s)[0],
-			t = window.twttr || {};
-		if (d.getElementById(id)) return t;
-		js = d.createElement(s);
-		js.id = id;
-		js.src = "https://platform.twitter.com/widgets.js";
-		fjs.parentNode.insertBefore(js, fjs);
-
-		t._e = [];
-		t.ready = function(f) {
-			t._e.push(f);
-		};
-
-		return t;
-		}(document, "script", "twitter-wjs"));
-	</script>
 
 {% endblock %}

@@ -11,14 +11,13 @@
 
   <link href="{{ asset('assets/images/favicon/favicon.png') }}" rel="icon">
   <title>
-    GFI-CO|{% block title %}{% endblock %}
+    {% block title %}GFI-CO|{% endblock %}
   </title>
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Barlow:400,500,600,700%7cHeebo:400,500,700&display=swap">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css">
   <link rel="stylesheet" href="{{ asset('assets/css/libraries.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-  <link rel="stylesheet" href="{{ asset('assets/css/select.css') }}">
 </head>
 
 <body>
@@ -44,7 +43,7 @@
                 <li>
                   <i class="icon-phone1"></i>
                   <div>
-                    <span>Phone:</span><strong><a href="tel:+5565454117">+225 01 431 00 250</a></strong>
+                    <span>Téléphone:</span><strong><a href="tel:+5565454117">+225 01 431 00 250</a></strong>
                   </div>
                 </li>
                 <li>
@@ -56,11 +55,11 @@
                 <li>
                   <i class="icon-clock1"></i>
                   <div>
-                    <span>Opening Hours:</span><strong>Mon-Fri: 8am – 7pm</strong>
+                    <span>Horaire:</span><strong>Lun-Ven: 08H – 17H</strong>
                   </div>
                 </li>
               </ul>
-              <a href="{{ path('gfi-contact', { 'lang': 'en' }) }}" class="btn btn__secondary header__btn">
+              <a href="{{ path('gfi-contact', { 'lang': 'fr' }) }}" class="btn btn__secondary header__btn">
                 <i class="icon-arrow-right1"></i><span>Contact</span>
               </a>
             </div>
@@ -74,29 +73,29 @@
             <div class="collapse navbar-collapse" id="mainNavigation">
               <ul class="navbar-nav">
                 <li class="nav__item with-dropdown">
-                  <a href="{{ path('gfi-home', { 'lang': 'en' }) }}" class="nav__item-link">HOME</a>
+                  <a href="{{ path('gfi-home', { 'lang': 'fr' }) }}" class="nav__item-link">Accueil</a>
                 </li><!-- /.nav-item -->
                 <li class="nav__item with-dropdown">
-                  <a href="#" class="dropdown-toggle nav__item-link">OUR COMPANY</a>
+                  <a href="#" class="dropdown-toggle nav__item-link">Notre entreprise</a>
                   <i data-toggle="dropdown" class="fa fa-angle-down d-block d-lg-none"></i>
                   <ul class="dropdown-menu">
-                    <li class="nav__item"><a href="{{ path('gfi-about', { 'lang': 'en' }) }}" class="nav__item-link">GFI-CO CONSTRUCTION</a></li>
+                    <li class="nav__item"><a href="{{ path('gfi-about', { 'lang': 'fr' }) }}" class="nav__item-link">GFI-CO Construction</a></li>
                     <!-- /.nav-item -->
-                    <li class="nav__item"><a href="{{ path('gfi-team', { 'lang': 'en' }) }}" class="nav__item-link">GFI-CO REAL ESTATE AGENCY</a></li>
+                    <li class="nav__item"><a href="{{ path('gfi-team', { 'lang': 'fr' }) }}" class="nav__item-link">GFI-CO Agence Immobilière</a></li>
                     <!-- /.nav-item -->
                   </ul><!-- /.dropdown-menu -->
                 </li><!-- /.nav-item -->
                 <li class="nav__item">
-                  <a href="{{ path('gfi-prestations', { 'lang': 'en' }) }}" class="nav__item-link">SERVICES</a>
+                  <a href="{{ path('gfi-prestations', { 'lang': 'fr' }) }}" class="nav__item-link">Prestations</a>
                 </li><!-- /.nav-item -->
                 <li class="nav__item">
-                  <a href="{{ path('gfi-project-grid', { 'lang': 'en' }) }}" class="nav__item-link">PROJECTS</a>
+                  <a href="{{ path('gfi-project-grid', { 'lang': 'fr' }) }}" class="nav__item-link">Projets</a>
                 </li><!-- /.nav-item -->
                 <li class="nav__item">
-                  <a href="{{ path('gfi-article_paged', { 'lang': 'en', 'page': 1 }) }}" class="nav__item-link">NEWS</a>
+                  <a href="{{ path('gfi-article_paged', { 'lang': 'fr', 'page': 1 }) }}" class="nav__item-link">Médias</a>
                 </li><!-- /.nav-item -->
                 <li class="nav__item">
-                  <a href="{{ path('gfi-contact', { 'lang': 'en' }) }}" class="nav__item-link">INFOLINE</a>
+                  <a href="{{ path('gfi-contact', { 'lang': 'fr' }) }}" class="nav__item-link">Infoline</a>
                 </li><!-- /.nav-item -->
               </ul><!-- /.navbar-nav -->
             </div><!-- /.navbar-collapse -->
@@ -104,10 +103,10 @@
               <ul class="header-actions__list list-unstyled d-flex align-items-center mb-0">
                 <li class="dropdown">
                   <button class="dropdown-toggle" id="langDrobdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="icon-globe mr-1" ></i> <span>English</span>
+                    <i class="icon-globe mr-1" ></i> <span>Français</span>
                   </button>
                   <div class="dropdown-menu" aria-labelledby="langDrobdown">
-                    <a class="dropdown-item" onclick="changeLang('fr')">Français</a>
+                    <a class="dropdown-item" onclick="changeLang('en')">English</a>
                   </div>
                 </li>
               </ul>
@@ -133,7 +132,7 @@
                   <i class="icon-phone1"></i>
                 </div><!-- /.footer-contact__icon -->
                 <div class="footer-contact__text">
-                  <span>Phone:</span>
+                  <span>Tel:</span>
                   <strong><a href="tel:002250143100250">(+225) 01 431 00 250</a></strong>
                 </div><!-- /.footer-contact__text -->
               </div><!-- /.footer-contact__item -->
@@ -151,8 +150,8 @@
                   <i class="icon-clock1"></i>
                 </div><!-- /.footer-contact__icon -->
                 <div class="footer-contact__text">
-                  <span>Opening Hours:</span>
-                  <strong>Mon-Fri: 8am – 7pm</strong>
+                  <span>Horaires d'ouverture:</span>
+                  <strong>Lun-Vend: 08h – 17h</strong>
                 </div><!-- /.footer-contact__text -->
               </div><!-- /.footer-contact__item -->
             </div><!-- /.col-lg-8 -->
@@ -165,23 +164,23 @@
             <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 footer-widget footer-widget__newsletter">
               <form class="footer-widget__newsletter__form">
                 <i class="footer-widget__newsletter__icon icon-brush"></i>
-                <h6 class="footer-widget__newsletter__title">Subscribe to receive our news</h6>
+                <h6 class="footer-widget__newsletter__title">Souscrivez pour recevoir nos alertes</h6>
                 <div class="form-group mb-0">
                   <input type="text" class="form-control" placeholder="Votre email">
-                  <button type="submit" class="btn btn__primary">Subscribe</button>
+                  <button type="submit" class="btn btn__primary">S'inscrire</button>
                 </div>
               </form>
             </div><!-- /.col-xl-4 -->
             <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3 footer-widget">
               <h6 class="footer-widget__title">GFI-CO SARL</h6>
               <div class="footer-widget__content">
-                <p class="mb-20">In accordance with environmental standards, and reference standards in the field, GFI-CO SARL is a company
-                 real estate whose specificity lies in the construction and promotion of ecological houses.</p>
-                <a href="{{ path('gfi-about', { 'lang': 'en' }) }}" class="btn btn__primary btn__link btn__icon">
-                  <i class="icon-arrow-right1"></i><span>Read more</span>
+                <p class="mb-20">En conformité avec les normes environnementales, et les standards de référence en la matière, GFI-CO SARL est une entreprise
+                immobilière dont la spécificité réside dans la construction et la promotion de maison écologique.</p>
+                <a href="{{ path('gfi-about', { 'lang': 'fr' }) }}" class="btn btn__primary btn__link btn__icon">
+                  <i class="icon-arrow-right1"></i><span>En savoir plus</span>
                 </a>
                 <a href="{{ asset('assets/pdf/gfi-co_real_estate.pdf') }}" class="btn btn__primary btn__link btn__icon" style="margin-top: 7px;">
-                  <i class="fas fa-file-pdf"></i><span>Our magazine</span>
+                  <i class="fas fa-file-pdf"></i><span>Notre magazine</span>
                 </a>
               </div><!-- /.footer-widget__content -->
             </div><!-- /.col-xl-2 -->
@@ -190,16 +189,16 @@
               <div class="footer-widget__content">
                 <nav>
                   <ul class="list-unstyled">
-                    <li><a href="{{ path('gfi-about', { 'lang': 'en' }) }}">Presentation</a></li>
-                    <li><a href="{{ path('gfi-team', { 'lang': 'en' }) }}">Leading team</a></li>
-                    <li><a href="{{ path('gfi-project-grid', { 'lang': 'en' }) }}">Project</a></li>
-                    <li><a href="{{ path('gfi-contact', { 'lang': 'en' }) }}">Contact</a></li>
+                    <li><a href="{{ path('gfi-about', { 'lang': 'fr' }) }}">Présentation</a></li>
+                    <li><a href="{{ path('gfi-team', { 'lang': 'fr' }) }}">Equipe dirigeante</a></li>
+                    <li><a href="{{ path('gfi-project-grid', { 'lang': 'fr' }) }}">Nos projets</a></li>
+                    <li><a href="{{ path('gfi-contact', { 'lang': 'fr' }) }}">Contact</a></li>
                   </ul>
                 </nav>
               </div><!-- /.footer-widget__content -->
             </div><!-- /.col-xl-2 -->
             <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3 footer-widget">
-              <h6 class="footer-widget__title">Location and contact</h6>
+              <h6 class="footer-widget__title">Localisation et contact</h6>
               <div class="footer-widget__content">
                 <p>SCI Carrière Abatta, Abidjan, Lot 423 ilot 37, Côte d'Ivoire</p>
                 <p class="footer-contact__phone d-flex align-items-center">
@@ -218,8 +217,8 @@
               <img src="{{ asset('assets/images/logo/logo-footer.png') }}" alt="logo" class="mr-20">
               <nav>
                 <ul class="footer__copyright-links list-unstyled d-flex flex-wrap mb-0">
-                  <li><a href="#">Terms & Conditions</a></li>
-                  <li><a href="#">Privacy Policy</a></li>
+                  <li><a href="#">Conditions d'utilisation</a></li>
+                  <li><a href="#">Politique de confidentialité</a></li>
                 </ul>
                 <p class="mb-0"> &copy; 2022 GFI-CO SARL
                 </p>
@@ -237,7 +236,6 @@
         </div><!-- /.container -->
       </div><!-- /.footer-secondary -->
     </footer><!-- /.Footer -->
-    
     <button id="scrollTopBtn"><i class="fas fa-long-arrow-alt-up"></i></button>
   </div><!-- /.wrapper -->
 
@@ -307,7 +305,7 @@
             indexProj = projetsEN.findIndex(indexElt);
             console.log('projetsFR', projetsFR[indexProj]);
             redirect = origin + '/fr/project/' + projetsFR[indexProj];
-            window.location.href = redirect;
+            //window.location.href = redirect;
           }
           else if(articles != -1)
           {
@@ -342,7 +340,7 @@
             indexProj = projetsFR.findIndex(indexElt);
             
             redirect = origin + '/en/project/' + projetsEN[indexProj];
-            window.location.href = redirect;
+            //window.location.href = redirect;
           }
           else if(articles != -1)
           {
@@ -359,18 +357,6 @@
         console.log('redirect', redirect);
        
       }
-  </script>
-
-<script>
-    document.oncontextmenu = function() {
-      return false;
-    }
-    $(document).ready(function () {
-        $("body").bind("cut copy", function (e) {
-          console.log('copy disabled');
-          e.preventDefault();
-        });
-      });
   </script>
 
   <script>

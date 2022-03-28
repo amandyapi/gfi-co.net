@@ -18,7 +18,6 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css">
   <link rel="stylesheet" href="{{ asset('assets/css/libraries.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-  <link rel="stylesheet" href="{{ asset('assets/css/select.css') }}">
 </head>
 
 <body>
@@ -74,29 +73,29 @@
             <div class="collapse navbar-collapse" id="mainNavigation">
               <ul class="navbar-nav">
                 <li class="nav__item with-dropdown">
-                  <a href="{{ path('gfi-home', { 'lang': 'en' }) }}" class="nav__item-link">HOME</a>
+                  <a href="{{ path('gfi-home', { 'lang': 'en' }) }}" class="nav__item-link">Home</a>
                 </li><!-- /.nav-item -->
                 <li class="nav__item with-dropdown">
-                  <a href="#" class="dropdown-toggle nav__item-link">OUR COMPANY</a>
+                  <a href="#" class="dropdown-toggle nav__item-link">Our Company</a>
                   <i data-toggle="dropdown" class="fa fa-angle-down d-block d-lg-none"></i>
                   <ul class="dropdown-menu">
-                    <li class="nav__item"><a href="{{ path('gfi-about', { 'lang': 'en' }) }}" class="nav__item-link">GFI-CO CONSTRUCTION</a></li>
+                    <li class="nav__item"><a href="{{ path('gfi-about', { 'lang': 'en' }) }}" class="nav__item-link">GFI-CO Construction</a></li>
                     <!-- /.nav-item -->
-                    <li class="nav__item"><a href="{{ path('gfi-team', { 'lang': 'en' }) }}" class="nav__item-link">GFI-CO REAL ESTATE AGENCY</a></li>
+                    <li class="nav__item"><a href="{{ path('gfi-team', { 'lang': 'en' }) }}" class="nav__item-link">GFI-CO Real Estate Agency</a></li>
                     <!-- /.nav-item -->
                   </ul><!-- /.dropdown-menu -->
                 </li><!-- /.nav-item -->
                 <li class="nav__item">
-                  <a href="{{ path('gfi-prestations', { 'lang': 'en' }) }}" class="nav__item-link">SERVICES</a>
+                  <a href="{{ path('gfi-prestations', { 'lang': 'en' }) }}" class="nav__item-link">Services</a>
                 </li><!-- /.nav-item -->
                 <li class="nav__item">
-                  <a href="{{ path('gfi-project-grid', { 'lang': 'en' }) }}" class="nav__item-link">PROJECTS</a>
+                  <a href="{{ path('gfi-project-grid', { 'lang': 'en' }) }}" class="nav__item-link">Projects</a>
                 </li><!-- /.nav-item -->
                 <li class="nav__item">
-                  <a href="{{ path('gfi-article_paged', { 'lang': 'en', 'page': 1 }) }}" class="nav__item-link">NEWS</a>
+                  <a href="{{ path('gfi-article_paged', { 'lang': 'en', 'page': 1 }) }}" class="nav__item-link">News</a>
                 </li><!-- /.nav-item -->
                 <li class="nav__item">
-                  <a href="{{ path('gfi-contact', { 'lang': 'en' }) }}" class="nav__item-link">INFOLINE</a>
+                  <a href="{{ path('gfi-contact', { 'lang': 'en' }) }}" class="nav__item-link">Infoline</a>
                 </li><!-- /.nav-item -->
               </ul><!-- /.navbar-nav -->
             </div><!-- /.navbar-collapse -->
@@ -237,7 +236,6 @@
         </div><!-- /.container -->
       </div><!-- /.footer-secondary -->
     </footer><!-- /.Footer -->
-    
     <button id="scrollTopBtn"><i class="fas fa-long-arrow-alt-up"></i></button>
   </div><!-- /.wrapper -->
 
@@ -307,7 +305,7 @@
             indexProj = projetsEN.findIndex(indexElt);
             console.log('projetsFR', projetsFR[indexProj]);
             redirect = origin + '/fr/project/' + projetsFR[indexProj];
-            window.location.href = redirect;
+            //window.location.href = redirect;
           }
           else if(articles != -1)
           {
@@ -342,7 +340,7 @@
             indexProj = projetsFR.findIndex(indexElt);
             
             redirect = origin + '/en/project/' + projetsEN[indexProj];
-            window.location.href = redirect;
+            //window.location.href = redirect;
           }
           else if(articles != -1)
           {
@@ -359,18 +357,6 @@
         console.log('redirect', redirect);
        
       }
-  </script>
-
-<script>
-    document.oncontextmenu = function() {
-      return false;
-    }
-    $(document).ready(function () {
-        $("body").bind("cut copy", function (e) {
-          console.log('copy disabled');
-          e.preventDefault();
-        });
-      });
   </script>
 
   <script>

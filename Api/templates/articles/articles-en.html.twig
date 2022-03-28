@@ -37,7 +37,7 @@
                 <h4 class="post-item__title">{{a.title|slice(0,31)}}...</a>
                 </h4>
                 <p class="post-item__desc">
-                  {{a.content|striptags|slice(0,133)|raw}}...
+                  {{a.content|slice(0,133)|raw}}...
                 </p>
                 <a href="{{ path('gfi-article-info', { 'lang': lang, 'slug': a.slug }) }}" class="btn btn__secondary btn__link">
                   <i class="icon-arrow-right1"></i>
