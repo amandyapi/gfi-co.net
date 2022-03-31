@@ -1,0 +1,28 @@
+
+.table .thead-blue{
+	color: #fff; 
+	background-color: #0E2B5C !important;
+}
+
+.table .tr{
+	color: #fff; 
+	background-color: #0E2B5C !important;
+}
+
+.table .td{
+	color: #fff; 
+	background-color: #0E2B5C !important;
+}
+
+.table-blue{
+	border: 1px solid #0E2B5C !important;
+	box-shadow: 1px 1px 5px #758db6;
+}
+
+.service-border{
+	border: 1px solid #0E2B5C !important;
+	border-radius: 2px !important;
+	padding: 10px;
+	/*box-shadow: 1px 1px 5px #0E2B5C;*/
+	box-shadow: 1px 1px 5px #758db6;
+}

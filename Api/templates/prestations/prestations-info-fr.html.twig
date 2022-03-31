@@ -60,6 +60,7 @@
 							</div>
 						</div>
 					</div>
+                    
 					<!-- /.portfolio-grid-layout2 -->
 					<div class="text__block mb-30">
                         {% for c in content %}
@@ -79,6 +80,7 @@
                         {% endfor %}
 					</div>
 
+                    
 				</div>
 				<!-- /.col-lg-8 -->
 			</div>
@@ -88,4 +90,480 @@
 	</section>
 	<!-- /.Text Content Section -->
 
+{% if prestation.id == 1 %}
+
+    <section class="page-title page-title-layout1 bg-overlay bg-parallax">
+		<div class="bg-img"><img src="{{ asset('assets/images/page-titles/12.jpg') }}" alt="background"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-12 col-xl-9">
+					<h1 class="pagetitle__heading">Offres de Terrains sécurisés</h1>
+				</div>
+			</div>
+		</div>
+	</section>   
+                        <section class="text-content pt-20 pb-30">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12 col-lg-8 offset-lg-1">
+                                        <div class="heading mt-30 mb-20">
+                                            {# <h2 class="heading__title"> Offres de Terrains sécurisés</h2> #}
+                                            <h5 class="text__block-title mb-5">Nos différentes démarches qui vous rassurent</h5>
+                                        </div><!-- /.heading -->
+                                    </div>
+                                </div>
+
+                                <div class="d-flex justify-content-between flex-wrap align-items-center" style="width: 100%">
+                                    <div class="row">
+                                        <div class="service-border" style="border: 0px solid black;width: 45%;margin: 2%">
+                                            <h6 class=""><i class="fas fa-file-pdf" style="font-size: 40px"></i>&nbsp;&nbsp;VÉRIFICATION ADMINISTRATIVE</h6>
+                                            <p class="text-justify">
+                                            Nous contrôlons l’ensemble des documents du terrain par un cabinet de notaire, ainsi que la pleine propriété du cédant <b>AVANT</b> de le mettre à disposition de notre clientèle.
+                                            </p>
+                                            <a href="#terrains" class="mb-30 text-warning">
+                                                <span>Voir les offres de terrains</span>
+                                            </a>
+                                        </div>
+
+                                        <div class="service-border" style="border: 0px solid black;width: 45%;margin: 2%">
+                                            <h6 class=""><i class="fas fa-lock" style="font-size: 40px"></i>&nbsp;TRANSACTION NOTARIÉE</h6>
+                                            <p>
+                                            L’acquisition de votre bien immobilier s’effectue devant notaire pour un maximum de garantie.
+                                            </p>
+                                            <a href="#" class="mb-30 text-warning">
+                                                <span>Avis clients</span>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="service-border" style="border: 0px solid black;width: 45%;margin: 2%">
+                                            <h6 class=""><i class="fas fa-map" style="font-size: 40px"></i>&nbsp;VISITE SUR SITE</h6>
+                                            <p>
+                                            En plus de vous fournir les informations complètes sur le site, nous organisons une <b>visite gratuite</b>, pour vous ou un de vos contacts sur place. 
+                                            </p>
+                                            <a href="#" class="mb-30 text-warning">
+                                                <span>Demandez une recherche</span>
+                                            </a>
+                                        </div>
+
+                                        <div class="service-border" style="border: 0px solid black;width: 45%;margin: 2%">
+                                            <h6 class=""><i class="fas fa-file-signature" style="font-size: 40px"></i>&nbsp;FORMALITÉS ADMINISTRATIVES</h6>
+                                            <p>
+                                        Nous prenons en charge l’ensemble des formalités administratives d’immatriculation ou de transfert de <b>propriété à votre nom</b>. Fini les tracasseries et les terrains sans documents !
+                                            </p>
+                                            <a href="#" class="mb-30 text-warning">
+                                                <span>Questions fréquentes</span>
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!-- /.row -->
+                            </div>
+                            <!-- /.container -->
+                        </section>
+
+    <section class="text-content pt-20 pb-30">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-8 offset-lg-1">
+                    <div class="heading mt-30 mb-20" id="terrains">
+                        {# <h2 class="heading__title"> Offres de Terrains sécurisés</h2> #}
+                        <h5 class="text__block-title mb-5">Nos offres de terrains</h5>
+                    </div><!-- /.heading -->
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-10 offset-lg-1">
+                    <p class="text-muted">La mise à jour du tableau ci-dessous se fera en fonction de nos offres</p>
+                    <table class="table table-blue">
+                        <thead class="thead-blue" style="background: #000">
+                            <tr>
+                                <th scope="col">LOCALISATION</th>
+                                <th scope="col">SURFACE</th>
+                                <th scope="col">PRIX</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <p class="">
+                                        <span class="font-weight-bold">ASSINIE Mohamé</span>
+                                        <a href="#" class="mb-30 text-info">
+                                            <span>détails</span>
+                                        </a><br>
+                                        <span class="text-muted">zone à fort potentiel</span>
+                                    </p>
+                                </td>
+                                <td>
+                                    <br>
+                                    <p>500 m²</p>
+                                </td>
+                                <td>
+                                    <br>
+                                    <p>6.500.000 F CFA</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="">
+                                        <span class="font-weight-bold">ASSOUINDE - Route d'Assinie</span>
+                                        <a href="#" class="mb-30 text-info">
+                                            <span>détails</span>
+                                        </a><br>
+                                        <span class="text-muted">Idéal Investissement moyen terme</span>
+                                    </p>
+                                </td>
+                                <td>
+                                    <br>
+                                    <p>500 m²</p>
+                                </td>
+                                <td>
+                                    <br>
+                                    <p>11.500.000 F CFA</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="">
+                                        <span class="font-weight-bold">JACQUEVILLE - Mambé Eiminkoa </span>
+                                        <a href="#" class="mb-30 text-info">
+                                            <span>détails</span>
+                                        </a><br>
+                                        <span class="text-muted">Emplacement stratégique</span>
+                                    </p>
+                                </td>
+                                <td>
+                                    <br>
+                                    <p>500 m²</p>
+                                </td>
+                                <td>
+                                    <br>
+                                    <p>6.500.000 F CFA</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="">
+                                        <span class="font-weight-bold">JACQUEVILLE - Avagou</span>
+                                        <a href="#" class="mb-30 text-info">
+                                            <span>détails</span>
+                                        </a><br>
+                                        <span class="text-muted">A 500 m de la voie principale</span>
+                                    </p>
+                                </td>
+                                <td>
+                                    <br>
+                                    <p>500 m²</p>
+                                </td>
+                                <td>
+                                    <br>
+                                    <p>4.500.000 F CFA</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="">
+                                        <span class="font-weight-bold">BINGERVILLE ADJIN Palmeraie</span>
+                                        <a href="#" class="mb-30 text-info">
+                                            <span>détails</span>
+                                        </a><br>
+                                        <span class="text-muted">Zone résidentielle</span>
+                                    </p>
+                                </td>
+                                <td>
+                                    <br>
+                                    <p>500 m²</p>
+                                </td>
+                                <td>
+                                    <br>
+                                    <p>24.900.000 F CFA</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="">
+                                        <span class="font-weight-bold">BINGERVILLE ANAN Gbontchui</span>
+                                        <a href="#" class="mb-30 text-info">
+                                            <span>détails</span>
+                                        </a><br>
+                                        <span class="text-muted">Bordure Lagunaire</span>
+                                    </p>
+                                </td>
+                                <td>
+                                    <br>
+                                    <p>500 m²</p>
+                                </td>
+                                <td>
+                                    <br>
+                                    <p>17.500.000 F CFA</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                </div>
+            </div>             
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </section>
+
+    <section class="page-title page-title-layout1 bg-overlay bg-parallax">
+		<div class="bg-img"><img src="{{ asset('assets/images/page-titles/21.JPG') }}" alt="background"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-12 col-xl-9">
+					<h1 class="pagetitle__heading">Recevez une offre sur mesure </h1>
+				</div>
+			</div>
+		</div>
+	</section>
+
+    <section class="contact-layout1 py-0">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+          <div class="contact-panel d-flex justify-content-around">
+            <form class="contact-panel__form" method="POST" action="#">
+              <div class="row">
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                  <div class="form-group"><input type="text" class="form-control" placeholder="Nom" id="name" name="contact-name" required></div>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                  <div class="form-group"><input type="text" class="form-control" placeholder="Prénoms" id="pname" name="contact-pname" required></div>
+                </div>
+
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                  <div class="form-group"><input type="email" class="form-control" placeholder="Email" id="email" name="contact-email" required></div>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                  <div class="form-group"><input type="text" class="form-control" placeholder="Téléphone" id="phone" name="contact-phone" required></div>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                  <div class="form-group">
+                    <select class="form-control" id="objet" name="objet">
+                      <option value="">Pays du projet</option>
+                      <option value="civ">Côte d'Ivoire</option>
+                      <option value="bf">Burkina Faso</option>
+                      <option value="ml">Mali</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                  <div class="form-group">
+                    <textarea class="form-control" placeholder="Votre demande" id="message" name="contact-messgae" required></textarea>
+                  </div>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                  <input type="submit" name="envoyer" value="Envoyer" style="" class="btn btn__secondary btn__block">
+                  <div id="info"></div>
+                </div>
+              </div>
+            </form>
+
+            <div class="contact-panel__banner d-flex align-items" style="position: relative;left: 30px;">
+              <div class="bg-img"><img src="{{ asset('assets/images/contact/1.jpg') }}" alt="banner"></div>
+              <div class="contact-panel__banner__inner">
+                <h4 class="contact-panel__banner__title">Comment obtenir l'ACD en Côte d'Ivoire ?</h4>
+                <p class="contact-panel__banner__desc">
+                    L’Arrêté de Concession Définitive (ACD) est le seul et unique acte qui confère la propriété sur le domaine foncier urbain. Les règles d’acquisition de la propriété foncière des terrains urbains ont été fixées par l’Ordonnance n° 2013-481 du 2 juillet 2013. 
+                </p>
+                
+              </div>
+            </div><!-- /.contact-panel__banner -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-title page-title-layout1 bg-overlay bg-parallax">
+		<div class="bg-img"><img src="{{ asset('assets/images/page-titles/20.JPG') }}" alt="background"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-12 col-xl-9">
+					<h1 class="pagetitle__heading">Comment obtenir l’ACD en Côte d’Ivoire ?</h1>
+				</div>
+			</div>
+		</div>
+	</section>
+
+    <section class="text-content pt-20 pb-30">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-10 offset-lg-1">
+                    <p>
+                        L’</span><strong>Arrêté de Concession Définitive (ACD) </strong>est le seul et unique acte qui confère la propriété sur le domaine foncier urbain. Les règles d’acquisition de la propriété foncière des terrains urbains ont été fixées par l’<strong>Ordonnance n° 2013-481 du 2 juillet 2013</strong>. Ce texte précise les étapes et les acteurs qui interviennent dans toute la chaîne de production. En raison de l’apparente complexité du circuit et de la confusion née dans l’esprit des usagers quant au rôle de chaque intervenant institutionnel, votre magazine revient sur les étapes, les structures impliquées et la description de leurs tâches.
+                    </p>
+
+                    <p>
+                        Il est important de signaler que l’<strong>ACD</strong> est délivré dans l’espace urbain sur les terrains issus de lotissements approuvés ou non. Cependant, seul le Ministre chargé de la construction et de l’urbanisme est habilité à délivrer des <strong>ACD</strong> sur des parcelles situées en dehors de lotissements approuvés.
+                    </p>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-8 offset-lg-1">
+                    <div class="heading mt-30 mb-20" id="terrains">
+                        {# <h2 class="heading__title"> Offres de Terrains sécurisés</h2> #}
+                        <h5 class="text__block-title mb-5">Quelques définitions relatives à l'ACD</h5>
+                    </div><!-- /.heading -->
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-10 offset-lg-1">
+
+                    <h6 class="mb-10">1- L’Attestation Domaniale</h6>
+                    <p>
+                        L’Attestation Domaniale n’est pas un acte délivré au demandeur d’<b>ACD</b> et ne confère pas la propriété. Elle est prise par le Directeur du Domaine Urbain dans le District d’Abidjan et à l’intérieur du pays par les Directeurs Régionaux. Elle est adressée au Conservateur de la Propriété Foncière et des Hypothèques et permet d’enclencher la procédure de création du Titre Foncier et d’indiquer le nom de la personne à qui l’Etat envisage de céder le terrain.
+                    </p>
+                    <h6 class="mb-10">2- L’Arrêté de Concession Définitive (ACD)</h6>
+
+                    <p>L’Arrêté de Concession Définitive est le seul et unique acte qui confère la propriété d’un <a href ="https://www.wizodia.com/vente-de-terrains-avec-acd-en-cote-divoire/#terrainsci">terrain urbain</a>.
+                    </p>
+
+                    <h6 class="mb-10">3- Le Certificat de Mutation de la Propriété Foncière</h6>
+                    <p>
+                        La mutation de propriété de terrain ayant fait l’objet d’Arrêté de Concession Définitive ou d’un Certificat de Propriété Foncière, se fait exclusivement par acte authentique notarié et donne lieu à un Certificat de Mutation de la Propriété Foncière délivré par le Conservateur de la Propriété Foncière et des Hypothèques. Il est la preuve que les droits conférés par la mutation au profit de l’acquéreur sont inscrits dans le livre foncier.
+                    </p>
+
+                    <h6 class="mb-10">4- L’état foncier</h6>
+                    <p>
+                        L’état foncier donne les informations contenues dans le livre foncier et qui représentent les informations portant sur la vie juridique de la parcelle.
+                    </p>
+
+                    <h6 class="mb-10">5- L’état domanial</h6>
+                    <p>
+                        L’état domanial donne les informations contenues dans les registres domaniaux du Ministères en charge de la Construction et d’Urbanisme. Ces informations retracent la vie administrative de la parcelle <em>(les différents actes qui ont été délivrés)</em>.
+                    </p>
+                </div>
+            </div>             
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </section>
+
+{% endif %}
+
+{% if prestation.id == 2 %}
+    <section class="page-title page-title-layout1 bg-overlay bg-parallax">
+		<div class="bg-img"><img src="{{ asset('assets/images/page-titles/12.jpg') }}" alt="background"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-12 col-xl-9">
+					<h1 class="pagetitle__heading">La clé d’un projet immobilier innovant et fiable</h1>
+				</div>
+			</div>
+		</div>
+	</section>
+
+    <section class="text-content pt-20 pb-30">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-8 offset-lg-1">
+                    <div class="heading mt-30 mb-20">
+                        {# <h2 class="heading__title"> Offres de Terrains sécurisés</h2> #}
+                                            <h5 class="text__block-title mb-5">Votre Service de A à Z en toute sérénité</h5>
+                    </div><!-- /.heading -->
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-between flex-wrap align-items-center" style="width: 100%">
+                
+
+                <div class="row">
+                    <div class="service-border" style="width: 45%;margin: 2%">
+                        <h6 class="">Achat de terrains sécurisés</h6>
+                        <p class="text-justify">
+                        Nous vous proposons des sites et terrains approuvés et avec ACD. Une assistance technique de la première étape jusqu’à la signature de votre contrat d’achat.
+                        </p>
+                        <a href="#terrains" class="mb-30 text-warning">
+                            <span>Voir les offres de terrains</span>
+                        </a>
+                    </div>
+
+                    <div class="service-border" style="border: 0px solid black;width: 45%;margin: 2%">
+                        <h6 class=""><i class="fas fa-stars"></i>Plan d’Architecture & Etudes Techniques et Devis (estimatif/quantitatif) </h6>
+                        <p>
+                            <b>Nos Partenaires reconnus et fiables</b>
+                        </p>
+                        <p>
+                        Nos architectes, notaires et professionnels sélectionnés pour leur sérieux et leurs excellentes références… travaillent pour répondre à toutes vos attentes
+                        </p>
+                        <a href="#" class="mb-30 text-warning">
+                            <span>Voir les projets de construction</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="service-border" style="border: 0px solid black;width: 45%;margin: 2%">
+                        <h6 class="">Constrution</h6>
+                        <p>
+                        Grace à la maestria d’une équipe dynamique et professionnelle, nous vous aidons à bâtir tous vos projets immobiliers.
+                        </p>
+                        <p>
+                            <b>Engagé À Livrer Des Projets De Construction De Haute Qualité Et À Innover Dans La Conception !</b>
+                        </p>
+                        <p>
+                        Ceux qui embrassent le changement prospèrent, construisant des produits plus grands, meilleurs, plus rapides et plus forts que jamais. Vous aidez à mener la charge ; nous pouvons vous aider à bâtir sur votre passé et à préparer votre avenir.
+                        </p>
+                        <p>
+                            <ul class="list-items list-unstyled mt-20">
+                                <li>Système de contrôle de la qualité</li>
+                                <li>Une finition inégalée</li>
+                                <li>Garantie de satisfaction à 100%</li>
+                                <li>Processus de test précis</li>
+                                <li>Personnel hautement professionnel</li>
+                                <li>Professionnel et qualifié</li>
+                            </ul>
+                        </p>
+                    </div>
+
+                    <div class="service-border" style="border: 0px solid black;width: 45%;margin: 2%">
+                        <h6 class="">Suivi de votre projet</h6>
+                        <p>
+                        Nous mettons à votre disposition un dispositif de suivi à distance de votre chantier quelque soit votre lieu de résidence.
+                        </p>
+                        <p>
+                        Notre équipe sur place vous permet à travers les différentes étapes du projet, l’accès aux photos et vidéos directement dans votre espace personnel.
+                        </p>
+                        <a href="#" class="mb-30 text-warning">
+                            <span>Questions fréquentes</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+                            <!-- /.container -->
+    </section>
+
+    <section class="page-title page-title-layout1 bg-overlay bg-parallax">
+		<div class="bg-img"><img src="{{ asset('assets/images/page-titles/19.jpg') }}" alt="background"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-12 col-xl-9">
+					<h1 class="pagetitle__heading">Estimez votre projet</h1>
+				</div>
+			</div>
+		</div>
+	</section>
+
+    <section class="text-content pt-20 pb-30">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-8 offset-lg-1">
+                    <div class="heading mt-30 mb-20" id="terrains">
+                        {# <h2 class="heading__title"> Offres de Terrains sécurisés</h2> #}
+                        <h5 class="text__block-title mb-5">Formulaire d’estimation de devis</h5>
+                    </div><!-- /.heading -->
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-10 offset-lg-1">
+                    <p class="text-muted"></p>
+                </div>
+            </div>             
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </section>
+
+
+{% endif %}
 {% endblock %}
