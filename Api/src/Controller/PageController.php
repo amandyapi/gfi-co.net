@@ -418,4 +418,13 @@ class PageController extends AbstractController
     }
 
 	
+	public function customDevis($lang)
+    {
+        $template = 'form/index-'.$lang.'.html.twig';              
+        return $this->render($template, [
+            'lang' => $lang
+        ]); 
+    }
+
+	
 }
