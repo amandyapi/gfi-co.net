@@ -53,6 +53,10 @@ gfi-error-mail:
     path: /{lang}/error-mail/{page}
     controller: App\Controller\PageController::errorMail
 
+gfi-devis:
+    path: /{lang}/devis
+    controller: App\Controller\PageController::customDevis
+
 ## ADMIN
 
 admin_root:
