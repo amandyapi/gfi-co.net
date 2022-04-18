@@ -1,0 +1,393 @@
+{% extends 'custom-layout-fr.html.twig' %}
+
+{% block title %}Demande de devis
+{% endblock %}
+
+{% block content %}
+
+<div class="page-wrapper">
+        <div class="page-wrapper-row full-height">
+            <div class="page-wrapper-middle">
+                <!-- BEGIN CONTAINER -->
+                <div class="page-container">
+                    <!-- BEGIN CONTENT -->
+                    <div class="page-content-wrapper">
+                        <!-- BEGIN CONTENT BODY -->
+                        <!-- BEGIN PAGE HEAD-->
+                        <div class="page-head">
+                            <div class="container">
+                                <!-- BEGIN PAGE TITLE -->
+                                <div class="page-title">
+                                    <h1>Estimez votre projet</h1>
+                                </div>
+                                <!-- END PAGE TITLE -->
+                                <!-- BEGIN PAGE TOOLBAR -->
+                                <div class="page-toolbar">
+                                </div>
+                                <!-- END PAGE TOOLBAR -->
+                            </div>
+                        </div>
+                        <!-- END PAGE HEAD-->
+
+
+                        <!-- BEGIN PAGE CONTENT BODY -->
+                        <div class="page-content">
+                            <div class="container">
+                                <!-- BEGIN PAGE BREADCRUMBS -->
+                                <ul class="page-breadcrumb breadcrumb">
+                                    <li>
+                                        <a href="https://gfi-co.net">Accueil</a>
+                                        <i class="fa fa-circle"></i>
+                                    </li>
+                                    <li>
+                                        <span>Estimez votre projet</span>
+                                    </li>
+                                </ul>
+                                <!-- END PAGE BREADCRUMBS -->
+                                <!-- BEGIN PAGE CONTENT INNER -->
+                                <div class="page-content-inner">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="portlet light " id="form_wizard_1">
+                                                <div class="portlet-title">
+                                                    <div class="caption">
+                                                        <i class=" icon-layers font-red"></i>
+                                                        <span
+                                                            class="caption-subject font-wizodia-orange bold uppercase">
+                                                            Devis estimatif -
+                                                            <span class="step-title"> Etape 1 sur 4 </span>
+                                                        </span>
+                                                    </div>
+
+                                                </div>
+                                                <div class="portlet-body form">
+                                                    <form class="form-horizontal" action="#" id="submit_form"
+                                                        method="POST">
+                                                        <div class="form-wizard">
+                                                            <div class="form-body">
+                                                                <div class="mt-element-step bg-dark">
+                                                                    <div class="row step-line bg-dark">
+                                                                        <ul
+                                                                            class="nav nav-pills nav-justified steps hidden-xs bg-dark">
+                                                                            <li>
+                                                                                <a href="#tab1" data-toggle="tab"
+                                                                                    class="step active"
+                                                                                    style="padding:0px">
+                                                                                    <div class="col-md-12 mt-step-col first active"
+                                                                                        id="navStep1">
+                                                                                        <!-- done -->
+                                                                                        <div
+                                                                                            class="mt-step-number  font-grey">
+                                                                                            1</div>
+                                                                                        <div
+                                                                                            class="mt-step-title uppercase font-grey-cascade">
+                                                                                            Terrain</div>
+                                                                                        <div
+                                                                                            class="mt-step-content font-grey-cascade">
+                                                                                            Type de maison</div>
+                                                                                    </div>
+                                                                                </a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a href="#tab2" data-toggle="tab"
+                                                                                    class="step" style="padding:0px">
+                                                                                    <div class="col-md-12 mt-step-col">
+                                                                                        <div
+                                                                                            class="mt-step-number font-grey">
+                                                                                            2</div>
+                                                                                        <div
+                                                                                            class="mt-step-title uppercase font-grey-cascade">
+                                                                                            Budget</div>
+                                                                                        <div
+                                                                                            class="mt-step-content font-grey-cascade">
+                                                                                            Délai</div>
+                                                                                    </div>
+                                                                                </a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a href="#tab3" data-toggle="tab"
+                                                                                    class="step" style="padding:0px">
+                                                                                    <div class="col-md-12 mt-step-col">
+                                                                                        <div
+                                                                                            class="mt-step-number font-grey">
+                                                                                            3</div>
+                                                                                        <div
+                                                                                            class="mt-step-title uppercase font-grey-cascade">
+                                                                                            Ville</div>
+                                                                                        <div
+                                                                                            class="mt-step-content font-grey-cascade">
+                                                                                            Localisation</div>
+                                                                                    </div>
+                                                                                </a>
+                                                                            </li>
+
+
+                                                                            <li>
+                                                                                <a href="#tab4" data-toggle="tab"
+                                                                                    class="step" style="padding:0px">
+                                                                                    <div class="col-md-12 mt-step-col last"
+                                                                                        id="lastStep">
+                                                                                        <div
+                                                                                            class="mt-step-number font-grey">
+                                                                                            4</div>
+                                                                                        <div
+                                                                                            class="mt-step-title uppercase font-grey-cascade">
+                                                                                            Validation</div>
+                                                                                        <div
+                                                                                            class="mt-step-content font-grey-cascade">
+                                                                                            Envoi</div>
+                                                                                    </div>
+                                                                                </a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+
+
+
+
+                                                                <div id="bar" class="progress progress-striped"
+                                                                    role="progressbar">
+                                                                    <!--<div class="progress-bar progress-bar-success"> </div>-->
+                                                                </div>
+                                                                <div class="tab-content">
+                                                                    <div class="alert alert-danger display-none">
+                                                                        <button class="close"
+                                                                            data-dismiss="alert"></button> Vous devez
+                                                                        correctement remplir le formulaire.
+                                                                    </div>
+                                                                    <div class="alert alert-success display-none">
+                                                                        <button class="close"
+                                                                            data-dismiss="alert"></button> Your form
+                                                                        validation is successful!
+                                                                    </div>
+                                                                    <div class="tab-pane active" id="tab1">
+                                                                        <h3 class="block">Terrain</h3>
+                                                                        <div class="form-group">
+                                                                            <label
+                                                                                class="control-label col-md-3">Avez-vous
+                                                                                un terrain ?</label>
+                                                                            <div class="col-md-4">
+                                                                                <select name="dejaTerrain"
+                                                                                    id="dejaTerrain"
+                                                                                    class="form-control">
+                                                                                    <option value="1">Oui</option>
+                                                                                    <option value="0" selected>Non
+                                                                                    </option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="form-group">
+                                                                            <label
+                                                                                class="control-label col-md-3">Combien
+                                                                                de pièces souhaitez-vous ?</label>
+                                                                            <div class="col-md-4">
+                                                                                <select name="typeMaison"
+                                                                                    id="typeMaison"
+                                                                                    class="form-control">
+                                                                                    <option value="1">3 pièces</option>
+                                                                                    <option value="2">4 pièces</option>
+                                                                                    <option value="3">5 pièces</option>
+                                                                                    <option value="4">6 pièces</option>
+                                                                                    <option value="5">Plus de 6 pièces
+                                                                                    </option>
+                                                                                    <option value="6">Moins de 3 pièces
+                                                                                    </option>
+                                                                                    <option value="7">indifférent
+                                                                                    </option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+
+
+                                                                    <div class="tab-pane" id="tab2">
+                                                                        <h3 class="block">Votre budget</h3>
+                                                                        <div class="form-group">
+                                                                            <label class="control-label col-md-3"
+                                                                                id="labelBudget">Budget terrain + maison
+                                                                                ?</label>
+                                                                            <div class="col-md-4">
+                                                                                <select name="budget" id="budget_list"
+                                                                                    class="form-control">
+                                                                                    <option value=""></option>
+                                                                                    <option value="1">Moins de 45 millions
+                                                                                    </option>
+                                                                                    <option value="2">45 millions à 60 millions
+                                                                                    </option>
+                                                                                    <option value="3">60 millions à 75 millions 
+                                                                                    </option>
+                                                                                    <option value="4">75 millions à 100 millions 
+                                                                                    </option>
+                                                                                    <option value="5">Plus de 100 millions
+                                                                                    </option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="form-group">
+                                                                            <label class="control-label col-md-3">Date
+                                                                                de début prévisionnelle :</label>
+                                                                            <div class="col-md-4">
+                                                                                <select name="debutTravaux"
+                                                                                    id="debutTravaux_list"
+                                                                                    class="form-control">
+                                                                                    <option value=""></option>
+                                                                                    <option value="1">Moins de 3 mois
+                                                                                    </option>
+                                                                                    <option value="2">3 à 6 mois
+                                                                                    </option>
+                                                                                    <option value="3">Plus de 6 mois
+                                                                                    </option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+
+
+                                                                    <div class="tab-pane" id="tab3">
+                                                                        <h3 class="block">Localisation de votre projet
+                                                                        </h3>
+                                                                        <div class="form-group">
+                                                                            <label class="control-label col-md-3">Pays
+                                                                                :</label>
+                                                                            <div class="col-md-4">
+                                                                                <select name="pays" id="pays_list"
+                                                                                    class="form-control">
+                                                                                    <option value=""></option>
+                                                                                    <option value="1">Bénin</option>
+                                                                                    <option value="2">Côte d'Ivoire
+                                                                                    </option>
+                                                                                    <option value="3">Togo</option>
+                                                                                    <option value="4">Cameroun</option>
+                                                                                    <option value="5">Sénégal</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <!-- <div class="form-group">
+                                                                            <label class="control-label col-md-3">Région
+                                                                                :</label>
+                                                                            <div class="col-md-4">
+                                                                                <select name="region" id="region_list"
+                                                                                    class="form-control">
+                                                                                    <option value=""></option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div> -->
+
+                                                                        <div class="form-group">
+                                                                            <label class="control-label col-md-3">Ville
+                                                                                :</label>
+                                                                            <div class="col-md-4">
+                                                                                <!-- <select name="ville" id="ville_list"
+                                                                                    class="form-control">
+                                                                                    <option value=""></option>
+                                                                                </select> -->
+                                                                                <input type="text" class="form-control" name="ville">
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                    <div class="tab-pane" id="tab4">
+
+                                                                        <h3 class="block">Déjà inscrit ?</h3>
+                                                                        <!--<h4 class="form-section">Déjà inscrit ?</h4>-->
+
+
+
+                                                                        <div class="form-group">
+                                                                            <label class="control-label col-md-3">Email
+                                                                                <span class="required"> * </span>
+                                                                            </label>
+                                                                            <div class="col-md-4">
+                                                                                <input type="text" class="form-control"
+                                                                                    name="email" id="email" />
+                                                                                <span class="help-block"> Votre adresse
+                                                                                    email </span>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="form-group">
+                                                                            <label
+                                                                                class="control-label col-md-3">Password
+                                                                                <span class="required"> * </span>
+                                                                            </label>
+                                                                            <div class="col-md-4">
+                                                                                <input type="password"
+                                                                                    class="form-control" name="password"
+                                                                                    id="password" />
+                                                                                <span class="help-block"> Mot de passe.
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-actions">
+                                                                            <div class="row">
+                                                                                <div class="col-md-offset-3 col-md-9">
+                                                                                    <p><a href="javascript:;"
+                                                                                            class="btn blue  btn-default"
+                                                                                            id="btnConnect"
+                                                                                            onclick="identification();">Se
+                                                                                            connecter</a></p>
+                                                                                    <p><a href="javascript:window.location='subscribe.php';"
+                                                                                            class="btn green">Pas encore
+                                                                                            inscrit ? Créez un compte
+                                                                                            !</a></p>
+                                                                                </div>
+
+
+
+
+                                                                            </div>
+                                                                        </div>
+
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-actions">
+                                                                <div class="row">
+                                                                    <div class="col-md-offset-3 col-md-9">
+                                                                        <a href="javascript:;"
+                                                                            class="btn default button-previous">
+                                                                            <i class="fa fa-angle-left"></i> Retour </a>
+                                                                        <a href="javascript:;"
+                                                                            class="btn btn-outline wizodia-orange button-next">
+                                                                            Suivant
+                                                                            <i class="fa fa-angle-right"></i>
+                                                                        </a>
+                                                                        <a href="javascript:;"
+                                                                            class="btn wizodia-orange button-submit">
+                                                                            Valider
+                                                                            <i class="fa fa-check"></i>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- END PAGE CONTENT INNER -->
+                            </div>
+                        </div>
+                        <!-- END PAGE CONTENT BODY -->
+                        <!-- END CONTENT BODY -->
+
+                    </div>
+                    <!-- END CONTENT -->
+
+                </div>
+                <!-- END CONTAINER -->
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
