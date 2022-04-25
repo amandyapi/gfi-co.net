@@ -31,7 +31,43 @@
                                 <ul class="nav navbar-nav">
                                     <li aria-haspopup="false" class="menu-dropdown classic-menu-dropdown ">
                                         <!-- active -->
-                                        <a href="gfi-devis"> ACCUEIL
+                                        <a href="{{ path('gfi-home', { 'lang': 'fr' }) }}"> ACCUEIL
+                                            <span class="arrow"></span>
+                                        </a>
+                                    </li>
+                                    <li aria-haspopup="false" class="menu-dropdown classic-menu-dropdown ">
+                                        <!-- active -->
+                                        <a href="{{ path('gfi-about', { 'lang': 'fr' }) }}"> NOTRE ENTREPRISE
+                                            <span class="arrow"></span>
+                                        </a>
+                                    </li>
+                                    <li aria-haspopup="false" class="menu-dropdown classic-menu-dropdown ">
+                                        <!-- active -->
+                                        <a href="{{ path('gfi-prestations', { 'lang': 'fr' }) }}"> NOS SERVICES
+                                            <span class="arrow"></span>
+                                        </a>
+                                    </li>
+                                    <li aria-haspopup="false" class="menu-dropdown classic-menu-dropdown ">
+                                        <!-- active -->
+                                        <a href="{{ path('gfi-project-grid', { 'lang': 'fr' }) }}"> NOS RÉALISATIONS
+                                            <span class="arrow"></span>
+                                        </a>
+                                    </li>
+                                    <li aria-haspopup="false" class="menu-dropdown classic-menu-dropdown ">
+                                        <!-- active -->
+                                        <a href="{{ path('gfi-article_paged', { 'lang': 'fr', 'page': 1 }) }}"> MÉDIAS
+                                            <span class="arrow"></span>
+                                        </a>
+                                    </li>
+                                    <li aria-haspopup="false" class="menu-dropdown classic-menu-dropdown ">
+                                        <!-- active -->
+                                        <a href="{{ path('gfi-devis', { 'lang': 'fr' }) }}"> DEVIS
+                                            <span class="arrow"></span>
+                                        </a>
+                                    </li>
+                                    <li aria-haspopup="false" class="menu-dropdown classic-menu-dropdown ">
+                                        <!-- active -->
+                                        <a href="{{ path('gfi-contact', { 'lang': 'fr' }) }}"> INFOLINE
                                             <span class="arrow"></span>
                                         </a>
                                     </li>

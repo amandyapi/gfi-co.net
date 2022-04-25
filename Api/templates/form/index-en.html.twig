@@ -6,6 +6,81 @@
 {% block content %}
 
 <div class="page-wrapper">
+        <div class="page-wrapper-row">
+            <div class="page-wrapper-top">
+                <!-- BEGIN HEADER -->
+                <div class="page-header">
+                    <!-- BEGIN HEADER TOP -->
+                    <div class="page-header-top">
+                        <div class="container">
+                            <!-- BEGIN LOGO -->
+                            <div class="page-logo">
+                                <a href="https://gfi-co.net">
+                                    <img src="{{ asset('assets-custom/layouts/layout3/img/logo-gfico.png') }}" alt="logo" class="logo-default"
+                                         style="position: relative;top:-40px;">
+                                </a>
+                            </div>
+                            <!-- END TOP NAVIGATION MENU -->
+                        </div>
+                    </div>
+                    <!-- END HEADER TOP -->
+                    <!-- BEGIN HEADER MENU -->
+                    <div class="page-header-menu">
+                        <div class="container">
+                            <div class="hor-menu  ">
+                                <ul class="nav navbar-nav">
+                                    <li aria-haspopup="false" class="menu-dropdown classic-menu-dropdown ">
+                                        <!-- active -->
+                                        <a href="{{ path('gfi-home', { 'lang': 'en' }) }}"> HOME
+                                            <span class="arrow"></span>
+                                        </a>
+                                    </li>
+                                    <li aria-haspopup="false" class="menu-dropdown classic-menu-dropdown ">
+                                        <!-- active -->
+                                        <a href="{{ path('gfi-about', { 'lang': 'en' }) }}"> OUR COMPANY
+                                            <span class="arrow"></span>
+                                        </a>
+                                    </li>
+                                    <li aria-haspopup="false" class="menu-dropdown classic-menu-dropdown ">
+                                        <!-- active -->
+                                        <a href="{{ path('gfi-prestations', { 'lang': 'en' }) }}"> SERVICES
+                                            <span class="arrow"></span>
+                                        </a>
+                                    </li>
+                                    <li aria-haspopup="false" class="menu-dropdown classic-menu-dropdown ">
+                                        <!-- active -->
+                                        <a href="{{ path('gfi-project-grid', { 'lang': 'en' }) }}"> PROJECTS
+                                            <span class="arrow"></span>
+                                        </a>
+                                    </li>
+                                    <li aria-haspopup="false" class="menu-dropdown classic-menu-dropdown ">
+                                        <!-- active -->
+                                        <a href="{{ path('gfi-article_paged', { 'lang': 'en', 'page': 1 }) }}"> NEWS
+                                            <span class="arrow"></span>
+                                        </a>
+                                    </li>
+                                    <li aria-haspopup="false" class="menu-dropdown classic-menu-dropdown ">
+                                        <!-- active -->
+                                        <a href="{{ path('gfi-devis', { 'lang': 'en' }) }}"> QUOTATION
+                                            <span class="arrow"></span>
+                                        </a>
+                                    </li>
+                                    <li aria-haspopup="false" class="menu-dropdown classic-menu-dropdown ">
+                                        <!-- active -->
+                                        <a href="{{ path('gfi-contact', { 'lang': 'en' }) }}"> INFOLINE
+                                            <span class="arrow"></span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- END MEGA MENU -->
+                        </div>
+                    </div>
+                    <!-- END HEADER MENU -->
+                </div>
+                <!-- END HEADER -->
+            </div>
+        </div>
         <div class="page-wrapper-row full-height">
             <div class="page-wrapper-middle">
                 <!-- BEGIN CONTAINER -->
