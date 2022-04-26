@@ -57,6 +57,10 @@ gfi-devis:
     path: /{lang}/devis
     controller: App\Controller\PageController::customDevis
 
+gfi-more_acd:
+    path: /{lang}/comment-obtenir-l-acd
+    controller: App\Controller\PageController::moreAcd
+
 ## ADMIN
 
 admin_root:

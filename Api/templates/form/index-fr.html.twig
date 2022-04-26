@@ -61,12 +61,6 @@
                                     </li>
                                     <li aria-haspopup="false" class="menu-dropdown classic-menu-dropdown ">
                                         <!-- active -->
-                                        <a href="{{ path('gfi-devis', { 'lang': 'fr' }) }}"> DEVIS
-                                            <span class="arrow"></span>
-                                        </a>
-                                    </li>
-                                    <li aria-haspopup="false" class="menu-dropdown classic-menu-dropdown ">
-                                        <!-- active -->
                                         <a href="{{ path('gfi-contact', { 'lang': 'fr' }) }}"> INFOLINE
                                             <span class="arrow"></span>
                                         </a>
@@ -282,10 +276,24 @@
                                                                         <h3 class="block">Votre budget</h3>
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3"
+                                                                                id="labelBudget">Devise</label>
+                                                                            <div class="col-md-4">
+                                                                                <select name="devise" id="devise"
+                                                                                    class="form-control">
+                                                                                    <option value="1">CFA (XOF)
+                                                                                    </option>
+                                                                                    <option value="2">EURO (EUR)
+                                                                                    </option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="form-group">
+                                                                            <label class="control-label col-md-3"
                                                                                 id="labelBudget">Budget terrain + maison
                                                                                 ?</label>
                                                                             <div class="col-md-4">
-                                                                                <select name="budget" id="budget_list"
+                                                                                <select name="budget" id="budget_list_xof"
                                                                                     class="form-control">
                                                                                     <option value=""></option>
                                                                                     <option value="1">Moins de 45 millions
@@ -297,6 +305,21 @@
                                                                                     <option value="4">75 millions à 100 millions 
                                                                                     </option>
                                                                                     <option value="5">Plus de 100 millions
+                                                                                    </option>
+                                                                                </select>
+                                                                                
+                                                                                <select name="budget" id="budget_list_eur"
+                                                                                    class="form-control" style="display: none;">
+                                                                                    <option value=""></option>
+                                                                                    <option value="1">Moins de 70.000€
+                                                                                    </option>
+                                                                                    <option value="2">70.000€ à 90.000€
+                                                                                    </option>
+                                                                                    <option value="3">90.000€ à 115.000€ 
+                                                                                    </option>
+                                                                                    <option value="4">115.000€ à 150.000€ 
+                                                                                    </option>
+                                                                                    <option value="5">Plus de 150.000€
                                                                                     </option>
                                                                                 </select>
                                                                             </div>
@@ -333,12 +356,11 @@
                                                                                 <select name="pays" id="pays_list"
                                                                                     class="form-control">
                                                                                     <option value=""></option>
-                                                                                    <option value="1">Bénin</option>
-                                                                                    <option value="2">Côte d'Ivoire
-                                                                                    </option>
-                                                                                    <option value="3">Togo</option>
-                                                                                    <option value="4">Cameroun</option>
-                                                                                    <option value="5">Sénégal</option>
+                                                                                    <option value="1">Burkina Faso</option>
+                                                                                    <option value="2">Côte d'Ivoire</option>
+                                                                                    <option value="3">Guinée</option>
+                                                                                    <option value="4">Mali</option>
+                                                                                    <option value="5">Sénégal </option>
                                                                                 </select>
                                                                             </div>
                                                                         </div>
@@ -362,7 +384,7 @@
                                                                                     class="form-control">
                                                                                     <option value=""></option>
                                                                                 </select> -->
-                                                                                <input type="text" class="form-control" name="ville">
+                                                                                <input type="text" class="form-control" name="cityVille">
                                                                             </div>
                                                                         </div>
 
@@ -370,48 +392,21 @@
 
                                                                     <div class="tab-pane" id="tab4">
 
-                                                                        <h3 class="block">Déjà inscrit ?</h3>
+                                                                        <h3 class="block">Validation</h3>
                                                                         <!--<h4 class="form-section">Déjà inscrit ?</h4>-->
-
-
-
                                                                         <div class="form-group">
-                                                                            <label class="control-label col-md-3">Email
-                                                                                <span class="required"> * </span>
+                                                                            <label class="control-label col-md-4">
+                                                                                    Confirmer vos choix et soumettre le formulaire. <br>
+                                                                                    Nos équipes prendront en charge votre dossier et vous répondront dans les meilleurs délais
                                                                             </label>
-                                                                            <div class="col-md-4">
-                                                                                <input type="text" class="form-control"
-                                                                                    name="email" id="email" />
-                                                                                <span class="help-block"> Votre adresse
-                                                                                    email </span>
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div class="form-group">
-                                                                            <label
-                                                                                class="control-label col-md-3">Password
-                                                                                <span class="required"> * </span>
-                                                                            </label>
-                                                                            <div class="col-md-4">
-                                                                                <input type="password"
-                                                                                    class="form-control" name="password"
-                                                                                    id="password" />
-                                                                                <span class="help-block"> Mot de passe.
-                                                                                </span>
-                                                                            </div>
                                                                         </div>
                                                                         <div class="form-actions">
                                                                             <div class="row">
-                                                                                <div class="col-md-offset-3 col-md-9">
-                                                                                    <p><a href="javascript:;"
+                                                                                <div class="col-md-offset-0 col-md-9">
+                                                                                    <input type="submit" name="validation" value="valider" class="btn blue btn-default" id="btnConnect">
+                                                                                    {# <p><a href="javascript:;"
                                                                                             class="btn blue  btn-default"
-                                                                                            id="btnConnect"
-                                                                                            onclick="identification();">Se
-                                                                                            connecter</a></p>
-                                                                                    <p><a href="javascript:window.location='subscribe.php';"
-                                                                                            class="btn green">Pas encore
-                                                                                            inscrit ? Créez un compte
-                                                                                            !</a></p>
+                                                                                            id="btnConnect">Valider</a></p> #}
                                                                                 </div>
 
 
@@ -464,5 +459,35 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript" src="{{ asset('assets/js/jquery-3.5.1.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+           //alert('Loaded');
+           //devise
+            $("#devise").change(function(){
+                console.clear();
+                //console.log('value', $(this).val());
+                let currency = $(this).val();
+                let xofSelect = $('#budget_list_xof');
+                let eurSelect = $('#budget_list_eur');
+                switch (currency) {
+                    case '1':
+                        console.log('XOF');
+                        eurSelect.hide();
+                        xofSelect.show();
+                        break;
+                    case '2':
+                        console.log('EUR');
+                        eurSelect.show();
+                        xofSelect.hide();
+                        break;
+                
+                    default:
+                        console.log('Currency');
+                        break;
+                }
+            });
+        });
+  </script>
 
 {% endblock %}

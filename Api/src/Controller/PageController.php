@@ -425,6 +425,14 @@ class PageController extends AbstractController
             'lang' => $lang
         ]); 
     }
+	
+	public function moreAcd($lang)
+    {
+        $template = 'prestations/acd-'.$lang.'.html.twig';              
+        return $this->render($template, [
+            'lang' => $lang
+        ]); 
+    }
 
 	
 }
