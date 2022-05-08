@@ -7,6 +7,7 @@ use App\Entity\User;
 use App\Entity\Article;
 use App\Entity\Picture;
 use App\Entity\Mail;
+use App\Entity\Devis;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -418,9 +419,50 @@ class PageController extends AbstractController
     }
 
 	
-	public function customDevis($lang)
+	public function customDevis(Request $request, $lang)
     {
-        $template = 'form/index-'.$lang.'.html.twig';              
+        $template = 'form/index-'.$lang.'.html.twig';   
+        if(!empty($request->request->get('validation')))
+        {   
+            try {
+                $nometpnoms = $request->request->get('nometpnoms');
+                $email = $request->request->get('email');
+                $contact = $request->request->get('contact');
+                $terrain = $request->request->get('dejaTerrain');
+                $typeMaison = $request->request->get('typeMaison');
+                $devise = $request->request->get('devise');
+                $budget = $request->request->get('budget');
+                $debutTravaux = $request->request->get('debutTravaux');
+                $pays = $request->request->get('pays');
+                $cityVille = $request->request->get('cityVille');
+
+                $entityManager = $this->getDoctrine()->getManager();
+                $devis = new Devis();
+                $devis->setNom($nometpnoms);
+                $devis->setEmail($email);
+                $devis->setContact($contact);
+                $devis->setTerrain($terrain);
+                $devis->setNombreDePieces($typeMaison);
+                $devis->setDevise($devise);
+                $devis->setBudget($budget);
+                $devis->setDateDebutPrev($debutTravaux);
+                $devis->setPays($pays);
+                $devis->setVille($cityVille);
+
+                $entityManager->persist($devis);
+                $entityManager->flush(); 
+
+                return $this->redirectToRoute('gfi-prestations', [
+                    'lang' => 'fr'
+                ]);
+            } catch (\Throwable $th) {
+                return $this->redirectToRoute('gfi-devis', [
+                    'lang' => 'fr'
+                ]);
+            }
+            
+        }   
+
         return $this->render($template, [
             'lang' => $lang
         ]); 

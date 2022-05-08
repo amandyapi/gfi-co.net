@@ -130,7 +130,7 @@
 
                                                 </div>
                                                 <div class="portlet-body form">
-                                                    <form class="form-horizontal" action="#" id="submit_form"
+                                                    <form class="form-horizontal" method="POST" action="{{ path('gfi-devis', { 'lang': 'fr' }) }}" id="submit_form"
                                                         method="POST">
                                                         <div class="form-wizard">
                                                             <div class="form-body">
@@ -240,8 +240,8 @@
                                                                                 <select name="dejaTerrain"
                                                                                     id="dejaTerrain"
                                                                                     class="form-control">
-                                                                                    <option value="1">Oui</option>
-                                                                                    <option value="0" selected>Non
+                                                                                    <option value="oui">Oui</option>
+                                                                                    <option value="non" selected>Non
                                                                                     </option>
                                                                                 </select>
                                                                             </div>
@@ -255,15 +255,15 @@
                                                                                 <select name="typeMaison"
                                                                                     id="typeMaison"
                                                                                     class="form-control">
-                                                                                    <option value="1">3 pièces</option>
-                                                                                    <option value="2">4 pièces</option>
-                                                                                    <option value="3">5 pièces</option>
-                                                                                    <option value="4">6 pièces</option>
-                                                                                    <option value="5">Plus de 6 pièces
+                                                                                    <option value="3 pieces">3 pièces</option>
+                                                                                    <option value="4 pieces">4 pièces</option>
+                                                                                    <option value="5 pieces">5 pièces</option>
+                                                                                    <option value="6 pieces">6 pièces</option>
+                                                                                    <option value="plus 6 pieces">Plus de 6 pièces
                                                                                     </option>
-                                                                                    <option value="6">Moins de 3 pièces
+                                                                                    <option value="moins de 3 pieces">Moins de 3 pièces
                                                                                     </option>
-                                                                                    <option value="7">indifférent
+                                                                                    <option value="indifferent">indifférent
                                                                                     </option>
                                                                                 </select>
                                                                             </div>
@@ -280,9 +280,9 @@
                                                                             <div class="col-md-4">
                                                                                 <select name="devise" id="devise"
                                                                                     class="form-control">
-                                                                                    <option value="1">CFA (XOF)
+                                                                                    <option value="cfa">CFA (XOF)
                                                                                     </option>
-                                                                                    <option value="2">EURO (EUR)
+                                                                                    <option value="euro">EURO (EUR)
                                                                                     </option>
                                                                                 </select>
                                                                             </div>
@@ -296,30 +296,30 @@
                                                                                 <select name="budget" id="budget_list_xof"
                                                                                     class="form-control">
                                                                                     <option value=""></option>
-                                                                                    <option value="1">Moins de 45 millions
+                                                                                    <option value="Moins de 45 millions">Moins de 45 millions
                                                                                     </option>
-                                                                                    <option value="2">45 millions à 60 millions
+                                                                                    <option value="45 à 60 millions">45 millions à 60 millions
                                                                                     </option>
-                                                                                    <option value="3">60 millions à 75 millions 
+                                                                                    <option value="60 à 75 millions">60 millions à 75 millions 
                                                                                     </option>
-                                                                                    <option value="4">75 millions à 100 millions 
+                                                                                    <option value="75 à 100 millions">75 millions à 100 millions 
                                                                                     </option>
-                                                                                    <option value="5">Plus de 100 millions
+                                                                                    <option value="Plus de 100 millions">Plus de 100 millions
                                                                                     </option>
                                                                                 </select>
                                                                                 
                                                                                 <select name="budget" id="budget_list_eur"
                                                                                     class="form-control" style="display: none;">
                                                                                     <option value=""></option>
-                                                                                    <option value="1">Moins de 70.000€
+                                                                                    <option value="Moins de 70.000€">Moins de 70.000€
                                                                                     </option>
-                                                                                    <option value="2">70.000€ à 90.000€
+                                                                                    <option value="70.000€ à 90.000€">70.000€ à 90.000€
                                                                                     </option>
-                                                                                    <option value="3">90.000€ à 115.000€ 
+                                                                                    <option value="90.000€ à 115.000€">90.000€ à 115.000€ 
                                                                                     </option>
-                                                                                    <option value="4">115.000€ à 150.000€ 
+                                                                                    <option value="115.000€ à 150.000€">115.000€ à 150.000€ 
                                                                                     </option>
-                                                                                    <option value="5">Plus de 150.000€
+                                                                                    <option value="Plus de 150.000€">Plus de 150.000€
                                                                                     </option>
                                                                                 </select>
                                                                             </div>
@@ -333,11 +333,11 @@
                                                                                     id="debutTravaux_list"
                                                                                     class="form-control">
                                                                                     <option value=""></option>
-                                                                                    <option value="1">Moins de 3 mois
+                                                                                    <option value="Moins de 3 mois">Moins de 3 mois
                                                                                     </option>
-                                                                                    <option value="2">3 à 6 mois
+                                                                                    <option value="3 à 6 mois">3 à 6 mois
                                                                                     </option>
-                                                                                    <option value="3">Plus de 6 mois
+                                                                                    <option value="Plus de 6 mois">Plus de 6 mois
                                                                                     </option>
                                                                                 </select>
                                                                             </div>
@@ -356,11 +356,11 @@
                                                                                 <select name="pays" id="pays_list"
                                                                                     class="form-control">
                                                                                     <option value=""></option>
-                                                                                    <option value="1">Burkina Faso</option>
-                                                                                    <option value="2">Côte d'Ivoire</option>
-                                                                                    <option value="3">Guinée</option>
-                                                                                    <option value="4">Mali</option>
-                                                                                    <option value="5">Sénégal </option>
+                                                                                    <option value="BF">Burkina Faso</option>
+                                                                                    <option value="CI">Côte d'Ivoire</option>
+                                                                                    <option value="GN">Guinée</option>
+                                                                                    <option value="ML">Mali</option>
+                                                                                    <option value="SN">Sénégal </option>
                                                                                 </select>
                                                                             </div>
                                                                         </div>
@@ -395,25 +395,45 @@
                                                                         <h3 class="block">Validation</h3>
                                                                         <!--<h4 class="form-section">Déjà inscrit ?</h4>-->
                                                                         <div class="form-group">
-                                                                            <label class="control-label col-md-4">
+                                                                            <p class="col-md-8 text-left">
                                                                                     Confirmer vos choix et soumettre le formulaire. <br>
                                                                                     Nos équipes prendront en charge votre dossier et vous répondront dans les meilleurs délais
-                                                                            </label>
+                                                                            </p>
                                                                         </div>
-                                                                        <div class="form-actions">
-                                                                            <div class="row">
-                                                                                <div class="col-md-offset-0 col-md-9">
-                                                                                    <input type="submit" name="validation" value="valider" class="btn blue btn-default" id="btnConnect">
-                                                                                    {# <p><a href="javascript:;"
-                                                                                            class="btn blue  btn-default"
-                                                                                            id="btnConnect">Valider</a></p> #}
+                                                                        <div class="row">
+                                                                            <div class="form-group col-md-6">
+                                                                                <label class="control-label col-md-5">Nom et Prenoms:</label>
+                                                                                <div class="col-md-7">
+                                                                                    <input type="text" class="form-control" name="nometpnoms">
                                                                                 </div>
-
-
-
-
                                                                             </div>
                                                                         </div>
+                                                                        <div class="row">
+                                                                            <div class="form-group col-md-6">
+                                                                                <label class="control-label col-md-5">Email:</label>
+                                                                                <div class="col-md-7">
+                                                                                    <input type="text" class="form-control" name="email">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="form-group col-md-6">
+                                                                                <label class="control-label col-md-5">Contact:</label>
+                                                                                <div class="col-md-7">
+                                                                                    <input type="text" class="form-control" name="contact">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="form-actions col-md-6">
+                                                                                <div class="row">
+                                                                                    <div class="col-md-offset-5 col-md-6">
+                                                                                        <input type="submit" name="validation" value="valider" class="btn blue btn-default" id="btnConnect">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        
 
 
                                                                     </div>
