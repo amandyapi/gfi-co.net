@@ -278,7 +278,7 @@
                                                                             <label class="control-label col-md-3"
                                                                                 id="labelBudget">Devise</label>
                                                                             <div class="col-md-4">
-                                                                                <select name="devise" id="devise"
+                                                                                <select name="devise" id="deviseBudget"
                                                                                     class="form-control">
                                                                                     <option value="cfa">CFA (XOF)
                                                                                     </option>
@@ -484,24 +484,23 @@
         $(document).ready(function() {
            //alert('Loaded');
            //devise
-            $("#devise").change(function(){
+            $("#deviseBudget").change(function(){
                 console.clear();
                 //console.log('value', $(this).val());
                 let currency = $(this).val();
                 let xofSelect = $('#budget_list_xof');
                 let eurSelect = $('#budget_list_eur');
                 switch (currency) {
-                    case '1':
-                        console.log('XOF');
+                    case 'cfa':
+                        console.log('cfa');
                         eurSelect.hide();
                         xofSelect.show();
                         break;
-                    case '2':
-                        console.log('EUR');
+                    case 'euro':
+                        console.log('euro');
                         eurSelect.show();
                         xofSelect.hide();
                         break;
-                
                     default:
                         console.log('Currency');
                         break;

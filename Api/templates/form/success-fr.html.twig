@@ -1,0 +1,178 @@
+{% extends 'custom-layout-fr.html.twig' %}
+
+{% block title %}Demande de devis
+{% endblock %}
+
+{% block content %}
+
+<div class="page-wrapper">
+        <div class="page-wrapper-row">
+            <div class="page-wrapper-top">
+                <!-- BEGIN HEADER -->
+                <div class="page-header">
+                    <!-- BEGIN HEADER TOP -->
+                    <div class="page-header-top">
+                        <div class="container">
+                            <!-- BEGIN LOGO -->
+                            <div class="page-logo">
+                                <a href="https://gfi-co.net">
+                                    <img src="{{ asset('assets-custom/layouts/layout3/img/logo-gfico.png') }}" alt="logo" class="logo-default"
+                                         style="position: relative;top:-40px;">
+                                </a>
+                            </div>
+                            <!-- END TOP NAVIGATION MENU -->
+                        </div>
+                    </div>
+                    <!-- END HEADER TOP -->
+                    <!-- BEGIN HEADER MENU -->
+                    <div class="page-header-menu">
+                        <div class="container">
+                            <div class="hor-menu  ">
+                                <ul class="nav navbar-nav">
+                                    <li aria-haspopup="false" class="menu-dropdown classic-menu-dropdown ">
+                                        <!-- active -->
+                                        <a href="{{ path('gfi-home', { 'lang': 'fr' }) }}"> ACCUEIL
+                                            <span class="arrow"></span>
+                                        </a>
+                                    </li>
+                                    <li aria-haspopup="false" class="menu-dropdown classic-menu-dropdown ">
+                                        <!-- active -->
+                                        <a href="{{ path('gfi-about', { 'lang': 'fr' }) }}"> NOTRE ENTREPRISE
+                                            <span class="arrow"></span>
+                                        </a>
+                                    </li>
+                                    <li aria-haspopup="false" class="menu-dropdown classic-menu-dropdown ">
+                                        <!-- active -->
+                                        <a href="{{ path('gfi-prestations', { 'lang': 'fr' }) }}"> NOS SERVICES
+                                            <span class="arrow"></span>
+                                        </a>
+                                    </li>
+                                    <li aria-haspopup="false" class="menu-dropdown classic-menu-dropdown ">
+                                        <!-- active -->
+                                        <a href="{{ path('gfi-project-grid', { 'lang': 'fr' }) }}"> NOS RÉALISATIONS
+                                            <span class="arrow"></span>
+                                        </a>
+                                    </li>
+                                    <li aria-haspopup="false" class="menu-dropdown classic-menu-dropdown ">
+                                        <!-- active -->
+                                        <a href="{{ path('gfi-article_paged', { 'lang': 'fr', 'page': 1 }) }}"> MÉDIAS
+                                            <span class="arrow"></span>
+                                        </a>
+                                    </li>
+                                    <li aria-haspopup="false" class="menu-dropdown classic-menu-dropdown ">
+                                        <!-- active -->
+                                        <a href="{{ path('gfi-contact', { 'lang': 'fr' }) }}"> INFOLINE
+                                            <span class="arrow"></span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- END MEGA MENU -->
+                        </div>
+                    </div>
+                    <!-- END HEADER MENU -->
+                </div>
+                <!-- END HEADER -->
+            </div>
+        </div>
+        <div class="page-wrapper-row full-height">
+            <div class="page-wrapper-middle">
+                <!-- BEGIN CONTAINER -->
+                <div class="page-container">
+                    <!-- BEGIN CONTENT -->
+                    <div class="page-content-wrapper">
+                        <!-- BEGIN CONTENT BODY -->
+                        <!-- BEGIN PAGE HEAD-->
+                        <div class="page-head">
+                            <div class="container">
+                                <!-- BEGIN PAGE TITLE -->
+                                <div class="page-title">
+                                    <h1>Demande de devis Bien reçue</h1>
+                                </div>
+                                <!-- END PAGE TITLE -->
+                                <!-- BEGIN PAGE TOOLBAR -->
+                                <div class="page-toolbar">
+                                </div>
+                                <!-- END PAGE TOOLBAR -->
+                            </div>
+                        </div>
+                        <!-- END PAGE HEAD-->
+
+
+                        <!-- BEGIN PAGE CONTENT BODY -->
+                        <div class="page-content">
+                            <div class="container">
+                                <!-- BEGIN PAGE BREADCRUMBS -->
+                                <ul class="page-breadcrumb breadcrumb"> </ul>
+                                <!-- END PAGE BREADCRUMBS -->
+                                <!-- BEGIN PAGE CONTENT INNER -->
+                                <div class="page-content-inner">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="portlet light " id="form_wizard_1">
+                                                <div class="portlet-title">
+                                                    <div class="caption">
+                                                        <i class=" icon-layers font-red"></i>
+                                                        <span
+                                                            class="caption-subject font-wizodia-orange bold uppercase">
+                                                            Féliciations !
+                                                        </span>
+                                                    </div>
+
+                                                </div>
+                                                <div class="portlet-body form">
+                                                    <p>
+                                                        Nous avons bien reçu votre demande de devis, nos équipes se mettent à pied d'oeuvre et nous vous ferons
+                                                        un retour dans les meilleurs délais.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- END PAGE CONTENT INNER -->
+                            </div>
+                        </div>
+                        <!-- END PAGE CONTENT BODY -->
+                        <!-- END CONTENT BODY -->
+
+                    </div>
+                    <!-- END CONTENT -->
+
+                </div>
+                <!-- END CONTAINER -->
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="{{ asset('assets/js/jquery-3.5.1.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+           //alert('Loaded');
+           //devise
+            $("#devise").change(function(){
+                console.clear();
+                //console.log('value', $(this).val());
+                let currency = $(this).val();
+                let xofSelect = $('#budget_list_xof');
+                let eurSelect = $('#budget_list_eur');
+                switch (currency) {
+                    case '1':
+                        console.log('XOF');
+                        eurSelect.hide();
+                        xofSelect.show();
+                        break;
+                    case '2':
+                        console.log('EUR');
+                        eurSelect.show();
+                        xofSelect.hide();
+                        break;
+                
+                    default:
+                        console.log('Currency');
+                        break;
+                }
+            });
+        });
+  </script>
+
+{% endblock %}

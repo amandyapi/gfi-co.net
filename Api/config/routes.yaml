@@ -57,6 +57,10 @@ gfi-devis:
     path: /{lang}/devis
     controller: App\Controller\PageController::customDevis
 
+gfi-devis-success:
+    path: /{lang}/devis/sucess
+    controller: App\Controller\PageController::customDevisSuccess
+
 gfi-more_acd:
     path: /{lang}/comment-obtenir-l-acd
     controller: App\Controller\PageController::moreAcd
@@ -108,6 +112,10 @@ admin_article_edit:
 admin_article_delete:
     path: /admin/news/{id}/delete
     controller: App\Controller\AdminController::articleDelete
+
+admin_devis:
+    path: /admin/devis
+    controller: App\Controller\AdminController::adminDevis
 
 
 ## ADMIN

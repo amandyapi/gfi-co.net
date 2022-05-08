@@ -81,6 +81,7 @@ class Devis
     {
         $now = new \DateTime('NOW');
         $this->createTime = $now->format('Y-m-d\TH:i:s.u');
+        $this->statut = 'en attente';
     }
 
     public function getId(): ?int

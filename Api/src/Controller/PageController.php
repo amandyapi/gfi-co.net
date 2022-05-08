@@ -452,16 +452,30 @@ class PageController extends AbstractController
                 $entityManager->persist($devis);
                 $entityManager->flush(); 
 
-                return $this->redirectToRoute('gfi-prestations', [
+                return $this->redirectToRoute('gfi-devis-success', [
                     'lang' => 'fr'
                 ]);
             } catch (\Throwable $th) {
+                $message = $th->getMessage();
+                $trace = $th->getTraceAsString();
+                /*var_dump($message);
+                var_dump($trace);
+                die();*/
                 return $this->redirectToRoute('gfi-devis', [
                     'lang' => 'fr'
                 ]);
             }
             
         }   
+
+        return $this->render($template, [
+            'lang' => $lang
+        ]); 
+    }
+	
+	public function customDevisSuccess($lang)
+    {
+        $template = 'form/success-'.$lang.'.html.twig'; 
 
         return $this->render($template, [
             'lang' => $lang
