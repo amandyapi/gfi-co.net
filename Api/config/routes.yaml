@@ -121,10 +121,15 @@ admin_devis:
 ## ADMIN
 
 ## DEVIS    
-devisAll:
-    path: /devis
-    controller: App\Controller\UserController::login
-    methods: ["POST"]
+admin_devis_all:
+    path: /devis/list
+    controller: App\Controller\DevisController::getAll
+
+admin_devis_info:
+    path: /devis/{id}
+    controller: App\Controller\DevisController::getOne
+    requirements:
+        id: '\d+'
 
 ## USERS
 userLogin:

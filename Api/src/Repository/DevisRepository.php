@@ -19,32 +19,39 @@ class DevisRepository extends ServiceEntityRepository
         parent::__construct($registry, Devis::class);
     }
 
-    // /**
-    //  * @return Devis[] Returns an array of Devis objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function findDevis()
     {
-        return $this->createQueryBuilder('d')
-            ->andWhere('d.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('d.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+        $result = null;
+        $conn = $this->getEntityManager()->getConnection();
 
-    /*
-    public function findOneBySomeField($value): ?Devis
-    {
-        return $this->createQueryBuilder('d')
-            ->andWhere('d.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        $sql = 'SELECT * 
+                FROM devis d
+                ORDER BY d.create_time DESC';
+
+        $stmt = $conn->prepare($sql);
+
+        $stmt->execute();
+
+        $result = $stmt->fetchAll();
+        return $result;
     }
-    */
+
+    public function findOneDevis($id)
+    {
+        $result = null;
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = 'SELECT *
+                FROM devis d
+                WHERE d.id = :id';
+
+        $stmt = $conn->prepare($sql);
+
+        $stmt->execute([
+            'id' => $id,
+        ]);
+
+        $result = $stmt->fetch();
+        return $result;
+    }
 }

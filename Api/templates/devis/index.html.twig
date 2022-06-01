@@ -1,0 +1,68 @@
+{% extends 'admin.html.twig' %} {% block title %}Devis {% endblock %} {% block
+content %}
+<div
+  class="page-header min-height-300 border-radius-xl mt-4"
+  style="background-image: url(https://images.unsplash.com/photo-1531512073830-ba890ca4eba2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80';);"
+>
+  <span class="mask bg-gradient-faded-info-vertical opacity-6"></span>
+</div>
+<div class="card card-plain h-100">
+  <div class="card-header pb-0 p-3">
+    <div class="row">
+      <div class="col-md-8 d-flex align-items-center">
+        <h6 class="mb-0">Demande de devis</h6>
+      </div>
+      <div class="col-md-4 text-end">
+        {{d.create_time|date("d-m-Y")}}
+      </div>
+    </div>
+  </div>
+  <div class="card-body p-3">
+
+    <hr class="horizontal gray-light my-4" />
+    <ul class="list-group">
+      <li class="list-group-item border-0 ps-0 pt-0 text-sm">
+        <strong class="text-dark">Nom et prénoms:</strong> &nbsp; {{d.nom}}
+      </li>
+      <li class="list-group-item border-0 ps-0 text-sm">
+        <strong class="text-dark">Contact:</strong> &nbsp; {{d.contact}}
+      </li>
+      <li class="list-group-item border-0 ps-0 text-sm">
+        <strong class="text-dark">Email:</strong> &nbsp; {{d.email}}
+      </li>
+      <li class="list-group-item border-0 ps-0 text-sm">
+        <strong class="text-dark">Terrain:</strong> &nbsp; {{d.terrain}}
+      </li>
+      <li class="list-group-item border-0 ps-0 text-sm">
+        <strong class="text-dark">Nombre de pieces:</strong> &nbsp; {{d.nombre_de_pieces}}
+      </li>
+      <li class="list-group-item border-0 ps-0 text-sm">
+        <strong class="text-dark">Devise:</strong> &nbsp; {{d.devise}}
+      </li>
+      <li class="list-group-item border-0 ps-0 text-sm">
+        <strong class="text-dark">Budget:</strong> &nbsp; {{d.budget}}
+      </li>
+      <li class="list-group-item border-0 ps-0 text-sm">
+        <strong class="text-dark">Date prévisionnelle de début:</strong> &nbsp; {{d.date_debut_prev}}
+      </li>
+      <li class="list-group-item border-0 ps-0 text-sm">
+        <strong class="text-dark">Pays:</strong> &nbsp;
+        {% if d.pays == 'CI' %}
+            Côte d'Ivoire
+        {% elseif d.pays == 'BF' %}
+            Burkina Faso
+        {% elseif d.pays == 'GN' %}
+            Guinée
+        {% elseif d.pays == 'ML' %}
+            Mali
+        {% elseif d.pays == 'SN' %}
+            Sénégal
+        {% endif %}
+      </li>
+      <li class="list-group-item border-0 ps-0 text-sm">
+        <strong class="text-dark">Ville:</strong> &nbsp; {{d.ville}}
+      </li>
+    </ul>
+  </div>
+</div>
+{% endblock %}

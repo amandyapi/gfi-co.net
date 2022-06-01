@@ -45,12 +45,22 @@
           </a>
         </li>
         {% endif %}
+
         <li id="news_lnk" class="nav-item">
           <a class="nav-link text-white" href="{{ path('admin_articles') }}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
             </div>
             <span class="nav-link-text ms-1">Articles</span>
+          </a>
+        </li>
+
+        <li id="devis_lnk" class="nav-item">
+          <a class="nav-link text-white" href="{{ path('admin_devis_all') }}">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">event_note</i>
+            </div>
+            <span class="nav-link-text ms-1">Devis</span>
           </a>
         </li>
         
@@ -159,9 +169,11 @@
         console.log('pathname', pathname);
         let mails = pathname.search('/admin/mails');
         let news = pathname.search('/admin/news');
+        let devis = pathname.search('/devis/list');
 
         var dash = $('#dash_lnk a');
         var articles = $('#news_lnk a');
+        var dev = $('#devis_lnk a');
 
         console.log('mails', mails);
         console.log('news', news);
@@ -171,6 +183,7 @@
           //console.clear();
           console.log('Mails');
           articles.removeClass('active');
+          dev.removeClass('active');
           dash.addClass('active');
         }
         else if(news != -1)
@@ -178,7 +191,16 @@
           //console.clear();
           console.log('Mails');
           dash.removeClass('active');
+          dev.removeClass('active');
           articles.addClass('active');
+        } 
+        else if(devis != -1)
+        {
+          //console.clear();
+          console.log('Devis');
+          dash.removeClass('active');
+          articles.removeClass('active');
+          dev.addClass('active');
         } 
     });
   </script>
