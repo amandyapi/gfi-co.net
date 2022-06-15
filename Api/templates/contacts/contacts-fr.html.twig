@@ -75,4 +75,18 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqrqPZOVegy1VIdyIcndxZY9YGoK-x0Yo&callback=initMap"
       async defer></script>
   </section><!-- /.GoogleMap -->
+
+  <section class="page-title page-title-layout1 bg-overlay bg-parallax">
+      <div class="bg-img"><img src="{{ asset('assets/images/page-titles/' ~ devisUrl) }}" alt="background"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-12 col-xl-9">
+            <h1 class="pagetitle__heading">Accédez au formulaire de demande de devis en un clic</h1>
+            <a href="{{ path('gfi-devis', { 'lang': 'fr' }) }}" class="btn btn__primary btn__lg mb-30">
+              <i class="icon-arrow-right1"></i><span>Formulaire de Devis</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
 {% endblock %}
