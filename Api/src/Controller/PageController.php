@@ -35,7 +35,7 @@ class PageController extends AbstractController
         $this->mailer = $mailer;
         $this->devisBg = [
                             0 => '21.jpg', 1 => '20.jpg', 2 => '19.jpg', 3 => '18.jpg', 4 => '17.jpg', 5 => '16.jpg', 
-                            6 => '14.jpg', 7 => '13.jpg', 8 => '12.jpg', 8 => '11.jpg', 8 => '10.jpg', 8 => '9.jpg'
+                            6 => '14.jpg', 7 => '13.jpg', 8 => '12.jpg', 8 => '11.jpg', 9 => '10.jpg', 10 => '9.jpg'
                         ];
     }
 
@@ -135,8 +135,7 @@ class PageController extends AbstractController
                 $response = $th->getMessage();
                 
                 return $this->redirectToRoute('gfi-error-mail', [
-                    'lang' => $lang,
-                    'devisUrl' => $devisUrl
+                    'lang' => $lang
                 ]);
             }
         }
@@ -144,7 +143,7 @@ class PageController extends AbstractController
         $template = 'prestations/prestations-'.$lang.'.html.twig';            
         return $this->render($template, [
             'prestations' => $prestations,
-            'prestations' => $prestations
+            'devisUrl' => $devisUrl
         ]); 
     }
 
@@ -295,6 +294,7 @@ class PageController extends AbstractController
         $articles = [];
         $limit = 6;
         $offset = ($page-1)*$limit;
+        $devisUrl = $this->devisBg[7];
 
         $totalArticles = $this->getDoctrine()
                       ->getRepository(Article::class)
@@ -318,6 +318,7 @@ class PageController extends AbstractController
             'totalArticles' => $totalArticles,
             'nbPages' => $nbPages,
             'page' => $page,
+            'devisUrl' => $devisUrl
         ]); 
     }
 
@@ -415,7 +416,8 @@ class PageController extends AbstractController
         $template = 'contacts/contacts-'.$lang.'.html.twig';            
         return $this->render($template, [
             'lang' => $lang,
-            'page' => $page
+            'page' => $page,
+            'devisUrl' => $devisUrl
         ]); 
     }
 
