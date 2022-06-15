@@ -26,3 +26,18 @@
 	/*box-shadow: 1px 1px 5px #0E2B5C;*/
 	box-shadow: 1px 1px 5px #758db6;
 }
+
+.floating-invoice{
+	position: fixed !important;
+	top: 30%;
+	left: 0px;
+	width: 60px !important;
+	height: auto !important;
+	z-index: 10000000000000000 !important;
+}
+
+
+.floating-invoice:hover{
+	width: 75px !important;
+	height: auto !important;
+}

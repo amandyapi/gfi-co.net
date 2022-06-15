@@ -411,6 +411,22 @@
             </div><!-- /.fancybox-item -->
           </div><!-- /.col-lg-3 -->
         </div><!-- /.row -->
+        <div class="row heading-layout3 heading-light mb-40">
+          <div class="col-sm-12 col-md-12 col-lg-12">
+            <h2 class="heading__subtitle color-default" style="font-size: 20px !important;">
+              Débutez votre projet maintenant! Cliquez 
+                <a href="{{ path('gfi-devis', { 'lang': 'fr' }) }}"  title="">
+                  <span class="color-secondary">ici pour faire une demande de devis
+                  </span>
+                </a>.
+            </h2> 
+          </div><!-- /.col-lg-12 -->
+          {# <div class="col-sm-12 col-md-12 col-lg-6">
+            <p class="heading__desc" style="font-size: 20px !important;">
+              Faire une demande de devis
+            </p>
+          </div> #}<!-- /.col-lg-6 -->
+        </div><!-- /.row -->
       </div><!-- /.container -->
     </section><!-- /.Banner layout 3 -->
 
@@ -475,7 +491,19 @@
         </div><!-- /.row -->
       </div><!-- /.container -->
     </section><!-- /.clients -->
-
+    <section class="page-title page-title-layout1 bg-overlay bg-parallax">
+      <div class="bg-img"><img src="{{ asset('assets/images/page-titles/' ~ devisUrl) }}" alt="background"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-12 col-xl-9">
+            <h1 class="pagetitle__heading">Accédez au formulaire de demande de devis en un clic</h1>
+            <a href="{{ path('gfi-devis', { 'lang': 'fr' }) }}" class="btn btn__primary btn__lg mb-30">
+              <i class="icon-arrow-right1"></i><span>Formulaire de Devis</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- =========================
        Banner layout 3
       =========================== -->

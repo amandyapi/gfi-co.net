@@ -25,6 +25,10 @@
 </head>
 
 <body>
+  <a href="{{ path('gfi-devis', { 'lang': 'fr' }) }}"  title="Faire une demande de devis">
+    <img class="floating-invoice" src="{{ asset('assets/icons/form4.png') }}" alt="">
+  </a>
+  
   <div class="wrapper">
     <div class="preloader">
       <div class="loading">
@@ -197,7 +201,7 @@
                 <nav>
                   <ul class="list-unstyled">
                     <li><a href="{{ path('gfi-about', { 'lang': 'fr' }) }}">Présentation</a></li>
-                    <li><a href="{{ path('gfi-team', { 'lang': 'fr' }) }}">Equipe dirigeante</a></li>
+                    <li><a href="{{ path('gfi-devis', { 'lang': 'fr' }) }}">Demande de devis</a></li>
                     <li><a href="{{ path('gfi-project-grid', { 'lang': 'fr' }) }}">Nos projets</a></li>
                     <li><a href="{{ path('gfi-contact', { 'lang': 'fr' }) }}">Contact</a></li>
                   </ul>
