@@ -383,19 +383,65 @@
 							</div>
 						</form>
 
-						<div class="contact-panel__banner d-flex align-items filter-carousel" style="position: relative;left: 30px;">
-							<div class="bg-img"><img src="{{ asset('assets/images/contact/1.jpg') }}" alt="banner"></div>
-							<div class="contact-panel__banner__inner">
-								<h4 class="contact-panel__banner__title">Comment obtenir l'ACD en Côte d'Ivoire ?</h4>
-								<p class="contact-panel__banner__desc">
-									L’Arrêté de Concession Définitive (ACD) est le seul et unique acte qui confère la propriété sur le domaine foncier urbain. Les règles d’acquisition de la propriété foncière des terrains urbains ont été fixées par l’Ordonnance n° 2013-481 du 2 juillet 2013.
-								</p>
-								
-								<div class="form-group mb-0">
-									<button type="submit" class="btn btn__secondary">En savoir plus</button>
+						<div class="contact-panel__banner d-flex align-items slick-carousel" 
+							 style="position: relative;left: 30px;"
+							 data-slick='{"slidesToShow": 1, "autoplay": true, "slidesToScroll": 1, "arrows": false, "dots": false}'>
+							 
+								<div class="feature-item" style="padding-right: 0px !important;">
+									<div class="bg-img">
+										<img src="{{ asset('assets/images/contact/16.jpg') }}" 
+											 alt="banner">
+									</div>
+									<div class="contact-panel__banner__inner">
+										<h4 class="contact-panel__banner__title">Comment obtenir l'ACD en Côte d'Ivoire ?</h4>
+										<p class="contact-panel__banner__desc text-justify">
+											L’Arrêté de Concession Définitive (ACD) est le seul et unique acte qui confère la propriété sur le domaine foncier urbain. Les règles d’acquisition de la propriété foncière des terrains urbains ont été fixées par l’Ordonnance n° 2013-481 du 2 juillet 2013.
+										</p>
+										
+										<div class="form-group mb-0">
+											<a href="{{ path('gfi-more_acd', { 'lang': 'fr' }) }}" class="btn btn__secondary">En savoir plus</a>
+										</div>
+									</div> 
 								</div>
-							</div>
+
+								<div class="feature-item" style="padding-right: 0px !important;">
+									<div class="bg-img">
+										<img src="{{ asset('assets/images/contact/14.jpg') }}" 
+											 alt="banner">
+									</div>
+									<div class="contact-panel__banner__inner">
+										<h4 class="contact-panel__banner__title">Les informations indispensables pour acheter votre terrain</h4>
+										<p class="contact-panel__banner__desc text-justify">
+											Interview de Maître Maître Géraldine AGBEMEBIA Acheter un terrain au Togo relève souvent d’un parcours à haut risque lorsqu’on ne sait pas s’y prendre. Notre experte Notaire nous dévoile les clés pour un achat réussi ! 
+										</p>
+										
+										<div class="form-group mb-0">
+											<a href="{{ path('gfi-more_acd', { 'lang': 'fr' }) }}" class="btn btn__secondary">En savoir plus</a>
+										</div>
+									</div> 
+								</div>
+								
+
+								<div class="feature-item" style="padding-right: 0px !important;">
+									<div class="bg-img">
+										<img src="{{ asset('assets/images/contact/20.jpg') }}" 
+											 alt="banner">
+									</div>
+									<div class="contact-panel__banner__inner">
+										<h4 class="contact-panel__banner__title">Tout ce qu'il faut savoir sur le titre foncier</h4>
+										<p class="contact-panel__banner__desc text-justify">
+											Maître AGBEMEBIA exerce la profession de notaire depuis janvier 2006. Son cabinet se situe à Lomé au 461, Av. Nicolas Grunitzky. Son cabinet de 5 collaborateurs se charge de l’immatriculation des immeubles et du titre foncier des terrains
+
+										</p>
+										
+										<div class="form-group mb-0">
+											<a href="{{ path('gfi-more_acd', { 'lang': 'fr' }) }}" class="btn btn__secondary">En savoir plus</a>
+										</div>
+									</div> 
+								</div>
 						</div>
+
+
 						<!-- /.contact-panel__banner -->
 					</div>
 				</div>
