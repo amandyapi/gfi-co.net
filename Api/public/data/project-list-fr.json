@@ -1,48 +1,48 @@
 [
     {
-        "filter": "filter-concept",
+        "filter": "filter-concepts-eco",
         "image": "assets/images/projets/pearl/1.jpg",
         "title": "Villa THE PEARL",
         "slug": "villa-the-pearl",
         "category": "concept"
     },
     {
-        "filter": "filter-concept",
+        "filter": "filter-concepts-eco",
         "image": "assets/images/projets/bigpearl/1.jpg",
         "title": "Villa THE BIG PEARL",
         "slug": "villa-the-big-pearl",
         "category": "concept"
     },
     {
-        "filter": "filter-architecture",
+        "filter": "filter-concepts-projets",
         "image": "assets/images/realisation/architecture/citebonheur/1.jpg",
         "title": "Cité Du Bonheur",
         "slug": "cite-du-bonheur",
         "category": "architecture"
     },
     {
-        "filter": "filter-projet",
+        "filter": "filter-projets-construction",
         "image": "assets/images/realisation/duplexconakry/1.PNG",
         "title": "Réalisation d'une Duplex R+2 à Conakry",
         "slug": "duplex-conakry",
         "category": "projet"
     },
     {
-        "filter": "filter-architecture",
+        "filter": "filter-concepts-projets",
         "image": "assets/images/realisation/12mili/1.jpg",
         "title": "Villa 12 Mili",
         "slug": "villa-12-mili",
         "category": "architecture"
     },
     {
-        "filter": "filter-projet",
+        "filter": "filter-projets-construction",
         "image": "assets/images/realisation/hoteldaloa/1.jpg",
         "title": "Résidence Hotelière De Daloa",
         "slug": "residence-hoteliere-de-daloa",
         "category": "projet"
     },
     {
-        "filter": "filter-interieur",
+        "filter": "filter-renovations-finition",
         "image": "assets/images/realisation/interieur/1.jpg",
         "title": "Design intérieur",
         "slug": "design-interieur",
