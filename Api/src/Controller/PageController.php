@@ -505,9 +505,12 @@ class PageController extends AbstractController
 	
 	public function moreAcd($lang)
     {
+        $devisUrl = $this->devisBg[3];
+
         $template = 'prestations/acd-'.$lang.'.html.twig';              
         return $this->render($template, [
-            'lang' => $lang
+            'lang' => $lang,
+            'devisUrl' => $devisUrl
         ]); 
     }
 
