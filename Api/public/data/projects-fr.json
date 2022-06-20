@@ -11,6 +11,7 @@
         "land": "",
         "specifications": {
             "rdc": {
+                "description": "",
                 "text": {
                     "1": "1 Vestibule",
                     "2": "1 Toilette visiteurs",
@@ -25,6 +26,7 @@
                 "sketch": "assets/images/projets/concepts-ecologiques/pearl/a.PNG"
             },
             "etage": {
+                "description": "",
                 "text": {
                     "1": "1 Master bedroom avec salle de bain",
                     "2": "1 Terasse pour la chambre",
@@ -33,6 +35,7 @@
                 "sketch": "assets/images/projets/concepts-ecologiques/pearl/b.PNG"
             },
             "etage2": {
+                "description": "",
                 "text": "",
                 "sketch": ""
             }
@@ -62,6 +65,7 @@
         "land": "",
         "specifications": {
             "rdc": {
+                "description": "",
                 "text": {
                     "1": "1 Vestibule",
                     "2": "1 Toilette visiteurs",
@@ -75,6 +79,7 @@
                 "sketch": "assets/images/projets/concepts-ecologiques/bigpearl/a.PNG"
             },
             "etage": {
+                "description": "",
                 "text": {
                     "1": "2 chambres avec salle de bain",
                     "2": "1 Séjour",
@@ -85,6 +90,7 @@
                 "sketch": "assets/images/projets/concepts-ecologiques/bigpearl/b.PNG"
             },
             "etage2": {
+                "description": "",
                 "text": "",
                 "sketch": ""
             }
@@ -150,6 +156,7 @@
         "land": "",
         "specifications": {
             "rdc": {
+                "description": "",
                 "text": {
                     "1": "1 toilette visiteurs",
                     "2": "1 séjour avec Salle à manger",
@@ -168,6 +175,7 @@
                 "sketch": ""
             },
             "etage": {
+                "description": "",
                 "text": {
                     "1": "2 chambres enfants autonomes avec dressing et balcon",
                     "2": "1 chambre principale autonome avec dressing et balcon vue sur la piscine",
@@ -178,6 +186,7 @@
                 "sketch": ""
             },
             "etage2": {
+                "description": "",
                 "text": {
                     "1": "1 première terrasse vide sur la piscine",
                     "2": "1 escalier",
@@ -284,5 +293,115 @@
             "10": "assets/images/projets/renovations-finition/finitions/projet1/10.jpeg",
             "11": "assets/images/projets/renovations-finition/finitions/projet1/11.jpeg"
         }
+    },
+    {
+        "slug": "maisons-groupées",
+        "type": "interieur",
+        "title": "Maisons groupées",
+        "video": "assets/images/projets/concepts-projet/maisonsgroupees/1.mp4",
+        "area": "",
+        "land": "",
+        "specifications": "",
+        "picture": ""
+    },
+    {
+        "slug": "villas-225",
+        "type": "interieur",
+        "title": "Villas 225",
+        "video": "assets/images/projets/concepts-projet/villa225/1.mp4",
+        "area": "",
+        "land": "",
+        "specifications": "",
+        "picture": ""
+    },
+    {
+        "slug": "white-house",
+        "type": "interieur",
+        "title": "White house",
+        "video": "assets/images/projets/concepts-projet/whitehouse/1.mp4",
+        "area": "",
+        "land": "",
+        "specifications": "",
+        "picture": ""
+    },
+    {
+        "slug": "white-house-2",
+        "type": "interieur",
+        "title": "White house 2",
+        "video": "assets/images/projets/concepts-projet/whitehouse2/1.mp4",
+        "area": "",
+        "land": "",
+        "specifications": "",
+        "picture": ""
+    },
+    {
+        "slug": "duplex-r-2-bingerville",
+        "type": "concept",
+        "title": "Duplex R+2 Bingerville",
+        "video": "",
+        "area": {
+            "land": "500 m²",
+            "floor": "549 m²"
+        },
+        "land": "",
+        "specifications": {
+            "rdc": {
+                "description": "",
+                "text": {
+                    "1": "3 studios en mezzanine",
+                    "2": "1 garage privé 2 véhicules",
+                    "3": "1 studio normal",
+                    "4": "1 cours",
+                    "5": "1 piscine"
+                },
+                "sketch": ""
+            },
+            "etage": {
+                "description": "Deux appartements de:",
+                "text": {
+                    "1": "2 chambres avec salle de bain et balcon/chambre",
+                    "2": "1 séjour et salle à manger",
+                    "3": "1 toilette visiteurs",
+                    "4": "1 cuisine",
+                    "5": "1 bureau"
+                },
+                "sketch": ""
+            },
+            "etage2": {
+                "description": "Un appartement privé de:",
+                "text": {
+                    "1": "2 chambres autonomes avec dressing",
+                    "2": "1 chambre principale avec salle de bain, dressing et une grande terrasse",
+                    "3": "1 séjour et salle à manger",
+                    "4": "1 toilette visiteurs",
+                    "5": "1 cuisine européenne et africaine",
+                    "6": "1 bureau"
+                },
+                "sketch": ""
+            },
+            "etage3": {
+                "description": "",
+                "text": {
+                    "1": "1 grande terrasse aménagée avec jardins"
+                },
+                "sketch": ""
+            }
+        },
+        "picture": {
+            "1": "assets/images/projets/projets-de-construction/duplexr2bingerville/1.PNG",
+            "2": "assets/images/projets/projets-de-construction/duplexr2bingerville/2.PNG",
+            "3": "assets/images/projets/projets-de-construction/duplexr2bingerville/3.PNG",
+            "4": "assets/images/projets/projets-de-construction/duplexr2bingerville/4.PNG"
+        }
+    },
+    {
+        "slug": "villa-basse-bingerville",
+        "type": "interieur",
+        "title": "Villa basse Bingerville",
+        "video": "assets/images/projets/projets-de-construction/villabassebingerville/1.mp4",
+        "area": "",
+        "land": "",
+        "specifications": "",
+        "picture": ""
     }
 ]

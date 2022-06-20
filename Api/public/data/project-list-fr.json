@@ -58,7 +58,7 @@
     {
         "filter": "filter-concepts-projets",
         "image": "assets/images/projets/concepts-projet/whitehouse2/1.png",
-        "title": "White house",
+        "title": "White house 2",
         "slug": "white-house-2",
         "category": "concepts projets"
     },
@@ -89,5 +89,19 @@
         "title": "Renovations & Finitions",
         "slug": "renovations-finistons-1",
         "category": "renovations & finition"
+    },
+    {
+        "filter": "filter-genie-civil",
+        "image": "assets/images/projets/autres-travaux-gc/complexehotelieryakro/3.jpeg",
+        "title": "Complexe hotelier Yakro",
+        "slug": "complexe-hotelier-yakro",
+        "category": "Genie civil"
+    },
+    {
+        "filter": "filter-genie-civil",
+        "image": "assets/images/projets/autres-travaux-gc/travauxabobopk18/1.jpeg",
+        "title": "Travaux Abobo PK 18",
+        "slug": "travaux-abobo-pk-18",
+        "category": "Genie civil"
     }
 ]

@@ -98,6 +98,9 @@
 							{% if rdc|length > 0  %}
 							<h5 class="text__block-title mb-10">RDC</h5>
 							<ul class="list-items list-unstyled mt-20">
+								{% if rdc.description != "" %}
+									<span>{{rdc.description}}</span>
+								{% endif %}
 								{% for r in rdc %}
 									<li>{{r}}</li>
 								{% endfor %}
@@ -123,6 +126,9 @@
 							{% if etage|length > 0  %}
 							<h5 class="text__block-title mb-10">R+1</h5>
 							<ul class="list-items list-unstyled mt-20">
+								{% if etage.description != "" %}
+									<span class="desc-spec-title">{{etage.description}}</span>
+								{% endif %}
 								{% for e in etage %}
 									<li>{{e}}</li>
 								{% endfor %}
@@ -142,6 +148,9 @@
 								</ul>
 								<h5 class="text__block-title mb-10">R+2</h5>
 								<ul class="list-items list-unstyled mt-20">
+									{% if etage2.description != "" %}
+										<span class="desc-spec-title">{{etage2.description}}</span>
+									{% endif %}
 									{% for e in etage2 %}
 										<li>{{e}}</li>
 									{% endfor %}
@@ -151,13 +160,35 @@
 					{% endif %}
 
 				</div>
+
+				<div class="row">
+					{% if etage3|length > 0 %}
+						<div class="col-sm-12 col-md-12 offset-lg-0 col-lg-4">
+							<div class="text__block">
+								<h5 class="text__block-title mb-10" style="visibility: hidden"></h5>
+								<ul class="portfolio-item__meta-list list-unstyled mt-10 mb-30" style="visibility: hidden">
+									<li>
+										<strong>Superficie de Terrain:</strong>
+										<span>0 m²</span>
+									</li>
+								</ul>
+								<h5 class="text__block-title mb-10">R+3</h5>
+								<ul class="list-items list-unstyled mt-20">
+									{% for e in etage3 %}
+										<li>{{e}}</li>
+									{% endfor %}
+								</ul>
+							</div>
+						</div>
+					{% endif %}
+				</div>
 				<!-- /.row -->
 			</div>
 			<!-- /.container -->
 		</section>
 		<!-- /.Text Content -->
 	<br>
-	
+
 	{% if pictures|length > 0 %}
 	<section class="portfolio-gallery py-0">
 		<div class="container">

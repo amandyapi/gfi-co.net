@@ -230,6 +230,12 @@ class PageController extends AbstractController
         $rdc = [];
         $etage = [];
         $etage2 = [];
+        $etage3 = [];
+
+        $rdcDesc = "";
+        $etageDesc = "";
+        $etage2Desc = "";
+        $etage3Desc = "";
 
         foreach ($projects as $key => $value) {
             if($projects[$key]->slug == $slug){
@@ -237,17 +243,24 @@ class PageController extends AbstractController
             }
         }
 
-        foreach ($projet->picture as $key => $value) {
-           $pictures[] = $value;
+        if($projet->picture != ""){
+            foreach ($projet->picture as $key => $value) {
+            $pictures[] = $value;
+            }
         }
 
         if($projet->specifications != ""){
+            
+            $rdcDesc = $projet->specifications->rdc->description;
+            $etageDesc = $projet->specifications->etage->description;
+            $etage2Desc = $projet->specifications->etage2->description;
+            $etage3Desc = $projet->specifications->etage3->description;
+
             if($projet->specifications->rdc->text != ""){
                 foreach ($projet->specifications->rdc->text as $key => $value) {
                     $rdc[] = $value;
                 }  
             }
-            
             
             if($projet->specifications->etage->text != ""){
                 foreach ($projet->specifications->etage->text as $key => $value) {
@@ -258,6 +271,12 @@ class PageController extends AbstractController
             if($projet->specifications->etage2->text != ""){
                 foreach ($projet->specifications->etage2->text as $key => $value) {
                     $etage2[] = $value;
+                }
+            }
+            
+            if($projet->specifications->etage3->text != ""){
+                foreach ($projet->specifications->etage3->text as $key => $value) {
+                    $etage3[] = $value;
                 }
             }
         }
@@ -271,7 +290,12 @@ class PageController extends AbstractController
             'rdc' => $rdc,
             'etage' => $etage,
             'etage2' => $etage2,
-            'devisUrl' => $devisUrl
+            'etage3' => $etage3,
+            'devisUrl' => $devisUrl,
+            'rdcDesc' => $rdcDesc,
+            'etageDesc' => $etageDesc,
+            'etage2Desc' => $etage2Desc,
+            'etage3Desc' => $etage3Desc
         ]); 
     }
 
