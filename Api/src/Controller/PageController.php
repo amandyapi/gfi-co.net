@@ -226,6 +226,7 @@ class PageController extends AbstractController
         $projects = \json_decode($data);
         $pictures = [];
         $sketch = [];
+        
         $rdc = [];
         $etage = [];
         $etage2 = [];
@@ -240,22 +241,24 @@ class PageController extends AbstractController
            $pictures[] = $value;
         }
 
-        if($projet->specifications->rdc->text != ""){
-            foreach ($projet->specifications->rdc->text as $key => $value) {
-                $rdc[] = $value;
-            }  
-        }
-        
-        
-        if($projet->specifications->etage->text != ""){
-            foreach ($projet->specifications->etage->text as $key => $value) {
-                $etage[] = $value;
-            }    
-        }
-        
-        if($projet->specifications->etage2->text != ""){
-            foreach ($projet->specifications->etage2->text as $key => $value) {
-                $etage2[] = $value;
+        if($projet->specifications != ""){
+            if($projet->specifications->rdc->text != ""){
+                foreach ($projet->specifications->rdc->text as $key => $value) {
+                    $rdc[] = $value;
+                }  
+            }
+            
+            
+            if($projet->specifications->etage->text != ""){
+                foreach ($projet->specifications->etage->text as $key => $value) {
+                    $etage[] = $value;
+                }    
+            }
+            
+            if($projet->specifications->etage2->text != ""){
+                foreach ($projet->specifications->etage2->text as $key => $value) {
+                    $etage2[] = $value;
+                }
             }
         }
         

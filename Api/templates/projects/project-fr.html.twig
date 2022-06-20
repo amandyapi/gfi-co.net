@@ -37,6 +37,7 @@
 				<div class="col-sm-12 col-md-12 col-lg-8 offset-lg-1">
 					<div class="text__block">
 						<h5 class="text__block-title mb-10">{{projet.title}}</h5>
+						{% if projet.specifications != "" or projet.area != ""  %}
 						<ul class="portfolio-item__meta-list list-unstyled mt-10 mb-30">
                             {% if projet.area.land != "" %}
 							<li>
@@ -51,6 +52,7 @@
 							</li>
                             {% endif %}
 						</ul>
+						{% endif %}
 
 					</div>
 				</div>
@@ -60,28 +62,13 @@
 		</div>
 		<!-- /.container -->
 	</section>
+	{% if projet.specifications != "" or projet.area != ""  %}
     <section class="portfolio-gallery py-0">
 			<div class="container">
-				{# <div class="row">
-					<div class="col-sm-12 col-md-12 col-lg-8 offset-lg-2">
-						<div
-							class="heading text-center mb-40">
-							<h2 class="heading__title">
-								Esquisse
-							</h2>
-						</div>
-					</div>
-				</div> #}
-                {% if projet.specifications.rdc.text != "" or projet.specifications.etage.text != "" or projet.specifications.etage2.text != "" %}
 				<div class="row offset-lg-1">
-                    {% if projet.specifications.rdc.text != "" %}
+                    {% if projet.specifications.rdc != "" %}
 					<div class="col-sm-6 col-md-6 col-lg-4">
 						<div class="portfolio-item">
-							{# <div class="portfolio-item__img">
-								<a class="popup-gallery-item" href="{{ asset(projet.specifications.rdc.sketch) }}">
-									<img src="{{ asset(projet.specifications.rdc.sketch) }}" alt="portfolio img">
-								</a>
-							</div> #}
                             <h5 class="text__block-title mb-10">RDC</h5>
 							<ul class="list-items list-unstyled mt-20">
 								{% for r in rdc %}
@@ -93,14 +80,9 @@
 						<!-- /.portfolio-item -->
 					</div>
                     {% endif %}
-                    {% if projet.specifications.etage.text != "" %}
+                    {% if projet.specifications.etage != "" %}
                     <div class="col-sm-6 col-md-6 col-lg-4">
 						<div class="portfolio-item">
-							{# <div class="portfolio-item__img">
-								<a class="popup-gallery-item" href="{{ asset(projet.specifications.etage.sketch) }}">
-									<img src="{{ asset(projet.specifications.etage.sketch) }}" alt="portfolio img">
-								</a>
-							</div> #}
                             <h5 class="text__block-title mb-10">R+1</h5>
 							<ul class="list-items list-unstyled mt-20">
 								{% for r in etage %}
@@ -112,14 +94,9 @@
 						<!-- /.portfolio-item -->
 					</div>
                     {% endif %}
-                    {% if projet.specifications.etage2.text != "" %}
+                    {% if projet.specifications.etage2 != "" %}
                     <div class="col-sm-6 col-md-6 col-lg-4">
 						<div class="portfolio-item">
-							{# <div class="portfolio-item__img">
-								<a class="popup-gallery-item" href="{{ asset(projet.specifications.etage2.sketch) }}">
-									<img src="{{ asset(projet.specifications.etage2.sketch) }}" alt="portfolio img">
-								</a>
-							</div> #}
                             <h5 class="text__block-title mb-10">R+2</h5>
 							<ul class="list-items list-unstyled mt-20">
 								{% for r in etage2 %}
@@ -132,12 +109,13 @@
 					</div>
                     {% endif %}
 				</div>
-                {% endif %}
 				<!-- /.row -->
 			</div>
 			<!-- /.container -->
 		</section>
-        
+	{% endif %} 
+	
+	{% if pictures|length > 0 %}
 	<section class="portfolio-gallery py-0">
 		<div class="container">
 			<div class="row">
@@ -161,7 +139,7 @@
 		</div>
 		<!-- /.container -->
 	</section>
-
+	{% endif %} 
 
 	<a style="margin: 20% 10% !important;" href="{{ path('gfi-project-grid', { 'lang': 'fr' }) }}">
 		<i class="icon-arrow-left1"></i>

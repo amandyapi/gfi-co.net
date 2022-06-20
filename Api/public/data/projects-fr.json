@@ -3,7 +3,7 @@
         "slug": "villa-the-pearl",
         "type": "concept",
         "title": "villa basse the pearl avec terrasse aménagée",
-        "video": "assets/images/projets/pearl/pearl.mp4",
+        "video": "assets/images/projets/concepts-ecologiques/pearl/pearl.mp4",
         "area": {
             "land": "300 m²",
             "floor": "187,07 m²"
@@ -22,7 +22,7 @@
                     "8": "1 Cour avant avec Parking pour 2 voitures",
                     "9": "Des escaliers menant à l'étage"
                 },
-                "sketch": "assets/images/projets/pearl/a.PNG"
+                "sketch": "assets/images/projets/concepts-ecologiques/pearl/a.PNG"
             },
             "etage": {
                 "text": {
@@ -30,7 +30,7 @@
                     "2": "1 Terasse pour la chambre",
                     "3": "1 Terrase inaccessible"
                 },
-                "sketch": "assets/images/projets/pearl/b.PNG"
+                "sketch": "assets/images/projets/concepts-ecologiques/pearl/b.PNG"
             },
             "etage2": {
                 "text": "",
@@ -38,23 +38,23 @@
             }
         },
         "picture": {
-            "1": "assets/images/projets/pearl/1.jpg",
-            "2": "assets/images/projets/pearl/2.jpg",
-            "3": "assets/images/projets/pearl/3.jpg",
-            "4": "assets/images/projets/pearl/4.jpg",
-            "5": "assets/images/projets/pearl/5.jpg",
-            "6": "assets/images/projets/pearl/6.jpg",
-            "7": "assets/images/projets/pearl/7.jpg",
-            "8": "assets/images/projets/pearl/8.jpg",
-            "9": "assets/images/projets/pearl/9.jpg",
-            "10": "assets/images/projets/pearl/10.jpg"
+            "1": "assets/images/projets/concepts-ecologiques/pearl/1.jpg",
+            "2": "assets/images/projets/concepts-ecologiques/pearl/2.jpg",
+            "3": "assets/images/projets/concepts-ecologiques/pearl/3.jpg",
+            "4": "assets/images/projets/concepts-ecologiques/pearl/4.jpg",
+            "5": "assets/images/projets/concepts-ecologiques/pearl/5.jpg",
+            "6": "assets/images/projets/concepts-ecologiques/pearl/6.jpg",
+            "7": "assets/images/projets/concepts-ecologiques/pearl/7.jpg",
+            "8": "assets/images/projets/concepts-ecologiques/pearl/8.jpg",
+            "9": "assets/images/projets/concepts-ecologiques/pearl/9.jpg",
+            "10": "assets/images/projets/concepts-ecologiques/pearl/10.jpg"
         }
     },
     {
         "slug": "villa-the-big-pearl",
         "type": "concept",
         "title": "Villa duplex The Big Pearl",
-        "video": "assets/images/projets/bigpearl/bigpearl.mp4",
+        "video": "assets/images/projets/concepts-ecologiques/bigpearl/bigpearl.mp4",
         "area": {
             "land": "300 m²",
             "floor": "151 m²"
@@ -72,7 +72,7 @@
                     "7": "1 Cour avant avec Parking pour 2 voitures",
                     "8": "Des escaliers menant à l'étage"
                 },
-                "sketch": "assets/images/projets/bigpearl/a.PNG"
+                "sketch": "assets/images/projets/concepts-ecologiques/bigpearl/a.PNG"
             },
             "etage": {
                 "text": {
@@ -82,7 +82,7 @@
                     "4": "1 Terasse pour la chambre",
                     "5": "1 Terrase inaccessible"
                 },
-                "sketch": "assets/images/projets/bigpearl/b.PNG"
+                "sketch": "assets/images/projets/concepts-ecologiques/bigpearl/b.PNG"
             },
             "etage2": {
                 "text": "",
@@ -90,73 +90,57 @@
             }
         },
         "picture": {
-            "1": "assets/images/projets/bigpearl/1.jpg",
-            "2": "assets/images/projets/bigpearl/2.jpg",
-            "3": "assets/images/projets/bigpearl/3.jpg",
-            "4": "assets/images/projets/bigpearl/4.jpg",
-            "5": "assets/images/projets/bigpearl/5.jpg",
-            "6": "assets/images/projets/bigpearl/6.jpg",
-            "7": "assets/images/projets/bigpearl/7.jpg",
-            "8": "assets/images/projets/bigpearl/8.jpg",
-            "9": "assets/images/projets/bigpearl/9.jpg",
-            "10": "assets/images/projets/bigpearl/10.jpg"
+            "1": "assets/images/projets/concepts-ecologiques/bigpearl/1.jpg",
+            "2": "assets/images/projets/concepts-ecologiques/bigpearl/2.jpg",
+            "3": "assets/images/projets/concepts-ecologiques/bigpearl/3.jpg",
+            "4": "assets/images/projets/concepts-ecologiques/bigpearl/4.jpg",
+            "5": "assets/images/projets/concepts-ecologiques/bigpearl/5.jpg",
+            "6": "assets/images/projets/concepts-ecologiques/bigpearl/6.jpg",
+            "7": "assets/images/projets/concepts-ecologiques/bigpearl/7.jpg",
+            "8": "assets/images/projets/concepts-ecologiques/bigpearl/8.jpg",
+            "9": "assets/images/projets/concepts-ecologiques/bigpearl/9.jpg",
+            "10": "assets/images/projets/concepts-ecologiques/bigpearl/10.jpg"
         }
     },
     {
         "slug": "cite-du-bonheur",
-        "type": "architecture",
+        "type": "concepts projets",
         "title": "La cité du Bonheur",
-        "video": "assets/images/realisation/architecture/citebonheur/video.mp4",
-        "area": {
-            "land": "",
-            "floor": ""
-        },
-        "specifications": {
-            "rdc": {
-                "text": "",
-                "sketch": ""
-            },
-            "etage": {
-                "text": "",
-                "sketch": ""
-            },
-            "etage2": {
-                "text": "",
-                "sketch": ""
-            }
-        },
+        "video": "assets/images/projets/projets-de-construction/citebonheur/video.mp4",
+        "area": "",
+        "specifications": "",
         "picture": {
-            "1": "assets/images/realisation/architecture/citebonheur/1.jpg",
-            "2": "assets/images/realisation/architecture/citebonheur/2.jpg",
-            "3": "assets/images/realisation/architecture/citebonheur/3.jpg",
-            "4": "assets/images/realisation/architecture/citebonheur/4.jpg",
-            "5": "assets/images/realisation/architecture/citebonheur/5.jpg",
-            "6": "assets/images/realisation/architecture/citebonheur/6.jpg",
-            "7": "assets/images/realisation/architecture/citebonheur/7.jpg",
-            "8": "assets/images/realisation/architecture/citebonheur/8.jpg",
-            "9": "assets/images/realisation/architecture/citebonheur/9.jpg",
-            "10": "assets/images/realisation/architecture/citebonheur/10.jpg",
-            "11": "assets/images/realisation/architecture/citebonheur/11.jpg",
-            "12": "assets/images/realisation/architecture/citebonheur/12.jpg",
-            "13": "assets/images/realisation/architecture/citebonheur/13.jpg",
-            "14": "assets/images/realisation/architecture/citebonheur/14.jpg",
-            "15": "assets/images/realisation/architecture/citebonheur/15.jpg",
-            "16": "assets/images/realisation/architecture/citebonheur/16.jpg",
-            "17": "assets/images/realisation/architecture/citebonheur/17.jpg",
-            "18": "assets/images/realisation/architecture/citebonheur/18.jpg",
-            "19": "assets/images/realisation/architecture/citebonheur/19.jpg",
-            "20": "assets/images/realisation/architecture/citebonheur/20.jpg",
-            "21": "assets/images/realisation/architecture/citebonheur/21.jpg",
-            "22": "assets/images/realisation/architecture/citebonheur/22.jpg",
-            "23": "assets/images/realisation/architecture/citebonheur/23.jpg",
-            "24": "assets/images/realisation/architecture/citebonheur/24.jpg",
-            "25": "assets/images/realisation/architecture/citebonheur/25.jpg",
-            "26": "assets/images/realisation/architecture/citebonheur/26.jpg"
+            "1": "assets/images/projets/projets-de-construction/citebonheur/1.jpg",
+            "2": "assets/images/projets/projets-de-construction/citebonheur/2.jpg",
+            "3": "assets/images/projets/projets-de-construction/citebonheur/3.jpg",
+            "4": "assets/images/projets/projets-de-construction/citebonheur/4.jpg",
+            "5": "assets/images/projets/projets-de-construction/citebonheur/5.jpg",
+            "6": "assets/images/projets/projets-de-construction/citebonheur/6.jpg",
+            "7": "assets/images/projets/projets-de-construction/citebonheur/7.jpg",
+            "8": "assets/images/projets/projets-de-construction/citebonheur/8.jpg",
+            "9": "assets/images/projets/projets-de-construction/citebonheur/9.jpg",
+            "10": "assets/images/projets/projets-de-construction/citebonheur/10.jpg",
+            "11": "assets/images/projets/projets-de-construction/citebonheur/11.jpg",
+            "12": "assets/images/projets/projets-de-construction/citebonheur/12.jpg",
+            "13": "assets/images/projets/projets-de-construction/citebonheur/13.jpg",
+            "14": "assets/images/projets/projets-de-construction/citebonheur/14.jpg",
+            "15": "assets/images/projets/projets-de-construction/citebonheur/15.jpg",
+            "16": "assets/images/projets/projets-de-construction/citebonheur/16.jpg",
+            "17": "assets/images/projets/projets-de-construction/citebonheur/17.jpg",
+            "18": "assets/images/projets/projets-de-construction/citebonheur/18.jpg",
+            "19": "assets/images/projets/projets-de-construction/citebonheur/19.jpg",
+            "20": "assets/images/projets/projets-de-construction/citebonheur/20.jpg",
+            "21": "assets/images/projets/projets-de-construction/citebonheur/21.jpg",
+            "22": "assets/images/projets/projets-de-construction/citebonheur/22.jpg",
+            "23": "assets/images/projets/projets-de-construction/citebonheur/23.jpg",
+            "24": "assets/images/projets/projets-de-construction/citebonheur/24.jpg",
+            "25": "assets/images/projets/projets-de-construction/citebonheur/25.jpg",
+            "26": "assets/images/projets/projets-de-construction/citebonheur/26.jpg"
         }
     },
     {
         "slug": "duplex-conakry",
-        "type": "projet",
+        "type": "concept",
         "title": "Réalisation d'une Duplex R+2 à Conakry",
         "video": "",
         "area": {
@@ -181,7 +165,7 @@
                     "12": "1 cellier",
                     "13": "1 buanderie"
                 },
-                "sketch": "assets/images/realisation/duplexconakry/7.PNG"
+                "sketch": ""
             },
             "etage": {
                 "text": {
@@ -191,7 +175,7 @@
                     "4": "1 cuisine européenne",
                     "5": "1 séjour avec balcon vue sur la piscine"
                 },
-                "sketch": "assets/images/realisation/duplexconakry/5.PNG"
+                "sketch": ""
             },
             "etage2": {
                 "text": {
@@ -202,63 +186,49 @@
                     "5": "1 toillette",
                     "6": "1 cuisine"
                 },
-                "sketch": "assets/images/realisation/duplexconakry/6.PNG"
+                "sketch": ""
             }
         },
         "picture": {
-            "1": "assets/images/realisation/duplexconakry/2.PNG",
-            "2": "assets/images/realisation/duplexconakry/4.PNG"
+            "1": "assets/images/projets/projets-de-construction/duplexconakry/1.PNG",
+            "2": "assets/images/projets/projets-de-construction/duplexconakry/2.PNG",
+            "3": "assets/images/projets/projets-de-construction/duplexconakry/3.PNG",
+            "4": "assets/images/projets/projets-de-construction/duplexconakry/4.PNG"
         }
     },
     {
         "slug": "villa-12-mili",
         "type": "architecture",
         "title": "Villa 12 Mili",
-        "video": "assets/images/realisation/12mili/video.mp4",
-        "area": {
-            "land": "",
-            "floor": ""
-        },
-        "specifications": {
-            "rdc": {
-                "text": "",
-                "sketch": ""
-            },
-            "etage": {
-                "text": "",
-                "sketch": ""
-            },
-            "etage2": {
-                "text": "",
-                "sketch": ""
-            }
-        },
+        "video": "assets/images/projets/concepts-projetprojets/concepts-projet/12mili/video.mp4",
+        "area": "",
+        "specifications": "",
         "picture": {
-            "1": "assets/images/realisation/12mili/1.jpg",
-            "2": "assets/images/realisation/12mili/2.jpg",
-            "3": "assets/images/realisation/12mili/3.jpg",
-            "4": "assets/images/realisation/12mili/4.jpg",
-            "5": "assets/images/realisation/12mili/5.jpg",
-            "6": "assets/images/realisation/12mili/6.jpg",
-            "7": "assets/images/realisation/12mili/7.jpg",
-            "8": "assets/images/realisation/12mili/8.jpg",
-            "9": "assets/images/realisation/12mili/9.jpg",
-            "10": "assets/images/realisation/12mili/10.jpg",
-            "11": "assets/images/realisation/12mili/11.jpg",
-            "12": "assets/images/realisation/12mili/12.jpg",
-            "13": "assets/images/realisation/12mili/13.jpg",
-            "14": "assets/images/realisation/12mili/14.jpg",
-            "15": "assets/images/realisation/12mili/15.jpg",
-            "16": "assets/images/realisation/12mili/16.jpg",
-            "17": "assets/images/realisation/12mili/17.jpg",
-            "18": "assets/images/realisation/12mili/18.jpg",
-            "19": "assets/images/realisation/12mili/19.jpg",
-            "20": "assets/images/realisation/12mili/20.jpg",
-            "21": "assets/images/realisation/12mili/21.jpg",
-            "22": "assets/images/realisation/12mili/22.jpg",
-            "23": "assets/images/realisation/12mili/23.jpg",
-            "24": "assets/images/realisation/12mili/24.jpg",
-            "25": "assets/images/realisation/12mili/25.jpg"
+            "1": "assets/images/projets/concepts-projet/12mili/1.jpg",
+            "2": "assets/images/projets/concepts-projet/12mili/2.jpg",
+            "3": "assets/images/projets/concepts-projet/12mili/3.jpg",
+            "4": "assets/images/projets/concepts-projet/12mili/4.jpg",
+            "5": "assets/images/projets/concepts-projet/12mili/5.jpg",
+            "6": "assets/images/projets/concepts-projet/12mili/6.jpg",
+            "7": "assets/images/projets/concepts-projet/12mili/7.jpg",
+            "8": "assets/images/projets/concepts-projet/12mili/8.jpg",
+            "9": "assets/images/projets/concepts-projet/12mili/9.jpg",
+            "10": "assets/images/projets/concepts-projet/12mili/10.jpg",
+            "11": "assets/images/projets/concepts-projet/12mili/11.jpg",
+            "12": "assets/images/projets/concepts-projet/12mili/12.jpg",
+            "13": "assets/images/projets/concepts-projet/12mili/13.jpg",
+            "14": "assets/images/projets/concepts-projet/12mili/14.jpg",
+            "15": "assets/images/projets/concepts-projet/12mili/15.jpg",
+            "16": "assets/images/projets/concepts-projet/12mili/16.jpg",
+            "17": "assets/images/projets/concepts-projet/12mili/17.jpg",
+            "18": "assets/images/projets/concepts-projet/12mili/18.jpg",
+            "19": "assets/images/projets/concepts-projet/12mili/19.jpg",
+            "20": "assets/images/projets/concepts-projet/12mili/20.jpg",
+            "21": "assets/images/projets/concepts-projet/12mili/21.jpg",
+            "22": "assets/images/projets/concepts-projet/12mili/22.jpg",
+            "23": "assets/images/projets/concepts-projet/12mili/23.jpg",
+            "24": "assets/images/projets/concepts-projet/12mili/24.jpg",
+            "25": "assets/images/projets/concepts-projet/12mili/25.jpg"
         },
         "sketch": {}
     },
@@ -266,73 +236,53 @@
         "slug": "residence-hoteliere-de-daloa",
         "type": "projet",
         "title": "Résidence Hotelière De Daloa",
-        "video": "assets/images/realisation/hoteldaloa/video.mp4",
+        "video": "assets/images/projets/projets-de-construction/hoteldaloa/video.mp4",
         "area": {
             "land": "1200 m²",
             "floor": ""
         },
         "land": "",
-        "specifications": {
-            "rdc": {
-                "text": "",
-                "sketch": ""
-            },
-            "etage": {
-                "text": "",
-                "sketch": ""
-            },
-            "etage2": {
-                "text": "",
-                "sketch": ""
-            }
-        },
+        "specifications": "",
         "picture": {
-            "1": "assets/images/realisation/hoteldaloa/1.jpg",
-            "2": "assets/images/realisation/hoteldaloa/2.jpg",
-            "3": "assets/images/realisation/hoteldaloa/3.jpg",
-            "4": "assets/images/realisation/hoteldaloa/4.jpg",
-            "5": "assets/images/realisation/hoteldaloa/5.jpg",
-            "6": "assets/images/realisation/hoteldaloa/6.jpg",
-            "7": "assets/images/realisation/hoteldaloa/7.jpg",
-            "8": "assets/images/realisation/hoteldaloa/8.jpg",
-            "9": "assets/images/realisation/hoteldaloa/9.jpg",
-            "10": "assets/images/realisation/hoteldaloa/10.jpg",
-            "11": "assets/images/realisation/hoteldaloa/11.jpg",
-            "12": "assets/images/realisation/hoteldaloa/12.jpg",
-            "13": "assets/images/realisation/hoteldaloa/13.jpg",
-            "14": "assets/images/realisation/hoteldaloa/14.jpg",
-            "15": "assets/images/realisation/hoteldaloa/15.jpg",
-            "16": "assets/images/realisation/hoteldaloa/16.jpg",
-            "17": "assets/images/realisation/hoteldaloa/17.jpg"
+            "1": "assets/images/projets/projets-de-construction/hoteldaloa/1.jpg",
+            "2": "assets/images/projets/projets-de-construction/hoteldaloa/2.jpg",
+            "3": "assets/images/projets/projets-de-construction/hoteldaloa/3.jpg",
+            "4": "assets/images/projets/projets-de-construction/hoteldaloa/4.jpg",
+            "5": "assets/images/projets/projets-de-construction/hoteldaloa/5.jpg",
+            "6": "assets/images/projets/projets-de-construction/hoteldaloa/6.jpg",
+            "7": "assets/images/projets/projets-de-construction/hoteldaloa/7.jpg",
+            "8": "assets/images/projets/projets-de-construction/hoteldaloa/8.jpg",
+            "9": "assets/images/projets/projets-de-construction/hoteldaloa/9.jpg",
+            "10": "assets/images/projets/projets-de-construction/hoteldaloa/10.jpg",
+            "11": "assets/images/projets/projets-de-construction/hoteldaloa/11.jpg",
+            "12": "assets/images/projets/projets-de-construction/hoteldaloa/12.jpg",
+            "13": "assets/images/projets/projets-de-construction/hoteldaloa/13.jpg",
+            "14": "assets/images/projets/projets-de-construction/hoteldaloa/14.jpg",
+            "15": "assets/images/projets/projets-de-construction/hoteldaloa/15.jpg",
+            "16": "assets/images/projets/projets-de-construction/hoteldaloa/16.jpg",
+            "17": "assets/images/projets/projets-de-construction/hoteldaloa/17.jpg"
         }
     },
     {
-        "slug": "design-interieur",
+        "slug": "renovations-finistons-1",
         "type": "interieur",
-        "title": "Design intérieur",
-        "video": "assets/images/realisation/interieur/video.mp4",
-        "area": {
-            "land": "",
-            "floor": ""
-        },
+        "title": "Renovations & Finitions",
+        "video": "",
+        "area": "",
         "land": "",
-        "specifications": {
-            "rdc": {
-                "text": "",
-                "sketch": ""
-            },
-            "etage": {
-                "text": "",
-                "sketch": ""
-            },
-            "etage2": {
-                "text": "",
-                "sketch": ""
-            }
-        },
+        "specifications": "",
         "picture": {
-            "1": "assets/images/realisation/interieur/1.jpg",
-            "2": "assets/images/realisation/interieur/1.jpg"
+            "1": "assets/images/projets/renovations-finition/finitions/projet1/1.jpeg",
+            "2": "assets/images/projets/renovations-finition/finitions/projet1/2.jpeg",
+            "3": "assets/images/projets/renovations-finition/finitions/projet1/3.jpeg",
+            "4": "assets/images/projets/renovations-finition/finitions/projet1/4.jpeg",
+            "5": "assets/images/projets/renovations-finition/finitions/projet1/5.jpeg",
+            "6": "assets/images/projets/renovations-finition/finitions/projet1/6.jpeg",
+            "7": "assets/images/projets/renovations-finition/finitions/projet1/7.jpeg",
+            "8": "assets/images/projets/renovations-finition/finitions/projet1/8.jpeg",
+            "9": "assets/images/projets/renovations-finition/finitions/projet1/9.jpeg",
+            "10": "assets/images/projets/renovations-finition/finitions/projet1/10.jpeg",
+            "11": "assets/images/projets/renovations-finition/finitions/projet1/11.jpeg"
         }
     }
 ]

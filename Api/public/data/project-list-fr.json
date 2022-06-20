@@ -1,51 +1,93 @@
 [
     {
         "filter": "filter-concepts-eco",
-        "image": "assets/images/projets/pearl/1.jpg",
+        "image": "assets/images/projets/concepts-ecologiques/pearl/1.jpg",
         "title": "Villa THE PEARL",
         "slug": "villa-the-pearl",
         "category": "concept"
     },
     {
         "filter": "filter-concepts-eco",
-        "image": "assets/images/projets/bigpearl/1.jpg",
+        "image": "assets/images/projets/concepts-ecologiques/bigpearl/1.jpg",
         "title": "Villa THE BIG PEARL",
         "slug": "villa-the-big-pearl",
         "category": "concept"
     },
     {
-        "filter": "filter-concepts-projets",
-        "image": "assets/images/realisation/architecture/citebonheur/1.jpg",
+        "filter": "filter-projets-construction",
+        "image": "assets/images/projets/projets-de-construction/citebonheur/1.jpg",
         "title": "Cité Du Bonheur",
         "slug": "cite-du-bonheur",
-        "category": "architecture"
+        "category": "concepts projets"
     },
     {
         "filter": "filter-projets-construction",
-        "image": "assets/images/realisation/duplexconakry/1.PNG",
+        "image": "assets/images/projets/projets-de-construction/duplexconakry/1.PNG",
         "title": "Réalisation d'une Duplex R+2 à Conakry",
         "slug": "duplex-conakry",
         "category": "projet"
     },
     {
         "filter": "filter-concepts-projets",
-        "image": "assets/images/realisation/12mili/1.jpg",
+        "image": "assets/images/projets/concepts-projet/12mili/1.jpg",
         "title": "Villa 12 Mili",
         "slug": "villa-12-mili",
-        "category": "architecture"
+        "category": "concepts projets"
+    },
+    {
+        "filter": "filter-concepts-projets",
+        "image": "assets/images/projets/concepts-projet/maisonsgroupees/1.png",
+        "title": "Maisons groupées",
+        "slug": "maisons-groupées",
+        "category": "concepts projets"
+    },
+    {
+        "filter": "filter-concepts-projets",
+        "image": "assets/images/projets/concepts-projet/villa225/1.png",
+        "title": "Villas 225",
+        "slug": "villas-225",
+        "category": "concepts projets"
+    },
+    {
+        "filter": "filter-concepts-projets",
+        "image": "assets/images/projets/concepts-projet/whitehouse/1.png",
+        "title": "White house",
+        "slug": "white-house",
+        "category": "concepts projets"
+    },
+    {
+        "filter": "filter-concepts-projets",
+        "image": "assets/images/projets/concepts-projet/whitehouse2/1.png",
+        "title": "White house",
+        "slug": "white-house-2",
+        "category": "concepts projets"
     },
     {
         "filter": "filter-projets-construction",
-        "image": "assets/images/realisation/hoteldaloa/1.jpg",
+        "image": "assets/images/projets/projets-de-construction/hoteldaloa/1.jpg",
         "title": "Résidence Hotelière De Daloa",
         "slug": "residence-hoteliere-de-daloa",
-        "category": "projet"
+        "category": "projet de construction"
+    },
+    {
+        "filter": "filter-projets-construction",
+        "image": "assets/images/projets/projets-de-construction/duplexr2bingerville/2.PNG",
+        "title": "Duplex R+2 Bingerville",
+        "slug": "duplex-r-2-bingerville",
+        "category": "projet de construction"
+    },
+    {
+        "filter": "filter-projets-construction",
+        "image": "assets/images/projets/projets-de-construction/villabassebingerville/1.png",
+        "title": "Villa basse Bingerville",
+        "slug": "villa-basse-bingerville",
+        "category": "projet de construction"
     },
     {
         "filter": "filter-renovations-finition",
-        "image": "assets/images/realisation/interieur/1.jpg",
-        "title": "Design intérieur",
-        "slug": "design-interieur",
-        "category": "interieur"
+        "image": "assets/images/projets/renovations-finition/finitions/projet1/1.jpeg",
+        "title": "Renovations & Finitions",
+        "slug": "renovations-finistons-1",
+        "category": "renovations & finition"
     }
 ]
