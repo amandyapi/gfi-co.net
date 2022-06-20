@@ -71,7 +71,7 @@
 						<div class="portfolio-item">
                             <h5 class="text__block-title mb-10">RDC</h5>
 							{% if projet.specifications.rdc.description != "" %}
-								<span class="desc-spec-title text-muted">{{projet.specifications.rdc.description}}</span>
+								<span class="desc-spec-title">{{projet.specifications.rdc.description}}</span>
 							{% endif %}
 							<ul class="list-items list-unstyled mt-20">
 								{% for r in rdc %}
@@ -88,7 +88,7 @@
 						<div class="portfolio-item">
                             <h5 class="text__block-title mb-10">R+1</h5>
 							{% if projet.specifications.etage.description != "" %}
-								<span class="desc-spec-title text-muted">{{projet.specifications.etage.description}}</span>
+								<span class="desc-spec-title">{{projet.specifications.etage.description}}</span>
 							{% endif %}
 							<ul class="list-items list-unstyled mt-20">
 								{% for r in etage %}
@@ -105,7 +105,7 @@
 						<div class="portfolio-item">
                             <h5 class="text__block-title mb-10">R+2</h5>
 							{% if projet.specifications.etage2.description != "" %}
-								<span class="desc-spec-title text-muted">{{projet.specifications.etage2.description}}</span>
+								<span class="desc-spec-title">{{projet.specifications.etage2.description}}</span>
 							{% endif %}
 							<ul class="list-items list-unstyled mt-20">
 								{% for r in etage2 %}

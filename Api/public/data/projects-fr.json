@@ -403,5 +403,56 @@
         "land": "",
         "specifications": "",
         "picture": ""
+    },
+    {
+        "slug": "complexe-hotelier-yakro",
+        "type": "interieur",
+        "title": "Complexe hotelier Yamoussoukro",
+        "video": "",
+        "area": "",
+        "land": "",
+        "specifications": "",
+        "picture": {
+            "1": "assets/images/projets/autres-travaux-gc/complexehotelieryakro/1.jpeg",
+            "2": "assets/images/projets/autres-travaux-gc/complexehotelieryakro/2.jpeg",
+            "3": "assets/images/projets/autres-travaux-gc/complexehotelieryakro/3.jpeg",
+            "4": "assets/images/projets/autres-travaux-gc/complexehotelieryakro/4.jpeg",
+            "5": "assets/images/projets/autres-travaux-gc/complexehotelieryakro/5.jpeg",
+            "6": "assets/images/projets/autres-travaux-gc/complexehotelieryakro/6.jpeg",
+            "7": "assets/images/projets/autres-travaux-gc/complexehotelieryakro/7.jpeg",
+            "8": "assets/images/projets/autres-travaux-gc/complexehotelieryakro/8.jpeg",
+            "9": "assets/images/projets/autres-travaux-gc/complexehotelieryakro/9.jpeg",
+            "10": "assets/images/projets/autres-travaux-gc/complexehotelieryakro/10.jpeg",
+            "11": "assets/images/projets/autres-travaux-gc/complexehotelieryakro/11.jpeg",
+            "12": "assets/images/projets/autres-travaux-gc/complexehotelieryakro/12.jpeg",
+            "13": "assets/images/projets/autres-travaux-gc/complexehotelieryakro/13.jpeg",
+            "14": "assets/images/projets/autres-travaux-gc/complexehotelieryakro/14.jpeg"
+        }
+    },
+    {
+        "slug": "travaux-abobo-pk-18",
+        "type": "interieur",
+        "title": "Travaux Abobo pk 18",
+        "video": "",
+        "area": "",
+        "land": "",
+        "specifications": "",
+        "picture": {
+            "1": "assets/images/projets/autres-travaux-gc/travauxabobopk18/1.jpeg",
+            "2": "assets/images/projets/autres-travaux-gc/travauxabobopk18/2.jpeg",
+            "3": "assets/images/projets/autres-travaux-gc/travauxabobopk18/3.jpeg",
+            "4": "assets/images/projets/autres-travaux-gc/travauxabobopk18/4.jpeg",
+            "5": "assets/images/projets/autres-travaux-gc/travauxabobopk18/5.jpeg",
+            "6": "assets/images/projets/autres-travaux-gc/travauxabobopk18/6.jpeg",
+            "7": "assets/images/projets/autres-travaux-gc/travauxabobopk18/7.jpeg",
+            "8": "assets/images/projets/autres-travaux-gc/travauxabobopk18/8.jpeg",
+            "9": "assets/images/projets/autres-travaux-gc/travauxabobopk18/9.jpeg",
+            "10": "assets/images/projets/autres-travaux-gc/travauxabobopk18/10.jpeg",
+            "11": "assets/images/projets/autres-travaux-gc/travauxabobopk18/11.jpeg",
+            "12": "assets/images/projets/autres-travaux-gc/travauxabobopk18/12.jpeg",
+            "13": "assets/images/projets/autres-travaux-gc/travauxabobopk18/13.jpeg",
+            "14": "assets/images/projets/autres-travaux-gc/travauxabobopk18/14.jpeg",
+            "15": "assets/images/projets/autres-travaux-gc/travauxabobopk18/15.jpeg"
+        }
     }
 ]
