@@ -251,10 +251,23 @@ class PageController extends AbstractController
 
         if($projet->specifications != ""){
             
-            $rdcDesc = $projet->specifications->rdc->description;
-            $etageDesc = $projet->specifications->etage->description;
-            $etage2Desc = $projet->specifications->etage2->description;
-            $etage3Desc = $projet->specifications->etage3->description;
+            if($projet->specifications->rdc != ""){
+                $rdcDesc = $projet->specifications->rdc->description;
+            }
+            
+            if($projet->specifications->etage != ""){
+                $rdcDesc = $projet->specifications->etage->description;
+            }
+
+             
+            if($projet->specifications->etage2 != ""){
+                $rdcDesc = $projet->specifications->etage2->description;
+            }
+
+             
+            if(!empty($projet->specifications->etage3) && $projet->specifications->etage3 != ""){
+                $rdcDesc = $projet->specifications->etage3->description;
+            }
 
             if($projet->specifications->rdc->text != ""){
                 foreach ($projet->specifications->rdc->text as $key => $value) {
@@ -262,19 +275,19 @@ class PageController extends AbstractController
                 }  
             }
             
-            if($projet->specifications->etage->text != ""){
+            if($projet->specifications->etage != "" && $projet->specifications->etage->text != ""){
                 foreach ($projet->specifications->etage->text as $key => $value) {
                     $etage[] = $value;
                 }    
             }
             
-            if($projet->specifications->etage2->text != ""){
+            if($projet->specifications->etage2 != "" && $projet->specifications->etage2->text != ""){
                 foreach ($projet->specifications->etage2->text as $key => $value) {
                     $etage2[] = $value;
                 }
             }
             
-            if($projet->specifications->etage3->text != ""){
+            if(!empty($projet->specifications->etage3) && $projet->specifications->etage3 != "" && $projet->specifications->etage3->text != ""){
                 foreach ($projet->specifications->etage3->text as $key => $value) {
                     $etage3[] = $value;
                 }
@@ -535,6 +548,32 @@ class PageController extends AbstractController
         $devisUrl = $this->devisBg[3];
 
         $template = 'prestations/acd-'.$lang.'.html.twig';              
+        return $this->render($template, [
+            'lang' => $lang,
+            'devisUrl' => $devisUrl
+        ]); 
+    }
+
+    
+	
+	public function acheterTerrain($lang)
+    {
+        $devisUrl = $this->devisBg[3];
+
+        $template = 'more/acheter-terrain-'.$lang.'.html.twig';              
+        return $this->render($template, [
+            'lang' => $lang,
+            'devisUrl' => $devisUrl
+        ]); 
+    }
+
+    
+	
+	public function titreFoncier($lang)
+    {
+        $devisUrl = $this->devisBg[3];
+
+        $template = 'more/titre-fonctier-'.$lang.'.html.twig';              
         return $this->render($template, [
             'lang' => $lang,
             'devisUrl' => $devisUrl

@@ -65,6 +65,16 @@ gfi-more_acd:
     path: /{lang}/comment-obtenir-l-acd
     controller: App\Controller\PageController::moreAcd
 
+
+gfi-more_terrain:
+    path: /{lang}/comment-acheter-un-terrain
+    controller: App\Controller\PageController::acheterTerrain
+
+
+gfi-more_titre_foncier:
+    path: /{lang}/titre-foncier
+    controller: App\Controller\PageController::titreFoncier
+
 ## ADMIN
 
 admin_root:

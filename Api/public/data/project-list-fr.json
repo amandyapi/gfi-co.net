@@ -15,13 +15,6 @@
     },
     {
         "filter": "filter-projets-construction",
-        "image": "assets/images/projets/projets-de-construction/citebonheur/1.jpg",
-        "title": "Cité Du Bonheur",
-        "slug": "cite-du-bonheur",
-        "category": "concepts projets"
-    },
-    {
-        "filter": "filter-projets-construction",
         "image": "assets/images/projets/projets-de-construction/duplexconakry/1.PNG",
         "title": "Réalisation d'une Duplex R+2 à Conakry",
         "slug": "duplex-conakry",

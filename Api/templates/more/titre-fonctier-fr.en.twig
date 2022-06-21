@@ -1,0 +1,87 @@
+{% extends 'layout-fr.html.twig' %}
+
+{% block title %}ACD
+{% endblock %}
+
+{% block content %}
+
+	<section class="page-title page-title-layout1 bg-overlay bg-parallax">
+		<div class="bg-img"><img src="{{ asset('assets/images/page-titles/20.jpg') }}" alt="background"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-12 col-xl-9">
+					<h1 class="pagetitle__heading">Comment obtenir l’ACD en Côte d’Ivoire ?</h1>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="text-content text-justify pt-20 pb-30">
+		<div class="container">
+			<p>
+				<br>
+				<strong>L’Arrêté de Concession Définitive (ACD)
+				</strong>est le seul et unique acte qui confère la propriété sur le domaine foncier urbain. Les règles d’acquisition de la propriété foncière des terrains urbains ont été fixées par l’<strong>Ordonnance n° 2013-481 du 2 juillet 2013</strong>. Ce texte précise les étapes et les acteurs qui interviennent dans toute la chaîne de production. En raison de l’apparente complexité du circuit et de la confusion née dans l’esprit des usagers quant au rôle de chaque intervenant institutionnel, votre magazine revient sur les étapes, les structures impliquées et la description de leurs tâches.
+			</p>
+
+			<p>
+				Il est important de signaler que l’<strong>ACD</strong>
+				est délivré dans l’espace urbain sur les terrains issus de lotissements approuvés ou non. Cependant, seul le Ministre chargé de la construction et de l’urbanisme est habilité à délivrer des
+				<strong>ACD</strong>
+				sur des parcelles situées en dehors de lotissements approuvés.
+			</p>
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-8 offset-lg-1">
+			<div class="heading mt-30 mb-20" id="terrains">
+				<h5 class="text__block-title mb-5">Quelques définitions relatives à l'ACD</h5>
+			</div>
+			<!-- /.heading -->
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-10 offset-lg-1">
+
+			<h6 class="mb-10">1- L’Attestation Domaniale</h6>
+			<p>
+				L’Attestation Domaniale n’est pas un acte délivré au demandeur d’<b>ACD</b>
+				et ne confère pas la propriété. Elle est prise par le Directeur du Domaine Urbain dans le District d’Abidjan et à l’intérieur du pays par les Directeurs Régionaux. Elle est adressée au Conservateur de la Propriété Foncière et des Hypothèques et permet d’enclencher la procédure de création du Titre Foncier et d’indiquer le nom de la personne à qui l’Etat envisage de céder le terrain.
+			</p>
+			<h6 class="mb-10">2- L’Arrêté de Concession Définitive (ACD)</h6>
+
+			<p>L’Arrêté de Concession Définitive est le seul et unique acte qui confère la propriété d’un
+				<a href="https://www.wizodia.com/vente-de-terrains-avec-acd-en-cote-divoire/#terrainsci">terrain urbain</a>.
+			</p>
+
+			<h6 class="mb-10">3- Le Certificat de Mutation de la Propriété Foncière</h6>
+			<p>
+				La mutation de propriété de terrain ayant fait l’objet d’Arrêté de Concession Définitive ou d’un Certificat de Propriété Foncière, se fait exclusivement par acte authentique notarié et donne lieu à un Certificat de Mutation de la Propriété Foncière délivré par le Conservateur de la Propriété Foncière et des Hypothèques. Il est la preuve que les droits conférés par la mutation au profit de l’acquéreur sont inscrits dans le livre foncier.
+			</p>
+
+			<h6 class="mb-10">4- L’état foncier</h6>
+			<p>
+				L’état foncier donne les informations contenues dans le livre foncier et qui représentent les informations portant sur la vie juridique de la parcelle.
+			</p>
+
+			<h6 class="mb-10">5- L’état domanial</h6>
+			<p>
+				L’état domanial donne les informations contenues dans les registres domaniaux du Ministères en charge de la Construction et d’Urbanisme. Ces informations retracent la vie administrative de la parcelle
+				<em>(les différents actes qui ont été délivrés)</em>.
+			</p>
+		</div>
+	</section>
+	<!-- /.row -->
+
+	<section class="page-title page-title-layout1 bg-overlay bg-parallax">
+      <div class="bg-img"><img src="{{ asset('assets/images/page-titles/14.jpg') }}" alt="background"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-12 col-xl-9">
+            <h1 class="pagetitle__heading">Accédez au formulaire de demande de devis en un clic</h1>
+            <a href="{{ path('gfi-devis', { 'lang': 'fr' }) }}" class="btn btn__primary btn__lg mb-30">
+              <i class="icon-arrow-right1"></i><span>Formulaire de Devis</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+	{% endblock %}

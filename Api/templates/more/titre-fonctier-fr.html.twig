@@ -1,0 +1,123 @@
+{% extends 'layout-fr.html.twig' %}
+
+{% block title %}
+    Titre foncier
+{% endblock %}
+
+{% block content %}
+
+	<section class="page-title page-title-layout1 bg-overlay bg-parallax">
+		<div class="bg-img"><img src="{{ asset('assets/images/page-titles/20.jpg') }}" alt="background"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-12 col-xl-9">
+					<h1 class="pagetitle__heading">Tout ce qu’il faut savoir sur le titre foncier</h1>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="text-content text-justify pt-20 pb-30">
+		<div class="container">
+			<p>
+				<br>
+				<strong>Maître AGBEMEBIA exerce la profession de notaire depuis janvier 2006.</strong>
+			</p>
+
+			<p>
+				Son cabinet se situe à Lomé au 461, Av. Nicolas Grunitzky. Son cabinet de 5 collaborateurs se charge de l’immatriculation des immeubles et du titre foncier des terrains. Ils sécurisent ainsi les transactions immobilières.
+			</p>
+		</div>
+		{# <div class="col-sm-12 col-md-12 col-lg-8 offset-lg-1">
+			<div class="heading mt-30 mb-20" id="terrains">
+				<h5 class="text__block-title mb-5">Quelques définitions relatives à l'ACD</h5>
+			</div>
+			<!-- /.heading -->
+		</div> #}
+		<div class="col-sm-12 col-md-12 col-lg-10 offset-lg-1">
+
+			<h6 class="mb-10">Lorsqu’on achète un terrain, quels sont les documents qui attestent que le terrain nous appartient ?</h6>
+			<p>
+				Le seul document qui atteste du droit de propriété d’un terrain est le titre foncier.
+			</p>
+
+			<h6 class="mb-10">En dehors du titre foncier, quel est le strict minimum que l’on doit obtenir de la part du vendeur de terrain comme document ?</h6>
+
+			<p>
+                Le certificat administratif est le strict minimum.
+			</p>
+
+			<h6 class="mb-10">Qu’est-ce qu’un certificat administratif ?</h6>
+			<p>
+				Le certificat administratif est un document délivré par la Préfecture attestant que les agents de la Préfecture se sont rendus sur le terrain, pour procéder à toutes les vérifications nécessaires afin de déterminer le droit de propriété de celui qui a acquis le terrain.
+			</p>
+
+			<h6 class="mb-10">Du coup, plusieurs personnes ne peuvent pas avoir ce document pour un même terrain ?</h6>
+			<p>
+				Si, parce que parfois les agents ne se déplacent pas et délivrent quand même le certificat administratif. Dans ce cas, ce sont des dossiers qui se font au bureau et qui ne figurent pas dans les registres. C’est de cette façon que 2 ou 3 personnes peuvent avoir ce même document. Entre une personne qui passe par d’autres personnes lambda pour se procurer ce document qui n’est pas dans les registres ; et une autre personne qui entame la procédure normale, il peut alors arriver de se retrouver à 2 ou à 3 sur le même terrain. C’est ça le risque. Il n’y a pas de rigueur.
+			</p>
+
+			<p class="text-center">
+				Moi ce que je fais, j’informe le client que le certificat administratif n’est pas toujours sécurisant. <br>
+                Et ensuite j’effectue les vérifications dans les registres... <br>
+                et parfois ça n’y est pas.
+			</p>
+		</div>
+	</section>
+	<!-- /.row -->
+
+	<section class="page-title page-title-layout1 bg-overlay bg-parallax">
+      <div class="bg-img"><img src="{{ asset('assets/images/page-titles/14.jpg') }}" alt="background"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-12 col-xl-9">
+            <h1 class="pagetitle__heading">Accédez au formulaire de demande de devis en un clic</h1>
+            <a href="{{ path('gfi-devis', { 'lang': 'fr' }) }}" class="btn btn__primary btn__lg mb-30">
+              <i class="icon-arrow-right1"></i><span>Formulaire de Devis</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="text-content text-justify pt-20 pb-30">
+        
+		<div class="col-sm-12 col-md-12 col-lg-10 offset-lg-1">
+
+			<h6 class="mb-10">Est-ce qu’on peut alors dire que les transactions de ventes de terrains sont sécurisées ?</h6>
+			<p>
+				Non malheureusement. Je ne sais pas si vous suivez l’actualité mais c’est compliqué. Il y a de nombreux forums et conférences organisés pour trouver une solution pour assurer la sécurité des transactions. Il y a énormément de litiges au tribunal !
+			</p>
+
+			<h6 class="mb-10">Mais du coup, quelle est la difficulté ?</h6>
+
+			<p>
+                La réelle difficulté est l’absence de titre foncier sur les terrains. Des personnes vendent plusieurs terrains sans avoir un titre foncier. Un même terrain peut donc être vendu à 2 ou 3 personnes. Ce qui explique beaucoup de litiges fonciers devant les tribunaux.
+			</p>
+
+			<h6 class="mb-10">Quelle est la procédure lorsque le terrain dispose d’un titre foncier ?</h6>
+			<p>
+				Si le terrain a un titre foncier, une vérification s’impose à la conservation foncière de Lomé. Cette vérification sert à montrer que le terrain appartient bien au vendeur (celui qui veut vendre), et que ce dernier n’est pas doté de charges, c’est-à-dire, qu’il n’y a pas d’hypothèque sur le terrain à vendre. Si tout est bon par rapport à ces critères essentiels, cela prouve que le terrain appartient effectivement au vendeur et qu’il n’est pas doté de charges. A cet instant, l’acquéreur peut acheter le terrain et après l’achat, il doit faire une mutation en son nom.
+			</p>
+            <p>
+				A notre niveau, nous assistons l’acquéreur. Nous faisons et enregistrons l’acte de vente, le reçu de vente et le contrat de vente afin de déposer la demande de mutation au nom de l’acquéreur à la conservation foncière. Donc, cela veut dire que le vendeur dispose d’un titre foncier.
+			</p>
+
+			<h6 class="mb-10">Tout se passe-t-il au niveau du notaire ?</h6>
+			<p>
+				Du moment que le terrain a un titre foncier alors le notaire fait tout ce qu’il faut ! De la vérification jusqu’à ce que le titre foncier porte le nom du client. Donc la première action que l’on effectue, c’est de savoir par une vérification, si le terrain a des garanties suffisantes et est fiable. Enfin, la deuxième action, c’est de faire la mutation du titre foncier au nom de celui qui a acheté le terrain. Il y a donc 2 opérations distinctes à effectuer.
+			</p>
+
+			<p>
+				Vous allez me demander le sort des terrains qui n’ont pas de titres fonciers. Il ne faut pas les acquérir, au risque et péril de l’acheteur. <b>« Moi je fais signer une reconnaissance d’avis au client dans ce cas. Si vous insistez à vouloir acquérir coûte que coûte ce genre de terrain qui n’a pas de titre foncier, je vous fais signer cette reconnaissance d’avis ; pour vous dire que je vous ai informé des risques que vous encourrez mais vous avez voulu passer outre et que vous me déchargez de toutes responsabilités. A partir de ce moment-là, je peux vous faire le dossier. »</b>
+			</p>
+
+            <h6 class="mb-10">Peut-on également vous mandater pour suivre la construction de sa maison de A à Z ?</h6>
+			<p>
+				Non, cette mission relève de la compétence d’un architecte, d’un ingénieur… Nous, notaires, notre compétence relève du titre foncier, le côté administratif. Nous aidons le client à faire une transaction sécurisée et ensuite, à faire la mutation du titre foncier en son nom. En d’autres termes nous faisons l’acte de vente et les actes nécessaires pour que le titre foncier porte le nom de celui qui l’a acheté.
+			</p>
+		</div>
+	</section>
+
+
+	{% endblock %}

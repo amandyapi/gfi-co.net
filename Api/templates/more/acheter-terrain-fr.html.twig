@@ -1,0 +1,121 @@
+{% extends 'layout-fr.html.twig' %}
+
+{% block title %}Acheter un terrain
+{% endblock %}
+
+{% block content %}
+
+	<section class="page-title page-title-layout1 bg-overlay bg-parallax">
+		<div class="bg-img"><img src="{{ asset('assets/images/page-titles/20.jpg') }}" alt="background"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-12 col-xl-9">
+					<h1 class="pagetitle__heading">Les informations indispensables pour acheter votre terrain</h1>
+                    <p style="color: #fff !important;" class="texte-white">Démarches administratives, Informations, Notaires, Terrain</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="text-content text-justify pt-20 pb-30">
+		<div class="container">
+			<p>
+				<br>
+				<strong>Maître AGBEMEBIA exerce la profession de notaire depuis janvier 2006.</strong>
+			</p>
+
+			<p>
+				Acheter un terrain au Togo relève souvent d’un parcours à haut risque lorsqu’on ne sait pas s’y prendre. Notre experte Notaire nous dévoile les clés pour un achat réussi !
+			</p>
+		</div>
+        
+		<div class="col-sm-12 col-md-12 col-lg-10 offset-lg-1">
+
+			<h6 class="mb-10">Pouvez-vous vous présenter et présenter votre cabinet ?</h6>
+			<p>
+				Je suis <b>Géraldine AGBEMEBIA</b>. Je suis Notaire et j’exerce cette profession depuis janvier 2006.
+			</p>
+            <p>
+				Mon étude est située à Lomé au 461, Av. Nicolas Grunitzky, et est composée de 5 collaborateurs (un secrétaire, une aide secrétaire, un clerc, un formaliste et un aide-comptable) qui se chargent entre autres de l’immatriculation des immeubles bâtis ou non bâtis (procédure et obtention du titre foncier).
+			</p>
+
+			<h6 class="mb-10">Quels sont vos missions ?</h6>
+
+			<p>Nous nous occupons de l’immatriculation des immeubles et du titre foncier des terrains. Nous sécurisons ainsi les transactions immobilières. <br>Dans un processus de construction, nous intervenons uniquement pour le titre foncier du terrain. Ensuite ce sont les architectes qui procurent au client le plan de situation, le plan architectural et le permis de construire.
+			</p>
+
+			<h6 class="mb-10">Est-ce qu’un client de la diaspora peut acheter son terrain depuis l’étranger ?</h6>
+			<p>
+				Oui, un client de la diaspora peut acheter son terrain depuis l’étranger, s’il donne un mandat authentique à une tierce personne.
+			</p>
+
+            <p>
+				Une loi va être mise en place pour les ventes de terrains,<br>
+                Il va falloir immatriculer un terrain avant de le vendre…
+			</p>
+
+			<h6 class="mb-10">Et que doit-il faire pour acheter son terrain depuis l’étranger ?</h6>
+			<p>
+				Pour acheter son terrain depuis l’étranger, il faut cibler les terrains qui disposent d’un titre foncier. Si le terrain n’a pas de titre foncier, l’achat n’est pas sécurisé pour le client. D’ailleurs, vu le nombre de litiges, une loi va être mise en place pour les ventes de terrains. La base de la nouvelle loi informera qu’il va falloir immatriculer le terrain avant de le vendre. Donc, les vendeurs ne pourront pas vendre un terrain sans avoir de titre foncier.
+			</p>
+
+			<h6 class="mb-10">Et comment fait-on exactement pour obtenir le titre foncier ? Quels sont les délais ? Et est-il obligatoire de passer par un notaire ?</h6>
+			<p>
+				Le seul document qui atteste de la propriété d’un terrain est le titre foncier. Pour obtenir le titre foncier, la procédure peut durer 3, 4, 5 ans voire même plus. C’est très long, suite à votre achat, nous nous occupons de vous faire le contrat de vente, le certificat administratif et de déposer la demande à la conservation foncière.<br>
+                Ensuite, lorsque la demande est déposée, la procédure interne à la conservation foncière est très longue, parce que le dossier passe de bureau en bureau ; cela peut durer 6 mois, 18 mois ou plus. Ce qui explique que les togolais luttent pour obtenir un titre foncier mais s’ils n’ont pas de titre foncier, ils n’ont pas de terrains sécurisés.
+			</p>
+
+            <p>
+				Pour obtenir ce fameux titre foncier, la loi permet à l’acquéreur, s’il le souhaite, de ne pas passer par le notaire. Le sous-seing privé est ainsi autorisé. L’acquéreur peut passer par le tribunal, par un géomètre ou autre. L’acquéreur n’est donc pas obligé de passer devant un notaire.
+			</p>
+		</div>
+	</section>
+	<!-- /.row -->
+
+	<section class="page-title page-title-layout1 bg-overlay bg-parallax">
+      <div class="bg-img"><img src="{{ asset('assets/images/page-titles/14.jpg') }}" alt="background"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-12 col-xl-9">
+            <h1 class="pagetitle__heading">Accédez au formulaire de demande de devis en un clic</h1>
+            <a href="{{ path('gfi-devis', { 'lang': 'fr' }) }}" class="btn btn__primary btn__lg mb-30">
+              <i class="icon-arrow-right1"></i><span>Formulaire de Devis</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="text-content text-justify pt-20 pb-30">
+		<div class="col-sm-12 col-md-12 col-lg-10 offset-lg-1">
+
+			<h6 class="mb-10">Et il n’y a pas d’autres documents que le titre foncier ?</h6>
+			<p>
+				Il est vrai qu’il y a les plans visés. Ce sont les plans fournis par la direction du cadastre, mais le plan visé n’est pas un titre de propriété.<br>
+                Ensuite il y a un certificat administratif qui est considéré comme un titre foncier indigène mais il n’a pas la même valeur qu’un titre foncier légal.
+			</p>
+
+			<h6 class="mb-10">Et si le vendeur n’a pas de titre foncier, comment ça se passe ?</h6>
+
+			<p>Si le vendeur n’a pas de titre foncier, aucune vérification n’est possible. En général, l’acquéreur se renseigne auprès des personnes du quartier ou auprès du chef au quartier en se rendant sur place, mais ce n’est pas fiable.<b>« Franchement, pour moi, quand il n’y a pas de titre foncier, je ne donne pas d’assurance. »</b>
+			</p>
+
+			<h6 class="mb-10">Vous parliez de vérifications… Quelles sont les vérifications à effectuer auprès des vendeurs, pour pouvoir s’assurer justement de la vente ? Est-ce qu’une vérification est faite par votre cabinet ?</h6>
+			<p>
+				Oui, nous effectuons une vérification et cette vérification se nomme « l’état descriptif ». Pour ma part, je prends le numéro du titre et j’adresse une réquisition à la conservation foncière, qui va me donner tous les renseignements sur le terrain. C’est donc la conservation foncière qui confirme le numéro du titre foncier, le nom du propriétaire du terrain ainsi que l’absence d’hypothèque.
+			</p>
+
+			<h6 class="mb-10">Et que doit-il faire pour acheter son terrain depuis l’étranger ?</h6>
+			<p>
+				Pour acheter son terrain depuis l’étranger, il faut cibler les terrains qui disposent d’un titre foncier. Si le terrain n’a pas de titre foncier, l’achat n’est pas sécurisé pour le client. D’ailleurs, vu le nombre de litiges, une loi va être mise en place pour les ventes de terrains. La base de la nouvelle loi informera qu’il va falloir immatriculer le terrain avant de le vendre. Donc, les vendeurs ne pourront pas vendre un terrain sans avoir de titre foncier.
+			</p>
+
+			<h6 class="mb-10">Un dernier conseil pour nos clients ?</h6>
+			<p>
+				Je conseille aux acheteurs de cibler les terrains qui ont un titre foncier, uniquement un titre foncier.
+			</p>
+		</div>
+	</section>
+
+
+	{% endblock %}
