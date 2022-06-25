@@ -16,7 +16,7 @@
     {
         "filter": "filter-projets-construction",
         "image": "assets/images/projets/projets-de-construction/duplexconakry/1.PNG",
-        "title": "Réalisation d'une Duplex R+2 à Conakry",
+        "title": "Réalisation d'une villa duplex R+2 à Conakry",
         "slug": "duplex-conakry",
         "category": "projet"
     },
@@ -65,7 +65,7 @@
     {
         "filter": "filter-projets-construction",
         "image": "assets/images/projets/projets-de-construction/duplexr2bingerville/2.PNG",
-        "title": "Duplex R+2 Bingerville",
+        "title": "Villa duplex R+2 Bingerville",
         "slug": "duplex-r-2-bingerville",
         "category": "projet de construction"
     },
