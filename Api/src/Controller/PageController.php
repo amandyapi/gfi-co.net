@@ -508,7 +508,8 @@ class PageController extends AbstractController
                 $debutTravaux = $request->request->get('debutTravaux');
                 $pays = $request->request->get('pays');
                 $cityVille = $request->request->get('cityVille');
-
+                $typeBien = $request->request->get('typeBien');
+                /*var_dump($request->request);die();*/
                 $entityManager = $this->getDoctrine()->getManager();
                 $devis = new Devis();
                 $devis->setNom($nometpnoms);
@@ -521,7 +522,8 @@ class PageController extends AbstractController
                 $devis->setDateDebutPrev($debutTravaux);
                 $devis->setPays($pays);
                 $devis->setVille($cityVille);
-
+                $devis->setTypeBien($typeBien);
+                /*var_dump($devis->getTypeBien());die();*/
                 $entityManager->persist($devis);
                 $entityManager->flush(); 
 

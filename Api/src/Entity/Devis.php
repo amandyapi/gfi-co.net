@@ -18,7 +18,7 @@ class Devis
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(name="nom", type="string", length=255)
      */
     private $nom;
 
@@ -76,6 +76,11 @@ class Devis
      * @ORM\Column(type="string", length=255)
      */
     private $statut;
+
+    /**
+     * @ORM\Column(name="typeBien", type="string", length=255)
+     */
+    private $typeBien;
 
     public function __construct()
     {
@@ -229,6 +234,18 @@ class Devis
     public function setStatut(string $statut): self
     {
         $this->statut = $statut;
+
+        return $this;
+    }
+
+    public function getTypeBien(): ?string
+    {
+        return $this->typeBien;
+    }
+
+    public function setTypeBien(string $typeBien): self
+    {
+        $this->typeBien = $typeBien;
 
         return $this;
     }
