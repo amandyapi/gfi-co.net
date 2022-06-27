@@ -37,8 +37,30 @@
 				<div class="col-sm-12 col-md-12 col-lg-8 offset-lg-1">
 					<div class="text__block">
 						<h5 class="text__block-title mb-10">{{projet.description}}</h5>
-						{% if projet.specifications != "" or projet.area != ""  %}
+						{% if projet.info != ""  %}
+						<p>{{projet.info}}</p>
+						{% endif %}
+						{% if projet.area != ""  %}
 						<ul class="portfolio-item__meta-list list-unstyled mt-10 mb-30">
+							{% if projet.localisation != ""  %}
+							<li>
+								<strong>Localisation:</strong>
+								<span>{{ projet.localisation }}</span>
+							</li>
+							{% endif %}
+							{% if projet.moa != ""  %}
+							<li>
+								<strong>Maître d'ouvrage:</strong>
+								<span>{{ projet.moa }}</span>
+							</li>
+							{% endif %}
+							{% if projet.entreprisedexecution != ""  %}
+							<li>
+								<strong>Entreprise d'exécution:</strong>
+								<span>{{ projet.entreprisedexecution }}</span>
+							</li>
+							{% endif %}
+
                             {% if projet.area.land != "" %}
 							<li>
 								<strong>Superficie de Terrain:</strong>
@@ -59,10 +81,28 @@
 
 			</div>
 			<!-- /.row -->
+			{% if realisation|length > 0 %}
+				<div class="row offset-lg-0">
+					<div class="col-sm-12 col-md-12 col-lg-8 offset-lg-1">
+						<div class="portfolio-item">
+                            <h5 class="text__block-title mb-10">Réalisation</h5>
+								{# <span class="desc-spec-title">{{projet.specifications.rdc.description}}</span> #}
+							<ul class="list-items list-unstyled mt-20">
+								{% for r in realisation %}
+									<li>{{r}}</li>
+								{% endfor %}
+							</ul>
+							<!-- /.portfolio-img -->
+						</div>
+						<!-- /.portfolio-item -->
+					</div>
+				</div>
+			{% endif %}
 		</div>
 		<!-- /.container -->
 	</section>
-	{% if projet.specifications != "" or projet.area != ""  %}
+	
+	{% if projet.specifications != "" %}
     <section class="portfolio-gallery py-0">
 			<div class="container">
 				<div class="row offset-lg-1">

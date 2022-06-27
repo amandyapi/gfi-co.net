@@ -232,6 +232,8 @@ class PageController extends AbstractController
         $etage2 = [];
         $etage3 = [];
 
+        $realisation = [];
+
         $rdcDesc = "";
         $etageDesc = "";
         $etage2Desc = "";
@@ -243,11 +245,20 @@ class PageController extends AbstractController
             }
         }
 
+        if($projet->realisation != ""){
+            foreach ($projet->realisation as $key => $value) {
+                $realisation[] = $value;
+            }
+        }
+
         if($projet->picture != ""){
             foreach ($projet->picture as $key => $value) {
             $pictures[] = $value;
             }
         }
+
+        /*var_dump($realisation);
+        var_dump($pictures);die();*/
 
         if($projet->specifications != ""){
             
@@ -304,6 +315,7 @@ class PageController extends AbstractController
             'etage' => $etage,
             'etage2' => $etage2,
             'etage3' => $etage3,
+            'realisation' => $realisation,
             'devisUrl' => $devisUrl,
             'rdcDesc' => $rdcDesc,
             'etageDesc' => $etageDesc,
