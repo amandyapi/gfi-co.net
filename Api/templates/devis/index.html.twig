@@ -38,10 +38,18 @@
         <strong class="text-dark">Terrain:</strong> &nbsp; {{d.terrain}}
       </li>
       <li class="list-group-item border-0 ps-0 text-sm">
+        <strong class="text-dark">Type de bien:</strong> &nbsp; 
+        {% if d.typeBien == 'villabasse' %}
+            Villa basse
+        {% elseif d.typeBien == 'duplex' %}
+            Villa duplex
+        {% endif %}
+      </li>
+      <li class="list-group-item border-0 ps-0 text-sm">
         <strong class="text-dark">Nombre de pieces:</strong> &nbsp; {{d.nombre_de_pieces}}
       </li>
       <li class="list-group-item border-0 ps-0 text-sm">
-        <strong class="text-dark">Devise:</strong> &nbsp; {{d.devise}}
+        <strong class="text-dark">Devise:</strong> &nbsp; {{d.devise|upper}}
       </li>
       <li class="list-group-item border-0 ps-0 text-sm">
         <strong class="text-dark">Budget:</strong> &nbsp; {{d.budget}}

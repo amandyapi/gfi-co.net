@@ -504,12 +504,24 @@ class PageController extends AbstractController
                 $terrain = $request->request->get('dejaTerrain');
                 $typeMaison = $request->request->get('typeMaison');
                 $devise = $request->request->get('devise');
-                $budget = $request->request->get('budget');
+                $budgetCfa = $request->request->get('budgetCfa');
+                $budgetEur = $request->request->get('budgetEur');
+                $budget = "";
+
+                if($budgetCfa != ""){
+                    $budget = $budgetCfa;
+                }
+                else if($budgetEur != "")
+                {
+                    $budget = $budgetEur;
+                }
                 $debutTravaux = $request->request->get('debutTravaux');
                 $pays = $request->request->get('pays');
                 $cityVille = $request->request->get('cityVille');
                 $typeBien = $request->request->get('typeBien');
+
                 /*var_dump($request->request);die();*/
+
                 $entityManager = $this->getDoctrine()->getManager();
                 $devis = new Devis();
                 $devis->setNom($nometpnoms);
@@ -523,7 +535,7 @@ class PageController extends AbstractController
                 $devis->setPays($pays);
                 $devis->setVille($cityVille);
                 $devis->setTypeBien($typeBien);
-                /*var_dump($devis->getTypeBien());die();*/
+                
                 $entityManager->persist($devis);
                 $entityManager->flush(); 
 
