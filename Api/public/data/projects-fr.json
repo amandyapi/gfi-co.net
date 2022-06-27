@@ -138,12 +138,15 @@
         "slug": "duplex-conakry",
         "type": "concept",
         "title": "Réalisation d'une Duplex R+2 à Conakry",
-        "description": "Réalisation d'une Duplex R+2 à Conakry",
+        "description": "Construction d'une villa duplex moderne de haut standing",
         "info": "",
-        "localisation": "",
-        "moa": "",
-        "entreprisedexecution": "",
-        "realisation": "",
+        "localisation": "Conakry (Guinée)",
+        "moa": "Particulier",
+        "entreprisedexecution": "GFI-CO & CIT",
+        "realisation": {
+            "0": "Plan Archi et etudes techniques",
+            "1": "Construction"
+        },
         "video": "",
         "area": {
             "land": "500 m²",
@@ -369,7 +372,7 @@
         "slug": "duplex-r-2-bingerville",
         "type": "concept",
         "title": "Duplex R+2 Bingerville",
-        "description": "Duplex R+2 Bingerville",
+        "description": "Construction d'une villa duplex moderne et haut standing",
         "info": "",
         "localisation": "Bingerville / Côte d'Ivoire",
         "moa": "Particulier",
@@ -438,17 +441,57 @@
         "slug": "villa-basse-bingerville",
         "type": "interieur",
         "title": "Villa basse Bingerville",
-        "description": "Villa basse Bingerville",
+        "description": "Construction d'une villa basse moderne de haut standing",
         "info": "",
-        "localisation": "",
-        "moa": "",
-        "entreprisedexecution": "",
-        "realisation": "",
+        "localisation": "Bingerville / Côte d'Ivoire",
+        "moa": "Particulier",
+        "entreprisedexecution": "GFI-CO & CIT",
+        "realisation": {
+            "0": "Plan Archi et etudes techniques",
+            "1": "Construction"
+        },
         "video": "assets/images/projets/projets-de-construction/villabassebingerville/1.mp4",
-        "area": "",
+        "area": {
+            "land": "",
+            "floor": "500 m²"
+        },
         "land": "",
-        "specifications": "",
-        "picture": ""
+        "specifications": {
+            "rdc": {
+                "description": "",
+                "text": {
+                    "1": "1 cours avant avec un garade pour 2 véhicules",
+                    "2": "1 vestibule",
+                    "3": "1 chambre visiteurs autonome avec dressing",
+                    "4": "2 chambres enfants autonomes avec dressing",
+                    "5": "1 salle d'étude et de jeux pour enfants",
+                    "6": "1 salle de prière",
+                    "7": "1 patios",
+                    "8": "1 toillette visiteurs",
+                    "9": "1 grand séjour avec salle à manger",
+                    "10": "1 cuisine européenne et africaine",
+                    "11": "1 bureau",
+                    "12": "1 boyerie avec salle de bain",
+                    "13": "1 buanderie",
+                    "14": "1 suite parentale avec 2 dressing et salle de bain",
+                    "15": "1 cours arrière avec piscine"
+                },
+                "sketch": ""
+            },
+            "etage": "",
+            "etage2": "",
+            "etage3": ""
+        },
+        "picture": {
+            "1": "assets/images/projets/projets-de-construction/villabassebingerville/1.jpg",
+            "2": "assets/images/projets/projets-de-construction/villabassebingerville/2.jpg",
+            "3": "assets/images/projets/projets-de-construction/villabassebingerville/3.jpg",
+            "4": "assets/images/projets/projets-de-construction/villabassebingerville/4.jpg",
+            "5": "assets/images/projets/projets-de-construction/villabassebingerville/5.jpg",
+            "6": "assets/images/projets/projets-de-construction/villabassebingerville/6.jpg",
+            "7": "assets/images/projets/projets-de-construction/villabassebingerville/7.jpg",
+            "8": "assets/images/projets/projets-de-construction/villabassebingerville/8.jpg"
+        }
     },
     {
         "slug": "complexe-hotelier-yakro",
