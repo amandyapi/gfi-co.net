@@ -33,14 +33,23 @@
 
 	<section class="text-content pt-20 pb-30">
 		<div class="container">
+			<h5 class="text__block-title mb-10 offset-lg-1">{{projet.description}}</h5>
+			<br>
 			<div class="row">
-				<div class="col-sm-12 col-md-12 col-lg-8 offset-lg-1">
+				<div class="col-sm-12 col-md-12 col-lg-5 offset-lg-1">
 					<div class="text__block">
-						<h5 class="text__block-title mb-10">{{projet.description}}</h5>
+						{% if 
+							projet.localisation != "" or 
+							projet.moa != "" or 
+							projet.entreprisedexecution != "" or 
+							projet.area != "" 
+						%}
+						<h6 class="text__block-title mb-10 text-muted" style="font-size: 16px !important;font-weight: 500;">Description du projet</h6>
+						{% endif %}
 						{% if projet.info != ""  %}
 						<p>{{projet.info}}</p>
 						{% endif %}
-						{% if projet.area != ""  %}
+						
 						<ul class="portfolio-item__meta-list list-unstyled mt-10 mb-30">
 							{% if projet.localisation != ""  %}
 							<li>
@@ -60,44 +69,39 @@
 								<span>{{ projet.entreprisedexecution }}</span>
 							</li>
 							{% endif %}
-
-                            {% if projet.area.land != "" %}
+							
+                            {% if projet.area != "" and projet.area.land != "" %}
 							<li>
 								<strong>Superficie de Terrain:</strong>
 								<span>{{ projet.area.land }}</span>
 							</li>
                             {% endif %}
-                            {% if projet.area.floor != "" %}
+                            {% if projet.area != "" and projet.area.floor != "" %}
 							<li>
 								<strong>Superficie Batie au sol:</strong>
 								<span>{{ projet.area.floor }}</span>
 							</li>
                             {% endif %}
 						</ul>
-						{% endif %}
 
 					</div>
 				</div>
-
+				{% if realisation|length > 0 %}
+				<div class="col-sm-12 col-md-12 col-lg-6 offset-lg-0">
+					<div class="portfolio-item">
+						<h6 class="text__block-title mb-10 text-muted" style="font-size: 16px !important;font-weight: 500;">Réalisation</h6>
+							{# <span class="desc-spec-title">{{projet.specifications.rdc.description}}</span> #}
+						<ul class="list-items list-unstyled mt-20">
+							{% for r in realisation %}
+								<li>{{r}}</li>
+							{% endfor %}
+						</ul>
+						<!-- /.portfolio-img -->
+					</div>
+					<!-- /.portfolio-item -->
+				</div>
+				{% endif %}
 			</div>
-			<!-- /.row -->
-			{% if realisation|length > 0 %}
-				<div class="row offset-lg-0">
-					<div class="col-sm-12 col-md-12 col-lg-8 offset-lg-1">
-						<div class="portfolio-item">
-                            <h5 class="text__block-title mb-10">Réalisation</h5>
-								{# <span class="desc-spec-title">{{projet.specifications.rdc.description}}</span> #}
-							<ul class="list-items list-unstyled mt-20">
-								{% for r in realisation %}
-									<li>{{r}}</li>
-								{% endfor %}
-							</ul>
-							<!-- /.portfolio-img -->
-						</div>
-						<!-- /.portfolio-item -->
-					</div>
-				</div>
-			{% endif %}
 		</div>
 		<!-- /.container -->
 	</section>
