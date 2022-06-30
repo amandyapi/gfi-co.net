@@ -242,97 +242,255 @@
       <div class="container">
         <div class="row align-items-center mb-20">
           <div class="col-sm-12 col-md-12 col-lg-5">
-            <h3 class="heading__title mb-20">Projets Vedettes</h3>
+            <h3 class="heading__title mb-20">Nos réalisations</h3>
           </div><!-- /.col-lg-6 -->
-          <div class="col-sm-12 col-md-12 col-lg-7">
+          {# <div class="col-sm-12 col-md-12 col-lg-7">
             <nav id="slick-filter-buttons" class="nav nav-tabs justify-content-end mt-50 mt-0-xs-sm">
               <a href="#" class="nav__link active" data-value="all">TOUT</a>
               <a href="#" class="nav__link" data-value="pearl">VILLA THE PEARL</a>
               <a href="#" class="nav__link" data-value="bigpearl">VILLA THE BIG PEARL</a>
             </nav>
-          </div><!-- /.col-lg-6 -->
+          </div> #}
+          <!-- /.col-lg-6 -->
         </div><!-- /.row -->
         <div class="row">
           <div class="col-sm-12 col-md-12 col-lg-12">
             <div class="slick-carousel" id="filter-carousel"
-              data-slick='{"slidesToShow": 4, "arrows": false, "dots": true, "autoplay": true, "responsive": [ {"breakpoint": 992, "settings": {"slidesToShow": 3}}, {"breakpoint": 768, "settings": {"slidesToShow": 1}}]}'>
+              data-slick='{"slidesToShow": 2, "arrows": false, "dots": true, "autoplay": true, "responsive": [ {"breakpoint": 992, "settings": {"slidesToShow": 3}}, {"breakpoint": 768, "settings": {"slidesToShow": 1}}]}'>
               <!-- portfolio item #1 -->
               <div class="portfolio-item pearl all">
                 <div class="portfolio-item__img">
-                  <img src="{{ asset('assets/images/projets/concepts-ecologiques/pearl/1.jpg') }}" alt="portfolio img">
+                  <img src="{{ asset('assets/images/home/pearl.jpg') }}" alt="portfolio img">
                 </div><!-- /.portfolio-img -->
                 <div class="portfolio-item__hover">
                   <div class="portfolio-item__content">
-                    <h4 class="portfolio-item__title"><a href="{{ path('gfi-project-grid-info', { 'lang': 'fr', 'slug': 'villa-the-pearl' }) }}">Villa The Pearl</a></h4>
+                    <h4 class="portfolio-item__title" style="font-size: 30px !important;">
+                      <a href="{{ path('gfi-project-grid-info', { 'lang': 'fr', 'slug': 'villa-the-pearl' }) }}">
+                        villa basse the pearl avec terrasse aménagée
+                      </a>
+                    </h4>
                   </div><!-- /.portfolio-content -->
                 </div><!-- /.portfolio-item__hover -->
               </div><!-- /.portfolio-item -->
+
               <!-- portfolio item #2 -->
-              <div class="portfolio-item pearl all">
+              <div class="portfolio-item bigpearl all">
                 <div class="portfolio-item__img">
-                  <img src="{{ asset('assets/images/projets/concepts-ecologiques/pearl/2.jpg') }}" alt="portfolio img">
+                  <img src="{{ asset('assets/images/home/bigpearl.jpg') }}" alt="portfolio img">
                 </div><!-- /.portfolio-img -->
                 <div class="portfolio-item__hover">
                   <div class="portfolio-item__content">
-                    <h4 class="portfolio-item__title"><a href="{{ path('gfi-project-grid-info', { 'lang': 'fr', 'slug': 'villa-the-pearl' }) }}">Villa The Pearl</a></h4>
+                    <h4 class="portfolio-item__title" style="font-size: 30px !important;">
+                      <a href="{{ path('gfi-project-grid-info', { 'lang': 'fr', 'slug': 'villa-big-the-pearl' }) }}">
+                        Villa duplex The Big Pearl
+                      </a>
+                    </h4>
                   </div><!-- /.portfolio-item__hover -->
                 </div><!-- /.portfolio-content -->
               </div><!-- /.portfolio-item -->
               <!-- portfolio item #3 -->
-              <div class="portfolio-item pearl all">
+
+              <!-- portfolio item #2 -->
+              <div class="portfolio-item r2conacry all">
                 <div class="portfolio-item__img">
-                  <img src="{{ asset('assets/images/projets/concepts-ecologiques/pearl/3.jpg') }}" alt="portfolio img">
+                  <img src="{{ asset('assets/images/home/duplexconakry.PNG') }}" alt="portfolio img">
                 </div><!-- /.portfolio-img -->
                 <div class="portfolio-item__hover">
                   <div class="portfolio-item__content">
-                    <h4 class="portfolio-item__title"><a href="{{ path('gfi-project-grid-info', { 'lang': 'fr', 'slug': 'villa-the-pearl' }) }}">Villa The Pearl</a></h4>
-                  </div><!-- /.portfolio-content -->
-                </div><!-- /.portfolio-item__hover -->
+                    <h4 class="portfolio-item__title">
+                      <a href="{{ path('gfi-project-grid-info', { 'lang': 'fr', 'slug': 'duplex-conakry' }) }}">
+                        Réalisation d'une villa duplex R+2 à Conakry
+                      </a>
+                    </h4>
+                  </div><!-- /.portfolio-item__hover -->
+                </div><!-- /.portfolio-content -->
               </div><!-- /.portfolio-item -->
-              <!-- portfolio item #4 -->
-              <div class="portfolio-item bigpearl all">
+              <!-- portfolio item #3 -->
+
+              <!-- portfolio item #2 -->
+              <div class="portfolio-item 12mili all">
                 <div class="portfolio-item__img">
-                  <img src="{{ asset('assets/images/projets/concepts-ecologiques/bigpearl/1.jpg') }}" alt="portfolio img">
+                  <img src="{{ asset('assets/images/home/12mili.jpg') }}" alt="portfolio img">
                 </div><!-- /.portfolio-img -->
                 <div class="portfolio-item__hover">
                   <div class="portfolio-item__content">
-                    <h4 class="portfolio-item__title"><a href="{{ path('gfi-project-grid-info', { 'lang': 'fr', 'slug': 'villa-the-big-pearl' }) }}">Villa The Big Pearl</a></h4>
-                  </div><!-- /.portfolio-content -->
-                </div><!-- /.portfolio-item__hover -->
+                    <h4 class="portfolio-item__title">
+                      <a href="{{ path('gfi-project-grid-info', { 'lang': 'fr', 'slug': 'villa-12-mili' }) }}">
+                        Villa 12 Mili
+                      </a>
+                    </h4>
+                  </div><!-- /.portfolio-item__hover -->
+                </div><!-- /.portfolio-content -->
               </div><!-- /.portfolio-item -->
-              <!-- portfolio item #5 -->
-              <div class="portfolio-item bigpearl all">
+              <!-- portfolio item #3 -->
+
+              <!-- portfolio item #2 -->
+              <div class="portfolio-item 12mili all">
                 <div class="portfolio-item__img">
-                  <img src="{{ asset('assets/images/projets/concepts-ecologiques/bigpearl/2.jpg') }}" alt="portfolio img">
+                  <img src="{{ asset('assets/images/home/maisonsgroupees.png') }}" alt="portfolio img">
                 </div><!-- /.portfolio-img -->
                 <div class="portfolio-item__hover">
                   <div class="portfolio-item__content">
-                    <h4 class="portfolio-item__title"><a href="{{ path('gfi-project-grid-info', { 'lang': 'fr', 'slug': 'villa-the-big-pearl' }) }}">Villa The Big Pearl</a></h4>
-                  </div><!-- /.portfolio-content -->
-                </div><!-- /.portfolio-item__hover -->
+                    <h4 class="portfolio-item__title">
+                      <a href="{{ path('gfi-project-grid-info', { 'lang': 'fr', 'slug': 'maisons-groupées' }) }}">
+                        Maisons groupées
+                      </a>
+                    </h4>
+                  </div><!-- /.portfolio-item__hover -->
+                </div><!-- /.portfolio-content -->
               </div><!-- /.portfolio-item -->
-              <!-- portfolio item #6 -->
-              <div class="portfolio-item bigpearl all">
+              <!-- portfolio item #3 -->
+
+              <div class="portfolio-item villa225 all">
                 <div class="portfolio-item__img">
-                  <img src="{{ asset('assets/images/projets/concepts-ecologiques/bigpearl/3.jpg') }}" alt="portfolio img">
+                  <img src="{{ asset('assets/images/home/villa225.png') }}" alt="portfolio img">
                 </div><!-- /.portfolio-img -->
                 <div class="portfolio-item__hover">
                   <div class="portfolio-item__content">
-                    <h4 class="portfolio-item__title"><a href="{{ path('gfi-project-grid-info', { 'lang': 'fr', 'slug': 'villa-the-big-pearl' }) }}">Villa The Big Pearl</a></h4>
-                  </div><!-- /.portfolio-content -->
-                </div><!-- /.portfolio-item__hover -->
+                    <h4 class="portfolio-item__title">
+                      <a href="{{ path('gfi-project-grid-info', { 'lang': 'fr', 'slug': 'villas-225' }) }}">
+                       Villas 225
+                      </a>
+                    </h4>
+                  </div><!-- /.portfolio-item__hover -->
+                </div><!-- /.portfolio-content -->
               </div><!-- /.portfolio-item -->
-              <!-- portfolio item #7 -->
-              <div class="portfolio-item bigpearl all">
+              <!-- portfolio item #3 -->
+
+              <div class="portfolio-item whitehouse all">
                 <div class="portfolio-item__img">
-                  <img src="{{ asset('assets/images/projets/concepts-ecologiques/bigpearl/3.jpg') }}" alt="portfolio img">
+                  <img src="{{ asset('assets/images/home/whitehouse.png') }}" alt="portfolio img">
                 </div><!-- /.portfolio-img -->
                 <div class="portfolio-item__hover">
                   <div class="portfolio-item__content">
-                    <h4 class="portfolio-item__title"><a href="{{ path('gfi-project-grid-info', { 'lang': 'fr', 'slug': 'villa-the-big-pearl' }) }}">Villa The Big Pearl</a></h4>
-                  </div><!-- /.portfolio-content -->
-                </div><!-- /.portfolio-item__hover -->
+                    <h4 class="portfolio-item__title">
+                      <a href="{{ path('gfi-project-grid-info', { 'lang': 'fr', 'slug': 'white-house' }) }}">
+                       White house
+                      </a>
+                    </h4>
+                  </div><!-- /.portfolio-item__hover -->
+                </div><!-- /.portfolio-content -->
               </div><!-- /.portfolio-item -->
+              <!-- portfolio item #3 -->
+
+              <div class="portfolio-item whitehouse2 all">
+                <div class="portfolio-item__img">
+                  <img src="{{ asset('assets/images/home/whitehouse2.png') }}" alt="portfolio img">
+                </div><!-- /.portfolio-img -->
+                <div class="portfolio-item__hover">
+                  <div class="portfolio-item__content">
+                    <h4 class="portfolio-item__title">
+                      <a href="{{ path('gfi-project-grid-info', { 'lang': 'fr', 'slug': 'white-house-2' }) }}">
+                       White house 2
+                      </a>
+                    </h4>
+                  </div><!-- /.portfolio-item__hover -->
+                </div><!-- /.portfolio-content -->
+              </div><!-- /.portfolio-item -->
+              <!-- portfolio item #3 -->
+
+
+              <div class="portfolio-item hoteldaloa all">
+                <div class="portfolio-item__img">
+                  <img src="{{ asset('assets/images/home/hoteldaloa.jpg') }}" alt="portfolio img">
+                </div><!-- /.portfolio-img -->
+                <div class="portfolio-item__hover">
+                  <div class="portfolio-item__content">
+                    <h4 class="portfolio-item__title">
+                      <a href="{{ path('gfi-project-grid-info', { 'lang': 'fr', 'slug': 'residence-hoteliere-de-daloa' }) }}">
+                       Résidence Hotelière De Daloa
+                      </a>
+                    </h4>
+                  </div><!-- /.portfolio-item__hover -->
+                </div><!-- /.portfolio-content -->
+              </div><!-- /.portfolio-item -->
+              <!-- portfolio item #3 -->
+
+
+              <div class="portfolio-item duplexr2bingerville all">
+                <div class="portfolio-item__img">
+                  <img src="{{ asset('assets/images/home/duplexr2bingerville.PNG') }}" alt="portfolio img">
+                </div><!-- /.portfolio-img -->
+                <div class="portfolio-item__hover">
+                  <div class="portfolio-item__content">
+                    <h4 class="portfolio-item__title">
+                      <a href="{{ path('gfi-project-grid-info', { 'lang': 'fr', 'slug': 'duplex-r-2-bingerville' }) }}">
+                       Construction d'une villa duplex moderne et haut standing à Bingerville
+                      </a>
+                    </h4>
+                  </div><!-- /.portfolio-item__hover -->
+                </div><!-- /.portfolio-content -->
+              </div><!-- /.portfolio-item -->
+              <!-- portfolio item #3 -->
+
+
+              <div class="portfolio-item duplexr2bingerville all">
+                <div class="portfolio-item__img">
+                  <img src="{{ asset('assets/images/home/villabassebingerville.jpg') }}" alt="portfolio img">
+                </div><!-- /.portfolio-img -->
+                <div class="portfolio-item__hover">
+                  <div class="portfolio-item__content">
+                    <h4 class="portfolio-item__title">
+                      <a href="{{ path('gfi-project-grid-info', { 'lang': 'fr', 'slug': 'villa-basse-bingerville' }) }}">
+                       Construction d'une villa basse moderne de haut standing à Bingerville
+                      </a>
+                    </h4>
+                  </div><!-- /.portfolio-item__hover -->
+                </div><!-- /.portfolio-content -->
+              </div><!-- /.portfolio-item -->
+              <!-- portfolio item #3 -->
+
+
+              <div class="portfolio-item renovations-finition all">
+                <div class="portfolio-item__img">
+                  <img src="{{ asset('assets/images/home/renovations.jpg') }}" alt="portfolio img">
+                </div><!-- /.portfolio-img -->
+                <div class="portfolio-item__hover">
+                  <div class="portfolio-item__content">
+                    <h4 class="portfolio-item__title">
+                      <a href="{{ path('gfi-project-grid-info', { 'lang': 'fr', 'slug': 'renovations-finistons-1' }) }}">
+                       Travaux de finition d'une villa duplex
+                      </a>
+                    </h4>
+                  </div><!-- /.portfolio-item__hover -->
+                </div><!-- /.portfolio-content -->
+              </div><!-- /.portfolio-item -->
+              <!-- portfolio item #3 -->
+
+
+              <div class="portfolio-item complexehotelieryakro all">
+                <div class="portfolio-item__img">
+                  <img src="{{ asset('assets/images/home/complexehotelieryakro.jpg') }}" alt="portfolio img">
+                </div><!-- /.portfolio-img -->
+                <div class="portfolio-item__hover">
+                  <div class="portfolio-item__content">
+                    <h4 class="portfolio-item__title">
+                      <a href="{{ path('gfi-project-grid-info', { 'lang': 'fr', 'slug': 'complexe-hotelier-yakro' }) }}">
+                       Supervision des travaux de construction d’un complexe hôtelier à Yamoussoukro
+                      </a>
+                    </h4>
+                  </div><!-- /.portfolio-item__hover -->
+                </div><!-- /.portfolio-content -->
+              </div><!-- /.portfolio-item -->
+              <!-- portfolio item #3 -->
+
+
+              <div class="portfolio-item travauxabobopk18 all">
+                <div class="portfolio-item__img">
+                  <img src="{{ asset('assets/images/home/travauxabobopk18.jpg') }}" alt="portfolio img">
+                </div><!-- /.portfolio-img -->
+                <div class="portfolio-item__hover">
+                  <div class="portfolio-item__content">
+                    <h4 class="portfolio-item__title">
+                      <a href="{{ path('gfi-project-grid-info', { 'lang': 'fr', 'slug': 'travaux-abobo-pk-18' }) }}">
+                       Travaux de terrassement d'une plateforme et de rechargement de la voie d'accès
+                      </a>
+                    </h4>
+                  </div><!-- /.portfolio-item__hover -->
+                </div><!-- /.portfolio-content -->
+              </div><!-- /.portfolio-item -->
+              <!-- portfolio item #3 -->
+
             </div><!-- /.carousel -->
           </div><!-- /.col-lg-12 -->
         </div><!-- /.row -->
