@@ -1,0 +1,129 @@
+
+.table .thead-blue{
+	color: #fff; 
+	background-color: #0E2B5C !important;
+}
+
+.table .tr{
+	color: #fff; 
+	background-color: #0E2B5C !important;
+}
+
+.table .td{
+	color: #fff; 
+	background-color: #0E2B5C !important;
+}
+
+.table-blue{
+	border: 1px solid #0E2B5C !important;
+	box-shadow: 1px 1px 5px #758db6;
+}
+
+.service-border{
+	border: 1px solid #0E2B5C !important;
+	border-radius: 2px !important;
+	padding: 10px;
+	/*box-shadow: 1px 1px 5px #0E2B5C;*/
+	box-shadow: 1px 1px 5px #758db6;
+}
+
+.floating-invoice{
+	position: fixed !important;
+	top: 30%;
+	left: 0px;
+	width: 60px !important;
+	height: auto !important;
+	z-index: 10000000000000000 !important;
+}
+
+
+.floating-invoice:hover{
+	width: 75px !important;
+	height: auto !important;
+}
+
+#filter-carousel{
+}
+
+.portfolio-item{
+	
+}
+
+#home-portfolio .portfolio-item .portfolio-item__img{
+	height: 422px !important;
+	width: auto !important;
+}
+
+#home-portfolio .portfolio-item .portfolio-item__hover .portfolio-item__content{
+	position: relative;
+	top: -30px;
+	background: rgba(255,255,255,0.5) !important;
+	height: 90px;
+}
+#home-portfolio .portfolio-item .portfolio-item__hover .portfolio-item__content{
+	
+}
+
+#home-portfolio .portfolio-item .portfolio-item__hover .portfolio-item__content h4{
+	font-size: 25px !important;
+	margin-top:auto!important;
+	margin-bottom:auto!important;
+}
+
+#home-portfolio .portfolio-item .portfolio-item__hover .portfolio-item__content h4 a{
+	color: #0E2B5C !important;
+}
+
+#home-portfolio .portfolio-item .portfolio-item__hover .portfolio-item__content .h-center{
+	position: relative;
+	top: -17px;
+}
+
+.about-layout2 .cta-banner1 {
+	background-color: rgba(255, 255, 255, 1);
+	max-width: 500px;
+	position: absolute;
+	bottom: 40px;
+	left: 0px;
+	border-right: 6px solid #0E2B5C;
+	padding: 30px 25px !important;
+  }
+  
+  .about-layout2 .cta-banner2 {
+	background-color: rgba(255, 255, 255, 1);
+	max-width: 500px;
+	position: absolute;
+	bottom: 40px;
+	right: 0px;
+	border-left: 6px solid #0E2B5C;
+	padding: 30px 25px !important;
+  }
+
+  
+.about-layout2 .cta-banner3 {
+	background-color: rgba(255, 255, 255, 1);
+	max-width: 400px;
+	position: absolute;
+	bottom: 40px;
+	left: 0px;
+	border-right: 6px solid #0E2B5C;
+	padding: 30px 25px !important;
+  }
+
+  
+  .about-layout2 .cta-banner4 {
+	background-color: rgba(255, 255, 255, 1);
+	max-width: 500px;
+	position: absolute;
+	bottom: 40px;
+	right: 0px;
+	border-left: 6px solid #0E2B5C;
+	padding: 30px 25px !important;
+  }
+  
+  .about-layout2 .cta-banner {
+	max-width: 500px;
+	position: absolute;
+	bottom: 0;
+	left: 40px;
+  }
