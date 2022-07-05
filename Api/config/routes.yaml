@@ -75,6 +75,10 @@ gfi-more_titre_foncier:
     path: /{lang}/titre-foncier
     controller: App\Controller\PageController::titreFoncier
 
+gfi-ab:
+    path: /{lang}/about-test
+    controller: App\Controller\PageController::aboutTest
+
 ## ADMIN
 
 admin_root:

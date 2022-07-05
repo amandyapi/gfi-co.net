@@ -78,3 +78,52 @@
 	position: relative;
 	top: -17px;
 }
+
+.about-layout2 .cta-banner1 {
+	background-color: rgba(255, 255, 255, 1);
+	max-width: 500px;
+	position: absolute;
+	bottom: 40px;
+	left: 0px;
+	border-right: 6px solid #0E2B5C;
+	padding: 30px 25px !important;
+  }
+  
+  .about-layout2 .cta-banner2 {
+	background-color: rgba(255, 255, 255, 1);
+	max-width: 500px;
+	position: absolute;
+	bottom: 40px;
+	right: 0px;
+	border-left: 6px solid #0E2B5C;
+	padding: 30px 25px !important;
+  }
+
+  
+.about-layout2 .cta-banner3 {
+	background-color: rgba(255, 255, 255, 1);
+	max-width: 400px;
+	position: absolute;
+	bottom: 40px;
+	left: 0px;
+	border-right: 6px solid #0E2B5C;
+	padding: 30px 25px !important;
+  }
+
+  
+  .about-layout2 .cta-banner4 {
+	background-color: rgba(255, 255, 255, 1);
+	max-width: 500px;
+	position: absolute;
+	bottom: 40px;
+	right: 0px;
+	border-left: 6px solid #0E2B5C;
+	padding: 30px 25px !important;
+  }
+  
+  .about-layout2 .cta-banner {
+	max-width: 500px;
+	position: absolute;
+	bottom: 0;
+	left: 40px;
+  }

@@ -60,10 +60,19 @@ class PageController extends AbstractController
         ]); 
     }
 
+    
+
+    public function aboutTest($lang)
+    {
+        /*$devisUrl = $this->devisBg[1];*/
+        $template = 'about/ab-'.$lang.'.html.twig';            
+        return $this->render($template, []); 
+    }
+
     public function about($lang)
     {
         $devisUrl = $this->devisBg[1];
-        $template = 'about/about-'.$lang.'.html.twig';            
+        $template = 'about/ab-'.$lang.'.html.twig';            
         return $this->render($template, [
             'devisUrl' => $devisUrl
         ]); 
